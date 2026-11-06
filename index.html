@@ -3,239 +3,359 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Marcus Wedding Studio – Wedding films</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Marcus Wedding Studio – Wedding video editing</title>
+<meta name="description" content="Wedding post-production edited in Manila. You shoot it, we finish it: teasers, highlights and full films, matched to your style and deadlines.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Marcus Wedding Studio – Wedding video editing">
+<meta property="og:description" content="You shoot it. We finish it. Wedding post-production edited in Manila.">
+<meta name="theme-color" content="#F7F3F0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<script>if(!matchMedia("(prefers-reduced-motion:reduce)").matches)document.documentElement.classList.add("anim")</script>
 <style>
-:root{color-scheme:light;--bg:#F7F3F0;--ink:#23213A;--muted:#6A6680;--card:#EDE6E3;--accent:#A9484F;--line:#D9CFCB;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root{color-scheme:light;--bg:#F7F3F0;--ink:#23213A;--muted:#5E5A74;--card:#EDE6E3;--accent:#A9484F;--line:#D9CFCB;
+--f-display:Fraunces,Georgia,serif;--f-body:Figtree,system-ui,sans-serif;--ease:cubic-bezier(.22,.8,.24,1);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#16141F;--ink:#F1EAE6;--muted:#A6A1B8;--card:#211E2E;--accent:#E08A8F;--line:#35314A}}
 :root[data-theme="dark"]{color-scheme:dark;--bg:#16141F;--ink:#F1EAE6;--muted:#A6A1B8;--card:#211E2E;--accent:#E08A8F;--line:#35314A}
 *,*::before,*::after{box-sizing:inherit}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 Figtree,system-ui,sans-serif}
-h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:400;line-height:1.1;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:5rem;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 clamp(1rem,.95rem + .25vw,1.125rem)/1.7 var(--f-body);letter-spacing:.005em;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;font-kerning:normal}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;line-height:1.12;margin:0;letter-spacing:-.02em;text-wrap:balance}
+p{text-wrap:pretty}
 a{color:inherit}
+::selection{background:color-mix(in srgb,var(--accent) 30%,transparent)}
 :focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.wrap{max-width:1100px;margin:0 auto;padding:0 1.25rem}
-header{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0}
-header b{font-family:Fraunces,serif;font-weight:600;font-size:1.25rem}
-nav a{margin-left:1.25rem;text-decoration:none;color:var(--muted)}
+.skip{position:absolute;left:1rem;top:-4rem;background:var(--ink);color:var(--bg);padding:.6rem 1rem;border-radius:8px;z-index:40;text-decoration:none}
+.skip:focus{top:1rem}
+.wrap{max-width:1120px;margin:0 auto;padding:0 1.25rem}
+.eyebrow{margin:0 0 1rem;font:600 .78rem/1.2 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h2{font-size:clamp(2rem,1.4rem + 2.4vw,3rem)}
+
+/* header */
+.site{position:sticky;top:0;z-index:25;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .4s var(--ease)}
+.site.scrolled{border-bottom-color:var(--line)}
+.bar{display:flex;justify-content:space-between;align-items:center;padding-block:.9rem}
+.bar b{font:600 1.25rem/1 var(--f-display);letter-spacing:-.01em}
+nav{display:flex;align-items:center;gap:1.5rem}
+nav a{text-decoration:none;color:var(--muted);font-size:.95rem;font-weight:500;letter-spacing:.01em;transition:color .3s var(--ease)}
 nav a:hover{color:var(--ink)}
-.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center;padding:3rem 0 5rem}
-.hero h1{font-size:clamp(2.6rem,6vw,4.75rem);letter-spacing:-.02em}
-.hero p{max-width:34ch;color:var(--muted);margin:1.25rem 0 2rem}
-.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:.8rem 1.4rem;border-radius:999px;text-decoration:none;font:600 1rem Figtree,sans-serif;border:0;cursor:pointer}
-.btn:hover{background:var(--accent)}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.fan{position:relative;height:420px}
-.fan a{position:absolute;width:56%;aspect-ratio:3/4;top:6%;border:6px solid var(--bg);border-radius:6px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.18);animation:fan 1.2s cubic-bezier(.2,.8,.2,1) .2s forwards}
-.fan a:nth-child(1){left:0;--r:-9deg}
-.fan a:nth-child(2){left:22%;--r:2deg;top:0}
-.fan a:nth-child(3){left:44%;--r:11deg;top:10%}
-@keyframes fan{to{transform:rotate(var(--r))}}
-.fan a::after{content:"";position:absolute;left:50%;top:50%;width:0;height:0;margin:-18px 0 0 -12px;border-left:30px solid #fff;border-top:18px solid transparent;border-bottom:18px solid transparent;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
-svg,video{display:block;width:100%;height:100%;object-fit:cover}
-.work{padding:2rem 0 4rem}
-.work h2,.words h2,.contact h2{font-size:clamp(1.9rem,4vw,2.75rem)}
-.bar{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem}
-.film{position:relative;border:0;padding:0;border-radius:6px;overflow:hidden;cursor:pointer;aspect-ratio:16/10;background:var(--card);text-align:left}
-.film:disabled{cursor:default}
-.film .play{position:absolute;left:50%;top:50%;width:0;height:0;margin:-20px 0 0 -14px;border-left:34px solid #fff;border-top:20px solid transparent;border-bottom:20px solid transparent;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4));transition:transform .2s}
-.film:hover .play{transform:scale(1.2)}
-.film span.cap{position:absolute;inset:auto 0 0 0;padding:2.5rem 1rem .9rem;color:#fff;background:linear-gradient(transparent,rgba(20,15,30,.75));font:400 1.2rem Fraunces,serif}
-.film small{display:block;font:500 .85rem Figtree,sans-serif;opacity:.85}
-.film .tag{position:absolute;top:.6rem;right:.6rem;background:rgba(20,15,30,.7);color:#fff;font:500 .75rem Figtree,sans-serif;padding:.2rem .6rem;border-radius:999px}
-.film img{display:block;width:100%;height:100%;object-fit:cover}
-.note{color:var(--muted);font-size:.95rem;margin:1rem 0 0}
-.approach{background:var(--card);padding:4rem 0}
-.approach .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem}
-.approach h3{font-size:1.4rem;margin-bottom:.5rem}
-.approach p{margin:0;color:var(--muted)}
-.words{padding:4rem 0}
-.q{max-width:42rem;margin-top:1.5rem;min-height:9rem}
-.q blockquote{margin:0;font:400 clamp(1.3rem,2.6vw,1.75rem)/1.35 Fraunces,serif}
-.q cite{display:block;margin-top:.8rem;color:var(--muted);font-style:normal}
-.dots{display:flex;gap:.5rem;margin-top:1rem}
-.dots button{width:14px;height:14px;border-radius:50%;border:2px solid var(--ink);background:transparent;padding:0;cursor:pointer}
-.dots button[aria-current="true"]{background:var(--ink)}
-.contact{padding:4rem 0 5rem;border-top:1px solid var(--line)}
-.contact p{max-width:40ch;color:var(--muted);margin:1rem 0 1.75rem}
-footer{padding:1.5rem 0 2rem;color:var(--muted);font-size:.9rem}
-dialog{border:0;padding:0;border-radius:10px;max-width:min(900px,94vw);width:100%;background:var(--bg);color:var(--ink);overflow:hidden}
-dialog::backdrop{background:rgba(15,12,25,.75)}
-dialog video{aspect-ratio:16/9;background:#000;object-fit:contain}
-dialog iframe{display:none;width:100%;aspect-ratio:16/9;border:0;background:#000}
-.dtxt .btn{padding:.5rem 1rem;font-size:.95rem}
-.dtxt{padding:1.25rem 1.5rem;display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
-.dtxt h3{font-size:1.5rem;flex:1}
-.dtxt small{color:var(--muted);display:block;font:400 .95rem Figtree,sans-serif}
-.dtxt button{border:1px solid var(--line);background:transparent;color:var(--ink);padding:.5rem 1rem;border-radius:999px;cursor:pointer;font:inherit}
-form{padding:1.5rem;display:grid;gap:.9rem}
-form label{display:grid;gap:.3rem;font-weight:500}
-form input,form select{font:inherit;padding:.6rem .8rem;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
-.row{display:flex;gap:.5rem;justify-content:flex-end;align-items:center}
-#msg{color:var(--accent);min-height:1.5em;margin:0}
-.about{background:var(--card);padding:5rem 0}
-.about .wrap{max-width:760px}
-.stat{display:flex;flex-direction:column;align-items:flex-start;min-width:180px}
-.stat b{font:400 9rem/.9 Fraunces,serif;color:var(--accent)}
-.stat span{max-width:12ch;color:var(--muted)}
-.flow{padding:4.5rem 0}
-.flow h2{font-size:clamp(1.9rem,4vw,2.75rem)}
-.steps{position:relative;list-style:none;margin:2rem 0 0;padding:.75rem calc((100% - min(340px,82vw))/2) 1.5rem;display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;counter-reset:s;scrollbar-width:none;cursor:grab}
+nav a:last-child{color:var(--ink);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:999px;transition:background .3s var(--ease),border-color .3s var(--ease)}
+nav a:last-child:hover{background:var(--card);border-color:var(--accent)}
+
+/* buttons */
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:.9rem 1.7rem;border-radius:999px;text-decoration:none;font:600 .98rem/1 var(--f-body);letter-spacing:.01em;border:1px solid var(--ink);cursor:pointer;transition:transform .35s var(--ease),background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--bg);transform:translateY(-2px);box-shadow:0 12px 24px -12px color-mix(in srgb,var(--accent) 70%,transparent)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{background:var(--card);color:var(--ink);border-color:var(--accent);box-shadow:none}
+.cta{display:flex;gap:.75rem;flex-wrap:wrap}
+
+/* hero */
+.hero{position:relative;isolation:isolate;text-align:center;padding:clamp(3.5rem,9vw,7rem) 0 clamp(3.5rem,8vw,6rem)}
+.hero::before{content:"";position:absolute;left:12%;right:12%;top:-6%;height:75%;z-index:-1;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 20%,transparent),transparent);filter:blur(48px);pointer-events:none}
+.hero h1{font-size:clamp(2.75rem,1.5rem + 5.8vw,5.5rem);font-weight:300;line-height:1.03;letter-spacing:-.035em}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--accent)}
+.hero .lead{max-width:46ch;margin:1.6rem auto 2.25rem;color:var(--muted);font-size:clamp(1.05rem,1rem + .3vw,1.25rem);line-height:1.65}
+.hero .cta{justify-content:center}
+.proof{margin:2rem 0 0;color:var(--muted);font-size:.875rem;letter-spacing:.04em}
+@keyframes up{from{opacity:0;translate:0 18px}}
+.anim .hero>*{animation:up 1s var(--ease) both}
+.anim .hero>:nth-child(2){animation-delay:.08s}
+.anim .hero>:nth-child(3){animation-delay:.16s}
+.anim .hero>:nth-child(4){animation-delay:.24s}
+.anim .hero>:nth-child(5){animation-delay:.32s}
+
+/* scroll reveal (translate, not transform, so hover lifts still work) */
+.rv{transition:opacity .9s var(--ease),translate .9s var(--ease)}
+.anim .rv{opacity:0;translate:0 22px}
+.anim .rv.in{opacity:1;translate:0 0;transition-delay:var(--d,0ms)}
+
+/* films */
+.work{padding:clamp(1rem,3vw,2rem) 0 clamp(4rem,8vw,7rem)}
+.work h2{margin-bottom:2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.film{position:relative;border:0;padding:0;border-radius:14px;overflow:hidden;cursor:pointer;aspect-ratio:16/10;background:var(--card);text-align:left;box-shadow:0 1px 2px rgba(0,0,0,.06),0 14px 30px -16px rgba(0,0,0,.35);transition:opacity .9s var(--ease),translate .9s var(--ease),transform .5s var(--ease),box-shadow .5s var(--ease)}
+.film:hover{transform:translateY(-5px);box-shadow:0 2px 4px rgba(0,0,0,.06),0 26px 40px -18px rgba(0,0,0,.45)}
+.film img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.film:hover img{transform:scale(1.06)}
+.film .play{position:absolute;left:50%;top:50%;width:0;height:0;margin:-20px 0 0 -14px;border-left:34px solid #fff;border-top:20px solid transparent;border-bottom:20px solid transparent;filter:drop-shadow(0 2px 10px rgba(0,0,0,.45));transition:transform .4s var(--ease)}
+.film:hover .play{transform:scale(1.15)}
+.film span.cap{position:absolute;inset:auto 0 0 0;padding:3rem 1.1rem 1rem;color:#fff;background:linear-gradient(transparent,rgba(20,15,30,.8));font:400 1.3rem/1.2 var(--f-display);letter-spacing:-.01em}
+.film small{display:block;margin-top:.3rem;font:500 .72rem/1.2 var(--f-body);letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+
+/* about */
+.about{position:relative;overflow:hidden;isolation:isolate;background:var(--card);padding:clamp(4rem,8vw,7rem) 0}
+.about::before{content:"";position:absolute;right:-8%;top:-22%;width:46rem;height:46rem;max-width:90vw;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 16%,transparent),transparent);z-index:-1;pointer-events:none}
+.abt-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2.5rem,6vw,5rem);align-items:center}
+.abt h2{font-size:clamp(2rem,1.3rem + 2.6vw,3.1rem);line-height:1.12;margin-bottom:1.75rem}
+.abt>p{max-width:56ch;margin:0 0 1.25rem;line-height:1.8;color:var(--muted)}
+.abt>.abt-lead{font-size:clamp(1.1rem,1.02rem + .4vw,1.3rem);line-height:1.65;color:var(--ink)}
+.abt>.abt-close{margin:1.75rem 0 0;padding-left:1.25rem;border-left:2px solid var(--accent);font:italic 300 clamp(1.15rem,1.05rem + .5vw,1.4rem)/1.5 var(--f-display);color:var(--ink);letter-spacing:-.005em}
+.abt-side{display:grid;gap:1.1rem}
+.stat{display:flex;align-items:center;gap:1.25rem;padding:1.5rem 1.75rem;background:var(--bg);border:1px solid var(--line);border-radius:22px;box-shadow:0 24px 50px -30px rgba(0,0,0,.45)}
+.stat b{font:italic 300 clamp(4.5rem,3rem + 6vw,7rem)/.85 var(--f-display);color:var(--accent);letter-spacing:-.04em}
+.stat span{font:500 .8rem/1.5 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);max-width:16ch}
+.feat{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+.feat li{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:1.25rem;transition:opacity .9s var(--ease),translate .9s var(--ease),transform .5s var(--ease),border-color .4s var(--ease),box-shadow .5s var(--ease)}
+.feat li:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 20px 34px -22px rgba(0,0,0,.5)}
+.feat .ic{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--bg));margin-bottom:.9rem}
+.feat svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-size:1.1rem;margin-bottom:.35rem;letter-spacing:-.01em}
+.feat p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.6}
+
+/* workflow */
+.flow{padding:clamp(4rem,8vw,7rem) 0}
+.flow .wrap>.eyebrow,.flow h2{text-align:center}
+.steps{position:relative;list-style:none;margin:2.5rem 0 0;padding:.75rem calc((100% - min(360px,82vw))/2) 1.75rem;display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;counter-reset:s;scrollbar-width:none;cursor:grab}
 .steps::-webkit-scrollbar{display:none}
 .steps.drag{scroll-snap-type:none;scroll-behavior:auto;cursor:grabbing;user-select:none}
-.steps li{counter-increment:s;flex:0 0 min(340px,82vw);scroll-snap-align:center;background:var(--card);border-radius:14px;border-top:3px solid var(--accent);padding:1.5rem;opacity:.5;transform:scale(.95);transition:opacity .45s ease,transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease}
-.steps li.on{opacity:1;transform:none;box-shadow:0 14px 30px rgba(0,0,0,.12)}
-.steps li::before{content:counter(s);font:400 2rem Fraunces,serif;color:var(--accent)}
-.steps h3{font-size:1.25rem;margin:.4rem 0}
-.steps p{margin:0;color:var(--muted)}
+.steps li{counter-increment:s;flex:0 0 min(360px,82vw);scroll-snap-align:center;background:var(--card);border-radius:18px;border-top:3px solid var(--line);padding:1.75rem;transform:scale(.95);transition:transform .6s var(--ease),box-shadow .6s var(--ease),border-color .6s var(--ease)}
+.steps li.on{border-top-color:var(--accent);transform:none;box-shadow:0 18px 36px -18px rgba(0,0,0,.35)}
+.steps li::before{content:counter(s,decimal-leading-zero);font:300 2.25rem/1 var(--f-display);color:var(--accent);letter-spacing:-.02em}
+.steps h3{font-size:1.35rem;margin:.9rem 0 .6rem}
+.steps p{margin:0;color:var(--muted);font-size:.98rem;line-height:1.7}
 .ctl{display:flex;align-items:center;justify-content:center;gap:1rem}
-.ctl>button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer;transition:background .2s}
-.ctl>button:hover{background:var(--card)}
+.ctl>button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease)}
+.ctl>button:hover{background:var(--card);border-color:var(--accent)}
 .dots2{display:flex;gap:.5rem}
-.dots2 button{width:8px;height:8px;border-radius:99px;border:0;background:var(--line);padding:0;cursor:pointer;transition:width .3s,background .3s}
+.dots2 button,.dots button{position:relative;border:0;padding:0;cursor:pointer}
+.dots2 button::before,.dots button::before{content:"";position:absolute;inset:-9px}
+.dots2 button{width:8px;height:8px;border-radius:99px;background:var(--line);transition:width .4s var(--ease),background .4s var(--ease)}
 .dots2 button[aria-current="true"]{width:26px;background:var(--accent)}
-@media(prefers-reduced-motion:reduce){.steps{scroll-behavior:auto}.steps li,.dots2 button{transition:none}}
-.abt h2{font-size:clamp(1.6rem,3.2vw,2.25rem);font-weight:400;line-height:1.25;letter-spacing:-.01em;margin-bottom:1.5rem}
-.abt>p{max-width:60ch;margin:0 0 1.25rem;font-size:1.0625rem;line-height:1.8;color:var(--muted)}
-.acc{margin-top:1.5rem;border-top:1px solid var(--line)}
-.acc details{border-bottom:1px solid var(--line);padding:1rem 0}
-.acc summary{cursor:pointer;font:400 1.25rem Fraunces,serif;list-style:none;display:flex;justify-content:space-between}
-.acc summary::-webkit-details-marker{display:none}
-.acc summary::after{content:"+"}
-.acc details[open] summary::after{content:"–"}
-.acc details p{margin:.6rem 0 0;color:var(--muted);max-width:52ch}
-@media(max-width:760px){.about .wrap{grid-template-columns:1fr;gap:1.5rem}.stat b{font-size:5rem}}
-@media(max-width:760px){.hero{grid-template-columns:1fr}.fan{height:340px}nav a:not(:last-child){display:none}}
-@media(prefers-reduced-motion:reduce){.fan a{animation:none;transform:rotate(var(--r))}.film .play{transition:none}html{scroll-behavior:auto}}
+.flow .cta{justify-content:center;margin-top:2.25rem}
+
+/* testimonials */
+.words{padding:clamp(4rem,8vw,6rem) 0}
+.q{max-width:44rem;margin-top:2rem;min-height:10rem}
+.q blockquote{margin:0;font:italic 300 clamp(1.4rem,1rem + 1.8vw,2rem)/1.35 var(--f-display);letter-spacing:-.015em;text-wrap:balance}
+.q cite{display:block;margin-top:1.1rem;color:var(--muted);font:600 .8rem/1.2 var(--f-body);font-style:normal;letter-spacing:.14em;text-transform:uppercase}
+@keyframes fade{from{opacity:0;translate:0 8px}}
+.q blockquote,.q cite{animation:fade .7s var(--ease) both}
+.dots{display:flex;gap:.6rem;margin-top:1.25rem}
+.dots button{width:12px;height:12px;border-radius:50%;border:2px solid var(--ink);background:transparent;transition:background .3s var(--ease)}
+.dots button[aria-current="true"]{background:var(--ink)}
+
+/* contact */
+.contact{padding:clamp(4rem,8vw,6.5rem) 0 clamp(4.5rem,9vw,7rem);border-top:1px solid var(--line)}
+.cgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.contact .lead{max-width:40ch;color:var(--muted);margin:1.25rem 0 1.5rem}
+.mail{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
+.mail-card{flex:1 1 280px;display:flex;align-items:center;gap:.9rem;padding:.9rem 1.1rem;border:1px solid var(--line);border-radius:16px;background:var(--card);text-decoration:none;transition:transform .4s var(--ease),border-color .3s var(--ease),box-shadow .4s var(--ease)}
+.mail-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 16px 30px -18px color-mix(in srgb,var(--accent) 60%,transparent)}
+.mail-ic{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--bg)}
+.mail-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.mail-tx{display:grid;min-width:0;line-height:1.3}
+.mail-tx small{margin-bottom:.2rem;font:600 .72rem/1.2 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.mail-tx b{font:600 clamp(.9rem,.82rem + .35vw,1.05rem)/1.3 var(--f-body);overflow-wrap:anywhere;color:var(--ink)}
+.mail-arrow{margin-left:auto;color:var(--accent);transition:translate .4s var(--ease)}
+.mail-card:hover .mail-arrow{translate:4px 0}
+.mail .btn{padding:.75rem 1.2rem;font-size:.9rem}
+.brief{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(1.4rem,3vw,2.1rem);box-shadow:0 24px 50px -28px rgba(0,0,0,.4);display:grid;gap:1.15rem;width:100%}
+.brief h3{font-size:1.6rem}
+.brief .sub{color:var(--muted);font-size:.95rem;margin:.4rem 0 0;line-height:1.55}
+.brief label,.brief legend{font-weight:500;font-size:.9rem;letter-spacing:.01em}
+.brief label{display:grid;gap:.4rem}
+.brief input[type=date],.brief input[type=url],.brief select{font:400 1rem var(--f-body);padding:.75rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);width:100%;min-width:0;transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
+.brief input[type=date]:focus-visible,.brief input[type=url]:focus-visible,.brief select:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 28%,transparent)}
+.brief fieldset{border:0;padding:0;margin:0;display:grid;gap:.55rem}
+.brief legend{padding:0;margin-bottom:.15rem}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.chk{display:flex;flex-wrap:wrap;gap:.5rem}
+.chk label{display:flex;align-items:center;gap:.45rem;padding:.5rem .95rem;border:1px solid var(--line);border-radius:999px;background:var(--bg);cursor:pointer;font-weight:400;font-size:.92rem;transition:border-color .3s var(--ease),background .3s var(--ease)}
+.chk label:hover{border-color:var(--accent)}
+.chk input{accent-color:var(--accent);margin:0}
+.chk label:has(input:checked){border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--bg))}
+.chk label:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px}
+#bmsg{min-height:1.4em;margin:0;color:var(--accent);font-size:.9rem}
+.brief .row{display:flex;gap:.6rem;flex-wrap:wrap}
+.brief .row .btn{flex:1 1 auto;text-align:center;font-size:.95rem;padding:.85rem 1rem}
+
+footer{padding:1.75rem 0 2.25rem;color:var(--muted);font-size:.875rem;letter-spacing:.02em}
+
+/* dialog */
+dialog{border:0;padding:0;border-radius:16px;max-width:min(900px,94vw);max-height:92vh;width:100%;background:var(--bg);color:var(--ink);overflow:hidden;box-shadow:0 40px 80px -20px rgba(0,0,0,.6)}
+dialog[open]{animation:pop .45s var(--ease)}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}}
+dialog::backdrop{background:rgba(15,12,25,.72);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+dialog iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}
+.dtxt{padding:1.25rem 1.5rem;display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+.dtxt h3{font-size:1.5rem;flex:1}
+.dtxt small{color:var(--muted);display:block;margin-top:.2rem;font:400 .95rem var(--f-body);letter-spacing:.01em}
+.dtxt .btn{padding:.55rem 1.1rem;font-size:.92rem}
+.dtxt button{border:1px solid var(--line);background:transparent;color:var(--ink);padding:.55rem 1.1rem;border-radius:999px;cursor:pointer;font:inherit;font-size:.95rem;transition:background .3s var(--ease)}
+.dtxt button:hover{background:var(--card)}
+
+.top{position:fixed;right:1.25rem;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));width:48px;height:48px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);font-size:1.4rem;line-height:1;cursor:pointer;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);opacity:0;visibility:hidden;translate:0 12px;pointer-events:none;transition:opacity .4s var(--ease),translate .4s var(--ease),background .3s,visibility .4s;z-index:20}
+.top.show{opacity:1;visibility:visible;translate:0 0;pointer-events:auto}
+.top:hover{background:var(--accent);color:var(--bg)}
+
+@media(max-width:860px){.cgrid,.abt-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.feat{grid-template-columns:1fr}.stat{padding:1.25rem}}
+@media(max-width:760px){nav{gap:0}nav a:not(:last-child){display:none}}
+@media(max-width:420px){.two{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site" id="site"><div class="wrap bar"><b>Marcus Wedding Studio</b><nav aria-label="Primary"><a href="#work">Films</a><a href="#about">About</a><a href="#workflow">Workflow</a><a href="#words">Kind words</a><a href="#contact">Say hello</a></nav></div></header>
+<main id="main">
 <div class="wrap">
-<header><b>Marcus Wedding Studio</b><nav><a href="#work">Films</a><a href="#about">About</a><a href="#workflow">Workflow</a><a href="#words">Kind words</a><a href="#contact">Say hello</a></nav></header>
 <section class="hero">
-<div>
-<h1>Your day, as it felt.</h1>
-<p>Wedding films for couples who’d rather be hugging their grandmother than posing. Edited in Manila, for couples everywhere.</p>
-<a class="btn" href="#work">Watch the films</a>
-</div>
-<div class="fan" id="fan" aria-hidden="true"></div>
+<p class="eyebrow">Wedding post-production · Manila</p>
+<h1>You shoot it.<br><em>We finish it.</em></h1>
+<p class="lead">We shape your footage into a film your couples will replay for years. Wedding post-production, edited in Manila to match your style and your deadlines.</p>
+<div class="cta"><a class="btn" href="#contact">Start a project</a><a class="btn ghost" href="#work">Watch the films</a></div>
+<p class="proof">4 years in wedding post-production · Frame.io reviews · Delivered via Dropbox</p>
 </section>
 <section class="work" id="work">
-<div class="bar"><h2>Recent films</h2></div>
+<div class="rv"><p class="eyebrow">Portfolio</p><h2>Recent films</h2></div>
 <div class="grid" id="grid"></div>
-<p class="note" id="note"></p>
 </section>
 </div>
 <section class="about" id="about"><div class="wrap">
-
-<div class="abt">
+<div class="abt-grid">
+<div class="abt rv">
+<p class="eyebrow">About us</p>
 <h2>Every love story has its own unique rhythm.</h2>
-<p>At Your Wedding Editor, we make sure it shines through every frame. With 4 years under our belt in the wedding industry, we provide expert post-production services designed to take the editing weight off your shoulders.</p>
+<p class="abt-lead">At Your Wedding Editor, we make sure it shines through every frame. With 4 years under our belt in the wedding industry, we provide expert post-production services designed to take the editing weight off your shoulders.</p>
 <p>Working together under one roof in a collaborative studio space, our team brings structured workflows, rigorous quality control, and dependable turnaround times to every edit. We know how critical deadlines and subtle details are to your brand reputation.</p>
-<p>We don’t just edit videos; we partner with you to create lasting memories that your clients will cherish for a lifetime. Whether you need us to match your unique style or bring a fresh perspective, we’re here to elevate your wedding films to the next level.</p>
+<p class="abt-close">We don’t just edit videos; we partner with you to create lasting memories that your clients will cherish for a lifetime. Whether you need us to match your unique style or bring a fresh perspective, we’re here to elevate your wedding films to the next level.</p>
+</div>
+<div class="abt-side">
+<div class="stat rv"><b>4</b><span>Years in the wedding industry</span></div>
+<ul class="feat">
+<li class="rv" style="--d:80ms"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/></svg></span><h3>Structured workflows</h3><p>From creative brief to final handover, every project follows clear steps.</p></li>
+<li class="rv" style="--d:160ms"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><h3>Quality control</h3><p>Rigorous checks, so the subtle details of your brand stay intact.</p></li>
+<li class="rv" style="--d:240ms"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Dependable turnaround</h3><p>We know how critical your deadlines are, and we plan around them.</p></li>
+<li class="rv" style="--d:320ms"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><h3>One collaborative studio</h3><p>Our team works together under one roof on every edit.</p></li>
+</ul>
+</div>
 </div>
 </div></section>
 <section class="flow" id="workflow"><div class="wrap">
-<h2>How we work with you</h2>
-<ol class="steps">
+<div class="rv"><p class="eyebrow">Process</p><h2>How we work with you</h2></div>
+<ol class="steps" aria-label="Our process">
 <li><h3>Initial consultation</h3><p>Let’s chat! Drop us a message using the contact section below so we can discuss your project requirements, editing style, and preferred turnaround time.</p></li>
 <li><h3>Fill up your creative brief</h3><p>To help us bring your exact vision to life, we’ll ask you to fill out our quick creative brief. This ensures we capture all your preferences, brand style, and specific instructions right from the start.</p></li>
 <li><h3>Editing and collaboration</h3><p>Our Senior Editor and Project Manager will carefully build your first draft around your specific preferences. When ready, we’ll upload it to Frame.io so you can add direct comments and annotations right on the timeline. From there, we’ll implement your feedback to polish every detail.</p></li>
 <li><h3>Finalization</h3><p>After incorporating your feedback, we’ll upload the polished cut to Frame.io for your final review. Once approved, we will lock the edit and bundle all project assets for export.</p></li>
 <li><h3>Project handover</h3><p>After your final sign-off, we’ll send a PayPal payment link. As soon as payment is complete, we’ll deliver your high-resolution exports along with all project files and assets directly via Dropbox.</p></li>
 </ol>
-<div class="ctl"><button id="sp" aria-label="Previous step">‹</button><div class="dots2" id="sd"></div><button id="sn" aria-label="Next step">›</button></div></div></section>
+<div class="ctl"><button id="sp" aria-label="Previous step">‹</button><div class="dots2" id="sd"></div><button id="sn" aria-label="Next step">›</button></div>
+<div class="cta"><a class="btn" href="#contact">Start a project</a></div>
+</div></section>
 <div class="wrap">
 <section class="words" id="words">
-<h2>Kind words</h2>
+<div class="rv"><p class="eyebrow">Testimonials</p><h2>Kind words</h2></div>
 <div class="q" id="q" aria-live="polite"></div>
 <div class="dots" id="dots"></div>
 </section>
 <section class="contact" id="contact">
+<div class="cgrid">
+<div class="rv">
+<p class="eyebrow">Say hello</p>
 <h2>Tell us your date</h2>
-<p>Share the date, the place, and a little about the two of you. We reply within a day.</p>
-<a class="btn" href="mailto:marcusweddingstudio@gmail.com?subject=Our%20wedding%20film">Email us</a>
-</section>
-<footer>© 2026 Marcus Wedding Studio.</footer>
+<p class="lead">Share the date, the place, and a little about the two of you. We reply within a day.</p>
+<div class="mail">
+<a class="mail-card" href="mailto:marcusweddingstudio@gmail.com" aria-label="Email marcusweddingstudio@gmail.com"><span class="mail-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6.5L20.5 7"/></svg></span><span class="mail-tx"><small>Email us directly</small><b>marcusweddingstudio@gmail.com</b></span><span class="mail-arrow" aria-hidden="true">→</span></a>
+<button class="btn ghost" type="button" id="mcp" aria-live="polite">Copy</button>
 </div>
+</div>
+<form class="brief rv" id="qb" aria-labelledby="qbt" novalidate style="--d:120ms">
+<div><h3 id="qbt">Start your brief</h3><p class="sub">Tell us what you need in 30 seconds. We’ll turn it into a ready-to-send email.</p></div>
+<div class="two"><label>Wedding date<input type="date" id="bd"></label><label>Need it by<input type="date" id="bb"></label></div>
+<fieldset><legend>What do you need edited?</legend><div class="chk">
+<label><input type="checkbox" name="d" value="Teaser" checked>Teaser</label>
+<label><input type="checkbox" name="d" value="Highlight film">Highlights</label>
+<label><input type="checkbox" name="d" value="Full-length film">Full film</label>
+<label><input type="checkbox" name="d" value="Ceremony and speeches edit">Ceremony &amp; speeches</label>
+</div></fieldset>
+<label>Editing style<select id="bs"><option>Cinematic</option><option>Documentary</option><option>Match my existing style</option><option>Not sure yet</option></select></label>
+<label>Footage link (optional)<input type="url" id="bl" placeholder="https://…"></label>
+<p id="bmsg" role="status"></p>
+<div class="row"><button class="btn" type="submit">Email my brief</button><button class="btn ghost" type="button" id="bcp">Copy text</button></div>
+</form>
+</div>
+</section>
+</div>
+</main>
+<div class="wrap"><footer>© 2026 Marcus Wedding Studio · <a href="mailto:marcusweddingstudio@gmail.com">marcusweddingstudio@gmail.com</a></footer></div>
 
-<dialog id="pl" aria-label="Film player"><video id="vid" controls playsinline></video><iframe id="yt" title="Film player" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe><div class="dtxt"><h3 id="pt"></h3><a class="btn" id="ytl" target="_blank" rel="noopener" style="display:none">Watch on YouTube</a><button id="rm" hidden>Remove</button><button id="pc">Close</button></div></dialog>
-
-<dialog id="ad" aria-label="Add a film"><form id="f">
-<h3>Add a film</h3>
-<label>Couple<input id="fT" required maxlength="60" placeholder="Mara & Joel"></label>
-<label>Place<input id="fP" maxlength="60" placeholder="Tagaytay"></label>
-<label>How is it hosted?<select id="fK"><option value="upload">Upload a video file (up to 20 MB)</option><option value="link">Link to YouTube or Vimeo</option></select></label>
-<label id="lF">Video file<input id="fF" type="file" accept="video/*"></label>
-<label id="lU" hidden>Link<input id="fU" type="url" placeholder="https://vimeo.com/…"></label>
-<p id="msg" role="status"></p>
-<div class="row"><button type="button" class="btn ghost" id="fC">Cancel</button><button class="btn" id="fS">Save film</button></div>
-</form></dialog>
+<button class="top" id="top" aria-label="Back to top">↑</button>
+<dialog id="pl" aria-label="Film player"><iframe id="yt" title="Film player" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe><div class="dtxt"><h3 id="pt"></h3><a class="btn" id="ytl" target="_blank" rel="noopener" hidden>Watch on YouTube</a><button id="pc">Close</button></div></dialog>
 
 <script>
 const $=id=>document.getElementById(id);
-const PAL=[["Garden","#8FA48B","#E9D8B4"],["Beach","#E2A07F","#5E8FA6"],["City","#4A4466","#E6B8A2"],["Intimate","#B9726F","#F2DFC9"]];
-const SAMPLES=[["Mara & Joel","Tagaytay",0],["Isla & Reyes","Siargao",1],["Noor & Theo","Makati",2],["Bea & Sam","Baguio",3]].map(([title,place,p],i)=>({id:"s"+i,title,place,sample:true,t:PAL[p][0],a:PAL[p][1],b:PAL[p][2]}));
-const art=(x)=>{const{t,a,b}=x,id="g"+Math.random().toString(36).slice(2,7);let m="";
-if(t=="Garden")m=`<path d="M60 380V170a90 90 0 0 1 180 0v210z" fill="${b}" opacity=".85"/><circle cx="150" cy="170" r="34" fill="${a}"/>`;
-else if(t=="Beach")m=`<circle cx="210" cy="110" r="44" fill="${b}"/><path d="M0 250q38-26 75 0t75 0 75 0 75 0v130H0z" fill="${a}" opacity=".8"/>`;
-else if(t=="City")m=`<g fill="${a}"><rect x="20" y="210" width="50" height="170"/><rect x="80" y="150" width="60" height="230"/><rect x="150" y="240" width="45" height="140"/><rect x="205" y="180" width="75" height="200"/></g><circle cx="220" cy="90" r="30" fill="${b}"/>`;
-else m=`<circle cx="150" cy="200" r="90" fill="none" stroke="${b}" stroke-width="6"/><circle cx="190" cy="200" r="90" fill="none" stroke="${b}" stroke-width="6" opacity=".7"/>`;
-return`<svg viewBox="0 0 300 380" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${b}"/><stop offset="1" stop-color="${a}"/></linearGradient></defs><rect width="300" height="380" fill="url(#${id})"/>${m}</svg>`};
-const esc=s=>String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const FIXED=[["1kHFaY5qJz0","G & A","Wedding teaser"],["NN3BbEYAyjQ","M & D","Wedding teaser"],["1u0ULhVUvvM","M & D","Wedding highlights"],["TFfA5JCuM-0","M & S","Wedding highlights"],["wE38AcaPE00","G & A","Wedding highlights"],["qQe6p5eHqvs","S & G","Wedding highlights"]].map(([v,n,p],i)=>({id:"y"+i,title:n,place:p,kind:"link",url:"https://www.youtube.com/watch?v="+v,t:PAL[i%4][0],a:PAL[i%4][1],b:PAL[i%4][2]}));
-let films=[],canEdit=false,db=null,assets=null,cur=null;
-$("fan").innerHTML=SAMPLES.slice(0,3).map(x=>`<a href="#work">${art(x)}</a>`).join("");
-function render(){
- const all=FIXED.concat(films),list=all.length?all:SAMPLES;
- $("grid").innerHTML=list.map((f,i)=>{
-  const yid=(f.url||"").match(/(?:v=|youtu\.be\/)([\w-]{11})/),media=f.kind=="upload"?`<video muted playsinline preload="metadata" src="${esc(f.url)}#t=0.5"></video>`:(yid?`<img src="https://img.youtube.com/vi/${yid[1]}/hqdefault.jpg" alt="" loading="lazy">`:art(f));
-  const label=f.kind=="link"?"Watch on "+(/vimeo/.test(f.url)?"Vimeo":"YouTube"):"Play "+esc(f.title);
-  return`<button class="film" data-i="${i}" ${f.sample?"disabled":""} aria-label="${label}">${media}${f.sample?'<span class="tag">Sample</span>':'<span class="play"></span>'}<span class="cap">${esc(f.title)}<small>${esc(f.place)}</small></span></button>`}).join("");
- $("note").textContent=(FIXED.length||films.length)?"":(canEdit?"These are samples. Add your first film to replace them.":"New films are on the way.");
-}
-$("grid").onclick=e=>{const b=e.target.closest(".film");if(!b)return;const all=FIXED.concat(films),f=(all.length?all:SAMPLES)[+b.dataset.i];
- if(f.kind=="link"){const m=f.url.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/);if(!m){window.open(f.url,"_blank","noopener");return}
-  cur=f;$("vid").style.display="none";$("yt").style.display="block";$("ytl").href=f.url;$("ytl").style.display="none";$("yt").src="https://www.youtube-nocookie.com/embed/"+m[1]+"?autoplay=1&rel=0";$("pt").innerHTML=esc(f.title)+`<small>${esc(f.place)}</small>`;$("rm").hidden=true;$("pl").showModal();return}
- $("yt").style.display="none";$("vid").style.display="block";
- cur=f;$("vid").src=f.url;$("pt").innerHTML=esc(f.title)+`<small>${esc(f.place)}</small>`;$("rm").hidden=!canEdit;$("pl").showModal();$("vid").play().catch(()=>{})};
-const stop=()=>{$("vid").pause();$("vid").removeAttribute("src");$("pl").close()};
-$("pc").onclick=stop;$("pl").addEventListener("close",()=>{$("vid").pause();$("yt").removeAttribute("src")});
-document.addEventListener("securitypolicyviolation",e=>{if(/^(frame|child)-src/.test(e.violatedDirective)&&$("pl").open){$("yt").style.display="none";$("ytl").style.display="inline-block"}});
-$("pl").onclick=e=>{if(e.target===$("pl"))stop()};
-$("rm").onclick=async()=>{if(!cur||!confirm("Remove “"+cur.title+"” from the site?"))return;try{await db.collection("films").doc(cur.id).delete();if(cur.assetId&&assets)await assets.delete(cur.assetId)}catch(e){}stop()};
-if($("add"))$("add").onclick=()=>{$("msg").textContent="";$("f").reset();sync();$("ad").showModal()};
-$("fC").onclick=()=>$("ad").close();
-const sync=()=>{const up=$("fK").value=="upload";$("lF").hidden=!up;$("lU").hidden=up};
-$("fK").onchange=sync;
-$("f").onsubmit=async e=>{e.preventDefault();const msg=$("msg"),up=$("fK").value=="upload",file=$("fF").files[0],url=$("fU").value.trim();
- if(up&&!file){msg.textContent="Choose a video file.";return}
- if(up&&file.size>20*1024*1024){msg.textContent="That file is over 20 MB. Upload a shorter highlight, or add a YouTube or Vimeo link instead.";return}
- if(!up&&!/^https:\/\//.test(url)){msg.textContent="Enter a link starting with https://";return}
- $("fS").disabled=true;msg.textContent=up?"Uploading…":"Saving…";
- try{const p=PAL[Math.floor(Math.random()*4)];const doc={title:$("fT").value.trim(),place:$("fP").value.trim(),kind:up?"upload":"link",t:p[0],a:p[1],b:p[2],order:Date.now()};
-  if(up){const r=await assets.upload(file);doc.url=r.url;doc.assetId=r.id}else doc.url=url;
-  await db.collection("films").doc("f"+doc.order).set(doc);$("ad").close()}
- catch(err){msg.textContent="Couldn’t save the film: "+(err&&err.message||"try again")}
- $("fS").disabled=false};
+const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* Films: [YouTube ID, title, subtitle] */
+const FILMS=[["1kHFaY5qJz0","G & A","Wedding teaser"],["NN3BbEYAyjQ","M & D","Wedding teaser"],["1u0ULhVUvvM","M & D","Wedding highlights"],["TFfA5JCuM-0","M & S","Wedding highlights"],["wE38AcaPE00","G & A","Wedding highlights"],["qQe6p5eHqvs","S & G","Wedding highlights"]].map(([v,title,place])=>({v,title,place}));
+
+/* Quick brief -> email */
+(()=>{const f=$("qb"),msg=$("bmsg"),TO="marcusweddingstudio@gmail.com";
+const ok=()=>{if(!f.querySelector("input[name=d]:checked")){msg.textContent="Pick at least one deliverable.";return false}
+ if(!$("bl").checkValidity()){msg.textContent="Footage link should start with https://";return false}
+ msg.textContent="";return true};
+const build=()=>{const d=[...f.querySelectorAll("input[name=d]:checked")].map(x=>x.value).join(", ");
+ const rows=[["Wedding date",$("bd").value],["Need it by",$("bb").value],["Deliverables",d],["Editing style",$("bs").value],["Footage link",$("bl").value.trim()]].filter(r=>r[1]).map(r=>r[0]+": "+r[1]);
+ return "Hi Marcus Wedding Studio,\n\nI'd like to book an edit.\n\n"+rows.join("\n")+"\n\nThanks!"};
+f.addEventListener("submit",e=>{e.preventDefault();if(!ok())return;
+ location.href="mailto:"+TO+"?subject="+encodeURIComponent("Editing inquiry")+"&body="+encodeURIComponent(build())});
+$("bcp").addEventListener("click",async()=>{if(!ok())return;
+ try{await navigator.clipboard.writeText(build());msg.textContent="Copied. Paste it into an email to "+TO}
+ catch(e){msg.textContent="Couldn’t copy. Use “Email my brief” instead."}})})();
+
+/* Copy email address */
+$("mcp").addEventListener("click",async()=>{const b=$("mcp"),t=b.textContent;
+ try{await navigator.clipboard.writeText("marcusweddingstudio@gmail.com");b.textContent="Copied ✓"}catch(e){b.textContent="Copy failed"}
+ setTimeout(()=>{b.textContent=t},1800)});
+
+/* Film grid + player */
+$("grid").innerHTML=FILMS.map((f,i)=>`<button class="film rv" style="--d:${(i%3)*80}ms" data-i="${i}" aria-label="Watch ${esc(f.title)}, ${esc(f.place)}, on YouTube"><img src="https://img.youtube.com/vi/${f.v}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="play"></span><span class="cap">${esc(f.title)}<small>${esc(f.place)}</small></span></button>`).join("");
+$("grid").addEventListener("click",e=>{const b=e.target.closest(".film");if(!b)return;const f=FILMS[+b.dataset.i];
+ $("ytl").hidden=true;$("ytl").href="https://www.youtube.com/watch?v="+f.v;
+ $("pt").innerHTML=esc(f.title)+`<small>${esc(f.place)}</small>`;
+ $("yt").src="https://www.youtube-nocookie.com/embed/"+f.v+"?autoplay=1&rel=0";
+ $("pl").showModal()});
+$("pc").onclick=()=>$("pl").close();
+$("pl").addEventListener("close",()=>$("yt").removeAttribute("src"));
+$("pl").addEventListener("click",e=>{if(e.target===$("pl"))$("pl").close()});
+document.addEventListener("securitypolicyviolation",e=>{if(/^(frame|child)-src/.test(e.violatedDirective)&&$("pl").open)$("ytl").hidden=false});
+
+/* Testimonials (placeholders: replace with real client quotes) */
 const Q=[["They noticed everything, including my dad crying behind a pillar. That’s the shot we replay most.","Mara & Joel"],["We forgot the camera was there, and the film feels exactly like how we remember the day.","Isla & Reyes"],["The teaser arrived on a Sunday. We watched it four times before breakfast.","Bea & Sam"]];
-function q(i){$("q").innerHTML=`<blockquote>“${Q[i][0]}”</blockquote><cite>${Q[i][1]}</cite>`;[...$("dots").children].forEach((d,j)=>d.setAttribute("aria-current",j==i))}
+function q(i){$("q").innerHTML=`<blockquote>“${esc(Q[i][0])}”</blockquote><cite>${esc(Q[i][1])}</cite>`;[...$("dots").children].forEach((d,j)=>d.setAttribute("aria-current",j==i))}
 $("dots").innerHTML=Q.map((_,i)=>`<button aria-label="Quote ${i+1}"></button>`).join("");
 [...$("dots").children].forEach((d,i)=>d.onclick=()=>q(i));
-q(0);render();
+q(0);
 
-(()=>{const ol=document.querySelector(".steps"),li=[...ol.children],ds=[],dots=$("sd");let cur=0,down=false,sx=0,sl=0;
-dots.innerHTML=li.map((_,i)=>`<button aria-label="Step ${i+1}"></button>`).join("");ds.push(...dots.children);
+/* Workflow carousel */
+(()=>{const ol=document.querySelector(".steps"),li=[...ol.children],dots=$("sd");let cur=0,down=false,sx=0,sl=0;
+dots.innerHTML=li.map((_,i)=>`<button aria-label="Step ${i+1}"></button>`).join("");const ds=[...dots.children];
 const set=i=>{cur=i;li.forEach((x,j)=>x.classList.toggle("on",j==i));ds.forEach((d,j)=>d.setAttribute("aria-current",j==i))};
-const go=i=>{i=Math.max(0,Math.min(li.length-1,i));ol.scrollTo({left:li[i].offsetLeft+li[i].offsetWidth/2-ol.clientWidth/2,behavior:"smooth"})};
+const go=i=>{i=Math.max(0,Math.min(li.length-1,i));ol.scrollTo({left:li[i].offsetLeft+li[i].offsetWidth/2-ol.clientWidth/2,behavior:reduce?"auto":"smooth"})};
 ds.forEach((d,i)=>d.onclick=()=>go(i));$("sp").onclick=()=>go(cur-1);$("sn").onclick=()=>go(cur+1);
-ol.addEventListener("scroll",()=>{let b=0,m=1e9;const c=ol.scrollLeft+ol.clientWidth/2;li.forEach((x,j)=>{const d=Math.abs(x.offsetLeft+x.offsetWidth/2-c);if(d<m){m=d;b=j}});if(b!=cur)set(b)});
+ol.addEventListener("scroll",()=>{let b=0,m=1e9;const c=ol.scrollLeft+ol.clientWidth/2;li.forEach((x,j)=>{const d=Math.abs(x.offsetLeft+x.offsetWidth/2-c);if(d<m){m=d;b=j}});if(b!=cur)set(b)},{passive:true});
 ol.addEventListener("pointerdown",e=>{if(e.pointerType!="mouse")return;down=true;sx=e.clientX;sl=ol.scrollLeft;ol.classList.add("drag")});
 addEventListener("pointermove",e=>{if(down)ol.scrollLeft=sl-(e.clientX-sx)});
-addEventListener("pointerup",()=>{if(!down)return;down=false;ol.classList.remove("drag");go(cur)});
+const end=()=>{if(!down)return;down=false;ol.classList.remove("drag");go(cur)};
+addEventListener("pointerup",end);addEventListener("pointercancel",end);
 set(0)})();
+
+/* Header shadow line + back to top */
+const tb=$("top"),hd=$("site"),tp=()=>{tb.classList.toggle("show",scrollY>600);hd.classList.toggle("scrolled",scrollY>8)};
+addEventListener("scroll",tp,{passive:true});
+tb.onclick=()=>scrollTo({top:0,behavior:reduce?"auto":"smooth"});tp();
+
+/* Scroll reveal */
+(()=>{const els=[...document.querySelectorAll(".rv")];
+if(!("IntersectionObserver" in window)||!document.documentElement.classList.contains("anim")){els.forEach(el=>el.classList.add("in"));return}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add("in");io.unobserve(el);setTimeout(()=>el.style.removeProperty("--d"),1600)}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+els.forEach(el=>io.observe(el))})();
 </script>
 </body>
 </html>
