@@ -7,7 +7,8 @@
 <meta name="description" content="Wedding post-production edited in Manila. You shoot it, we finish it: teasers, highlights and full films, matched to your style and deadlines.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://domingoazzerron-code.github.io/weddingsite/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23A9484F'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' text-anchor='middle' fill='%23F7F3F0'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Marcus Wedding Studio">
 <meta property="og:locale" content="en_PH">
@@ -22,7 +23,7 @@
 <meta name="twitter:title" content="Wedding Video Editing in Manila – Marcus Wedding Studio">
 <meta name="twitter:description" content="You shoot it. We finish it. Wedding post-production edited in Manila.">
 <meta name="twitter:image" content="https://domingoazzerron-code.github.io/weddingsite/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Marcus Wedding Studio","description":"Wedding post-production edited in Manila: teasers, highlights and full-length wedding films, matched to your style and deadlines.","serviceType":"Wedding video editing","url":"https://domingoazzerron-code.github.io/weddingsite/","image":"https://domingoazzerron-code.github.io/weddingsite/og-image.png","email":"marcusweddingstudio@gmail.com","sameAs":["https://instagram.com/marcusweddingstudio"],"address":{"@type":"PostalAddress","addressLocality":"Manila","addressCountry":"PH"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Marcus Wedding Studio","description":"Wedding post-production edited in Manila: teasers, highlights and full-length wedding films, matched to your style and deadlines.","serviceType":"Wedding video editing","url":"https://domingoazzerron-code.github.io/weddingsite/","image":"https://domingoazzerron-code.github.io/weddingsite/og-image.png","logo":"https://domingoazzerron-code.github.io/weddingsite/logo-512.png","email":"marcusweddingstudio@gmail.com","sameAs":["https://instagram.com/marcusweddingstudio"],"address":{"@type":"PostalAddress","addressLocality":"Manila","addressCountry":"PH"}}</script>
 <meta name="theme-color" id="tc" content="#F7F3F0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,6 +110,7 @@ nav a[aria-current="true"]{color:var(--ink)}
 /* films */
 .work{padding:clamp(1rem,3vw,2rem) 0 clamp(4rem,8vw,7rem)}
 .work h2{margin-bottom:1.25rem}
+.work .rev-s{margin:-.25rem 0 1.5rem}
 .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
 .fbtn{display:inline-flex;align-items:center;gap:.45rem;min-height:44px;padding:.6rem 1.15rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:500 .95rem/1 var(--f-body);letter-spacing:.01em;cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
 @media(hover:hover){.fbtn:hover{background:var(--card);border-color:var(--accent)}}
@@ -191,7 +193,7 @@ nav a[aria-current="true"]{color:var(--ink)}
 .brief input[type=date]::-webkit-date-and-time-value{text-align:left}
 .brief input[type=text]:focus-visible,.brief input[type=email]:focus-visible,.brief input[type=date]:focus-visible,.brief input[type=url]:focus-visible,.brief select:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 28%,transparent)}
 .brief fieldset{border:0;padding:0;margin:0;display:grid;gap:.55rem}
-.brief legend{padding:0;margin-bottom:.15rem}
+.brief legend{padding:0;margin-bottom:.4rem}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
 .chk{display:flex;flex-wrap:wrap;gap:.5rem}
 .chk label{display:flex;align-items:center;gap:.45rem;padding:.5rem .95rem;border:1px solid var(--line);border-radius:999px;background:var(--bg);cursor:pointer;font-weight:400;font-size:.92rem;transition:border-color .3s var(--ease),background .3s var(--ease)}
@@ -284,7 +286,12 @@ nav a:last-child{margin-top:1.1rem;padding:.9rem 1rem;text-align:center}
 .tc{position:absolute;left:1rem;top:.9rem;color:#fff;font:500 .85rem/1 var(--f-body);font-variant-numeric:tabular-nums;letter-spacing:.04em;text-shadow:0 1px 8px rgba(0,0,0,.7)}
 .tc::before{content:"";display:inline-block;width:.5rem;height:.5rem;margin-right:.55rem;border-radius:50%;background:var(--brass);vertical-align:.04em}
 .tc i{font-style:normal}
-.brand{text-decoration:none}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--ink)}
+.logo{flex:none;width:2.4rem;height:2.4rem}
+.bt{display:grid;gap:.28rem;line-height:1}
+.bt b{font-size:clamp(1.15rem,5.2vw,1.45rem);letter-spacing:-.015em}
+.bt small{font:600 .62rem/1 var(--f-body);letter-spacing:.26em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+@media(max-width:380px){.logo{width:2.1rem;height:2.1rem}.brand{gap:.55rem}.bt small{letter-spacing:.2em}}
 .abt-grid{align-items:start}
 .feat{grid-template-columns:1fr 1fr;gap:2rem 2.5rem}
 .feat li{background:none;border:0;border-radius:0;padding:0}
@@ -368,9 +375,16 @@ html.has-wa .top{bottom:calc(5.25rem + env(safe-area-inset-bottom,0px))}
 .sticky-cta.show{opacity:1;visibility:visible;translate:0 0}
 html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 .top{bottom:calc(5.25rem + env(safe-area-inset-bottom,0px))}
+.in-contact .top{opacity:0;visibility:hidden;pointer-events:none}
+footer{padding-bottom:calc(6.5rem + env(safe-area-inset-bottom,0px))}
 }
 .manila{display:flex;align-items:center;gap:.6rem;margin:-.5rem 0 1.25rem;color:var(--muted);font-size:.9rem;font-variant-numeric:tabular-nums}
 .manila::before{content:"";flex:none;width:.5rem;height:.5rem;border-radius:50%;background:var(--brass)}
+/* proof */
+.clients{margin-top:3rem}
+.clients ul{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:1rem 2.5rem;align-items:center}
+.clients li{font:400 1.25rem/1.2 var(--f-display);color:var(--muted)}
+.clients img{display:block;height:2rem;width:auto;max-width:9rem;object-fit:contain;opacity:.75}
 /* before / after clips */
 .behind,.faq{content-visibility:auto;contain-intrinsic-size:auto 640px}
 .behind,.prep{padding:0}
@@ -386,7 +400,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <noscript><style>.rv{opacity:1!important;translate:none!important}</style></noscript></head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="site" id="site"><div class="wrap bar"><a class="brand" href="#"><b>Marcus Wedding Studio</b></a><div class="bar-r"><nav id="nav" aria-label="Primary"><a href="#work">Films</a><a href="#about">About</a><a href="#workflow">Workflow</a><a href="#behind">Behind the edit</a><a href="#words">Kind words</a><a href="#faq">FAQ</a><a href="#contact">Say hello</a></nav><button class="theme" id="theme" type="button" aria-label="Switch to dark mode"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg></button><button class="menu" id="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><i></i></button></div></div></header>
+<header class="site" id="site"><div class="wrap bar"><a class="brand" href="#" aria-label="Marcus Wedding Studio, back to top"><svg class="logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M14 52V24l18 18 18-18v28" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 19v33" stroke="var(--brass)" stroke-width="2" stroke-linecap="round"/><path d="M27.5 9h9v5.5L32 19.5l-4.5-5z" fill="var(--brass)" stroke="var(--brass)" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="bt"><b>Marcus</b><small>Wedding Studio</small></span></a><div class="bar-r"><nav id="nav" aria-label="Primary"><a href="#work">Films</a><a href="#about">About</a><a href="#workflow">Workflow</a><a href="#behind">Behind the edit</a><a href="#words">Kind words</a><a href="#faq">FAQ</a><a href="#contact">Say hello</a></nav><button class="theme" id="theme" type="button" aria-label="Switch to dark mode"><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg></button><button class="menu" id="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><i></i></button></div></div></header>
 <main id="main">
 <div class="wrap">
 <section class="hero">
@@ -401,7 +415,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <div class="hero-v"><button class="film feature" type="button" data-v="1u0ULhVUvvM" aria-label="Watch M &amp; D, wedding highlights, on YouTube"><img src="https://img.youtube.com/vi/1u0ULhVUvvM/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="1280" height="720" fetchpriority="high"><span class="play"></span><span class="tc" aria-hidden="true"><i id="tcv">00:00:00:00</i></span><span class="cap">M &amp; D<small>Wedding highlights</small></span></button><button class="film mini" type="button" data-v="1kHFaY5qJz0" aria-label="Watch G &amp; A, wedding teaser, on YouTube"><img src="https://img.youtube.com/vi/1kHFaY5qJz0/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="640" height="360"><span class="play"></span><span class="cap">G &amp; A<small>Wedding teaser</small></span></button></div>
 </section>
 <section class="work" id="work">
-<div class="rv"><p class="eyebrow">Portfolio</p><h2>Recent films</h2><div class="filters" id="filters" role="group" aria-label="Filter films by type"></div><p class="sr" id="fcount" role="status"></p></div>
+<div class="rv"><p class="eyebrow">Portfolio</p><h2>Recent films</h2><p class="rev-s">Teasers and highlight films edited for wedding videographers. Tap any film to watch it, then use it as a style reference in your brief.</p><div class="filters" id="filters" role="group" aria-label="Filter films by type"></div><p class="sr" id="fcount" role="status"></p></div>
 <div class="grid" id="grid"><noscript><ul class="nojs"><li><a href="https://www.youtube.com/watch?v=1kHFaY5qJz0" rel="noopener">G &amp; A – Wedding teaser</a></li><li><a href="https://www.youtube.com/watch?v=NN3BbEYAyjQ" rel="noopener">M &amp; D – Wedding teaser</a></li><li><a href="https://www.youtube.com/watch?v=1u0ULhVUvvM" rel="noopener">M &amp; D – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=TFfA5JCuM-0" rel="noopener">M &amp; S – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=wE38AcaPE00" rel="noopener">G &amp; A – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=qQe6p5eHqvs" rel="noopener">S &amp; G – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=SIyY_ykB4uE" rel="noopener">A &amp; J – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=-BiQK0gYHFM" rel="noopener">B &amp; I – Wedding teaser</a></li><li><a href="https://www.youtube.com/watch?v=vksNaP4HbGo" rel="noopener">B &amp; I – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=SUk7rLgGK6Y" rel="noopener">G &amp; D – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=lnMzKS5-YYM" rel="noopener">A &amp; Z – Wedding teaser</a></li></ul></noscript></div>
 </section>
 </div>
@@ -410,16 +424,16 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <div class="abt rv">
 <p class="eyebrow">About us</p>
 <h2>Every love story has its own unique rhythm.</h2>
-<p class="abt-lead">At Marcus Wedding Studio, we make sure it shines through every frame. With 4 years under our belt in the wedding industry, we provide expert post-production services designed to take the editing weight off your shoulders.</p>
-<p>Working together under one roof in a collaborative studio space, our team brings structured workflows, rigorous quality control, and dependable turnaround times to every edit. We know how critical deadlines and subtle details are to your brand reputation.</p>
-<p class="abt-close">We don’t just edit videos; we partner with you to create lasting memories that your clients will cherish for a lifetime. Whether you need us to match your unique style or bring a fresh perspective, we’re here to elevate your wedding films to the next level.</p>
+<p class="abt-lead">At Marcus Wedding Studio, we make sure it shines through every frame. With four years in the wedding industry, we provide expert post-production that takes the editing weight off your shoulders.</p>
+<p>Our team works together under one roof in a collaborative studio in Manila, bringing structured workflows, careful quality control and dependable turnaround to every edit. We know how much deadlines and small details matter to your brand’s reputation.</p>
+<p class="abt-close">We don’t just edit videos; we partner with you to create films your clients will cherish for a lifetime. Whether you need us to match your signature style or bring a fresh perspective, we’re here to take your wedding films further.</p>
 </div>
 <div class="abt-side">
 <ul class="feat">
 <li class="rv" style="--d:80ms"><h3>Structured workflows</h3><p>From creative brief to final handover, every project follows clear steps.</p></li>
 <li class="rv" style="--d:160ms"><h3>Quality control</h3><p>Rigorous checks, so the subtle details of your brand stay intact.</p></li>
 <li class="rv" style="--d:240ms"><h3>Dependable turnaround</h3><p>We know how critical your deadlines are, and we plan around them.</p></li>
-<li class="rv" style="--d:320ms"><h3>One collaborative studio</h3><p>Our team works together under one roof on every edit.</p></li>
+<li class="rv" style="--d:320ms"><h3>A dedicated team</h3><p>A senior editor and a project manager guide every project.</p></li>
 </ul>
 </div>
 </div>
@@ -427,8 +441,8 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <section class="flow" id="workflow"><div class="wrap">
 <div class="rv"><p class="eyebrow">Process</p><h2>How we work with you</h2></div>
 <ol class="steps" aria-label="Our process" tabindex="0">
-<li><h3>Initial consultation</h3><p>Let’s chat! Drop us a message using the contact section below so we can discuss your project requirements, editing style, and preferred turnaround time.</p></li>
-<li><h3>Fill up your creative brief</h3><p>To help us bring your exact vision to life, we’ll ask you to fill out our <a href="#qb" data-ev="CTA Click" data-label="Step 2: creative brief link">quick creative brief</a>. This ensures we capture all your preferences, brand style, and specific instructions right from the start.</p></li>
+<li><h3>Initial consultation</h3><p>Send us a message in the contact section below. We’ll talk through your project, your editing style and the turnaround you need.</p></li>
+<li><h3>Fill out your creative brief</h3><p>Fill out our <a href="#qb" data-ev="CTA Click" data-label="Step 2: creative brief link">quick creative brief</a> so we capture your preferences, brand style and specific instructions from the start.</p></li>
 <li><h3>Editing and collaboration</h3><p>Our Senior Editor and Project Manager will carefully build your first draft around your specific preferences. When ready, we’ll upload it to Frame.io so you can add direct comments and annotations right on the timeline. From there, we’ll implement your feedback to polish every detail.</p></li>
 <li><h3>Finalization</h3><p>After incorporating your feedback, we’ll upload the polished cut to Frame.io for your final review. Once approved, we will lock the edit and bundle all project assets for export.</p></li>
 <li><h3>Project handover</h3><p>After your final sign-off, we’ll send a PayPal payment link. As soon as payment is complete, we’ll deliver your high-resolution exports along with all project files and assets directly via Dropbox.</p></li>
@@ -443,7 +457,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <li><h3>Your dates</h3><p>The wedding date and the date you need the film by.</p></li>
 <li><h3>The deliverable</h3><p>Teaser, highlights, full film, or ceremony and speeches.</p></li>
 <li><h3>Style references</h3><p>A few films you like, or your own earlier work if you want us to match it.</p></li>
-<li><h3>Music and notes</h3><p>Song choices if you have them, plus must-keep moments and any names we should know.</p></li>
+<li><h3>Music and notes</h3><p>A music genre and mood (or let us choose), any songs for inspiration, plus must-keep moments and names we should know.</p></li>
 </ul>
 <div class="cta"><a class="btn" href="#qb" data-ev="CTA Click" data-label="Prepare: Start your brief">Start your brief</a></div>
 </div></section>
@@ -457,7 +471,9 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <div class="wrap">
 <section class="words" id="words">
 <div class="rev">
-<div class="rv"><p class="eyebrow">Testimonials</p><h2>Kind words</h2><p class="rev-s">Feedback from a repeat client. Names are removed.</p><div class="qs"><figure><blockquote>“The video is amazing! This is one of the best ones you guys have ever made me. Thank you so much.”</blockquote><figcaption>Wedding videographer, repeat client</figcaption></figure><figure><blockquote>“This video is AMAZING.”</blockquote><figcaption>Wedding videographer, repeat client</figcaption></figure></div></div>
+<div class="rv"><p class="eyebrow">Testimonials</p><h2>Kind words</h2><p class="rev-s">Feedback from a repeat client. Names are removed.</p>
+<div class="clients" id="clients" hidden><p class="eyebrow">Studios we edit for</p><ul id="cl"></ul></div>
+<div class="qs"><figure><blockquote>“The video is amazing! This is one of the best ones you guys have ever made me. Thank you so much.”</blockquote><figcaption>Wedding videographer, repeat client</figcaption></figure><figure><blockquote>“This video is AMAZING.”</blockquote><figcaption>Wedding videographer, repeat client</figcaption></figure></div></div>
 </div>
 </section>
 <section class="faq" id="faq">
@@ -467,6 +483,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <details name="faq"><summary>What can you edit?</summary><p>Teasers, highlight films, full-length films, and ceremony and speeches edits. If you need something else, ask and we’ll tell you if it’s a fit.</p></details>
 <details name="faq"><summary>How do I send you the footage?</summary><p>Share a download link (Dropbox, Google Drive or similar) in the brief, or send it when we reply. If your files are large or messy, tell us and we’ll work out the easiest way to get them over.</p></details>
 <details name="faq"><summary>Can you match my editing style?</summary><p>Yes. Choose “Match my existing style” in the brief and send a few of your previous films or references. If you’d rather explore, we can go cinematic or documentary, or help you decide.</p></details>
+<details name="faq"><summary>Can you use the songs I choose?</summary><p>Commercial songs are copyrighted and need a licence to be used in a final film. Any songs you share are used as inspiration for mood and pacing, and we find licensed music in a similar style. You can also pick a genre and mood in the brief, or let us choose.</p></details>
 <details name="faq"><summary>How long will it take, and what does it cost?</summary><p>It depends on the deliverable, how much footage there is and your deadline. Tell us your wedding date and the date you need it by, and we’ll reply within a day to confirm timing and pricing.</p></details>
 <details name="faq"><summary>How do reviews and revisions work?</summary><p>We upload drafts to Frame.io, where you can leave comments directly on the timeline. We apply your feedback, then send the polished cut for a final review before we lock the edit.</p></details>
 <details name="faq"><summary>How do payment and delivery work?</summary><p>After your final sign-off we send a PayPal payment link. Once payment is complete, we deliver your high-resolution exports, project files and assets via Dropbox.</p></details>
@@ -477,8 +494,8 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <div class="cgrid">
 <div class="rv">
 <p class="eyebrow">Say hello</p>
-<h2>Tell us your date</h2>
-<p class="lead">Share the date, the place, and a little about the two of you. We reply within a day.</p>
+<h2>Tell us about your project</h2>
+<p class="lead">Share the wedding date, what you need edited and when you need it by. We reply within a day.</p>
 <p class="manila" id="mnl" hidden></p>
 <div class="mail">
 <a class="mail-card" href="mailto:marcusweddingstudio@gmail.com" data-ev="Email Click" data-label="Contact card" aria-label="Email marcusweddingstudio@gmail.com"><span class="mail-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6.5L20.5 7"/></svg></span><span class="mail-tx"><small>Email us directly</small><b>marcusweddingstudio@gmail.com</b></span><span class="mail-arrow" aria-hidden="true">→</span></a>
@@ -495,11 +512,12 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <label><input type="checkbox" name="d" value="Full-length film">Full film</label>
 <label><input type="checkbox" name="d" value="Ceremony and speeches edit">Ceremony &amp; speeches</label>
 </div></fieldset>
-<details class="more"><summary>Add dates, style, footage or references <span>(optional)</span></summary><div class="more-in"><div class="two"><label>Wedding date<input type="date" id="bd"></label><label>Need it by<input type="date" id="bb"></label></div>
+<details class="more" open><summary>Dates, style, footage and music <span>(optional)</span></summary><div class="more-in"><div class="two"><label>Wedding date<input type="date" id="bd"></label><label>Need it by<input type="date" id="bb"></label></div>
 <label>Editing style<select id="bs"><option>Not sure yet</option><option>Cinematic</option><option>Documentary</option><option>Match my existing style</option></select></label>
 <label>Footage link (optional)<input type="url" id="bl" placeholder="https://…" pattern="https://.+" aria-describedby="bmsg"></label>
 <div class="two"><label>Cameras or angles<input type="text" id="bc" placeholder="e.g. 2 cameras" autocomplete="off"></label><label>Footage size<input type="text" id="bz" placeholder="e.g. about 300 GB" autocomplete="off"></label></div>
-<label>Music preferences<input type="text" id="bm" placeholder="Song titles or a mood" autocomplete="off"></label>
+<fieldset><legend>Music preferences</legend><div class="two"><label>Genre<select id="bg"><option>Let the editor choose</option><option>Cinematic / orchestral</option><option>Acoustic / folk</option><option>Piano / classical</option><option>Pop</option><option>Indie</option><option>R&amp;B / soul</option><option>Electronic / dance</option><option>Rock</option><option>OPM / Filipino</option></select></label><label>Mood of the video<select id="bo"><option>Let the editor choose</option><option>Romantic</option><option>Emotional</option><option>Joyful / upbeat</option><option>Elegant / timeless</option><option>Fun / party</option><option>Dreamy</option><option>Calm / intimate</option><option>Epic / dramatic</option></select></label></div></fieldset>
+<label>Specific songs (optional)<input type="text" id="bm" placeholder="Song titles or artists" autocomplete="off" aria-describedby="bmn"><small class="fine" id="bmn"><b>Licensing note:</b> commercial songs are copyrighted and can’t be used in the final film without a licence. Any songs you list are used for inspiration only, to guide the mood and pacing. We’ll find licensed music in a similar style.</small></label>
 <label>Reference film link<input type="url" id="br" placeholder="https://…" pattern="https://.+" aria-describedby="bmsg"></label>
 </div></details>
 <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
@@ -544,6 +562,7 @@ const CFG={
  whatsapp:"639703895918",        // Number with country code, digits only, e.g. "639171234567"
  instagram:"https://instagram.com/marcusweddingstudio",       // Full profile URL, e.g. "https://instagram.com/yourhandle"
  facebook:"",        // Full page URL
+ clients:[],         // Studios you edit for, only with their permission: [{name:"Studio name",logo:"media/studio.svg",url:"https://…"}]. Empty = strip stays hidden.
  booking:""          // Calendly / booking link, e.g. "https://calendly.com/yourname/intro". Shows "Book a call" buttons.
 };
 /* ===== Analytics (Plausible) + click tracking ===== */
@@ -565,39 +584,45 @@ document.addEventListener("click",e=>{const a=e.target.closest("[data-ev]");if(a
  const pv=$("pv");document.querySelectorAll(".pvopen").forEach(b=>b.addEventListener("click",()=>pv.showModal()));
  $("pvc").onclick=()=>pv.close();pv.addEventListener("click",e=>{if(e.target===pv)pv.close()})})();
 
+if(CFG.clients.length){$("cl").innerHTML=CFG.clients.map(c=>{const i=c.logo?`<img src="${esc(c.logo)}" alt="${esc(c.name)}" loading="lazy" decoding="async">`:esc(c.name);return `<li>${c.url?`<a href="${esc(c.url)}" target="_blank" rel="noopener">${i}</a>`:i}</li>`}).join("");$("clients").hidden=false}
 /* Films: [YouTube ID, title, type] */
 const FILMS=[["1kHFaY5qJz0","G & A","Wedding teaser"],["NN3BbEYAyjQ","M & D","Wedding teaser"],["1u0ULhVUvvM","M & D","Wedding highlights"],["TFfA5JCuM-0","M & S","Wedding highlights"],["wE38AcaPE00","G & A","Wedding highlights"],["qQe6p5eHqvs","S & G","Wedding highlights"],["SIyY_ykB4uE","A & J","Wedding highlights"],["-BiQK0gYHFM","B & I","Wedding teaser"],["vksNaP4HbGo","B & I","Wedding highlights"],["SUk7rLgGK6Y","G & D","Wedding highlights"],["lnMzKS5-YYM","A & Z","Wedding teaser"]].map(([v,title,type])=>({v,title,type}));
 
 /* Quick brief -> form backend (falls back to email app when no endpoint is set) */
 (()=>{const f=$("qb"),msg=$("bmsg"),btn=$("bsend"),TO="marcusweddingstudio@gmail.com",SEND=CFG.formEndpoint?"Send my brief":"Email my brief";
 btn.textContent=SEND;
-$("bd").addEventListener("change",()=>{$("bb").min=$("bd").value});
+const today=()=>{const d=new Date(),p=n=>String(n).padStart(2,"0");return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())};
+const syncDates=()=>{const w=$("bd").value,t=today();$("bb").min=w&&w>t?w:t};
+syncDates();$("bd").addEventListener("change",syncDates);
 /* Remember a half-finished brief in this browser until it is sent */
-const KEY="briefDraft",ids=["bn","be","bd","bb","bs","bl","bc","bz","bm","br"];
+const KEY="briefDraft",ids=["bn","be","bd","bb","bs","bl","bc","bz","bg","bo","bm","br"];
 try{const o=JSON.parse(localStorage.getItem(KEY)||"null");if(o&&typeof o==="object"){
- ids.forEach(i=>{if(typeof o[i]!=="string")return;if(i==="bs"&&![...$("bs").options].some(x=>x.value===o[i]))return;$(i).value=o[i]});
+ ids.forEach(i=>{if(typeof o[i]!=="string")return;if($(i).tagName==="SELECT"&&![...$(i).options].some(x=>x.value===o[i]))return;$(i).value=o[i]});
  if(Array.isArray(o.d))f.querySelectorAll("input[name=d]").forEach(x=>{x.checked=o.d.includes(x.value)});
- $("bb").min=$("bd").value;
- if(["bd","bb","bl","bc","bz","bm","br"].some(i=>$(i).value)||$("bs").selectedIndex>0)f.querySelector(".more").open=true}}catch(e){}
+ syncDates();
+ if(["bd","bb","bl","bc","bz","bg","bo","bm","br"].some(i=>$(i).value)||$("bs").selectedIndex>0)f.querySelector(".more").open=true}}catch(e){}
 const save=()=>{try{const o={d:[...f.querySelectorAll("input[name=d]:checked")].map(x=>x.value)};ids.forEach(i=>{o[i]=$(i).value});localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
 f.addEventListener("input",save);f.addEventListener("change",save);
 if(CFG.formEndpoint)$("bsub").textContent="Tell us what you need in 30 seconds. We’ll reply within a day.";
 let started=false;f.addEventListener("focusin",()=>{if(!started){started=true;track("Brief Start")}});
 const dl=()=>[...f.querySelectorAll("input[name=d]:checked")].map(x=>x.value).join(", ");
 const ok=need=>{
- [$("bn"),$("be"),$("bl"),$("br")].forEach(x=>x.removeAttribute("aria-invalid"));
+ [$("bn"),$("be"),$("bb"),$("bl"),$("br")].forEach(x=>x.removeAttribute("aria-invalid"));
  const bad=(el,t)=>{msg.textContent=t;el.setAttribute("aria-invalid","true");el.focus();return false};
  if(need){const n=$("bn"),m=$("be");
   if(!n.value.trim())return bad(n,"Please add your name.");
   if(!m.value.trim()||!m.checkValidity())return bad(m,"Please add a valid email so we can reply.")}
  if(!f.querySelector("input[name=d]:checked")){msg.textContent="Pick at least one deliverable.";return false}
+ if($("bb").value){const w=$("bd").value,b=$("bb").value;
+  if(b<today()){$("bb").closest("details").open=true;return bad($("bb"),"“Need it by” can’t be in the past.")}
+  if(w&&b<w){$("bb").closest("details").open=true;return bad($("bb"),"“Need it by” should be on or after the wedding date.")}}
  if(!$("bl").checkValidity()){$("bl").closest("details").open=true;return bad($("bl"),"Footage link should start with https://")}
  if(!$("br").checkValidity()){$("br").closest("details").open=true;return bad($("br"),"Reference link should start with https://")}
  msg.textContent="";return true};
-const build=()=>{const rows=[["Name",$("bn").value.trim()],["Email",$("be").value.trim()],["Wedding date",$("bd").value],["Need it by",$("bb").value],["Deliverables",dl()],["Editing style",$("bs").value],["Footage link",$("bl").value.trim()],["Footage size",$("bz").value.trim()],["Cameras",$("bc").value.trim()],["Music",$("bm").value.trim()],["Reference film",$("br").value.trim()]].filter(r=>r[1]).map(r=>r[0]+": "+r[1]);
+const build=()=>{const rows=[["Name",$("bn").value.trim()],["Email",$("be").value.trim()],["Wedding date",$("bd").value],["Need it by",$("bb").value],["Deliverables",dl()],["Editing style",$("bs").value],["Footage link",$("bl").value.trim()],["Footage size",$("bz").value.trim()],["Cameras",$("bc").value.trim()],["Music genre",$("bg").value],["Video mood",$("bo").value],["Specific songs",$("bm").value.trim()],["Reference film",$("br").value.trim()]].filter(r=>r[1]).map(r=>r[0]+": "+r[1]);
  return "Hi Marcus Wedding Studio,\n\nI'd like to book an edit.\n\n"+rows.join("\n")+"\n\nThanks!"};
 const mailto=()=>"mailto:"+TO+"?subject="+encodeURIComponent("Editing inquiry from "+$("bn").value.trim())+"&body="+encodeURIComponent(build());
-const payload=()=>{const n=$("bn").value.trim(),o={name:n,email:$("be").value.trim(),wedding_date:$("bd").value,need_by:$("bb").value,deliverables:dl(),editing_style:$("bs").value,footage_link:$("bl").value.trim(),footage_size:$("bz").value.trim(),cameras:$("bc").value.trim(),music:$("bm").value.trim(),reference_link:$("br").value.trim(),_subject:"Editing inquiry from "+n};
+const payload=()=>{const n=$("bn").value.trim(),o={name:n,email:$("be").value.trim(),wedding_date:$("bd").value,need_by:$("bb").value,deliverables:dl(),editing_style:$("bs").value,footage_link:$("bl").value.trim(),footage_size:$("bz").value.trim(),cameras:$("bc").value.trim(),music_genre:$("bg").value,video_mood:$("bo").value,specific_songs:$("bm").value.trim(),reference_link:$("br").value.trim(),_subject:"Editing inquiry from "+n};
  if(CFG.formKey){o.access_key=CFG.formKey;o.subject=o._subject}
  return Object.fromEntries(Object.entries(o).filter(([,v])=>v))};
 f.addEventListener("submit",async e=>{e.preventDefault();$("next").hidden=true;if(!ok(true))return;
@@ -689,7 +714,7 @@ matchMedia("(min-width:901px)").addEventListener("change",e=>{if(e.matches)set(f
 
 /* Sticky "Start a project" bar (phones): hidden over the hero and the contact section */
 (()=>{const el=$("scta");if(!el||!("IntersectionObserver" in window))return;
-let h=true,c=false;const upd=()=>el.classList.toggle("show",!h&&!c);
+let h=true,c=false;const upd=()=>{el.classList.toggle("show",!h&&!c);document.documentElement.classList.toggle("in-contact",c)};
 new IntersectionObserver(e=>{h=e[0].isIntersecting;upd()}).observe(document.querySelector(".hero"));
 new IntersectionObserver(e=>{c=e[0].isIntersecting;upd()}).observe($("contact"))})();
 
