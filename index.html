@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Wedding Video Editing in Manila – Marcus Wedding Studio</title>
 <meta name="description" content="Wedding post-production edited in Manila. You shoot it, we finish it: teasers, highlights and full films, matched to your style and deadlines.">
+<meta name="robots" content="index,follow,max-image-preview:large">
 <link rel="canonical" href="https://domingoazzerron-code.github.io/weddingsite/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23A9484F'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' text-anchor='middle' fill='%23F7F3F0'%3EM%3C/text%3E%3C/svg%3E">
 <meta property="og:type" content="website">
@@ -25,7 +26,7 @@
 <meta name="theme-color" id="tc" content="#F7F3F0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600&display=swap"></noscript>
 <script>if(!matchMedia("(prefers-reduced-motion:reduce)").matches)document.documentElement.classList.add("anim")</script>
 <script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
 <style>
@@ -56,19 +57,19 @@ h2{font-size:clamp(2rem,1.4rem + 2.4vw,3rem)}
 .bar b{font:600 1.25rem/1 var(--f-display);letter-spacing:-.01em}
 nav{display:flex;align-items:center;gap:1.5rem}
 nav a{text-decoration:none;color:var(--muted);font-size:.95rem;font-weight:500;letter-spacing:.01em;transition:color .3s var(--ease)}
-nav a:hover{color:var(--ink)}
+@media(hover:hover){nav a:hover{color:var(--ink)}}
 nav a:last-child{color:var(--ink);border:1px solid var(--line);padding:.45rem 1.1rem;border-radius:999px;transition:background .3s var(--ease),border-color .3s var(--ease)}
-nav a:last-child:hover{background:var(--card);border-color:var(--accent)}
+@media(hover:hover){nav a:last-child:hover{background:var(--card);border-color:var(--accent)}}
 .bar-r{display:flex;align-items:center;gap:1rem}
 .theme{display:grid;place-items:center;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease)}
-.theme:hover{background:var(--card);border-color:var(--accent)}
+@media(hover:hover){.theme:hover{background:var(--card);border-color:var(--accent)}}
 .theme svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .theme .sun{display:none}
 :root[data-theme="dark"] .theme .sun{display:block}
 :root[data-theme="dark"] .theme .moon{display:none}
 .bar b{font-size:clamp(.95rem,4.8vw,1.25rem);white-space:nowrap}
 .menu{display:none;place-items:center;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease)}
-.menu:hover{background:var(--card);border-color:var(--accent)}
+@media(hover:hover){.menu:hover{background:var(--card);border-color:var(--accent)}}
 .menu i{position:relative;display:block;width:18px;height:2px;border-radius:2px;background:currentColor;transition:background .2s}
 .menu i::before,.menu i::after{content:"";position:absolute;left:0;width:18px;height:2px;border-radius:2px;background:currentColor;transition:transform .35s var(--ease),top .35s var(--ease)}
 .menu i::before{top:-6px}.menu i::after{top:6px}
@@ -76,17 +77,18 @@ nav a:last-child:hover{background:var(--card);border-color:var(--accent)}
 .menu[aria-expanded="true"] i::before{top:0;transform:rotate(45deg)}
 .menu[aria-expanded="true"] i::after{top:0;transform:rotate(-45deg)}
 
+nav a[aria-current="true"]{color:var(--ink)}
+@media(min-width:901px){nav a[aria-current="true"]:not(:last-child){text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1px;text-underline-offset:8px}}
 /* buttons */
 .btn{display:inline-block;background:var(--ink);color:var(--bg);padding:.9rem 1.7rem;border-radius:999px;text-decoration:none;font:600 .98rem/1 var(--f-body);letter-spacing:.01em;border:1px solid var(--ink);cursor:pointer;transition:transform .35s var(--ease),background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
-.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--bg);transform:translateY(-2px);box-shadow:0 12px 24px -12px color-mix(in srgb,var(--accent) 70%,transparent)}
+@media(hover:hover){.btn:hover{background:var(--accent);border-color:var(--accent);color:var(--bg);transform:translateY(-2px);box-shadow:0 12px 24px -12px color-mix(in srgb,var(--accent) 70%,transparent)}}
 .btn:active{transform:translateY(0)}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn.ghost:hover{background:var(--card);color:var(--ink);border-color:var(--accent);box-shadow:none}
+@media(hover:hover){.btn.ghost:hover{background:var(--card);color:var(--ink);border-color:var(--accent);box-shadow:none}}
 .cta{display:flex;gap:.75rem;flex-wrap:wrap}
 
 /* hero */
 .hero{position:relative;isolation:isolate;text-align:center;padding:clamp(3.5rem,9vw,7rem) 0 clamp(3.5rem,8vw,6rem)}
-.hero::before{content:"";position:absolute;left:12%;right:12%;top:-6%;height:75%;z-index:-1;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 20%,transparent),transparent);filter:blur(48px);pointer-events:none}
 .hero h1{font-size:clamp(2.75rem,1.5rem + 5.8vw,5.5rem);font-weight:300;line-height:1.03;letter-spacing:-.035em}
 .hero h1 em{font-style:italic;font-weight:300;color:var(--accent)}
 .hero .lead{max-width:46ch;margin:1.6rem auto 2.25rem;color:var(--muted);font-size:clamp(1.05rem,1rem + .3vw,1.25rem);line-height:1.65}
@@ -102,30 +104,30 @@ nav a:last-child:hover{background:var(--card);border-color:var(--accent)}
 /* scroll reveal (translate, not transform, so hover lifts still work) */
 .rv{transition:opacity .9s var(--ease),translate .9s var(--ease)}
 .anim .rv{opacity:0;translate:0 22px}
-.anim .rv.in{opacity:1;translate:0 0;transition-delay:var(--d,0ms)}
+.anim .rv.in{opacity:1;translate:none;transition-delay:var(--d,0ms)}
 
 /* films */
 .work{padding:clamp(1rem,3vw,2rem) 0 clamp(4rem,8vw,7rem)}
 .work h2{margin-bottom:1.25rem}
 .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
 .fbtn{display:inline-flex;align-items:center;gap:.45rem;min-height:44px;padding:.6rem 1.15rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:500 .95rem/1 var(--f-body);letter-spacing:.01em;cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
-.fbtn:hover{background:var(--card);border-color:var(--accent)}
+@media(hover:hover){.fbtn:hover{background:var(--card);border-color:var(--accent)}}
 .fbtn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .fbtn .n{font-size:.8rem;opacity:.65}
+.nojs{grid-column:1/-1;margin:0;padding-left:1.2rem;line-height:2}
 .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
 .film{position:relative;border:0;padding:0;border-radius:14px;overflow:hidden;cursor:pointer;aspect-ratio:16/10;background:var(--card);text-align:left;box-shadow:0 1px 2px rgba(0,0,0,.06),0 14px 30px -16px rgba(0,0,0,.35);transition:opacity .9s var(--ease),translate .9s var(--ease),transform .5s var(--ease),box-shadow .5s var(--ease)}
-.film:hover{transform:translateY(-5px);box-shadow:0 2px 4px rgba(0,0,0,.06),0 26px 40px -18px rgba(0,0,0,.45)}
+@media(hover:hover){.film:hover{transform:translateY(-5px);box-shadow:0 2px 4px rgba(0,0,0,.06),0 26px 40px -18px rgba(0,0,0,.45)}}
 .film img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
-.film:hover img{transform:scale(1.06)}
+@media(hover:hover){.film:hover img{transform:scale(1.06)}}
 .film .play{position:absolute;left:50%;top:50%;width:0;height:0;margin:-20px 0 0 -14px;border-left:34px solid #fff;border-top:20px solid transparent;border-bottom:20px solid transparent;filter:drop-shadow(0 2px 10px rgba(0,0,0,.45));transition:transform .4s var(--ease)}
-.film:hover .play{transform:scale(1.15)}
+@media(hover:hover){.film:hover .play{transform:scale(1.15)}}
 .film span.cap{position:absolute;inset:auto 0 0 0;padding:3rem 1.1rem 1rem;color:#fff;background:linear-gradient(transparent,rgba(20,15,30,.8));font:400 1.3rem/1.2 var(--f-display);letter-spacing:-.01em}
 .film small{display:block;margin-top:.3rem;font:500 .72rem/1.2 var(--f-body);letter-spacing:.14em;text-transform:uppercase;opacity:.9}
 
 /* about */
 .about{position:relative;overflow:hidden;isolation:isolate;background:var(--card);padding:clamp(4rem,8vw,7rem) 0}
-.about::before{content:"";position:absolute;right:-8%;top:-22%;width:46rem;height:46rem;max-width:90vw;border-radius:50%;background:radial-gradient(closest-side,color-mix(in srgb,var(--accent) 16%,transparent),transparent);z-index:-1;pointer-events:none}
 .abt-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(2.5rem,6vw,5rem);align-items:center}
 .abt h2{font-size:clamp(2rem,1.3rem + 2.6vw,3.1rem);line-height:1.12;margin-bottom:1.75rem}
 .abt>p{max-width:56ch;margin:0 0 1.25rem;line-height:1.8;color:var(--muted)}
@@ -134,9 +136,7 @@ nav a:last-child:hover{background:var(--card);border-color:var(--accent)}
 .abt-side{display:grid;gap:1.1rem}
 .feat{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
 .feat li{background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:1.25rem;transition:opacity .9s var(--ease),translate .9s var(--ease),transform .5s var(--ease),border-color .4s var(--ease),box-shadow .5s var(--ease)}
-.feat li:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 20px 34px -22px rgba(0,0,0,.5)}
-.feat .ic{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--bg));margin-bottom:.9rem}
-.feat svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+@media(hover:hover){.feat li:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 20px 34px -22px rgba(0,0,0,.5)}}
 .feat h3{font-size:1.1rem;margin-bottom:.35rem;letter-spacing:-.01em}
 .feat p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.6}
 
@@ -153,7 +153,7 @@ nav a:last-child:hover{background:var(--card);border-color:var(--accent)}
 .steps p{margin:0;color:var(--muted);font-size:.98rem;line-height:1.7}
 .ctl{display:flex;align-items:center;justify-content:center;gap:1rem}
 .ctl>button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:1.4rem;line-height:1;cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease)}
-.ctl>button:hover{background:var(--card);border-color:var(--accent)}
+@media(hover:hover){.ctl>button:hover{background:var(--card);border-color:var(--accent)}}
 .dots2{display:flex;gap:.5rem}
 .dots2 button{position:relative;border:0;padding:0;cursor:pointer}
 .dots2 button::before{content:"";position:absolute;inset:-9px}
@@ -162,7 +162,7 @@ nav a:last-child:hover{background:var(--card);border-color:var(--accent)}
 .flow .cta{justify-content:center;margin-top:2.25rem}
 
 /* testimonials */
-.words{padding:clamp(4rem,8vw,6rem) 0}
+.words{padding:clamp(4rem,8vw,6rem) 0;border-top:1px solid var(--line)}
 
 /* contact */
 .contact{padding:clamp(4rem,8vw,6.5rem) 0 clamp(4.5rem,9vw,7rem);border-top:1px solid var(--line)}
@@ -170,14 +170,14 @@ nav a:last-child:hover{background:var(--card);border-color:var(--accent)}
 .contact .lead{max-width:40ch;color:var(--muted);margin:1.25rem 0 1.5rem}
 .mail{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center}
 .mail-card{flex:1 1 280px;display:flex;align-items:center;gap:.9rem;padding:.9rem 1.1rem;border:1px solid var(--line);border-radius:16px;background:var(--card);text-decoration:none;transition:transform .4s var(--ease),border-color .3s var(--ease),box-shadow .4s var(--ease)}
-.mail-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 16px 30px -18px color-mix(in srgb,var(--accent) 60%,transparent)}
+@media(hover:hover){.mail-card:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:0 16px 30px -18px color-mix(in srgb,var(--accent) 60%,transparent)}}
 .mail-ic{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--accent);color:var(--bg)}
 .mail-ic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .mail-tx{display:grid;min-width:0;line-height:1.3}
 .mail-tx small{margin-bottom:.2rem;font:600 .72rem/1.2 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
 .mail-tx b{font:600 clamp(.9rem,.82rem + .35vw,1.05rem)/1.3 var(--f-body);overflow-wrap:anywhere;color:var(--ink)}
 .mail-arrow{margin-left:auto;color:var(--accent);transition:translate .4s var(--ease)}
-.mail-card:hover .mail-arrow{translate:4px 0}
+@media(hover:hover){.mail-card:hover .mail-arrow{translate:4px 0}}
 .mail .btn{padding:.75rem 1.2rem;font-size:.9rem}
 .brief{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:clamp(1.4rem,3vw,2.1rem);box-shadow:0 24px 50px -28px rgba(0,0,0,.4);display:grid;grid-template-columns:minmax(0,1fr);gap:1.15rem;width:100%;min-width:0}
 .brief>*,.cgrid>*{min-width:0}
@@ -186,7 +186,8 @@ nav a:last-child:hover{background:var(--card);border-color:var(--accent)}
 .brief label,.brief legend{font-weight:500;font-size:.9rem;letter-spacing:.01em}
 .brief label{display:grid;gap:.4rem}
 .brief input[type=text],.brief input[type=email],.brief input[type=date],.brief input[type=url],.brief select{font:400 1rem var(--f-body);padding:.75rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);width:100%;min-width:0;min-height:3rem;text-align:left;transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
-.brief input[type=date]{-webkit-appearance:none;appearance:none;display:block}
+.brief input,.brief select,.brief textarea{box-sizing:border-box;max-width:100%}
+.brief input[type=date]{-webkit-appearance:none;appearance:none;display:block;height:3rem;max-width:100%;margin:0;line-height:1.2}
 .brief input[type=date]::-webkit-date-and-time-value{text-align:left}
 .brief input[type=text]:focus-visible,.brief input[type=email]:focus-visible,.brief input[type=date]:focus-visible,.brief input[type=url]:focus-visible,.brief select:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 28%,transparent)}
 .brief fieldset{border:0;padding:0;margin:0;display:grid;gap:.55rem}
@@ -194,7 +195,7 @@ nav a:last-child:hover{background:var(--card);border-color:var(--accent)}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
 .chk{display:flex;flex-wrap:wrap;gap:.5rem}
 .chk label{display:flex;align-items:center;gap:.45rem;padding:.5rem .95rem;border:1px solid var(--line);border-radius:999px;background:var(--bg);cursor:pointer;font-weight:400;font-size:.92rem;transition:border-color .3s var(--ease),background .3s var(--ease)}
-.chk label:hover{border-color:var(--accent)}
+@media(hover:hover){.chk label:hover{border-color:var(--accent)}}
 .chk input{accent-color:var(--accent);margin:0}
 .chk label:has(input:checked){border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--bg))}
 .chk label:has(input:focus-visible){outline:3px solid var(--accent);outline-offset:2px}
@@ -209,7 +210,7 @@ nav a:last-child:hover{background:var(--card);border-color:var(--accent)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .fine{margin:0;color:var(--muted);font-size:.82rem;line-height:1.55}
 .linkbtn{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-.linkbtn:hover{color:var(--accent)}
+@media(hover:hover){.linkbtn:hover{color:var(--accent)}}
 
 /* faq */
 .faq{padding:clamp(4rem,8vw,6rem) 0;border-top:1px solid var(--line)}
@@ -218,7 +219,7 @@ nav a:last-child:hover{background:var(--card);border-color:var(--accent)}
 .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 0;font:400 clamp(1.1rem,1.02rem + .35vw,1.3rem)/1.35 var(--f-display);letter-spacing:-.01em;transition:color .3s var(--ease)}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";flex:none;font:300 1.7rem/1 var(--f-body);color:var(--accent);transition:transform .35s var(--ease)}
-.faq summary:hover{color:var(--accent)}
+@media(hover:hover){.faq summary:hover{color:var(--accent)}}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq details p{margin:0 0 1.35rem;max-width:60ch;color:var(--muted);line-height:1.75}
 
@@ -243,11 +244,13 @@ dialog iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#00
 .dtxt small{color:var(--muted);display:block;margin-top:.2rem;font:400 .95rem var(--f-body);letter-spacing:.01em}
 .dtxt .btn{padding:.55rem 1.1rem;font-size:.92rem}
 .dtxt button{border:1px solid var(--line);background:transparent;color:var(--ink);padding:.55rem 1.1rem;border-radius:999px;cursor:pointer;font:inherit;font-size:.95rem;transition:background .3s var(--ease)}
-.dtxt button:hover{background:var(--card)}
+@media(hover:hover){.dtxt button:hover{background:var(--card)}}
 
+.pnav{display:flex;gap:.5rem}
+.pnav button{display:grid;place-items:center;width:44px;height:44px;padding:0;font-size:1.4rem;line-height:1}
 .top{position:fixed;right:1.25rem;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));width:48px;height:48px;border-radius:50%;border:0;background:var(--ink);color:var(--bg);font-size:1.4rem;line-height:1;cursor:pointer;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);opacity:0;visibility:hidden;translate:0 12px;pointer-events:none;transition:opacity .4s var(--ease),translate .4s var(--ease),background .3s,visibility .4s;z-index:20}
-.top.show{opacity:1;visibility:visible;translate:0 0;pointer-events:auto}
-.top:hover{background:var(--accent);color:var(--bg)}
+.top.show{opacity:1;visibility:visible;translate:none;pointer-events:auto}
+@media(hover:hover){.top:hover{background:var(--accent);color:var(--bg)}}
 
 @media(max-width:860px){.cgrid,.abt-grid{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:520px){.feat{grid-template-columns:1fr}.mail-card{flex-basis:100%}
@@ -263,14 +266,13 @@ nav.open{visibility:visible;opacity:1;translate:0 0;pointer-events:auto}
 nav a{padding:.95rem 0;font-size:1.05rem;border-bottom:1px solid var(--line)}
 nav a:last-child{margin-top:1.1rem;padding:.9rem 1rem;text-align:center}
 }
-@media(max-width:420px){.two{grid-template-columns:1fr}.menu,.theme{width:40px;height:40px}.bar-r{gap:.5rem}.mail-card{gap:.7rem;padding:.8rem .9rem}.mail-ic{width:40px;height:40px}.mail-tx b{font-size:.82rem}}
+@media(max-width:420px){.two{grid-template-columns:minmax(0,1fr)}.menu,.theme{width:40px;height:40px}.bar-r{gap:.5rem}.mail-card{gap:.7rem;padding:.8rem .9rem}.mail-ic{width:40px;height:40px}.mail-tx b{font-size:.82rem}}
 @media(max-width:380px){.mail-arrow{display:none}.mail-tx b{font-size:.78rem}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 
 /* v2 polish */
 :root{--brass:#B07A3A;--f-display:Newsreader,Georgia,serif;--f-body:"Hanken Grotesk",system-ui,sans-serif}
 :root[data-theme="dark"]{--brass:#D9A768}
-.hero::before,.about::before{display:none}
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(2rem,5vw,4.5rem);align-items:center;text-align:left;padding:clamp(2rem,6vw,5rem) 0 clamp(3rem,7vw,5.5rem)}
 .hero h1{font-size:clamp(2.7rem,1.3rem + 5.2vw,5.25rem);font-weight:300;line-height:1}
 .hero .lead{margin:1.5rem 0 2rem;max-width:40ch}
@@ -286,8 +288,7 @@ nav a:last-child{margin-top:1.1rem;padding:.9rem 1rem;text-align:center}
 .abt-grid{align-items:start}
 .feat{grid-template-columns:1fr 1fr;gap:2rem 2.5rem}
 .feat li{background:none;border:0;border-radius:0;padding:0}
-.feat li:hover{transform:none;box-shadow:none}
-.feat .ic{display:none}
+@media(hover:hover){.feat li:hover{transform:none;box-shadow:none}}
 .feat h3{font-size:1.2rem;margin-bottom:.4rem}
 .steps li::before{color:var(--brass);font-size:2.5rem}
 .brief{border-radius:14px;box-shadow:none}
@@ -296,14 +297,16 @@ dialog{max-height:92dvh;overflow:auto}
 @media(max-width:860px){.hero{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:760px){.feat{grid-template-columns:1fr}}
 
-.hero{--bg:#2A2138;--ink:#F7F3F0;--muted:#CFC4CC;--accent:#EDA1A6;--card:#3D3250;--line:#4D4161;color:var(--ink);background:var(--bg);box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax)}
+:root[data-theme="dark"] .hero{--bg:#2A2138;--ink:#F7F3F0;--muted:#CFC4CC;--accent:#EDA1A6;--card:#3D3250;--line:#4D4161}
+.hero{color:var(--ink);background:var(--bg);box-shadow:0 0 0 100vmax var(--bg);clip-path:inset(0 -100vmax)}
 .hero h1 em{color:var(--accent)}
 .hero-v{position:relative;padding-bottom:3.5rem}
 .feature{box-shadow:0 30px 60px -22px rgba(0,0,0,.6)}
 .film.mini{position:absolute;left:-2rem;bottom:0;width:42%;aspect-ratio:16/10;border:5px solid var(--bg);box-shadow:0 24px 40px -16px rgba(0,0,0,.6)}
 .mini .play{transform:scale(.6)}
 .film.mini span.cap{font-size:.95rem;padding:2rem .7rem .6rem}
-.about{--bg:#2A2138;--ink:#F7F3F0;--muted:#CFC4CC;--accent:#EDA1A6;--line:#4D4161;background:var(--bg);color:var(--ink)}
+.about{background:var(--card);color:var(--ink)}
+:root[data-theme="dark"] .about{--bg:#2A2138;--ink:#F7F3F0;--muted:#CFC4CC;--accent:#EDA1A6;--line:#4D4161;background:var(--bg)}
 .about .abt-lead{color:var(--ink)}
 .abt>p.eyebrow{margin:0 0 1rem;color:var(--accent);line-height:1.2}
 .feat h3{border-top:2px solid var(--brass);padding-top:.9rem}
@@ -332,15 +335,46 @@ dialog{max-height:92dvh;overflow:auto}
 .more summary::after{content:"+";color:var(--accent);font-size:1.4rem;line-height:1}
 .more[open] summary::after{content:"–"}
 .more summary span{color:var(--muted);font-weight:400}
-.more-in{display:grid;gap:1.15rem;margin-top:1rem}
+.more-in{display:grid;grid-template-columns:minmax(0,1fr);gap:1.15rem;margin-top:1rem}
+.more-in label{min-width:0}
 
 /* fixes */
 .anim .hero>.hero-v{animation:none}
 dialog iframe{max-height:70dvh}
+html:has(dialog[open]){overflow:hidden}
 .brief [aria-invalid="true"]{border-color:var(--accent)}
 
+/* prepare, styles, next steps, whatsapp */
+.prep-list{list-style:none;margin:2.25rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:2rem 2.5rem}
+.prep-list h3{font-size:1.2rem;margin-bottom:.4rem;border-top:2px solid var(--brass);padding-top:.9rem}
+.prep-list p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.65}
+.prep .cta{margin-top:2rem}
+.next{padding:1.1rem 1.25rem;border:1px solid var(--accent);border-radius:12px;background:color-mix(in srgb,var(--accent) 8%,var(--bg))}
+.next h4{margin:0 0 .5rem;font:600 .95rem/1.3 var(--f-body)}
+.next ol{margin:0;padding-left:1.2rem;display:grid;gap:.3rem;color:var(--muted);font-size:.92rem;line-height:1.6}
+.wa-fab{position:fixed;right:1.25rem;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));z-index:20;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#128C7E;color:#fff;box-shadow:0 10px 24px -8px rgba(0,0,0,.45);transition:transform .35s var(--ease),background .3s}
+@media(hover:hover){.wa-fab:hover{transform:translateY(-2px);background:#0B6E63}}
+.wa-fab svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+html.has-wa .top{bottom:calc(5.25rem + env(safe-area-inset-bottom,0px))}
+@supports selector(::details-content){
+:root{interpolate-size:allow-keywords}
+.faq details::details-content{height:0;overflow:clip;transition:height .4s var(--ease),content-visibility .4s allow-discrete}
+.faq details[open]::details-content{height:auto}
+@media(prefers-reduced-motion:reduce){.faq details::details-content{transition:none}}
+}
+.sticky-cta{display:none}
+@media(max-width:760px){
+.sticky-cta{display:grid;place-items:center;position:fixed;left:max(1.25rem,env(safe-area-inset-left,0px));right:1.25rem;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));height:52px;padding:0 1.5rem;z-index:19;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);opacity:0;visibility:hidden;translate:0 12px;transition:opacity .4s var(--ease),translate .4s var(--ease),visibility .4s,background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease)}
+.sticky-cta.show{opacity:1;visibility:visible;translate:0 0}
+html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
+.top{bottom:calc(5.25rem + env(safe-area-inset-bottom,0px))}
+}
+.manila{display:flex;align-items:center;gap:.6rem;margin:-.5rem 0 1.25rem;color:var(--muted);font-size:.9rem;font-variant-numeric:tabular-nums}
+.manila::before{content:"";flex:none;width:.5rem;height:.5rem;border-radius:50%;background:var(--brass)}
 /* before / after clips */
-.behind{padding:clamp(3rem,7vw,5.5rem) 0;border-top:1px solid var(--line)}
+.behind,.faq{content-visibility:auto;contain-intrinsic-size:auto 640px}
+.behind,.prep{padding:0}
+.behind>.wrap,.prep>.wrap{border-top:1px solid var(--line);padding-top:clamp(4rem,8vw,6rem);padding-bottom:clamp(4rem,8vw,6rem)}
 .ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin-top:2.25rem}
 .ba figure{margin:0;min-width:0}
 .ba video{display:block;width:100%;height:auto;aspect-ratio:1920/962;background:#000;border-radius:2px;box-shadow:0 24px 40px -24px rgba(0,0,0,.5)}
@@ -364,11 +398,11 @@ dialog iframe{max-height:70dvh}
 <div class="cta"><a class="btn" href="#contact" data-ev="CTA Click" data-label="Hero: Start a project">Start a project</a><a class="btn ghost wa" href="#contact" target="_blank" rel="noopener" hidden data-ev="CTA Click" data-label="Hero: WhatsApp">Message us on WhatsApp</a><a class="btn ghost" href="#work" data-ev="CTA Click" data-label="Hero: Watch the films">Watch the films</a></div>
 <p class="proof">Four years editing weddings. Drafts reviewed on Frame.io, final files delivered by Dropbox.</p>
 </div>
-<div class="hero-v"><button class="film feature" type="button" data-i="2" aria-label="Watch M &amp; D, wedding highlights, on YouTube"><img src="https://img.youtube.com/vi/1u0ULhVUvvM/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="1280" height="720" fetchpriority="high"><span class="play"></span><span class="tc" aria-hidden="true"><i id="tcv">00:00:00:00</i></span><span class="cap">M &amp; D<small>Wedding highlights</small></span></button><button class="film mini" type="button" data-i="0" aria-label="Watch G &amp; A, wedding teaser, on YouTube"><img src="https://img.youtube.com/vi/1kHFaY5qJz0/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="640" height="360"><span class="play"></span><span class="cap">G &amp; A<small>Wedding teaser</small></span></button></div>
+<div class="hero-v"><button class="film feature" type="button" data-v="1u0ULhVUvvM" aria-label="Watch M &amp; D, wedding highlights, on YouTube"><img src="https://img.youtube.com/vi/1u0ULhVUvvM/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="1280" height="720" fetchpriority="high"><span class="play"></span><span class="tc" aria-hidden="true"><i id="tcv">00:00:00:00</i></span><span class="cap">M &amp; D<small>Wedding highlights</small></span></button><button class="film mini" type="button" data-v="1kHFaY5qJz0" aria-label="Watch G &amp; A, wedding teaser, on YouTube"><img src="https://img.youtube.com/vi/1kHFaY5qJz0/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="640" height="360"><span class="play"></span><span class="cap">G &amp; A<small>Wedding teaser</small></span></button></div>
 </section>
 <section class="work" id="work">
 <div class="rv"><p class="eyebrow">Portfolio</p><h2>Recent films</h2><div class="filters" id="filters" role="group" aria-label="Filter films by type"></div><p class="sr" id="fcount" role="status"></p></div>
-<div class="grid" id="grid"></div>
+<div class="grid" id="grid"><noscript><ul class="nojs"><li><a href="https://www.youtube.com/watch?v=1kHFaY5qJz0" rel="noopener">G &amp; A – Wedding teaser</a></li><li><a href="https://www.youtube.com/watch?v=NN3BbEYAyjQ" rel="noopener">M &amp; D – Wedding teaser</a></li><li><a href="https://www.youtube.com/watch?v=1u0ULhVUvvM" rel="noopener">M &amp; D – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=TFfA5JCuM-0" rel="noopener">M &amp; S – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=wE38AcaPE00" rel="noopener">G &amp; A – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=qQe6p5eHqvs" rel="noopener">S &amp; G – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=SIyY_ykB4uE" rel="noopener">A &amp; J – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=-BiQK0gYHFM" rel="noopener">B &amp; I – Wedding teaser</a></li><li><a href="https://www.youtube.com/watch?v=vksNaP4HbGo" rel="noopener">B &amp; I – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=SUk7rLgGK6Y" rel="noopener">G &amp; D – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=lnMzKS5-YYM" rel="noopener">A &amp; Z – Wedding teaser</a></li></ul></noscript></div>
 </section>
 </div>
 <section class="about" id="about"><div class="wrap">
@@ -382,10 +416,10 @@ dialog iframe{max-height:70dvh}
 </div>
 <div class="abt-side">
 <ul class="feat">
-<li class="rv" style="--d:80ms"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M3.5 6l1 1 2-2M3.5 12l1 1 2-2M3.5 18l1 1 2-2"/></svg></span><h3>Structured workflows</h3><p>From creative brief to final handover, every project follows clear steps.</p></li>
-<li class="rv" style="--d:160ms"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 7.8-8 9-4.8-1.2-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><h3>Quality control</h3><p>Rigorous checks, so the subtle details of your brand stay intact.</p></li>
-<li class="rv" style="--d:240ms"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Dependable turnaround</h3><p>We know how critical your deadlines are, and we plan around them.</p></li>
-<li class="rv" style="--d:320ms"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></span><h3>One collaborative studio</h3><p>Our team works together under one roof on every edit.</p></li>
+<li class="rv" style="--d:80ms"><h3>Structured workflows</h3><p>From creative brief to final handover, every project follows clear steps.</p></li>
+<li class="rv" style="--d:160ms"><h3>Quality control</h3><p>Rigorous checks, so the subtle details of your brand stay intact.</p></li>
+<li class="rv" style="--d:240ms"><h3>Dependable turnaround</h3><p>We know how critical your deadlines are, and we plan around them.</p></li>
+<li class="rv" style="--d:320ms"><h3>One collaborative studio</h3><p>Our team works together under one roof on every edit.</p></li>
 </ul>
 </div>
 </div>
@@ -399,8 +433,19 @@ dialog iframe{max-height:70dvh}
 <li><h3>Finalization</h3><p>After incorporating your feedback, we’ll upload the polished cut to Frame.io for your final review. Once approved, we will lock the edit and bundle all project assets for export.</p></li>
 <li><h3>Project handover</h3><p>After your final sign-off, we’ll send a PayPal payment link. As soon as payment is complete, we’ll deliver your high-resolution exports along with all project files and assets directly via Dropbox.</p></li>
 </ol>
-<div class="ctl"><button id="sp" aria-label="Previous step">‹</button><div class="dots2" id="sd"></div><button id="sn" aria-label="Next step">›</button></div>
-<div class="cta"><a class="btn" href="#contact" data-ev="CTA Click" data-label="Workflow: Start a project">Start a project</a><a class="btn ghost wa" href="#contact" target="_blank" rel="noopener" hidden data-ev="CTA Click" data-label="Workflow: WhatsApp">Message us on WhatsApp</a></div>
+<div class="ctl"><button type="button" id="sp" aria-label="Previous step">‹</button><div class="dots2" id="sd"></div><button type="button" id="sn" aria-label="Next step">›</button></div>
+<div class="cta"><a class="btn" href="#contact" data-ev="CTA Click" data-label="Workflow: Start a project">Start a project</a><a class="btn ghost wa" href="#contact" target="_blank" rel="noopener" hidden data-ev="CTA Click" data-label="Workflow: WhatsApp">Message us on WhatsApp</a><a class="btn ghost bk" href="#contact" target="_blank" rel="noopener" hidden data-ev="CTA Click" data-label="Workflow: Book a call">Book a call</a></div>
+</div></section>
+<section class="prep" id="prepare"><div class="wrap">
+<div class="rv"><p class="eyebrow">Before you start</p><h2>What to have ready</h2><p class="rev-s">You don’t need everything on day one. The more you share, the faster we can start.</p></div>
+<ul class="prep-list rv">
+<li><h3>Footage link</h3><p>A Dropbox, Google Drive or similar download link. Tell us if the files are large or messy.</p></li>
+<li><h3>Your dates</h3><p>The wedding date and the date you need the film by.</p></li>
+<li><h3>The deliverable</h3><p>Teaser, highlights, full film, or ceremony and speeches.</p></li>
+<li><h3>Style references</h3><p>A few films you like, or your own earlier work if you want us to match it.</p></li>
+<li><h3>Music and notes</h3><p>Song choices if you have them, plus must-keep moments and any names we should know.</p></li>
+</ul>
+<div class="cta"><a class="btn" href="#qb" data-ev="CTA Click" data-label="Prepare: Start your brief">Start your brief</a></div>
 </div></section>
 <section class="behind" id="behind"><div class="wrap">
 <div class="rv"><p class="eyebrow">Behind the edit</p><h2>Before and after</h2><p class="rev-s">Where every edit starts, and where it comes together. Press play on either clip.</p></div>
@@ -412,20 +457,20 @@ dialog iframe{max-height:70dvh}
 <div class="wrap">
 <section class="words" id="words">
 <div class="rev">
-<div class="rv"><p class="eyebrow">Testimonials</p><h2>Kind words</h2><p class="rev-s">Feedback from a repeat client. Names are removed.</p><div class="qs"><figure><blockquote>“The video is amazing! This is one of the best ones you guys have ever made me. Thank you so much.”</blockquote></figure><figure><blockquote>“This video is AMAZING.”</blockquote><figcaption>Wedding videographer, repeat client</figcaption></figure></div></div>
+<div class="rv"><p class="eyebrow">Testimonials</p><h2>Kind words</h2><p class="rev-s">Feedback from a repeat client. Names are removed.</p><div class="qs"><figure><blockquote>“The video is amazing! This is one of the best ones you guys have ever made me. Thank you so much.”</blockquote><figcaption>Wedding videographer, repeat client</figcaption></figure><figure><blockquote>“This video is AMAZING.”</blockquote><figcaption>Wedding videographer, repeat client</figcaption></figure></div></div>
 </div>
 </section>
 <section class="faq" id="faq">
 <div class="rv"><p class="eyebrow">FAQ</p><h2>Good to know</h2></div>
 <div class="faq-list">
-<details><summary>How does a project work?</summary><p>It starts with a quick chat about your project, then you fill out a short creative brief. We build a first draft, share it on Frame.io for your comments on the timeline, polish it with your feedback, and do a final review. After sign-off, we hand over your files.</p></details>
-<details><summary>What can you edit?</summary><p>Teasers, highlight films, full-length films, and ceremony and speeches edits. If you need something else, ask and we’ll tell you if it’s a fit.</p></details>
-<details><summary>How do I send you the footage?</summary><p>Share a download link (Dropbox, Google Drive or similar) in the brief, or send it when we reply. If your files are large or messy, tell us and we’ll work out the easiest way to get them over.</p></details>
-<details><summary>Can you match my editing style?</summary><p>Yes. Choose “Match my existing style” in the brief and send a few of your previous films or references. If you’d rather explore, we can go cinematic or documentary, or help you decide.</p></details>
-<details><summary>How long will it take, and what does it cost?</summary><p>It depends on the deliverable, how much footage there is and your deadline. Tell us your wedding date and the date you need it by, and we’ll reply within a day to confirm timing and pricing.</p></details>
-<details><summary>How do reviews and revisions work?</summary><p>We upload drafts to Frame.io, where you can leave comments directly on the timeline. We apply your feedback, then send the polished cut for a final review before we lock the edit.</p></details>
-<details><summary>How do payment and delivery work?</summary><p>After your final sign-off we send a PayPal payment link. Once payment is complete, we deliver your high-resolution exports, project files and assets via Dropbox.</p></details>
-<details><summary>Where are you based?</summary><p>We’re a collaborative team working together in a studio in Manila, Philippines.</p></details>
+<details name="faq"><summary>How does a project work?</summary><p>It starts with a quick chat about your project, then you fill out a short creative brief. We build a first draft, share it on Frame.io for your comments on the timeline, polish it with your feedback, and do a final review. After sign-off, we hand over your files.</p></details>
+<details name="faq"><summary>What can you edit?</summary><p>Teasers, highlight films, full-length films, and ceremony and speeches edits. If you need something else, ask and we’ll tell you if it’s a fit.</p></details>
+<details name="faq"><summary>How do I send you the footage?</summary><p>Share a download link (Dropbox, Google Drive or similar) in the brief, or send it when we reply. If your files are large or messy, tell us and we’ll work out the easiest way to get them over.</p></details>
+<details name="faq"><summary>Can you match my editing style?</summary><p>Yes. Choose “Match my existing style” in the brief and send a few of your previous films or references. If you’d rather explore, we can go cinematic or documentary, or help you decide.</p></details>
+<details name="faq"><summary>How long will it take, and what does it cost?</summary><p>It depends on the deliverable, how much footage there is and your deadline. Tell us your wedding date and the date you need it by, and we’ll reply within a day to confirm timing and pricing.</p></details>
+<details name="faq"><summary>How do reviews and revisions work?</summary><p>We upload drafts to Frame.io, where you can leave comments directly on the timeline. We apply your feedback, then send the polished cut for a final review before we lock the edit.</p></details>
+<details name="faq"><summary>How do payment and delivery work?</summary><p>After your final sign-off we send a PayPal payment link. Once payment is complete, we deliver your high-resolution exports, project files and assets via Dropbox.</p></details>
+<details name="faq"><summary>Where are you based?</summary><p>We’re a collaborative team working together in a studio in Manila, Philippines.</p></details>
 </div>
 </section>
 <section class="contact" id="contact">
@@ -434,27 +479,32 @@ dialog iframe{max-height:70dvh}
 <p class="eyebrow">Say hello</p>
 <h2>Tell us your date</h2>
 <p class="lead">Share the date, the place, and a little about the two of you. We reply within a day.</p>
+<p class="manila" id="mnl" hidden></p>
 <div class="mail">
 <a class="mail-card" href="mailto:marcusweddingstudio@gmail.com" data-ev="Email Click" data-label="Contact card" aria-label="Email marcusweddingstudio@gmail.com"><span class="mail-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6.5L20.5 7"/></svg></span><span class="mail-tx"><small>Email us directly</small><b>marcusweddingstudio@gmail.com</b></span><span class="mail-arrow" aria-hidden="true">→</span></a>
-<button class="btn ghost" type="button" id="mcp" aria-live="polite">Copy</button>
+<button class="btn ghost" type="button" id="mcp" aria-live="polite">Copy email</button>
 </div>
 <div class="chan" id="chan" hidden></div>
 </div>
 <form class="brief rv" id="qb" aria-labelledby="qbt" novalidate style="--d:120ms">
 <div><h3 id="qbt">Start your brief</h3><p class="sub" id="bsub">Tell us what you need in 30 seconds. We’ll turn it into a ready-to-send email.</p></div>
-<div class="two"><label>Your name<input type="text" id="bn" autocomplete="name" aria-describedby="bmsg" required></label><label>Your email<input type="email" id="be" autocomplete="email" inputmode="email" aria-describedby="bmsg" required></label></div>
+<div class="two"><label>Your name<input type="text" id="bn" autocomplete="name" autocapitalize="words" aria-describedby="bmsg" required></label><label>Your email<input type="email" id="be" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="bmsg" required></label></div>
 <fieldset><legend>What do you need edited?</legend><div class="chk">
 <label><input type="checkbox" name="d" value="Teaser" checked>Teaser</label>
 <label><input type="checkbox" name="d" value="Highlight film">Highlights</label>
 <label><input type="checkbox" name="d" value="Full-length film">Full film</label>
 <label><input type="checkbox" name="d" value="Ceremony and speeches edit">Ceremony &amp; speeches</label>
 </div></fieldset>
-<details class="more"><summary>Add dates, style or footage link <span>(optional)</span></summary><div class="more-in"><div class="two"><label>Wedding date<input type="date" id="bd"></label><label>Need it by<input type="date" id="bb"></label></div>
+<details class="more"><summary>Add dates, style, footage or references <span>(optional)</span></summary><div class="more-in"><div class="two"><label>Wedding date<input type="date" id="bd"></label><label>Need it by<input type="date" id="bb"></label></div>
 <label>Editing style<select id="bs"><option>Not sure yet</option><option>Cinematic</option><option>Documentary</option><option>Match my existing style</option></select></label>
 <label>Footage link (optional)<input type="url" id="bl" placeholder="https://…" pattern="https://.+" aria-describedby="bmsg"></label>
+<div class="two"><label>Cameras or angles<input type="text" id="bc" placeholder="e.g. 2 cameras" autocomplete="off"></label><label>Footage size<input type="text" id="bz" placeholder="e.g. about 300 GB" autocomplete="off"></label></div>
+<label>Music preferences<input type="text" id="bm" placeholder="Song titles or a mood" autocomplete="off"></label>
+<label>Reference film link<input type="url" id="br" placeholder="https://…" pattern="https://.+" aria-describedby="bmsg"></label>
 </div></details>
 <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 <p id="bmsg" role="status"></p>
+<div class="next" id="next" hidden tabindex="-1"><h4>What happens next</h4><ol><li>We reply within a day to confirm timing and details.</li><li>Send us your footage link and any references, if you haven’t already.</li><li>We build your first draft and share it on Frame.io for your comments.</li></ol></div>
 <div class="row"><button class="btn" type="submit" id="bsend">Email my brief</button><button class="btn ghost" type="button" id="bcp">Copy text</button></div>
 <p class="fine">We only use your details to reply about your project. <button type="button" class="linkbtn pvopen">How we handle your data</button></p>
 </form>
@@ -464,7 +514,9 @@ dialog iframe{max-height:70dvh}
 </main>
 <div class="wrap"><footer><span>© 2026 Marcus Wedding Studio</span><a href="mailto:marcusweddingstudio@gmail.com">marcusweddingstudio@gmail.com</a><button type="button" class="linkbtn pvopen">Privacy</button><span class="soc" id="soc"></span></footer></div>
 
-<button class="top" id="top" aria-label="Back to top">↑</button>
+<button type="button" class="top" id="top" aria-label="Back to top">↑</button>
+<a class="btn sticky-cta" id="scta" href="#contact" data-ev="CTA Click" data-label="Sticky: Start a project">Start a project</a>
+<a class="wa-fab wa" href="#contact" target="_blank" rel="noopener" hidden aria-label="Message us on WhatsApp" data-ev="CTA Click" data-label="Floating WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.7 7.1L4 20.5l1.4-4.9A8 8 0 1 1 21 12z"/></svg></a>
 <dialog id="pv" class="doc" aria-labelledby="pvt"><div class="doc-in">
 <h3 id="pvt">Privacy</h3>
 <p>We keep this simple: we only collect what we need to answer you and do the work.</p>
@@ -472,12 +524,12 @@ dialog iframe{max-height:70dvh}
 <h4>Why</h4><p>To reply to your inquiry and, if you hire us, to deliver your project. We don’t sell your details or use them for third-party marketing.</p>
 <h4>Who handles it</h4><p>Briefs reach us by email, either through your own email app or our form service. Emails are handled through Gmail. Footage you share is used only to edit your project.</p>
 <div id="pv-an" hidden><h4>Analytics</h4><p>We use Plausible, a privacy-friendly analytics tool that doesn’t use cookies or collect personal data, to count visits and clicks.</p></div>
-<h4>On your device</h4><p>If you pick a light or dark theme, that choice is saved in your browser only. Fonts come from Google Fonts, and film thumbnails and players come from YouTube. Both may receive your device information when they load or play.</p>
+<h4>On your device</h4><p>If you pick a light or dark theme, that choice is saved in your browser only. So is a half-finished brief, until you send it. Fonts come from Google Fonts, and film thumbnails and players come from YouTube. Both may receive your device information when they load or play.</p>
 <h4>Your choices</h4><p>Email <a href="mailto:marcusweddingstudio@gmail.com">marcusweddingstudio@gmail.com</a> any time to ask us to correct or delete your details.</p>
 <p style="margin-top:1.1rem;font-size:.82rem">Last updated November 2026.</p>
 <button class="btn ghost" type="button" id="pvc">Close</button>
 </div></dialog>
-<dialog id="pl" aria-label="Film player"><iframe id="yt" title="Film player" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe><div class="dtxt"><h3 id="pt"></h3><a class="btn" id="ytl" target="_blank" rel="noopener">Watch on YouTube</a><button id="pc">Close</button></div></dialog>
+<dialog id="pl" aria-label="Film player"><iframe id="yt" title="Film player" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe><div class="dtxt"><h3 id="pt" aria-live="polite"></h3><div class="pnav"><button type="button" id="pp" aria-label="Previous film">‹</button><button type="button" id="pn" aria-label="Next film">›</button></div><button type="button" id="pr">Use as reference</button><a class="btn" id="ytl" target="_blank" rel="noopener">Watch on YouTube</a><button type="button" id="pc">Close</button></div></dialog>
 
 <script>
 const $=id=>document.getElementById(id);
@@ -486,13 +538,13 @@ const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;"
 
 /* ===== Site settings: fill these in (leave "" to keep a feature off) ===== */
 const CFG={
- formEndpoint:"",    // Form backend URL, e.g. "https://formspree.io/f/xxxxxxxx". Empty = falls back to opening the visitor's email app.
+ formEndpoint:"https://formspree.io/f/meaawkaq",    // Form backend URL, e.g. "https://formspree.io/f/xxxxxxxx". Empty = falls back to opening the visitor's email app.
  formKey:"",         // Only for providers that need an access key (e.g. Web3Forms). Otherwise leave empty.
  plausibleDomain:"", // Your site's domain for Plausible analytics, e.g. "yourdomain.com". Empty = no analytics.
  whatsapp:"639703895918",        // Number with country code, digits only, e.g. "639171234567"
  instagram:"https://instagram.com/marcusweddingstudio",       // Full profile URL, e.g. "https://instagram.com/yourhandle"
  facebook:"",        // Full page URL
- booking:""          // Calendly / booking link (shown in the contact section)
+ booking:""          // Calendly / booking link, e.g. "https://calendly.com/yourname/intro". Shows "Book a call" buttons.
 };
 /* ===== Analytics (Plausible) + click tracking ===== */
 if(CFG.plausibleDomain){window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)};
@@ -501,9 +553,10 @@ const track=(n,p)=>{try{if(window.plausible)window.plausible(n,p?{props:p}:undef
 document.addEventListener("click",e=>{const a=e.target.closest("[data-ev]");if(a)track(a.dataset.ev,a.dataset.label?{label:a.dataset.label}:undefined)});
 /* ===== Contact channels, footer socials, privacy dialog ===== */
 (()=>{const ch=[];
- if(CFG.whatsapp){const u="https://wa.me/"+CFG.whatsapp.replace(/\D/g,"")+"?text="+encodeURIComponent("Hi Marcus Wedding Studio, I’d like to ask about an edit.");ch.push(["WhatsApp",u]);document.querySelectorAll(".wa").forEach(a=>{a.href=u;a.hidden=false})}
+ if(CFG.whatsapp){const u="https://wa.me/"+CFG.whatsapp.replace(/\D/g,"")+"?text="+encodeURIComponent("Hi Marcus Wedding Studio, I’d like to ask about an edit.");ch.push(["WhatsApp",u]);document.querySelectorAll(".wa").forEach(a=>{a.href=u;a.hidden=false});document.documentElement.classList.add("has-wa")}
  if(CFG.instagram)ch.push(["Instagram",CFG.instagram]);
  if(CFG.facebook)ch.push(["Facebook",CFG.facebook]);
+ if(CFG.booking)document.querySelectorAll(".bk").forEach(a=>{a.href=CFG.booking;a.hidden=false});
  const all=CFG.booking?[...ch,["Book a call",CFG.booking]]:ch;
  const a=(c,cls)=>`<a ${cls?`class="${cls}" `:""}href="${esc(c[1])}" target="_blank" rel="noopener" data-ev="Channel Click" data-label="${esc(c[0])}">${esc(c[0])}</a>`;
  if(all.length){$("chan").innerHTML=`<span class="chan-l">Or reach us on</span>`+all.map(c=>a(c,"btn ghost")).join("");$("chan").hidden=false}
@@ -512,38 +565,50 @@ document.addEventListener("click",e=>{const a=e.target.closest("[data-ev]");if(a
  const pv=$("pv");document.querySelectorAll(".pvopen").forEach(b=>b.addEventListener("click",()=>pv.showModal()));
  $("pvc").onclick=()=>pv.close();pv.addEventListener("click",e=>{if(e.target===pv)pv.close()})})();
 
-/* Films: [YouTube ID, title, subtitle] */
-const FILMS=[["1kHFaY5qJz0","G & A","Wedding teaser"],["NN3BbEYAyjQ","M & D","Wedding teaser"],["1u0ULhVUvvM","M & D","Wedding highlights"],["TFfA5JCuM-0","M & S","Wedding highlights"],["wE38AcaPE00","G & A","Wedding highlights"],["qQe6p5eHqvs","S & G","Wedding highlights"],["SIyY_ykB4uE","A & J","Wedding highlights"],["-BiQK0gYHFM","B & I","Wedding teaser"],["vksNaP4HbGo","B & I","Wedding highlights"],["SUk7rLgGK6Y","G & D","Wedding highlights"],["lnMzKS5-YYM","A & Z","Wedding teaser"]].map(([v,title,place])=>({v,title,place}));
+/* Films: [YouTube ID, title, type] */
+const FILMS=[["1kHFaY5qJz0","G & A","Wedding teaser"],["NN3BbEYAyjQ","M & D","Wedding teaser"],["1u0ULhVUvvM","M & D","Wedding highlights"],["TFfA5JCuM-0","M & S","Wedding highlights"],["wE38AcaPE00","G & A","Wedding highlights"],["qQe6p5eHqvs","S & G","Wedding highlights"],["SIyY_ykB4uE","A & J","Wedding highlights"],["-BiQK0gYHFM","B & I","Wedding teaser"],["vksNaP4HbGo","B & I","Wedding highlights"],["SUk7rLgGK6Y","G & D","Wedding highlights"],["lnMzKS5-YYM","A & Z","Wedding teaser"]].map(([v,title,type])=>({v,title,type}));
 
 /* Quick brief -> form backend (falls back to email app when no endpoint is set) */
 (()=>{const f=$("qb"),msg=$("bmsg"),btn=$("bsend"),TO="marcusweddingstudio@gmail.com",SEND=CFG.formEndpoint?"Send my brief":"Email my brief";
 btn.textContent=SEND;
+$("bd").addEventListener("change",()=>{$("bb").min=$("bd").value});
+/* Remember a half-finished brief in this browser until it is sent */
+const KEY="briefDraft",ids=["bn","be","bd","bb","bs","bl","bc","bz","bm","br"];
+try{const o=JSON.parse(localStorage.getItem(KEY)||"null");if(o&&typeof o==="object"){
+ ids.forEach(i=>{if(typeof o[i]!=="string")return;if(i==="bs"&&![...$("bs").options].some(x=>x.value===o[i]))return;$(i).value=o[i]});
+ if(Array.isArray(o.d))f.querySelectorAll("input[name=d]").forEach(x=>{x.checked=o.d.includes(x.value)});
+ $("bb").min=$("bd").value;
+ if(["bd","bb","bl","bc","bz","bm","br"].some(i=>$(i).value)||$("bs").selectedIndex>0)f.querySelector(".more").open=true}}catch(e){}
+const save=()=>{try{const o={d:[...f.querySelectorAll("input[name=d]:checked")].map(x=>x.value)};ids.forEach(i=>{o[i]=$(i).value});localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
+f.addEventListener("input",save);f.addEventListener("change",save);
 if(CFG.formEndpoint)$("bsub").textContent="Tell us what you need in 30 seconds. We’ll reply within a day.";
 let started=false;f.addEventListener("focusin",()=>{if(!started){started=true;track("Brief Start")}});
 const dl=()=>[...f.querySelectorAll("input[name=d]:checked")].map(x=>x.value).join(", ");
 const ok=need=>{
- [$("bn"),$("be"),$("bl")].forEach(x=>x.removeAttribute("aria-invalid"));
+ [$("bn"),$("be"),$("bl"),$("br")].forEach(x=>x.removeAttribute("aria-invalid"));
  const bad=(el,t)=>{msg.textContent=t;el.setAttribute("aria-invalid","true");el.focus();return false};
  if(need){const n=$("bn"),m=$("be");
   if(!n.value.trim())return bad(n,"Please add your name.");
   if(!m.value.trim()||!m.checkValidity())return bad(m,"Please add a valid email so we can reply.")}
  if(!f.querySelector("input[name=d]:checked")){msg.textContent="Pick at least one deliverable.";return false}
  if(!$("bl").checkValidity()){$("bl").closest("details").open=true;return bad($("bl"),"Footage link should start with https://")}
+ if(!$("br").checkValidity()){$("br").closest("details").open=true;return bad($("br"),"Reference link should start with https://")}
  msg.textContent="";return true};
-const build=()=>{const rows=[["Name",$("bn").value.trim()],["Email",$("be").value.trim()],["Wedding date",$("bd").value],["Need it by",$("bb").value],["Deliverables",dl()],["Editing style",$("bs").value],["Footage link",$("bl").value.trim()]].filter(r=>r[1]).map(r=>r[0]+": "+r[1]);
+const build=()=>{const rows=[["Name",$("bn").value.trim()],["Email",$("be").value.trim()],["Wedding date",$("bd").value],["Need it by",$("bb").value],["Deliverables",dl()],["Editing style",$("bs").value],["Footage link",$("bl").value.trim()],["Footage size",$("bz").value.trim()],["Cameras",$("bc").value.trim()],["Music",$("bm").value.trim()],["Reference film",$("br").value.trim()]].filter(r=>r[1]).map(r=>r[0]+": "+r[1]);
  return "Hi Marcus Wedding Studio,\n\nI'd like to book an edit.\n\n"+rows.join("\n")+"\n\nThanks!"};
-const payload=()=>{const n=$("bn").value.trim(),o={name:n,email:$("be").value.trim(),wedding_date:$("bd").value,need_by:$("bb").value,deliverables:dl(),editing_style:$("bs").value,footage_link:$("bl").value.trim(),_subject:"Editing inquiry from "+n};
+const mailto=()=>"mailto:"+TO+"?subject="+encodeURIComponent("Editing inquiry from "+$("bn").value.trim())+"&body="+encodeURIComponent(build());
+const payload=()=>{const n=$("bn").value.trim(),o={name:n,email:$("be").value.trim(),wedding_date:$("bd").value,need_by:$("bb").value,deliverables:dl(),editing_style:$("bs").value,footage_link:$("bl").value.trim(),footage_size:$("bz").value.trim(),cameras:$("bc").value.trim(),music:$("bm").value.trim(),reference_link:$("br").value.trim(),_subject:"Editing inquiry from "+n};
  if(CFG.formKey){o.access_key=CFG.formKey;o.subject=o._subject}
  return Object.fromEntries(Object.entries(o).filter(([,v])=>v))};
-f.addEventListener("submit",async e=>{e.preventDefault();if(!ok(true))return;
+f.addEventListener("submit",async e=>{e.preventDefault();$("next").hidden=true;if(!ok(true))return;
  if(f.elements._gotcha&&f.elements._gotcha.value){msg.textContent="Thank you! Your brief is in. We’ll reply within a day.";return}
  if(!CFG.formEndpoint){track("Brief Submit",{method:"email"});
-  msg.textContent="Opening your email app. If nothing opens, use “Copy text” and email us at "+TO+".";location.href="mailto:"+TO+"?subject="+encodeURIComponent("Editing inquiry from "+$("bn").value.trim())+"&body="+encodeURIComponent(build());return}
+  msg.textContent="Opening your email app. If nothing opens, use “Copy text” and email us at "+TO+".";location.href=mailto();return}
  btn.disabled=true;btn.textContent="Sending…";
  try{const r=await fetch(CFG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload())});
   if(!r.ok)throw new Error(r.status);
-  msg.textContent="Thank you! Your brief is in. We’ll reply within a day.";track("Brief Submit",{method:"form"});f.reset()}
- catch(err){msg.textContent="Couldn’t send your brief. Please try again, or email us at "+TO+".";track("Brief Error")}
+  msg.textContent="Thank you! Your brief is in.";track("Brief Submit",{method:"form"});f.reset();try{localStorage.removeItem("briefDraft")}catch(e){}const nx=$("next");nx.hidden=false;nx.scrollIntoView({block:"nearest",behavior:reduce?"auto":"smooth"});nx.focus({preventScroll:true})}
+ catch(err){track("Brief Error");msg.textContent="The form couldn’t send, so we’re opening your email app with your brief ready. If nothing opens, use “Copy text” and email us at "+TO+".";location.href=mailto()}
  finally{btn.disabled=false;btn.textContent=SEND}});
 $("bcp").addEventListener("click",async()=>{if(!ok(false))return;
  try{await navigator.clipboard.writeText(build());msg.textContent="Copied. Paste it into an email to "+TO;track("Brief Copy")}
@@ -554,11 +619,11 @@ const mt=$("mcp").textContent;$("mcp").addEventListener("click",async()=>{const 
  try{await navigator.clipboard.writeText("marcusweddingstudio@gmail.com");b.textContent="Copied ✓"}catch(e){b.textContent="Copy failed"}
  setTimeout(()=>{b.textContent=mt},1800)});
 
-{const el=$("tcv"),p=n=>String(n).padStart(2,"0"),t0=performance.now(),draw=()=>{const t=(performance.now()-t0)/1e3;el.textContent=[Math.floor(t/3600),Math.floor(t/60)%60,Math.floor(t)%60,Math.floor(t*25)%25].map(p).join(":")};draw();if(!reduce)setInterval(()=>{if(!document.hidden)draw()},40)}
+{const el=$("tcv"),p=n=>String(n).padStart(2,"0"),t0=performance.now(),draw=()=>{const t=(performance.now()-t0)/1e3;el.textContent=[Math.floor(t/3600),Math.floor(t/60)%60,Math.floor(t)%60,Math.floor(t*25)%25].map(p).join(":")};draw();let vis=true;if("IntersectionObserver" in window)new IntersectionObserver(e=>{vis=e[0].isIntersecting}).observe(el.closest(".hero"));if(!reduce)setInterval(()=>{if(vis&&!document.hidden)draw()},40)}
 /* Film grid + player */
-$("grid").innerHTML=FILMS.map((f,i)=>`<button class="film rv" style="--d:${(i%3)*80}ms" data-i="${i}" aria-label="Watch ${esc(f.title)}, ${esc(f.place)}, on YouTube"><img src="https://img.youtube.com/vi/${f.v}/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" loading="lazy" width="480" height="360"><span class="play"></span><span class="cap">${esc(f.title)}<small>${esc(f.place)}</small></span></button>`).join("");
+$("grid").innerHTML=FILMS.map((f,i)=>`<button class="film rv" style="--d:${(i%3)*80}ms" data-v="${f.v}" aria-label="Watch ${esc(f.title)}, ${esc(f.type)}, on YouTube"><img src="https://img.youtube.com/vi/${f.v}/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" loading="lazy" decoding="async" width="480" height="360"><span class="play"></span><span class="cap">${esc(f.title)}<small>${esc(f.type)}</small></span></button>`).join("");
 /* Film filter: All / Teasers / Highlights */
-(()=>{const kind=f=>/teaser/i.test(f.place)?"teaser":/highlight/i.test(f.place)?"highlight":"other";
+(()=>{const kind=f=>/teaser/i.test(f.type)?"teaser":/highlight/i.test(f.type)?"highlight":"other";
 const defs=[["all","All"],["teaser","Teasers"],["highlight","Highlights"]];
 const count=k=>k=="all"?FILMS.length:FILMS.filter(f=>kind(f)==k).length;
 const bar=$("filters"),cards=[...$("grid").children];
@@ -568,11 +633,19 @@ bar.addEventListener("click",e=>{const b=e.target.closest(".fbtn");if(!b)return;
  cards.forEach((c,i)=>{c.hidden=k!="all"&&kind(FILMS[i])!=k});
  $("fcount").textContent="Showing "+count(k)+" "+(k=="all"?"films":k=="teaser"?"teasers":"highlight films");
  track("Film Filter",{label:b.firstChild.textContent})})})();
-document.addEventListener("click",e=>{const b=e.target.closest(".film[data-i]");if(!b)return;const f=FILMS[+b.dataset.i];track("Film Play",{label:f.title+" - "+f.place});
- $("ytl").href="https://www.youtube.com/watch?v="+f.v;
- $("pt").innerHTML=esc(f.title)+`<small>${esc(f.place)}</small>`;
- $("yt").src="https://www.youtube-nocookie.com/embed/"+f.v+"?autoplay=1&rel=0";
- $("pl").showModal()});
+(()=>{let now=null;
+const show=f=>{now=f;$("ytl").href="https://www.youtube.com/watch?v="+f.v;
+ $("pt").innerHTML=esc(f.title)+`<small>${esc(f.type)}</small>`;
+ $("yt").src="https://www.youtube-nocookie.com/embed/"+f.v+"?autoplay=1&playsinline=1&rel=0"};
+/* step through what the visitor is currently filtering by; fall back to all films */
+const list=()=>{const v=[...$("grid").children].map((c,i)=>c.hidden?null:FILMS[i]).filter(Boolean);return v.includes(now)?v:FILMS};
+const step=d=>{const l=list(),f=l[(l.indexOf(now)+d+l.length)%l.length];show(f);track("Film Step",{label:f.title+" - "+f.type})};
+document.addEventListener("click",e=>{const b=e.target.closest(".film[data-v]");if(!b)return;const f=FILMS.find(x=>x.v===b.dataset.v);if(!f)return;track("Film Play",{label:f.title+" - "+f.type});show(f);$("pl").showModal()});
+$("pp").onclick=()=>step(-1);$("pn").onclick=()=>step(1);
+$("pr").onclick=()=>{if(!now)return;const br=$("br");br.value="https://www.youtube.com/watch?v="+now.v;br.dispatchEvent(new Event("input",{bubbles:true}));
+ $("qb").querySelector(".more").open=true;$("bmsg").textContent="Added “"+now.title+" – "+now.type+"” as your reference film.";track("Film Reference",{label:now.title+" - "+now.type});
+ $("pl").close();setTimeout(()=>$("qb").scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"}),60)};
+$("pl").addEventListener("keydown",e=>{if(e.key==="ArrowLeft")step(-1);else if(e.key==="ArrowRight")step(1)})})();
 $("pc").onclick=()=>$("pl").close();
 $("pl").addEventListener("close",()=>$("yt").removeAttribute("src"));
 $("pl").addEventListener("click",e=>{if(e.target===$("pl"))$("pl").close()});
@@ -583,6 +656,7 @@ dots.innerHTML=li.map((_,i)=>`<button aria-label="Step ${i+1}"></button>`).join(
 const set=i=>{cur=i;li.forEach((x,j)=>x.classList.toggle("on",j==i));ds.forEach((d,j)=>d.setAttribute("aria-current",j==i))};
 const go=i=>{i=Math.max(0,Math.min(li.length-1,i));ol.scrollTo({left:li[i].offsetLeft+li[i].offsetWidth/2-ol.clientWidth/2,behavior:reduce?"auto":"smooth"})};
 ds.forEach((d,i)=>d.onclick=()=>go(i));$("sp").onclick=()=>go(cur-1);$("sn").onclick=()=>go(cur+1);
+ol.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();go(cur+1)}else if(e.key==="ArrowLeft"){e.preventDefault();go(cur-1)}});
 ol.addEventListener("scroll",()=>{let b=0,m=1e9;const c=ol.scrollLeft+ol.clientWidth/2;li.forEach((x,j)=>{const d=Math.abs(x.offsetLeft+x.offsetWidth/2-c);if(d<m){m=d;b=j}});if(b!=cur)set(b)},{passive:true});
 let moved=0;
 ol.addEventListener("pointerdown",e=>{if(e.pointerType!="mouse")return;down=true;moved=0;sx=e.clientX;sl=ol.scrollLeft;ol.classList.add("drag")});
@@ -612,6 +686,27 @@ n.addEventListener("click",e=>{if(e.target.closest("a"))set(false)});
 document.addEventListener("click",e=>{if(!e.target.closest(".bar"))set(false)});
 addEventListener("keydown",e=>{if(e.key==="Escape"&&n.classList.contains("open")){set(false);b.focus()}});
 matchMedia("(min-width:901px)").addEventListener("change",e=>{if(e.matches)set(false)})})();
+
+/* Sticky "Start a project" bar (phones): hidden over the hero and the contact section */
+(()=>{const el=$("scta");if(!el||!("IntersectionObserver" in window))return;
+let h=true,c=false;const upd=()=>el.classList.toggle("show",!h&&!c);
+new IntersectionObserver(e=>{h=e[0].isIntersecting;upd()}).observe(document.querySelector(".hero"));
+new IntersectionObserver(e=>{c=e[0].isIntersecting;upd()}).observe($("contact"))})();
+
+/* Manila clock */
+(()=>{const el=$("mnl");if(!el)return;
+const draw=()=>{try{const t=new Intl.DateTimeFormat("en-US",{timeZone:"Asia/Manila",weekday:"short",hour:"numeric",minute:"2-digit"}).format(new Date());el.textContent="Manila time now: "+t+" (UTC+8)";el.hidden=false}catch(e){el.hidden=true}};
+draw();setInterval(()=>{if(!document.hidden)draw()},30000)})();
+
+/* Highlight the nav link for the section in view */
+(()=>{if(!("IntersectionObserver" in window))return;
+const links=[...document.querySelectorAll("#nav a[href^='#']")],map=new Map(links.map(a=>[a.getAttribute("href").slice(1),a]));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;links.forEach(a=>a.removeAttribute("aria-current"));const a=map.get(e.target.id);if(a)a.setAttribute("aria-current","true")}),{rootMargin:"-45% 0px -50% 0px"});
+io.observe(document.querySelector(".hero"));map.forEach((_,id)=>{const el=$(id);if(el)io.observe(el)})})();
+
+/* FAQ rich-result markup, built from the visible questions so it never goes out of date */
+(()=>{const q=[...document.querySelectorAll(".faq-list details")].map(d=>({"@type":"Question",name:d.querySelector("summary").textContent.trim(),acceptedAnswer:{"@type":"Answer",text:d.querySelector("p").textContent.trim()}}));
+if(!q.length)return;const sc=document.createElement("script");sc.type="application/ld+json";sc.textContent=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:q});document.head.appendChild(sc)})();
 
 /* Header shadow line + back to top */
 const tb=$("top"),hd=$("site"),tp=()=>{tb.classList.toggle("show",scrollY>600);hd.classList.toggle("scrolled",scrollY>8)};
