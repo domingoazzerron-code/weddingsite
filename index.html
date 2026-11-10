@@ -112,6 +112,8 @@ nav a[aria-current="true"]{color:var(--ink)}
 .work h2{margin-bottom:1.25rem}
 .work .rev-s{margin:-.25rem 0 1.5rem}
 .more-films{margin-top:2rem;text-align:center}
+.films-cta{margin-top:3rem;text-align:center}
+.films-cta p{margin:0 auto 1.25rem;max-width:46ch;color:var(--muted)}
 .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
 .fbtn{display:inline-flex;align-items:center;gap:.45rem;min-height:44px;padding:.6rem 1.15rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:500 .95rem/1 var(--f-body);letter-spacing:.01em;cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
 @media(hover:hover){.fbtn:hover{background:var(--card);border-color:var(--accent)}}
@@ -329,6 +331,7 @@ dialog{max-height:92dvh;overflow:auto}
 .feature{box-shadow:0 30px 60px -22px rgba(0,0,0,.6)}
 .film.mini{position:absolute;left:-2rem;bottom:0;width:42%;aspect-ratio:16/10;border:5px solid var(--bg);box-shadow:0 24px 40px -16px rgba(0,0,0,.6)}
 .mini .play{transform:scale(.6)}
+@media(min-width:861px){.film.feature span.cap{text-align:right}}
 .film .reel{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s var(--ease);pointer-events:none}
 .film .reel.on{opacity:1}
 .film.mini span.cap{font-size:.95rem;padding:2rem .7rem .6rem}
@@ -448,7 +451,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <h1>You shoot it.<br><em>We finish it.</em></h1>
 <p class="who">Wedding video editing for videographers and studios.</p>
 <p class="lead">We shape your footage into a film your couples will replay for years. Wedding post-production, edited in Manila to match your style and your deadlines.</p>
-<div class="cta"><a class="btn" href="#contact" data-ev="CTA Click" data-label="Hero: Start a project">Start a project</a><a class="btn ghost wa" href="#contact" target="_blank" rel="noopener" hidden data-ev="CTA Click" data-label="Hero: WhatsApp">Message us on WhatsApp</a><a class="btn ghost" href="#work" data-ev="CTA Click" data-label="Hero: Watch the films">Watch the films</a></div>
+<div class="cta"><a class="btn" href="#contact" data-ev="CTA Click" data-label="Hero: Start a project">Start a project</a><a class="btn ghost wa" href="#contact" target="_blank" rel="noopener" hidden data-ev="CTA Click" data-label="Hero: WhatsApp">WhatsApp us</a><a class="btn ghost" href="#work" data-ev="CTA Click" data-label="Hero: Watch the films">Watch the films</a></div>
 <p class="proof">Four years editing weddings. Drafts reviewed on Frame.io, final files delivered by Dropbox.</p>
 </div>
 <div class="hero-v"><button class="film feature" type="button" data-v="1u0ULhVUvvM" aria-label="Watch M &amp; D, wedding highlights, on YouTube"><img src="https://img.youtube.com/vi/1u0ULhVUvvM/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="1280" height="720" fetchpriority="high"><span class="play"></span><span class="tc" aria-hidden="true"><i id="tcv">00:00:00:00</i></span><span class="cap">M &amp; D<small>Wedding highlights</small></span></button><button class="film mini" type="button" data-v="1kHFaY5qJz0" aria-label="Watch G &amp; A, wedding teaser, on YouTube"><img src="https://img.youtube.com/vi/1kHFaY5qJz0/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="640" height="360"><span class="play"></span><span class="cap">G &amp; A<small>Wedding teaser</small></span></button></div>
@@ -457,6 +460,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <div class="rv"><p class="eyebrow">Portfolio</p><h2>Recent films</h2><p class="rev-s">Teasers and highlight films edited for wedding videographers. Tap any film to watch it, then use it as a style reference in your brief.</p><div class="filters" id="filters" role="group" aria-label="Filter films by type"></div><p class="sr" id="fcount" role="status"></p></div>
 <div class="grid" id="grid"><noscript><ul class="nojs"><li><a href="https://www.youtube.com/watch?v=1kHFaY5qJz0" rel="noopener">G &amp; A – Wedding teaser</a></li><li><a href="https://www.youtube.com/watch?v=NN3BbEYAyjQ" rel="noopener">M &amp; D – Wedding teaser</a></li><li><a href="https://www.youtube.com/watch?v=1u0ULhVUvvM" rel="noopener">M &amp; D – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=TFfA5JCuM-0" rel="noopener">M &amp; S – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=wE38AcaPE00" rel="noopener">G &amp; A – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=qQe6p5eHqvs" rel="noopener">S &amp; G – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=SIyY_ykB4uE" rel="noopener">A &amp; J – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=-BiQK0gYHFM" rel="noopener">B &amp; I – Wedding teaser</a></li><li><a href="https://www.youtube.com/watch?v=vksNaP4HbGo" rel="noopener">B &amp; I – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=SUk7rLgGK6Y" rel="noopener">G &amp; D – Wedding highlights</a></li><li><a href="https://www.youtube.com/watch?v=lnMzKS5-YYM" rel="noopener">A &amp; Z – Wedding teaser</a></li></ul></noscript></div>
 <div class="more-films"><button class="btn ghost" type="button" id="mf" hidden></button></div>
+<div class="films-cta rv"><p>Like a style? Open a film and tap “Use as reference”, or start your brief and tell us what you have in mind.</p><a class="btn" href="#qb" data-ev="CTA Click" data-label="Films: Start your brief">Start your brief</a></div>
 </section>
 </div>
 <section class="behind" id="behind"><div class="wrap">
@@ -634,8 +638,8 @@ document.addEventListener("click",e=>{const a=e.target.closest("[data-ev]");if(a
  $("pvc").onclick=()=>pv.close();pv.addEventListener("click",e=>{if(e.target===pv)pv.close()})})();
 
 if(CFG.clients.length){$("cl").innerHTML=CFG.clients.map(c=>{const i=c.logo?`<img src="${esc(c.logo)}" alt="${esc(c.name)}" loading="lazy" decoding="async">`:esc(c.name);return `<li>${c.url?`<a href="${esc(c.url)}" target="_blank" rel="noopener">${i}</a>`:i}</li>`}).join("");$("clients").hidden=false}
-/* Films: [YouTube ID, title, type] */
-const FILMS=[["1kHFaY5qJz0","G & A","Wedding teaser"],["NN3BbEYAyjQ","M & D","Wedding teaser"],["1u0ULhVUvvM","M & D","Wedding highlights"],["TFfA5JCuM-0","M & S","Wedding highlights"],["wE38AcaPE00","G & A","Wedding highlights"],["qQe6p5eHqvs","S & G","Wedding highlights"],["SIyY_ykB4uE","A & J","Wedding highlights"],["-BiQK0gYHFM","B & I","Wedding teaser"],["vksNaP4HbGo","B & I","Wedding highlights"],["SUk7rLgGK6Y","G & D","Wedding highlights"],["lnMzKS5-YYM","A & Z","Wedding teaser"]].map(([v,title,type])=>({v,title,type}));
+/* Films: [YouTube ID, title, type, optional details such as "4:12 · Cinematic"] */
+const FILMS=[["1kHFaY5qJz0","G & A","Wedding teaser"],["NN3BbEYAyjQ","M & D","Wedding teaser"],["1u0ULhVUvvM","M & D","Wedding highlights"],["TFfA5JCuM-0","M & S","Wedding highlights"],["wE38AcaPE00","G & A","Wedding highlights"],["qQe6p5eHqvs","S & G","Wedding highlights"],["SIyY_ykB4uE","A & J","Wedding highlights"],["-BiQK0gYHFM","B & I","Wedding teaser"],["vksNaP4HbGo","B & I","Wedding highlights"],["SUk7rLgGK6Y","G & D","Wedding highlights"],["lnMzKS5-YYM","A & Z","Wedding teaser"]].map(([v,title,type,meta])=>({v,title,type,meta:meta||""}));
 
 /* Quick brief -> form backend (falls back to email app when no endpoint is set) */
 (()=>{const f=$("qb"),msg=$("bmsg"),btn=$("bsend"),TO="marcusweddingstudio@gmail.com",SEND=CFG.formEndpoint?"Send my brief":"Email my brief";
@@ -710,7 +714,7 @@ let vis=true;const sync=()=>{if(vis&&!document.hidden){const p=v.play();if(p&&p.
 if("IntersectionObserver" in window)new IntersectionObserver(e=>{vis=e[0].isIntersecting;sync()}).observe(host);
 document.addEventListener("visibilitychange",sync)})();
 /* Film grid + player */
-$("grid").innerHTML=FILMS.map((f,i)=>`<button class="film rv" style="--d:${(i%3)*80}ms" data-v="${f.v}" aria-label="Watch ${esc(f.title)}, ${esc(f.type)}, on YouTube"><img src="https://img.youtube.com/vi/${f.v}/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" loading="lazy" decoding="async" width="480" height="360"><span class="play"></span><span class="cap">${esc(f.title)}<small>${esc(f.type)}</small></span></button>`).join("");
+$("grid").innerHTML=FILMS.map((f,i)=>`<button class="film rv" style="--d:${(i%3)*80}ms" data-v="${f.v}" aria-label="Watch ${esc(f.title)}, ${esc(f.type)}, on YouTube"><img src="https://img.youtube.com/vi/${f.v}/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" loading="lazy" decoding="async" width="480" height="360"><span class="play"></span><span class="cap">${esc(f.title)}<small>${esc(f.type)}${f.meta?" · "+esc(f.meta):""}</small></span></button>`).join("");
 /* Film filter: All / Teasers / Highlights. "All" starts with the first 6; "Show all" reveals the rest. */
 (()=>{const kind=f=>/teaser/i.test(f.type)?"teaser":/highlight/i.test(f.type)?"highlight":"other";
 const defs=[["all","All"],["teaser","Teasers"],["highlight","Highlights"]],LIM=6;
@@ -728,7 +732,7 @@ bar.addEventListener("click",e=>{const b=e.target.closest(".fbtn");if(!b)return;
  track("Film Filter",{label:b.firstChild.textContent})})})();
 (()=>{let now=null;
 const show=f=>{now=f;$("ytl").href="https://www.youtube.com/watch?v="+f.v;
- $("pt").innerHTML=esc(f.title)+`<small>${esc(f.type)}</small>`;
+ $("pt").innerHTML=esc(f.title)+`<small>${esc(f.type)}${f.meta?" · "+esc(f.meta):""}</small>`;
  $("yt").src="https://www.youtube-nocookie.com/embed/"+f.v+"?autoplay=1&playsinline=1&rel=0"};
 /* step through what the visitor is currently filtering by; fall back to all films */
 const list=()=>{const v=[...$("grid").children].map((c,i)=>c.hidden?null:FILMS[i]).filter(Boolean);return v.includes(now)?v:FILMS};
