@@ -149,10 +149,10 @@ nav a[aria-current="true"]{color:var(--ink)}
 /* workflow */
 .flow{padding:var(--sec) 0}
 .flow .wrap>.eyebrow,.flow h2{text-align:center}
-.steps{position:relative;list-style:none;margin:2.5rem 0 0;padding:.75rem calc((100% - min(360px,82vw))/2) 1.75rem;display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;counter-reset:s;scrollbar-width:none;cursor:grab}
+.steps{position:relative;list-style:none;margin:2.5rem 0 0;--cw:min(360px,82vw);padding:.75rem calc((100% - var(--cw))/2) 1.75rem;display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;counter-reset:s;scrollbar-width:none;cursor:grab}
 .steps::-webkit-scrollbar{display:none}
 .steps.drag{scroll-snap-type:none;scroll-behavior:auto;cursor:grabbing;user-select:none}
-.steps li{counter-increment:s;flex:0 0 min(360px,82vw);scroll-snap-align:center;background:var(--card);border-radius:18px;border-top:3px solid var(--line);padding:1.75rem;transform:scale(.95);transition:transform .6s var(--ease),box-shadow .6s var(--ease),border-color .6s var(--ease)}
+.steps li{counter-increment:s;flex:0 0 var(--cw);scroll-snap-align:center;background:var(--card);border-radius:18px;border-top:3px solid var(--line);padding:1.75rem;transform:scale(.95);transition:transform .6s var(--ease),box-shadow .6s var(--ease),border-color .6s var(--ease)}
 .steps li.on{border-top-color:var(--accent);transform:none;box-shadow:0 18px 36px -18px rgba(0,0,0,.35)}
 .steps li::before{content:counter(s,decimal-leading-zero);font:300 2.25rem/1 var(--f-display);color:var(--accent);letter-spacing:-.02em}
 .steps h3{font-size:1.35rem;margin:.9rem 0 .6rem}
@@ -221,6 +221,7 @@ nav a[aria-current="true"]{color:var(--ink)}
 .chan .btn{padding:.65rem 1.1rem;font-size:.9375rem}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .fine{margin:0;color:var(--muted);font-size:.8125rem;line-height:1.55}
+.linkbtn.pvopen{padding:.55rem .25rem;margin:-.55rem -.25rem}
 .linkbtn{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 @media(hover:hover){.linkbtn:hover{color:var(--accent)}}
 
@@ -361,6 +362,10 @@ dialog{max-height:92dvh;overflow:auto}
 .qs{grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem 2.5rem}
 @media(max-width:860px){.qs{grid-template-columns:repeat(2,minmax(0,1fr))}.qs figure:nth-child(4){grid-column:1/-1}}
 @media(max-width:600px){.qs{grid-template-columns:minmax(0,1fr)}.qs figure:nth-child(4){grid-column:auto}}
+.promise{list-style:none;margin:1.6rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:.55rem 1.5rem;font:500 .9375rem/1.3 var(--f-body);color:var(--ink)}
+.promise li{display:inline-flex;align-items:center;gap:.55rem}
+.promise li::before{content:"";flex:none;width:.4rem;height:.7rem;margin:-.15rem .15rem 0 .1rem;border:solid var(--brass);border-width:0 2px 2px 0;rotate:45deg}
+.promise+.proof{margin-top:1.1rem}
 .who{margin:1.25rem 0 0;font:500 1.1rem/1.4 var(--f-body);color:var(--ink)}
 .hero .who+.lead{margin-top:.75rem}
 .more{border-top:1px solid var(--line);padding-top:.9rem}
@@ -425,6 +430,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 .abt-more a{display:inline-block;padding:.5rem 0;color:var(--ink);font-weight:600;text-decoration:none;border-bottom:1px solid var(--accent);transition:color .3s var(--ease)}
 .abt-more a::after{content:" \2192";color:var(--accent)}
 @media(hover:hover){.abt-more a:hover{color:var(--accent)}}
+@media(min-width:901px){.steps{--cw:min(480px,82vw)}}
 /* proof */
 .clients{margin-top:3rem}
 .clients ul{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:1rem 2.5rem;align-items:center}
@@ -489,6 +495,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <p class="who">Wedding video editing for videographers and studios.</p>
 <p class="lead">We shape your footage into a film your couples will replay for years. Wedding post-production, edited in Manila to match your style and your deadlines.</p>
 <div class="cta"><a class="btn" href="#contact" data-ev="CTA Click" data-label="Hero: Start a project">Start a project</a><a class="btn ghost wa" href="#contact" target="_blank" rel="noopener" hidden data-ev="CTA Click" data-label="Hero: WhatsApp">WhatsApp us</a><a class="btn ghost" href="#work" data-ev="CTA Click" data-label="Hero: Watch the films">Watch the films</a></div>
+<ul class="promise"><li>No payment upfront</li><li>Unlimited revisions</li><li>Reply within a day</li></ul>
 <p class="proof">Four years editing weddings. Drafts reviewed on Frame.io, final files delivered by Dropbox.</p>
 </div>
 <div class="hero-v"><button class="film feature" type="button" data-v="1u0ULhVUvvM" aria-label="Watch M &amp; D, wedding highlights, on YouTube"><img src="https://img.youtube.com/vi/1u0ULhVUvvM/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="1280" height="720" fetchpriority="high"><span class="play"></span><span class="tc" aria-hidden="true"><i id="tcv">00:00:00:00</i></span><span class="cap">M &amp; D<small>Wedding highlights</small></span></button><button class="film mini" type="button" data-v="1kHFaY5qJz0" aria-label="Watch G &amp; A, wedding teaser, on YouTube"><img src="https://img.youtube.com/vi/1kHFaY5qJz0/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="640" height="360"><span class="play"></span><span class="cap">G &amp; A<small>Wedding teaser</small></span></button></div>
@@ -524,9 +531,9 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <section class="flow" id="workflow"><div class="wrap">
 <div class="rv"><h2>How we work with you</h2></div>
 <ol class="steps" aria-label="Our process" tabindex="0">
-<li><h3>Initial consultation</h3><p>Send us a message in the contact section below. We’ll talk through your project, your editing style and the turnaround you need.</p></li>
+<li><h3>Initial consultation</h3><p>Get in touch in the contact section below, by email, WhatsApp or the brief form. We’ll reply within a day to talk through your project, your editing style and the turnaround you need.</p></li>
 <li><h3>Fill out your creative brief</h3><p>Fill out our <a href="#qb" data-ev="CTA Click" data-label="Step 2: creative brief link">quick creative brief</a> so we capture your preferences, brand style and specific instructions from the start.</p></li>
-<li><h3>Editing and collaboration</h3><p>Our Senior Editor and Project Manager will carefully build your first draft around your specific preferences. When ready, we’ll upload it to Frame.io so you can add direct comments and annotations right on the timeline. From there, we’ll implement your feedback to polish every detail.</p></li>
+<li><h3>Editing and collaboration</h3><p>Our senior editor and project manager will carefully build your first draft around your specific preferences. When ready, we’ll upload it to Frame.io so you can add direct comments and annotations right on the timeline. From there, we’ll implement your feedback to polish every detail.</p></li>
 <li><h3>Finalization</h3><p>After incorporating your feedback, we’ll upload the polished cut to Frame.io for your final review. Once approved, we will lock the edit and bundle all project assets for export.</p></li>
 <li><h3>Project handover</h3><p>After your final sign-off, we’ll send a PayPal payment link. As soon as payment is complete, we’ll deliver your high-resolution exports along with all project files and assets directly via Dropbox.</p></li>
 </ol>
@@ -554,11 +561,11 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <section class="faq" id="faq">
 <div class="rv"><h2>Good to know</h2></div>
 <div class="faq-list">
-<details name="faq"><summary>How does a project work?</summary><p>It starts with a quick chat about your project, then you fill out a short creative brief. We build a first draft, share it on Frame.io for your comments on the timeline, polish it with your feedback, and do a final review. After sign-off, we hand over your files.</p></details>
+<details name="faq"><summary>How does a project work?</summary><p>It starts when you get in touch, by email, WhatsApp or the brief form. We chat about your project, and a short creative brief captures your preferences. We build a first draft, share it on Frame.io for your comments on the timeline, polish it with your feedback, and do a final review. After sign-off, we hand over your files.</p></details>
 <details name="faq"><summary>What can you edit?</summary><p>Teasers, highlight films, full-length films, and ceremony and speeches edits. If you need something else, ask and we’ll tell you if it’s a fit.</p></details>
 <details name="faq"><summary>How do I send you the footage?</summary><p>Share a download link (Dropbox, Google Drive or similar) in the brief, or send it when we reply. If your files are large or messy, tell us and we’ll work out the easiest way to get them over.</p></details>
 <details name="faq"><summary>Can you match my editing style?</summary><p>Yes. Choose “Match my existing style” in the brief and send a few of your previous films or references. If you’d rather explore, we can go cinematic or documentary, or help you decide.</p></details>
-<details name="faq"><summary>Can you use the songs I choose?</summary><p>Commercial songs are copyrighted and need a licence to be used in a final film. Any songs you share are used as inspiration for mood and pacing, and we find licensed music in a similar style. You can also pick a genre and mood in the brief, or let us choose.</p></details>
+<details name="faq"><summary>Can you use the songs I choose?</summary><p>Commercial songs are copyrighted and need a license to be used in a final film. Any songs you share are used as inspiration for mood and pacing, and we find licensed music in a similar style. You can also pick a genre and mood in the brief, or let us choose.</p></details>
 <details name="faq"><summary>How long will it take, and what does it cost?</summary><p>Turnaround depends on your deadline and how much footage there is. We confirm your exact price and timing within a day of receiving your <a href="#qb">brief</a>.</p></details>
 <details name="faq"><summary>How do reviews and revisions work?</summary><p>We upload drafts to Frame.io, where you can leave comments directly on the timeline. Revisions are unlimited: we apply your feedback as many times as needed, then send the polished cut for a final review before we lock the edit.</p></details>
 <details name="faq"><summary>How do payment and delivery work?</summary><p>After your final sign-off we send a PayPal payment link. Once payment is complete, we deliver your high-resolution exports, project files and assets via Dropbox.</p></details>
@@ -606,7 +613,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <label>Footage link (optional)<input type="url" id="bl" placeholder="https://…" pattern="https://.+" aria-describedby="bmsg"></label>
 <div class="two"><label>Cameras or angles<input type="text" id="bc" placeholder="e.g. 2 cameras" autocomplete="off"></label><label>Footage size<input type="text" id="bz" placeholder="e.g. about 300 GB" autocomplete="off"></label></div>
 <fieldset><legend>Music preferences</legend><div class="two"><label>Genre<select id="bg"><option>Let the editor choose</option><option>Cinematic / orchestral</option><option>Acoustic / folk</option><option>Piano / classical</option><option>Pop</option><option>Indie</option><option>R&amp;B / soul</option><option>Electronic / dance</option><option>Rock</option><option>OPM / Filipino</option></select></label><label>Mood of the video<select id="bo"><option>Let the editor choose</option><option>Romantic</option><option>Emotional</option><option>Joyful / upbeat</option><option>Elegant / timeless</option><option>Fun / party</option><option>Dreamy</option><option>Calm / intimate</option><option>Epic / dramatic</option></select></label></div></fieldset>
-<label>Specific songs (optional)<input type="text" id="bm" placeholder="Song titles or artists" autocomplete="off" aria-describedby="bmn"><small class="fine" id="bmn"><b>Licensing note:</b> commercial songs are copyrighted and can’t be used in the final film without a licence. Any songs you list are used for inspiration only, to guide the mood and pacing. We’ll find licensed music in a similar style.</small></label>
+<label>Specific songs (optional)<input type="text" id="bm" placeholder="Song titles or artists" autocomplete="off" aria-describedby="bmn"><small class="fine" id="bmn"><b>Licensing note:</b> commercial songs are copyrighted and can’t be used in the final film without a license. Any songs you list are used for inspiration only, to guide the mood and pacing. We’ll find licensed music in a similar style.</small></label>
 <label>Reference film link<input type="url" id="br" placeholder="https://…" pattern="https://.+" aria-describedby="bmsg"></label>
 </div></details>
 <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
