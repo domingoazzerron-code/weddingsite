@@ -420,11 +420,7 @@ dialog iframe{max-height:70dvh}
 html:has(dialog[open]){overflow:hidden}
 .brief [aria-invalid="true"]{border-color:var(--accent)}
 
-/* prepare, styles, next steps, whatsapp */
-.prep-list{list-style:none;margin:2.25rem 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,165px),1fr));gap:2rem 2rem}
-.prep-list h3{font-size:1.2rem;margin-bottom:.4rem;border-top:2px solid var(--brass);padding-top:.9rem}
-.prep-list p{margin:0;color:var(--muted);font-size:.9375rem;line-height:1.65}
-.prep .cta{margin-top:2rem}
+/* styles, next steps, whatsapp */
 .next{padding:1.1rem 1.25rem;border:1px solid var(--accent);border-radius:12px;background:color-mix(in srgb,var(--accent) 8%,var(--bg))}
 .next h4{margin:0 0 .5rem;font:600 .9375rem/1.3 var(--f-body)}
 .next .cta{margin-top:1rem}
@@ -474,8 +470,8 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 .clients li{font:400 1.25rem/1.2 var(--f-display);color:var(--muted)}
 .clients img{display:block;height:2rem;width:auto;max-width:9rem;object-fit:contain;opacity:.75}
 /* before / after clips */
-.behind,.prep{padding:0}
-.behind>.wrap,.prep>.wrap{padding-top:var(--sec);padding-bottom:var(--sec)}
+.behind{padding:0}
+.behind>.wrap{padding-top:var(--sec);padding-bottom:var(--sec)}
 .ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin-top:2.25rem}
 .ba figure{margin:0;min-width:0}
 .ba video{display:block;width:100%;height:auto;aspect-ratio:1920/962;background:#000;border-radius:2px;box-shadow:0 24px 40px -24px rgba(0,0,0,.5)}
@@ -485,7 +481,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 @media(max-width:760px){.ba{grid-template-columns:minmax(0,1fr)}}
 @media(min-width:861px){.faq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:clamp(2rem,6vw,5rem);align-items:start}.faq-list{max-width:none;margin-top:.4rem}.faq>.rv{position:sticky;top:6rem}}
 /* section dividers: same width as the content, not the padding */
-.behind>.wrap,.pricing>.wrap,.prep>.wrap{background:linear-gradient(var(--line),var(--line)) center top/calc(100% - 2.5rem) 1px no-repeat}
+.behind>.wrap,.pricing>.wrap{background:linear-gradient(var(--line),var(--line)) center top/calc(100% - 2.5rem) 1px no-repeat}
 /* pricing */
 .pricing>.wrap>.rv{margin-bottom:clamp(1.5rem,4vw,2.25rem)}
 .pricing>.wrap{padding-top:var(--sec);padding-bottom:var(--sec)}
@@ -518,6 +514,98 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 .qs figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .5rem}
 .qs .rc{display:inline-block;margin-left:0;padding:.2rem .55rem;border:1px solid var(--line);border-radius:999px;font:500 .8125rem/1 var(--f-body);letter-spacing:0;color:var(--accent);vertical-align:middle}
 @media(max-width:520px){.pl li{gap:.35rem 1.25rem}.pr{font-size:1.75rem}}
+/* ===== Brief form polish ===== */
+.brief{position:relative;overflow:hidden;gap:1.35rem;border-radius:24px;padding:clamp(1.5rem,3.2vw,2.4rem);box-shadow:0 1px 0 color-mix(in srgb,#fff 40%,transparent) inset,0 30px 60px -34px rgba(35,33,58,.45),0 2px 6px rgba(35,33,58,.05)}
+.brief::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--brass),var(--accent))}
+.brief h3{font-size:clamp(1.6rem,1.3rem + 1vw,2rem);letter-spacing:-.025em}
+.brief .sub{max-width:42ch;margin-top:.55rem}
+.brief label,.brief legend{font-size:.8125rem;font-weight:600;letter-spacing:.02em;color:var(--ink)}
+.brief label{gap:.45rem}
+.brief label small,.brief label .fine{font-weight:400;letter-spacing:0}
+.brief input[type=text],.brief input[type=email],.brief input[type=date],.brief input[type=url],.brief select{border-radius:14px;background:var(--bg);border-color:color-mix(in srgb,var(--line) 85%,var(--ink));box-shadow:0 1px 2px rgba(35,33,58,.04) inset;font-weight:400;color:var(--ink)}
+@media(hover:hover){.brief input[type=text]:hover,.brief input[type=email]:hover,.brief input[type=date]:hover,.brief input[type=url]:hover,.brief select:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}}
+.brief input[type=text]:focus-visible,.brief input[type=email]:focus-visible,.brief input[type=date]:focus-visible,.brief input[type=url]:focus-visible,.brief select:focus-visible{background:color-mix(in srgb,var(--accent) 3%,var(--bg))}
+.brief input:-webkit-autofill{-webkit-box-shadow:0 0 0 40px var(--bg) inset;-webkit-text-fill-color:var(--ink)}
+:root[data-theme="dark"] .brief input[type=date]{color-scheme:dark}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .brief input[type=date]{color-scheme:dark}}
+.brief fieldset{gap:.65rem}
+.brief legend{margin-bottom:.55rem}
+.chk{gap:.55rem}
+.chk label{position:relative;min-height:2.75rem;padding:.55rem 1.05rem .55rem .85rem;font-size:.9375rem;font-weight:500;letter-spacing:0;border-color:color-mix(in srgb,var(--line) 85%,var(--ink));user-select:none}
+.chk input{appearance:none;-webkit-appearance:none;width:1.1rem;height:1.1rem;flex:none;border:1.5px solid color-mix(in srgb,var(--muted) 70%,transparent);border-radius:50%;background:transparent;display:grid;place-items:center;transition:background .25s var(--ease),border-color .25s var(--ease),transform .25s var(--ease)}
+.chk input::after{content:"";width:.5rem;height:.28rem;border-left:2px solid var(--bg);border-bottom:2px solid var(--bg);transform:rotate(-45deg) translate(1px,-1px) scale(0);transition:transform .25s var(--ease)}
+.chk input:checked{background:var(--accent);border-color:var(--accent)}
+.chk input:checked::after{transform:rotate(-45deg) translate(1px,-1px) scale(1)}
+.chk label:has(input:checked){border-color:var(--accent);background:color-mix(in srgb,var(--accent) 10%,var(--bg));box-shadow:0 0 0 1px var(--accent) inset}
+.chk label:has(input:focus-visible){outline:3px solid color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:2px}
+.more{border-top:1px solid var(--line);padding-top:1rem}
+.more summary{min-height:2.75rem;font-size:.9375rem;font-weight:600;border-radius:12px;transition:color .3s var(--ease)}
+.more summary::after{content:"+";display:grid;place-items:center;width:1.9rem;height:1.9rem;flex:none;border:1px solid var(--line);border-radius:50%;font-size:1.1rem;font-weight:400;transition:background .3s var(--ease),border-color .3s var(--ease),transform .4s var(--ease)}
+.more[open] summary::after{content:"+";transform:rotate(45deg);border-color:var(--accent)}
+@media(hover:hover){.more summary:hover::after{background:color-mix(in srgb,var(--accent) 10%,transparent);border-color:var(--accent)}}
+.more summary:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:3px}
+.more summary span{font-size:.8125rem}
+.more-in{gap:1.3rem;margin-top:1.15rem}
+.more-in .fine{display:block;padding:.7rem .85rem;border-left:2px solid var(--brass);background:color-mix(in srgb,var(--brass) 8%,transparent);border-radius:0 10px 10px 0;line-height:1.55}
+#bmsg{min-height:0;font-weight:500}
+#bmsg:empty{display:none}
+.brief [aria-invalid="true"]{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
+.brief .row{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:.7rem;margin-top:.15rem}
+.brief .row .btn{min-height:3.25rem;display:flex;align-items:center;justify-content:center;font-size:1rem;padding:.9rem 1.2rem;width:100%}
+.brief .row .btn:not(.ghost){box-shadow:0 14px 26px -16px color-mix(in srgb,var(--ink) 80%,transparent)}
+.brief .row .btn:focus-visible,.next .btn:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:3px}
+.brief>.fine{text-align:center;padding-top:.15rem}
+.brief>.fine .linkbtn{color:var(--ink);font-weight:500}
+.next{position:relative;padding:1.25rem 1.35rem 1.35rem;border-radius:16px;border:1px solid color-mix(in srgb,var(--accent) 55%,var(--line))}
+.next:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 45%,transparent);outline-offset:3px}
+.next h4{font-size:1rem;margin-bottom:.75rem}
+.next ol{list-style:none;counter-reset:n;padding:0;gap:.6rem}
+.next ol li{counter-increment:n;position:relative;padding-left:2rem}
+.next ol li::before{content:counter(n);position:absolute;left:0;top:.05rem;width:1.35rem;height:1.35rem;border-radius:50%;background:var(--accent);color:var(--bg);font:600 .75rem/1.35rem var(--f-body);text-align:center}
+@media(max-width:520px){.brief{padding:1.35rem 1.1rem 1.5rem;border-radius:18px}.brief .row{grid-template-columns:minmax(0,1fr)}.two{grid-template-columns:minmax(0,1fr)}.brief .row .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.chk input,.chk input::after,.more summary::after{transition:none}}
+
+/* summary toggle: exact centering */
+.more summary{align-items:center}
+.more summary .st{flex:1 1 auto;min-width:0;line-height:1.35;color:var(--ink);font-weight:600;font-size:.9375rem}
+.more summary .st em{font-style:normal;color:var(--muted);font-weight:400;font-size:.8125rem;white-space:nowrap}
+.more summary::after,.more[open] summary::after{content:"";display:block;box-sizing:border-box;width:2rem;height:2rem;flex:none;border:1px solid var(--line);border-radius:50%;background:linear-gradient(var(--accent),var(--accent)) center/.8rem 1.5px no-repeat,linear-gradient(var(--accent),var(--accent)) center/1.5px .8rem no-repeat;font-size:0;transition:background-color .3s var(--ease),border-color .3s var(--ease),transform .4s var(--ease)}
+.more[open] summary::after{transform:rotate(45deg);border-color:var(--accent)}
+
+/* sticky mobile CTA */
+.stick{display:none}
+@media(max-width:760px){
+.stick{display:flex;align-items:center;justify-content:center;position:fixed;left:1.25rem;right:1.25rem;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));z-index:19;min-height:52px;padding:.9rem 1.2rem;border-radius:999px;background:var(--ink);color:var(--bg);font:600 1rem/1 var(--f-body);letter-spacing:.01em;text-decoration:none;box-shadow:0 14px 28px -12px rgba(0,0,0,.55);translate:0 140%;opacity:0;visibility:hidden;transition:translate .45s var(--ease),opacity .3s var(--ease),visibility 0s .45s}
+body:has(.wa-fab:not([hidden])) .stick{right:5.25rem}
+.stick.on{translate:0 0;opacity:1;visibility:visible;transition:translate .45s var(--ease),opacity .3s var(--ease),visibility 0s}
+.stick:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:3px}
+body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
+}
+@media(prefers-reduced-motion:reduce){.stick{transition:none}}
+
+/* brief: step-by-step form (only active when JS adds .js-steps) */
+.bsteps ol{list-style:none;margin:0 0 .9rem;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;font-size:.8125rem;font-weight:600;letter-spacing:.01em;color:var(--muted)}
+.bsteps li{display:flex;flex-direction:column;align-items:center;gap:.5rem;min-width:0;text-align:center;line-height:1.25;transition:color .3s var(--ease)}
+.bsteps li::before{content:attr(data-n);flex:none;display:grid;place-items:center;width:2.4rem;height:2.4rem;border:2px solid color-mix(in srgb,var(--ink) 28%,var(--line));border-radius:50%;font-size:1rem;font-weight:700;color:var(--ink);background:transparent;transition:background .3s var(--ease),color .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
+.bsteps li.cur{color:var(--ink);font-weight:700}
+.bsteps li.cur::before{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 22%,transparent)}
+.bsteps li.done{color:var(--ink)}
+.bsteps li.done::before{content:"✓";background:color-mix(in srgb,var(--accent) 16%,transparent);border-color:var(--accent);color:var(--accent)}
+.bsteps .prog{height:6px;border-radius:6px;background:color-mix(in srgb,var(--ink) 16%,var(--line));overflow:hidden}
+.bsteps .prog i{display:block;height:100%;width:33.33%;background:var(--accent);border-radius:6px;transition:width .4s var(--ease)}
+.bsteps .stl{margin:.7rem 0 0;font-size:.875rem;font-weight:600;color:var(--ink)}
+.step{display:grid;gap:1.3rem;min-width:0}
+.step>*{min-width:0}
+.step .opt{margin:0;font-size:.875rem;color:var(--muted);line-height:1.5}
+.js-steps .step:not(.on){display:none}
+.js-steps .step.on{animation:stepin .35s var(--ease)}
+@keyframes stepin{from{opacity:0;translate:0 6px}to{opacity:1;translate:0 0}}
+.js-steps .row[hidden],.snav[hidden],.skip-s[hidden],.bsteps[hidden]{display:none}
+.snav{display:flex;gap:.7rem}
+.snav .btn{flex:1 1 auto;min-height:3.25rem;display:flex;align-items:center;justify-content:center;font-size:1rem;padding:.9rem 1.2rem}
+.snav #snext{flex:1.7 1 0}.snav #sback{flex:1 1 0}
+.skip-s{margin:-.35rem 0 0;text-align:center;font-size:.875rem}
+@media(prefers-reduced-motion:reduce){.js-steps .step.on{animation:none}.bsteps .prog i{transition:none}}
 </style>
 <noscript><style>.rv{opacity:1!important;translate:none!important}</style></noscript></head>
 <body>
@@ -544,6 +632,13 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <div class="films-cta rv"><p>Like a style? Open a film and tap “Use as reference”, or start your brief and tell us what you have in mind.</p><a class="btn" href="#qb" data-ev="CTA Click" data-label="Films: Start your brief">Start your brief</a></div>
 </section>
 </div>
+<section class="words" id="words">
+<div class="rev">
+<div class="rv"><h2>Kind words</h2><p class="rev-s">Feedback from our clients.</p>
+<div class="clients" id="clients" hidden><p class="eyebrow">Studios we edit for</p><ul id="cl"></ul></div>
+<div class="qs"><figure class="big"><blockquote>“The video is amazing! This is one of the best ones you guys have ever made me. Thank you so much.”</blockquote><figcaption>Brian Jay, wedding videographer<span class="rc">Repeat client</span></figcaption></figure><figure><blockquote>“This video is AMAZING.”</blockquote><figcaption>Brian Jay, wedding videographer<span class="rc">Repeat client</span></figcaption></figure><figure><blockquote>“Thanks so much for the great work from your team.”</blockquote><figcaption>Wedding video client, JMT</figcaption></figure><figure><blockquote>“The highlight video and teaser are good to go.”</blockquote><figcaption>Wedding video client, JMT</figcaption></figure></div></div>
+</div>
+</section>
 <section class="behind" id="behind"><div class="wrap">
 <div class="rv"><h2>Before and after</h2><p class="rev-s">Where every edit starts, and where it comes together. Press play on either clip.</p></div>
 <div class="ba">
@@ -588,39 +683,18 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 </div>
 </div></section>
 <div class="wrap">
-<section class="words" id="words">
-<div class="rev">
-<div class="rv"><h2>Kind words</h2><p class="rev-s">Feedback from our clients.</p>
-<div class="clients" id="clients" hidden><p class="eyebrow">Studios we edit for</p><ul id="cl"></ul></div>
-<div class="qs"><figure class="big"><blockquote>“The video is amazing! This is one of the best ones you guys have ever made me. Thank you so much.”</blockquote><figcaption>Brian Jay, wedding videographer<span class="rc">Repeat client</span></figcaption></figure><figure><blockquote>“This video is AMAZING.”</blockquote><figcaption>Brian Jay, wedding videographer<span class="rc">Repeat client</span></figcaption></figure><figure><blockquote>“Thanks so much for the great work from your team.”</blockquote><figcaption>Wedding video client, JMT</figcaption></figure><figure><blockquote>“The highlight video and teaser are good to go.”</blockquote><figcaption>Wedding video client, JMT</figcaption></figure></div></div>
-</div>
-</section>
 <section class="faq" id="faq">
 <div class="rv"><h2>Good to know</h2></div>
 <div class="faq-list">
-<details name="faq"><summary>How does a project work?</summary><p>It starts when you get in touch, by email, WhatsApp or the brief form. We chat about your project, and a short creative brief captures your preferences. We build a first draft, share it on Frame.io for your comments on the timeline, polish it with your feedback, and do a final review. After sign-off, we hand over your files.</p></details>
-<details name="faq"><summary>What can you edit?</summary><p>Teasers, highlight films, full-length films, and ceremony and speeches edits. If you need something else, ask and we’ll tell you if it’s a fit.</p></details>
-<details name="faq"><summary>How do I send you the footage?</summary><p>Share a download link (Dropbox, Google Drive or similar) in the brief, or send it when we reply. If your files are large or messy, tell us and we’ll work out the easiest way to get them over.</p></details>
-<details name="faq"><summary>Can you match my editing style?</summary><p>Yes. Choose “Match my existing style” in the brief and send a few of your previous films or references. If you’d rather explore, we can go cinematic or documentary, or help you decide.</p></details>
-<details name="faq"><summary>Can you use the songs I choose?</summary><p>Commercial songs are copyrighted and need a license to be used in a final film. Any songs you share are used as inspiration for mood and pacing, and we find licensed music in a similar style. You can also pick a genre and mood in the brief, or let us choose.</p></details>
-<details name="faq"><summary>How long will it take, and what does it cost?</summary><p>Turnaround depends on your deadline and how much footage there is. We confirm your exact price and timing within a day of receiving your <a href="#qb">brief</a>.</p></details>
-<details name="faq"><summary>How do reviews and revisions work?</summary><p>We upload drafts to Frame.io, where you can leave comments directly on the timeline. Revisions are unlimited: we apply your feedback as many times as needed, then send the polished cut for a final review before we lock the edit.</p></details>
-<details name="faq"><summary>How do payment and delivery work?</summary><p>After your final sign-off we send a PayPal payment link. Once payment is complete, we deliver your high-resolution exports, project files and assets via Dropbox.</p></details>
-<details name="faq"><summary>Where are you based?</summary><p>We’re a collaborative team working together in a studio in Manila, Philippines.</p></details>
+<details name="faq"><summary>What should I have ready?</summary><p>A footage link (Dropbox, Google Drive or similar), the wedding date and your deadline, the deliverable you want, a few style references, and a music genre and mood. If your files are large or messy, tell us and we’ll find the easiest way to get them over. You don’t need everything on day one, and the <a href="#qb">brief</a> asks for each of these.</p></details>
+<details name="faq"><summary>Can you match my editing style?</summary><p>Yes. Choose “Match my existing style” in the brief and send a few references.</p></details>
+<details name="faq"><summary>Can you use the songs I choose?</summary><p>Commercial songs are copyrighted and need a license to be used in a final film. Any songs you share are used as inspiration for mood and pacing, and we find licensed music in a similar style.</p></details>
+<details name="faq"><summary>How long will it take, and what does it cost?</summary><p>It depends on your deadline and how much footage there is. We confirm your exact price and timing within a day of receiving your <a href="#qb">brief</a>.</p></details>
+<details name="faq"><summary>How do reviews and revisions work?</summary><p>Revisions are unlimited. Leave comments directly on the timeline in Frame.io and we’ll update the cut until you’re happy.</p></details>
+<details name="faq"><summary>How do payment and delivery work?</summary><p>After your final sign-off we send a PayPal payment link. Once payment is complete, we deliver your final exports and project files via Dropbox.</p></details>
 </div>
 </section>
 </div>
-<section class="prep" id="prepare"><div class="wrap">
-<div class="rv"><h2>What to have ready</h2><p class="rev-s">You don’t need everything on day one. The more you share, the faster we can start.</p></div>
-<ul class="prep-list rv">
-<li><h3>Footage link</h3><p>A Dropbox, Google Drive or similar download link. Tell us if the files are large or messy.</p></li>
-<li><h3>Your dates</h3><p>The wedding date and the date you need the film by.</p></li>
-<li><h3>The deliverable</h3><p>Teaser, highlights, full film, or ceremony and speeches.</p></li>
-<li><h3>Style references</h3><p>A few films you like, or your own earlier work if you want us to match it.</p></li>
-<li><h3>Music and notes</h3><p>A music genre and mood (or let us choose), any songs for inspiration, plus must-keep moments and names we should know.</p></li>
-</ul>
-<div class="cta"><a class="btn" href="#qb" data-ev="CTA Click" data-label="Prepare: Start your brief">Start your brief</a></div>
-</div></section>
 <div class="wrap">
 <section class="contact" id="contact">
 <div class="cgrid">
@@ -638,6 +712,8 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 </div>
 <form class="brief rv" id="qb" aria-labelledby="qbt" novalidate style="--d:120ms">
 <div><h3 id="qbt">Start your brief</h3><p class="sub" id="bsub">Tell us what you need in 30 seconds. We’ll turn it into a ready-to-send email.</p></div>
+<div class="bsteps" id="steps" hidden><ol><li data-n="1">You</li><li data-n="2">Dates &amp; footage</li><li data-n="3">Style &amp; music</li></ol><div class="prog"><i id="prog"></i></div><p class="stl" id="stl" aria-live="polite"></p></div>
+<div class="step on" data-s="1">
 <div class="two"><label>Your name<input type="text" id="bn" autocomplete="name" autocapitalize="words" aria-describedby="bmsg" required></label><label>Your email<input type="email" id="be" autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="bmsg" required></label></div>
 <fieldset><legend>What do you need edited?</legend><div class="chk">
 <label><input type="checkbox" name="d" value="Teaser" checked>Teaser</label>
@@ -645,18 +721,23 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <label><input type="checkbox" name="d" value="Full-length film">Full film</label>
 <label><input type="checkbox" name="d" value="Ceremony and speeches edit">Ceremony &amp; speeches</label>
 </div></fieldset>
-<details class="more" open><summary>Dates, style, footage and music <span>(optional)</span></summary><div class="more-in"><div class="two"><label>Wedding date<input type="date" id="bd"></label><label>Need it by<input type="date" id="bb"></label></div>
-<label>Editing style<select id="bs"><option>Not sure yet</option><option>Cinematic</option><option>Documentary</option><option>Match my existing style</option></select></label>
+</div>
+<div class="step" data-s="2"><p class="opt">Optional. Share what you have now and add the rest later.</p><div class="two"><label>Wedding date<input type="date" id="bd"></label><label>Need it by<input type="date" id="bb"></label></div>
 <label>Footage link (optional)<input type="url" id="bl" placeholder="https://…" pattern="https://.+" aria-describedby="bmsg"></label>
 <div class="two"><label>Cameras or angles<input type="text" id="bc" placeholder="e.g. 2 cameras" autocomplete="off"></label><label>Footage size<input type="text" id="bz" placeholder="e.g. about 300 GB" autocomplete="off"></label></div>
+</div>
+<div class="step" data-s="3"><p class="opt">Optional. Skip anything you’re unsure about and we’ll help you decide.</p>
+<label>Editing style<select id="bs"><option>Not sure yet</option><option>Cinematic</option><option>Documentary</option><option>Match my existing style</option></select></label>
 <fieldset><legend>Music preferences</legend><div class="two"><label>Genre<select id="bg"><option>Let the editor choose</option><option>Cinematic / orchestral</option><option>Acoustic / folk</option><option>Piano / classical</option><option>Pop</option><option>Indie</option><option>R&amp;B / soul</option><option>Electronic / dance</option><option>Rock</option><option>OPM / Filipino</option></select></label><label>Mood of the video<select id="bo"><option>Let the editor choose</option><option>Romantic</option><option>Emotional</option><option>Joyful / upbeat</option><option>Elegant / timeless</option><option>Fun / party</option><option>Dreamy</option><option>Calm / intimate</option><option>Epic / dramatic</option></select></label></div></fieldset>
 <label>Specific songs (optional)<input type="text" id="bm" placeholder="Song titles or artists" autocomplete="off" aria-describedby="bmn"><small class="fine" id="bmn"><b>Licensing note:</b> commercial songs are copyrighted and can’t be used in the final film without a license. Any songs you list are used for inspiration only, to guide the mood and pacing. We’ll find licensed music in a similar style.</small></label>
 <label>Reference film link<input type="url" id="br" placeholder="https://…" pattern="https://.+" aria-describedby="bmsg"></label>
-</div></details>
+</div>
 <div class="hp" aria-hidden="true"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 <p id="bmsg" role="status"></p>
 <div class="next" id="next" hidden tabindex="-1"><h4>What happens next</h4><ol><li>We reply within a day to confirm timing and details.</li><li>Send us your footage link and any references, if you haven’t already.</li><li>We build your first draft and share it on Frame.io for your comments.</li></ol><div class="cta"><a class="btn" id="nxm" href="mailto:marcusweddingstudio@gmail.com" data-ev="CTA Click" data-label="Next steps: Email footage link">Email your footage link</a><a class="btn ghost wa" href="#contact" target="_blank" rel="noopener" hidden data-ev="CTA Click" data-label="Next steps: WhatsApp">Send it on WhatsApp</a></div></div>
-<div class="row"><button class="btn" type="submit" id="bsend">Email my brief</button><button class="btn ghost" type="button" id="bcp">Copy text</button></div>
+<div class="snav" id="snav" hidden><button class="btn ghost" type="button" id="sback" hidden>Back</button><button class="btn" type="button" id="snext">Continue</button></div>
+<p class="skip-s" id="sskip" hidden><button type="button" class="linkbtn" id="bskip">Skip the rest and send</button></p>
+<div class="row" id="srow"><button class="btn" type="submit" id="bsend">Email my brief</button><button class="btn ghost" type="button" id="bcp">Copy text</button></div>
 <p class="fine">We only use your details to reply about your project. <button type="button" class="linkbtn pvopen">How we handle your data</button></p>
 </form>
 </div>
@@ -665,7 +746,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 </main>
 <div class="wrap"><footer class="foot">
 <div class="f-brand"><a class="brand" href="#" aria-label="Marcus Wedding Studio, back to top"><svg class="logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M14 52V24l18 18 18-18v28" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 19v33" stroke="var(--brass)" stroke-width="2" stroke-linecap="round"/><path d="M27.5 9h9v5.5L32 19.5l-4.5-5z" fill="var(--brass)" stroke="var(--brass)" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="bt"><b>Marcus</b><small>Wedding Studio</small></span></a><p>You shoot it. We finish it. Wedding post-production, edited in Manila.</p></div>
-<div class="f-col"><p class="f-h">Explore</p><ul class="f-links"><li><a href="#work">Films</a></li><li><a href="#behind">Before and after</a></li><li><a href="#about">About</a></li><li><a href="#workflow">Workflow</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#words">Kind words</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+<div class="f-col"><p class="f-h">Explore</p><ul class="f-links"><li><a href="#work">Films</a></li><li><a href="#words">Kind words</a></li><li><a href="#behind">Before and after</a></li><li><a href="#about">About</a></li><li><a href="#workflow">Workflow</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul></div>
 <div class="f-col"><p class="f-h">Contact</p><a href="mailto:marcusweddingstudio@gmail.com">marcusweddingstudio@gmail.com</a><span class="soc" id="soc"></span><p class="f-note">Manila, Philippines. We reply within a day.</p></div>
 <div class="f-base"><span>© 2026 Marcus Wedding Studio</span><button type="button" class="linkbtn pvopen">Privacy</button></div>
 </footer></div>
@@ -687,6 +768,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 </div></dialog>
 <dialog id="pl" aria-label="Film player"><iframe id="yt" title="Film player" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe><div class="dtxt"><h3 id="pt" aria-live="polite"></h3><div class="pnav"><button type="button" id="pp" aria-label="Previous film">‹</button><button type="button" id="pn" aria-label="Next film">›</button></div><button type="button" id="pr">Use as reference</button><a class="btn" id="ytl" target="_blank" rel="noopener">Watch on YouTube</a><button type="button" id="pc">Close</button></div></dialog>
 
+<a class="stick" id="stick" href="#contact" aria-hidden="true" tabindex="-1" data-ev="CTA Click" data-label="Sticky: Start a project">Start a project</a>
 <script>
 const $=id=>document.getElementById(id);
 const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
@@ -822,14 +904,23 @@ btn.textContent=SEND;
 const today=()=>{const d=new Date(),p=n=>String(n).padStart(2,"0");return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())};
 const syncDates=()=>{const w=$("bd").value,t=today();$("bb").min=w&&w>t?w:t};
 syncDates();$("bd").addEventListener("change",syncDates);
-if(matchMedia("(max-width:760px)").matches)f.querySelector(".more").open=false;
+/* Step-by-step flow: JS turns it on, so the form still works as one page without it */
+const stepEls=[...f.querySelectorAll(".step")],labels=[...f.querySelectorAll("#steps li")],NAMES=["About you","Dates and footage","Style and music"];
+let cur=1;
+const go=(n,quiet)=>{cur=Math.max(1,Math.min(3,n));
+ stepEls.forEach(x=>x.classList.toggle("on",+x.dataset.s===cur));
+ labels.forEach((x,i)=>{x.classList.toggle("cur",i+1===cur);x.classList.toggle("done",i+1<cur);i+1===cur?x.setAttribute("aria-current","step"):x.removeAttribute("aria-current")});
+ $("prog").style.width=(cur/3*100)+"%";$("stl").textContent="Step "+cur+" of 3 · "+NAMES[cur-1]+(cur>1?" (optional)":"");
+ $("sback").hidden=cur===1;$("snext").hidden=cur===3;$("sskip").hidden=cur===3;$("srow").hidden=cur!==3;
+ if(!quiet){const r=f.getBoundingClientRect();if(r.top<0||r.top>innerHeight*.5)f.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"})}};
+f.go=go;f.classList.add("js-steps");$("steps").hidden=false;$("snav").hidden=false;go(1,true);
 /* Remember a half-finished brief in this browser until it is sent */
 const KEY="briefDraft",ids=["bn","be","bd","bb","bs","bl","bc","bz","bg","bo","bm","br"];
 try{const o=JSON.parse(localStorage.getItem(KEY)||"null");if(o&&typeof o==="object"){
  ids.forEach(i=>{if(typeof o[i]!=="string")return;if($(i).tagName==="SELECT"&&![...$(i).options].some(x=>x.value===o[i]))return;$(i).value=o[i]});
  if(Array.isArray(o.d))f.querySelectorAll("input[name=d]").forEach(x=>{x.checked=o.d.includes(x.value)});
  syncDates();
- if(["bd","bb","bl","bc","bz","bg","bo","bm","br"].some(i=>$(i).value)||$("bs").selectedIndex>0)f.querySelector(".more").open=true}}catch(e){}
+ }}catch(e){}
 const save=()=>{try{const o={d:[...f.querySelectorAll("input[name=d]:checked")].map(x=>x.value)};ids.forEach(i=>{o[i]=$(i).value});localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
 f.addEventListener("input",save);f.addEventListener("change",save);
 if(CFG.formEndpoint)$("bsub").textContent="Tell us what you need in 30 seconds. We’ll reply within a day.";
@@ -838,16 +929,16 @@ const dl=()=>[...f.querySelectorAll("input[name=d]:checked")].map(x=>x.value).jo
 ["bn","be","bb","bl","br"].forEach(i=>$(i).addEventListener("input",()=>$(i).removeAttribute("aria-invalid")));
 const ok=need=>{
  [$("bn"),$("be"),$("bb"),$("bl"),$("br")].forEach(x=>x.removeAttribute("aria-invalid"));
- const bad=(el,t)=>{msg.textContent=t;el.setAttribute("aria-invalid","true");el.focus();return false};
+ const bad=(el,t)=>{msg.textContent=t;el.setAttribute("aria-invalid","true");const st=el.closest(".step");if(st)go(+st.dataset.s,true);el.focus();return false};
  if(need){const n=$("bn"),m=$("be");
   if(!n.value.trim())return bad(n,"Please add your name.");
   if(!m.value.trim()||!m.checkValidity())return bad(m,"Please add a valid email so we can reply.")}
- if(!f.querySelector("input[name=d]:checked")){msg.textContent="Pick at least one deliverable.";return false}
+ if(!f.querySelector("input[name=d]:checked")){go(1,true);msg.textContent="Pick at least one deliverable.";return false}
  if($("bb").value){const w=$("bd").value,b=$("bb").value;
-  if(b<today()){$("bb").closest("details").open=true;return bad($("bb"),"“Need it by” can’t be in the past.")}
-  if(w&&b<w){$("bb").closest("details").open=true;return bad($("bb"),"“Need it by” should be on or after the wedding date.")}}
- if(!$("bl").checkValidity()){$("bl").closest("details").open=true;return bad($("bl"),"Footage link should start with https://")}
- if(!$("br").checkValidity()){$("br").closest("details").open=true;return bad($("br"),"Reference link should start with https://")}
+  if(b<today()){return bad($("bb"),"“Need it by” can’t be in the past.")}
+  if(w&&b<w){return bad($("bb"),"“Need it by” should be on or after the wedding date.")}}
+ if(!$("bl").checkValidity()){return bad($("bl"),"Footage link should start with https://")}
+ if(!$("br").checkValidity()){return bad($("br"),"Reference link should start with https://")}
  msg.textContent="";return true};
 const build=()=>{const rows=[["Name",$("bn").value.trim()],["Email",$("be").value.trim()],["Wedding date",$("bd").value],["Need it by",$("bb").value],["Deliverables",dl()],["Editing style",$("bs").value],["Footage link",$("bl").value.trim()],["Footage size",$("bz").value.trim()],["Cameras",$("bc").value.trim()],["Music genre",$("bg").value],["Video mood",$("bo").value],["Specific songs",$("bm").value.trim()],["Reference film",$("br").value.trim()]].filter(r=>r[1]).map(r=>r[0]+": "+r[1]);
  return "Hi Marcus Wedding Studio,\n\nI'd like to book an edit.\n\n"+rows.join("\n")+"\n\nThanks!"};
@@ -855,6 +946,10 @@ const mailto=()=>"mailto:"+TO+"?subject="+encodeURIComponent("Editing inquiry fr
 const payload=()=>{const n=$("bn").value.trim(),o={name:n,email:$("be").value.trim(),wedding_date:$("bd").value,need_by:$("bb").value,deliverables:dl(),editing_style:$("bs").value,footage_link:$("bl").value.trim(),footage_size:$("bz").value.trim(),cameras:$("bc").value.trim(),music_genre:$("bg").value,video_mood:$("bo").value,specific_songs:$("bm").value.trim(),reference_link:$("br").value.trim(),_subject:"Editing inquiry from "+n};
  if(CFG.formKey){o.access_key=CFG.formKey;o.subject=o._subject}
  return Object.fromEntries(Object.entries(o).filter(([,v])=>v))};
+$("snext").addEventListener("click",()=>{if(ok(cur===1)){track("Brief Step",{label:"Step "+(cur+1)});go(cur+1)}});
+$("sback").addEventListener("click",()=>go(cur-1));
+$("bskip").addEventListener("click",()=>{track("Brief Skip",{label:"From step "+cur});f.requestSubmit()});
+f.addEventListener("keydown",e=>{if(e.key==="Enter"&&cur<3&&e.target.tagName==="INPUT"&&e.target.type!=="checkbox"){e.preventDefault();$("snext").click()}});
 f.addEventListener("submit",async e=>{e.preventDefault();$("next").hidden=true;if(!ok(true))return;
  if(f.elements._gotcha&&f.elements._gotcha.value){msg.textContent="Thank you! Your brief is in. We’ll reply within a day.";return}
  if(!CFG.formEndpoint){track("Brief Submit",{method:"email"});
@@ -864,7 +959,7 @@ f.addEventListener("submit",async e=>{e.preventDefault();$("next").hidden=true;i
  try{const r=await fetch(CFG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload())});
   if(!r.ok)throw new Error(r.status);
   sent=true;
-  msg.textContent="Thank you! Your brief is in.";track("Brief Submit",{method:"form"});$("nxm").href="mailto:"+TO+"?subject="+encodeURIComponent("Footage link from "+$("bn").value.trim())+"&body="+encodeURIComponent("Hi Marcus Wedding Studio,\n\nHere is the footage link and any references for my project:\n\n");f.reset();try{localStorage.removeItem("briefDraft")}catch(e){}const nx=$("next");nx.hidden=false;nx.scrollIntoView({block:"nearest",behavior:reduce?"auto":"smooth"});nx.focus({preventScroll:true})}
+  msg.textContent="Thank you! Your brief is in.";track("Brief Submit",{method:"form"});$("nxm").href="mailto:"+TO+"?subject="+encodeURIComponent("Footage link from "+$("bn").value.trim())+"&body="+encodeURIComponent("Hi Marcus Wedding Studio,\n\nHere is the footage link and any references for my project:\n\n");f.reset();go(1,true);try{localStorage.removeItem("briefDraft")}catch(e){}const nx=$("next");nx.hidden=false;nx.scrollIntoView({block:"nearest",behavior:reduce?"auto":"smooth"});nx.focus({preventScroll:true})}
  catch(err){if(sent)return;track("Brief Error");msg.textContent="The form couldn’t send, so we’re opening your email app with your brief ready. If nothing opens, use “Copy text” and email us at "+TO+".";location.href=mailto()}
  finally{btn.disabled=false;btn.textContent=SEND}});
 $("bcp").addEventListener("click",async()=>{if(!ok(false))return;
@@ -916,7 +1011,7 @@ const step=d=>{const l=list(),f=l[(l.indexOf(now)+d+l.length)%l.length];show(f);
 document.addEventListener("click",e=>{const b=e.target.closest(".film[data-v]");if(!b)return;const f=FILMS.find(x=>x.v===b.dataset.v);if(!f)return;track("Film Play",{label:f.title+" - "+f.type});show(f);$("pl").showModal()});
 $("pp").onclick=()=>step(-1);$("pn").onclick=()=>step(1);
 $("pr").onclick=()=>{if(!now)return;const br=$("br");br.value="https://www.youtube.com/watch?v="+now.v;br.dispatchEvent(new Event("input",{bubbles:true}));
- $("qb").querySelector(".more").open=true;$("bmsg").textContent="Added “"+now.title+" – "+now.type+"” as your reference film.";track("Film Reference",{label:now.title+" - "+now.type});
+ $("qb").go&&$("qb").go(3,true);$("bmsg").textContent="Added “"+now.title+" – "+now.type+"” as your reference film.";track("Film Reference",{label:now.title+" - "+now.type});
  $("pl").close();setTimeout(()=>$("qb").scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"}),60)};
 $("pl").addEventListener("keydown",e=>{if(e.key==="ArrowLeft")step(-1);else if(e.key==="ArrowRight")step(1)})})();
 $("pc").onclick=()=>$("pl").close();
@@ -975,7 +1070,7 @@ draw();setInterval(()=>{if(!document.hidden)draw()},30000)})();
 /* Highlight the nav link for the section in view */
 (()=>{if(!("IntersectionObserver" in window))return;
 const links=[...document.querySelectorAll("#nav a[href^='#']")],map=new Map(links.map(a=>[a.getAttribute("href").slice(1),a]));
-const alias={behind:"work",prepare:"contact",words:"pricing"};
+const alias={behind:"work",words:"pricing"};
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;links.forEach(a=>a.removeAttribute("aria-current"));const a=map.get(alias[e.target.id]||e.target.id);if(a)a.setAttribute("aria-current","true")}),{rootMargin:"-45% 0px -50% 0px"});
 io.observe(document.querySelector(".hero"));[...map.keys(),...Object.keys(alias),"words"].forEach(id=>{const el=$(id);if(el)io.observe(el)})})();
 
@@ -993,6 +1088,15 @@ tb.onclick=()=>scrollTo({top:0,behavior:reduce?"auto":"smooth"});tp();
 if(!("IntersectionObserver" in window)||!document.documentElement.classList.contains("anim")){els.forEach(el=>el.classList.add("in"));return}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add("in");io.unobserve(el);setTimeout(()=>el.style.removeProperty("--d"),1600)}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
 els.forEach(el=>io.observe(el))})();
+
+/* Sticky "Start a project" button (mobile): show after the hero, hide near the contact form */
+(()=>{const st=$("stick"),hero=document.querySelector(".hero"),ct=$("contact");if(!st||!hero||!ct||!("IntersectionObserver" in window))return;
+let pastHero=false,inContact=false;
+const sync=()=>{const on=pastHero&&!inContact&&!document.querySelector("dialog[open]");st.classList.toggle("on",on);st.setAttribute("aria-hidden",on?"false":"true");st.tabIndex=on?0:-1};
+new IntersectionObserver(e=>{pastHero=!e[0].isIntersecting&&e[0].boundingClientRect.top<0;sync()}).observe(hero);
+new IntersectionObserver(e=>{inContact=e[0].isIntersecting;sync()},{rootMargin:"0px 0px -25% 0px"}).observe(ct);
+document.addEventListener("close",sync,true);document.addEventListener("toggle",sync,true);
+})();
 </script>
 </body>
 </html>
