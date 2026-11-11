@@ -131,25 +131,43 @@ nav a[aria-current="true"]{color:var(--ink)}
 @media(hover:hover){.film:hover .play{transform:scale(1.15)}}
 .film span.cap{position:absolute;inset:auto 0 0 0;padding:3rem 1.1rem 1rem;color:#fff;background:linear-gradient(transparent,rgba(20,15,30,.8));font:400 1.3rem/1.2 var(--f-display);letter-spacing:-.01em}
 .film small{display:block;margin-top:.3rem;font:500 .8125rem/1.2 var(--f-body);letter-spacing:.02em;opacity:.9}
-.fedit{margin:0 0 2rem;padding:1.25rem;border:1px dashed var(--accent);border-radius:14px;background:var(--card);font-family:var(--f-body)}
-.fedit h3{font-size:1.6rem;margin:0 0 1.1rem}
-.fedit h3 small{margin-left:.6rem;font:500 .8125rem/1 var(--f-body);letter-spacing:.01em;color:var(--muted)}
-.fedit form,.fe-a{display:flex;flex-wrap:wrap;gap:.75rem;align-items:flex-end}
-.fedit label{display:grid;gap:.4rem;flex:1 1 11rem;min-width:0;font-weight:500;font-size:.9375rem;letter-spacing:.01em}
-.fedit label.fe-w2{flex:2 1 16rem}
+.fedit{margin:0 0 2.5rem;padding:clamp(1rem,3vw,1.75rem);border:1px solid var(--line);border-radius:14px;background:var(--card);font-family:var(--f-body);display:grid;gap:1rem}
+.fe-hd{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem .75rem}
+.fe-hd h3{font-size:1.6rem}
+.fe-chip{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .7rem;border:1px solid var(--line);border-radius:999px;font:500 .75rem/1 var(--f-body);letter-spacing:.02em;color:var(--muted)}
+.fe-chip::before{content:"";width:.4rem;height:.4rem;border-radius:50%;background:var(--brass,var(--accent))}
+.fe-x{margin-left:auto;padding:.5rem .25rem;font:500 .9375rem/1 var(--f-body);color:var(--muted);text-decoration:none}.fe-x:hover{color:var(--ink)}
+.fe-card{display:grid;gap:.85rem;margin:0;padding:1.1rem;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.fe-s{margin:0;font:600 .75rem/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fe-s span{margin-left:.35rem;padding:.15rem .5rem;border-radius:999px;background:var(--card);letter-spacing:0}
+.fe-g{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.fe-full{grid-column:1/-1}
+.fedit label{display:grid;gap:.4rem;min-width:0;font-weight:500;font-size:.9375rem;letter-spacing:.01em}
 .fedit input,.fedit select{box-sizing:border-box;width:100%;max-width:100%;min-width:0;min-height:3rem;padding:.75rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:400 1rem var(--f-body);transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
 .fedit input:focus-visible,.fedit select:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 28%,transparent)}
-.fe-s{margin:1.25rem 0 .5rem;font:600 .8125rem/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-#fe-h,#fe-l{list-style:none;margin:0 0 .5rem;padding:0;display:grid;gap:.5rem}
-#fe-l{max-height:22rem;overflow:auto}
-#fe-h li,#fe-l li{display:flex;align-items:center;gap:.85rem;padding:.4rem .6rem .4rem .4rem;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
-#fe-h img,#fe-l img{width:64px;height:48px;object-fit:cover;border-radius:6px;flex:none}
-#fe-h span,#fe-l span{flex:1;min-width:0;font-weight:600;font-size:1rem;line-height:1.3}#fe-h small,#fe-l small{display:block;font-weight:400;font-size:.875rem;color:var(--muted)}
-.fe-a{margin-top:1.25rem}
-.fe-m{min-height:1.4em;margin:.9rem 0 0;color:var(--muted);font-size:.9375rem}
-.fe-set{margin-top:1rem;font-size:.9375rem}.fe-set summary{cursor:pointer;font-weight:500}
+.fe-card>.btn{justify-self:start}
+.fe-ls{list-style:none;margin:0;padding:0;display:grid}
+#fe-l{max-height:24rem;overflow:auto;overscroll-behavior:contain}
+.fe-ls li{display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:.25rem .9rem;padding:.7rem 0;border-top:1px solid var(--line)}
+.fe-ls li:first-child{border-top:0;padding-top:0}.fe-ls li:last-child{padding-bottom:0}
+.fe-ls img{width:72px;height:48px;object-fit:cover;border-radius:8px;background:var(--card)}
+.fe-t{min-width:0;font-weight:600;font-size:1rem;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fe-t small{display:block;font-weight:400;font-size:.875rem;color:var(--muted);white-space:normal}
+.fe-ac{display:flex;gap:.4rem}
+.fe-b{min-height:2.25rem;padding:.4rem .9rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:500 .875rem/1 var(--f-body);cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
+.fe-b:hover{background:var(--card);border-color:var(--accent)}
+.fe-del{color:var(--muted)}.fe-del:hover{color:var(--accent)}
+.fe-b:focus-visible,.fe-x:focus-visible,.fe-set summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.fe-a{display:flex;flex-wrap:wrap;gap:.6rem}.fe-a .btn{white-space:nowrap}
+.fe-m{margin:0;padding:.7rem .9rem;border-left:3px solid var(--accent);border-radius:2px 8px 8px 2px;background:var(--bg);color:var(--ink);font-size:.9375rem;line-height:1.5}.fe-m:empty{display:none}
+.fe-set{font-size:.9375rem}.fe-set summary{cursor:pointer;font-weight:500;color:var(--muted)}
 .fe-set ol{margin:.75rem 0;padding-left:1.25rem;display:grid;gap:.35rem;color:var(--muted)}.fe-set a{color:var(--accent)}
-.fe-tk{display:flex;flex-wrap:wrap;gap:.6rem}.fe-tk input{flex:1 1 14rem;box-sizing:border-box;min-height:3rem;padding:.75rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:400 1rem var(--f-body)}
+.fe-tk{display:flex;flex-wrap:wrap;gap:.6rem}.fe-tk input{flex:1 1 14rem;width:auto}
+@media(max-width:560px){
+.fe-g{grid-template-columns:1fr}
+.fe-ls li{grid-template-columns:56px 1fr}.fe-ls img{width:56px;height:40px}
+.fe-ac{grid-column:2}
+.fe-card>.btn,.fe-a .btn{flex:1 1 100%;justify-self:stretch}.fe-a .btn.ghost{flex:1 1 calc(50% - .3rem);padding-left:.5rem;padding-right:.5rem}}
 
 /* about */
 .about{position:relative;overflow:hidden;isolation:isolate;background:var(--card);padding:var(--sec) 0}
@@ -517,7 +535,7 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 <ul class="promise"><li>No payment upfront</li><li>Unlimited revisions</li><li>Reply within a day</li></ul>
 <p class="proof">Four years editing weddings. Drafts reviewed on Frame.io, final files delivered by Dropbox.</p>
 </div>
-<div class="hero-v"><button class="film feature" type="button" data-v="SIyY_ykB4uE" aria-label="Watch G &amp; D, wedding highlights, on YouTube"><img src="https://img.youtube.com/vi/SIyY_ykB4uE/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="1280" height="720" fetchpriority="high"><span class="play"></span><span class="tc" aria-hidden="true"><i id="tcv">00:00:00:00</i></span><span class="cap">G &amp; D<small>Wedding highlights</small></span></button><button class="film mini" type="button" data-v="1kHFaY5qJz0" aria-label="Watch G &amp; A, wedding teaser, on YouTube"><img src="https://img.youtube.com/vi/1kHFaY5qJz0/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="640" height="360"><span class="play"></span><span class="cap">G &amp; A<small>Wedding teaser</small></span></button></div>
+<div class="hero-v"><button class="film feature" type="button" data-v="1u0ULhVUvvM" aria-label="Watch M &amp; D, wedding highlights, on YouTube"><img src="https://img.youtube.com/vi/1u0ULhVUvvM/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="1280" height="720" fetchpriority="high"><span class="play"></span><span class="tc" aria-hidden="true"><i id="tcv">00:00:00:00</i></span><span class="cap">M &amp; D<small>Wedding highlights</small></span></button><button class="film mini" type="button" data-v="1kHFaY5qJz0" aria-label="Watch G &amp; A, wedding teaser, on YouTube"><img src="https://img.youtube.com/vi/1kHFaY5qJz0/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="640" height="360"><span class="play"></span><span class="cap">G &amp; A<small>Wedding teaser</small></span></button></div>
 </section>
 <section class="work" id="work">
 <div class="rv"><h2>Recent films</h2><p class="rev-s">Teasers and highlight films edited for wedding videographers. Tap any film to watch it, then use it as a style reference in your brief.</p><div class="filters" id="filters" role="group" aria-label="Filter films by type"></div><p class="sr" id="fcount" role="status"></p></div>
@@ -706,8 +724,8 @@ document.addEventListener("click",e=>{const a=e.target.closest("[data-ev]");if(a
 
 if(CFG.clients.length){$("cl").innerHTML=CFG.clients.map(c=>{const i=c.logo?`<img src="${esc(c.logo)}" alt="${esc(c.name)}" loading="lazy" decoding="async">`:esc(c.name);return `<li>${c.url?`<a href="${esc(c.url)}" target="_blank" rel="noopener">${i}</a>`:i}</li>`}).join("");$("clients").hidden=false}
 /* Films: [YouTube ID, title, type, optional details such as "4:12 · Cinematic"] */
-/*HERO-START*/const HERO={"feature":["SIyY_ykB4uE","G & D","Wedding highlights"],"mini":["1kHFaY5qJz0","G & A","Wedding teaser"]};/*HERO-END*/
-/*FILMS-START*/const FILMS=[["1kHFaY5qJz0","Miguel & Regine","Wedding teaser"],["NN3BbEYAyjQ","M & D","Wedding teaser"],["1u0ULhVUvvM","M & D","Wedding highlights"],["TFfA5JCuM-0","M & S","Wedding highlights"],["wE38AcaPE00","G & A","Wedding highlights"],["qQe6p5eHqvs","S & G","Wedding highlights"],["-BiQK0gYHFM","B & I","Wedding teaser"],["vksNaP4HbGo","B & I","Wedding highlights"],["SUk7rLgGK6Y","G & D","Wedding highlights"],["lnMzKS5-YYM","A & Z","Wedding teaser"]].map(([v,title,type,meta])=>({v,title,type,meta:meta||""}));/*FILMS-END*/
+/*HERO-START*/const HERO={feature:["1u0ULhVUvvM","M & D","Wedding highlights"],mini:["1kHFaY5qJz0","G & A","Wedding teaser"]};/*HERO-END*/
+/*FILMS-START*/const FILMS=[["1kHFaY5qJz0","G & A","Wedding teaser"],["NN3BbEYAyjQ","M & D","Wedding teaser"],["1u0ULhVUvvM","M & D","Wedding highlights"],["TFfA5JCuM-0","M & S","Wedding highlights"],["wE38AcaPE00","G & A","Wedding highlights"],["qQe6p5eHqvs","S & G","Wedding highlights"],["SIyY_ykB4uE","A & J","Wedding highlights"],["-BiQK0gYHFM","B & I","Wedding teaser"],["vksNaP4HbGo","B & I","Wedding highlights"],["SUk7rLgGK6Y","G & D","Wedding highlights"],["lnMzKS5-YYM","A & Z","Wedding teaser"]].map(([v,title,type,meta])=>({v,title,type,meta:meta||""}));/*FILMS-END*/
 /* Owner edit mode: open the page with ?edit to add, replace or remove films (grid and the two large cards). Edits show in this browser until you publish the downloaded file. */
 (()=>{const KEY="filmsEdit",HK="heroEdit",row=f=>[f.v,f.title,f.type].concat(f.meta?[f.meta]:[]),ID=/^[\w-]{11}$/;
 try{const s=JSON.parse(localStorage.getItem(KEY)||"null");
@@ -725,27 +743,30 @@ const parse=u=>{u=u.trim();if(ID.test(u))return u;try{const x=new URL(u),h=x.hos
  if(/(^|\.)youtube(-nocookie)?\.com$/.test(h)){const q=x.searchParams.get("v");if(q&&ID.test(q))return q;const m=x.pathname.match(/^\/(?:embed|shorts|live|v)\/([\w-]{11})/);return m?m[1]:null}}catch(e){}return null};
 const opts=`<option>Wedding teaser</option><option>Wedding highlights</option><option>Wedding full film</option>`;
 const p=document.createElement("div");p.className="fedit";p.id="fedit";
-p.innerHTML=`<h3>Edit films <small>Only you see this</small></h3>
-<form id="fe-f"><label>Where<select id="fe-w"><option value="grid">Film grid</option><option value="feature">Large card (top of page)</option><option value="mini">Small card (top of page)</option></select></label>
-<label class="fe-w2">YouTube link<input id="fe-u" type="text" inputmode="url" placeholder="https://www.youtube.com/watch?v=…" required autocomplete="off"></label>
+p.innerHTML=`<header class="fe-hd"><h3>Edit films</h3><span class="fe-chip">Only you see this</span><a class="fe-x" href="${location.pathname}#work">Exit</a></header>
+<form id="fe-f" class="fe-card"><p class="fe-s">Add or change a video</p>
+<div class="fe-g">
+<label class="fe-full">YouTube link<input id="fe-u" type="text" inputmode="url" placeholder="https://www.youtube.com/watch?v=…" required autocomplete="off"></label>
 <label>Couple names<input id="fe-t" type="text" placeholder="e.g. J &amp; M" required maxlength="40" autocomplete="off"></label>
 <label>Type<select id="fe-y">${opts}</select></label>
-<button class="btn" type="submit" id="fe-s">Add video</button></form>
-<p class="fe-s">Top of page</p><ul id="fe-h"></ul>
-<p class="fe-s">Film grid</p><ul id="fe-l"></ul>
-<div class="fe-a"><button class="btn" type="button" id="fe-p">Publish to website</button><button class="btn ghost" type="button" id="fe-d">Download file instead</button><button class="btn ghost" type="button" id="fe-r">Reset</button><a class="btn ghost" href="${location.pathname}#work">Exit edit mode</a></div>
+<label class="fe-full">Where<select id="fe-w"><option value="grid">Film grid</option><option value="feature">Large card (top of page)</option><option value="mini">Small card (top of page)</option></select></label>
+</div><button class="btn" type="submit" id="fe-s">Add video</button></form>
+<section class="fe-card"><p class="fe-s">Top of page</p><ul class="fe-ls" id="fe-h"></ul></section>
+<section class="fe-card"><p class="fe-s">Film grid <span id="fe-c"></span></p><ul class="fe-ls" id="fe-l"></ul></section>
+<div class="fe-a"><button class="btn" type="button" id="fe-p">Publish to website</button><button class="btn ghost" type="button" id="fe-d">Download file</button><button class="btn ghost" type="button" id="fe-r">Reset</button></div>
 <p class="fe-m" id="fe-m" role="status"></p>
 <details class="fe-set" id="fe-set"><summary>One-time setup for Publish</summary>
 <ol><li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub’s new token page</a> and sign in.</li>
 <li>Name it (e.g. “Film editor”) and set an expiry.</li>
 <li>Under <b>Repository access</b>, choose <b>Only select repositories</b> and pick this site’s repository.</li>
-<li>Under <b>Repository permissions</b>, set <b>Contents</b> to <b>Read and write</b>, then create the token and copy it.</li>
+<li>Under <b>Permissions</b>, add <b>Contents</b> and set it to <b>Read and write</b>, then create the token and copy it.</li>
 <li>Paste it here. It is saved only in this browser, never on the site itself.</li></ol>
 <div class="fe-tk"><input id="fe-k" type="password" placeholder="GitHub token" autocomplete="off" aria-label="GitHub token"><button class="btn" type="button" id="fe-ks">Save token</button><button class="btn ghost" type="button" id="fe-kf">Forget token</button></div></details>`;
 $("grid").before(p);
 const msg=t=>{$("fe-m").textContent=t},th=v=>`<img src="https://img.youtube.com/vi/${v}/default.jpg" alt="" width="64" height="48">`;
-const list=()=>{$("fe-l").innerHTML=FILMS.map((f,i)=>`<li>${th(f.v)}<span>${esc(f.title)}<small>${esc(f.type)}</small></span><button type="button" class="fbtn" data-e="${i}" aria-label="Edit ${esc(f.title)}, ${esc(f.type)}">Edit</button><button type="button" class="fbtn" data-i="${i}" aria-label="Remove ${esc(f.title)}, ${esc(f.type)}">Remove</button></li>`).join("");
- $("fe-h").innerHTML=[["feature","Large card"],["mini","Small card"]].map(([k,n])=>`<li>${th(HERO[k][0])}<span>${esc(HERO[k][1])}<small>${n} · ${esc(HERO[k][2])}</small></span><button type="button" class="fbtn" data-h="${k}" aria-label="Replace the ${n.toLowerCase()}">Replace</button></li>`).join("")};
+const list=()=>{$("fe-c").textContent=FILMS.length;
+ $("fe-l").innerHTML=FILMS.map((f,i)=>`<li>${th(f.v)}<span class="fe-t">${esc(f.title)}<small>${esc(f.type)}</small></span><span class="fe-ac"><button type="button" class="fe-b" data-e="${i}" aria-label="Edit ${esc(f.title)}, ${esc(f.type)}">Edit</button><button type="button" class="fe-b fe-del" data-i="${i}" aria-label="Remove ${esc(f.title)}, ${esc(f.type)}">Remove</button></span></li>`).join("");
+ $("fe-h").innerHTML=[["feature","Large card"],["mini","Small card"]].map(([k,n])=>`<li>${th(HERO[k][0])}<span class="fe-t">${esc(HERO[k][1])}<small>${n} · ${esc(HERO[k][2])}</small></span><span class="fe-ac"><button type="button" class="fe-b" data-h="${k}" aria-label="Replace the ${n.toLowerCase()}">Replace</button></span></li>`).join("")};
 list();
 let ed=-1;
 const label=()=>{$("fe-s").textContent=ed>=0?"Save changes":$("fe-w").value=="grid"?"Add video":"Replace card"};
