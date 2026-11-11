@@ -439,11 +439,11 @@ html.has-wa .top{bottom:calc(5.25rem + env(safe-area-inset-bottom,0px))}
 .sticky-cta{display:none}
 @media(max-width:760px){
 .hero .cta .wa{display:none}
-@media(min-width:861px){.hero .cta{flex-wrap:wrap;gap:.6rem}.hero .cta .btn{padding:.85rem 1.25rem;white-space:nowrap}}
 .sticky-cta{display:grid;place-items:center;position:fixed;left:max(1.25rem,env(safe-area-inset-left,0px));right:1.25rem;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));height:52px;padding:0 1.5rem;z-index:19;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);opacity:0;visibility:hidden;translate:0 12px;transition:opacity .4s var(--ease),translate .4s var(--ease),visibility .4s,background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease)}
 .sticky-cta.show{opacity:1;visibility:visible;translate:0 0}
 html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 .top{bottom:calc(5.25rem + env(safe-area-inset-bottom,0px))}
+body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 .in-contact .top{opacity:0;visibility:hidden;pointer-events:none}
 .foot{padding-bottom:calc(7.5rem + env(safe-area-inset-bottom,0px))}
 .f-base{flex-direction:column;align-items:flex-start}
@@ -469,33 +469,12 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 .clients ul{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:1rem 2.5rem;align-items:center}
 .clients li{font:400 1.25rem/1.2 var(--f-display);color:var(--muted)}
 .clients img{display:block;height:2rem;width:auto;max-width:9rem;object-fit:contain;opacity:.75}
-/* before / after clips */
-.behind{padding:0}
-.behind>.wrap{padding-top:var(--sec);padding-bottom:var(--sec)}
-.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;margin-top:2.25rem}
-.ba figure{margin:0;min-width:0}
-.ba video{display:block;width:100%;height:auto;aspect-ratio:1920/962;background:#000;border-radius:2px;box-shadow:0 24px 40px -24px rgba(0,0,0,.5)}
-.ba figcaption{display:flex;align-items:baseline;gap:.75rem;margin-top:.8rem}
-.ba figcaption b{font:600 .9375rem/1.3 var(--f-body);color:var(--accent)}
-.ba figcaption span{color:var(--muted);font-size:.9375rem}
-@media(max-width:760px){.ba{grid-template-columns:minmax(0,1fr)}}
 @media(min-width:861px){.faq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:clamp(2rem,6vw,5rem);align-items:start}.faq-list{max-width:none;margin-top:.4rem}.faq>.rv{position:sticky;top:6rem}}
 /* section dividers: same width as the content, not the padding */
-.behind>.wrap,.pricing>.wrap{background:linear-gradient(var(--line),var(--line)) center top/calc(100% - 2.5rem) 1px no-repeat}
+.pricing>.wrap{background:linear-gradient(var(--line),var(--line)) center top/calc(100% - 2.5rem) 1px no-repeat}
 /* pricing */
 .pricing>.wrap>.rv{margin-bottom:clamp(1.5rem,4vw,2.25rem)}
 .pricing>.wrap{padding-top:var(--sec);padding-bottom:var(--sec)}
-.pg{max-width:52rem;margin:3rem 0 0;font:400 1.3rem/1.2 var(--f-display);letter-spacing:-.01em;color:var(--muted)}
-.pl{list-style:none;margin:.75rem 0 0;padding:0;max-width:52rem;border-top:1px solid var(--line)}
-.pl.pk{border-top:2px solid var(--brass);border-radius:0 0 16px 16px;background:var(--card);padding:0 clamp(1.1rem,3vw,1.9rem)}
-.pl.pk li:last-child{border-bottom:0}
-.pl li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.25rem 2rem;align-items:center;padding:1.4rem 0;border-bottom:1px solid var(--line)}
-.pl h4{margin:0;font:400 clamp(1.3rem,1.15rem + .6vw,1.6rem)/1.2 var(--f-display);letter-spacing:-.015em}
-.pl p{margin:.4rem 0 0;max-width:38ch;color:var(--muted);font-size:1rem;line-height:1.6}
-.pr{text-align:right;font:300 clamp(1.9rem,1.5rem + 1.6vw,2.6rem)/1 var(--f-display);letter-spacing:-.025em;font-variant-numeric:lining-nums tabular-nums;font-feature-settings:"lnum" 1,"tnum" 1;white-space:nowrap}
-.pr .fr{margin-right:.45rem;font:400 .9375rem/1 var(--f-body);letter-spacing:0;color:var(--muted)}
-.pr small{display:block;margin-top:.5rem;font:500 .8125rem/1.2 var(--f-body);letter-spacing:0;color:var(--accent)}
-.pl h4 .tag{margin-left:.65rem;vertical-align:middle;font:500 .8125rem/1 var(--f-body);color:var(--accent)}
 .pay{max-width:40rem;margin:0;padding-left:1.25rem;border-left:2px solid var(--brass);font:italic 300 clamp(1.4rem,1.15rem + 1.1vw,2rem)/1.4 var(--f-display);letter-spacing:-.01em}
 .pricing .fine{max-width:40rem;margin:1rem 0 0;padding-left:calc(1.25rem + 2px);font-size:.9375rem;line-height:1.6}
 .pricing .cta{margin-top:1.75rem}
@@ -508,12 +487,10 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 .rate .btn{background:var(--bg);color:var(--ink);border-color:var(--bg);padding:1.05rem 2rem;font-size:1rem}
 @media(hover:hover){.rate .btn:hover{background:var(--brass);border-color:var(--brass);color:#fff}}
 @media(max-width:520px){.rate .cta,.rate .btn{width:100%;text-align:center}}
-.pr.q{font:400 clamp(1.25rem,1.1rem + .7vw,1.6rem)/1.1 var(--f-display);letter-spacing:-.015em}
 .qs figure.big{grid-column:1/-1}
 .qs figure.big blockquote{font-size:clamp(1.5rem,1.15rem + 1.5vw,2.2rem);line-height:1.3}
 .qs figcaption{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .5rem}
 .qs .rc{display:inline-block;margin-left:0;padding:.2rem .55rem;border:1px solid var(--line);border-radius:999px;font:500 .8125rem/1 var(--f-body);letter-spacing:0;color:var(--accent);vertical-align:middle}
-@media(max-width:520px){.pl li{gap:.35rem 1.25rem}.pr{font-size:1.75rem}}
 /* ===== Brief form polish ===== */
 .brief{position:relative;overflow:hidden;gap:1.35rem;border-radius:24px;padding:clamp(1.5rem,3.2vw,2.4rem);box-shadow:0 1px 0 color-mix(in srgb,#fff 40%,transparent) inset,0 30px 60px -34px rgba(35,33,58,.45),0 2px 6px rgba(35,33,58,.05)}
 .brief::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--brass),var(--accent))}
@@ -572,16 +549,6 @@ html.has-wa .sticky-cta{right:calc(1.25rem + 52px + .75rem)}
 .more summary::after,.more[open] summary::after{content:"";display:block;box-sizing:border-box;width:2rem;height:2rem;flex:none;border:1px solid var(--line);border-radius:50%;background:linear-gradient(var(--accent),var(--accent)) center/.8rem 1.5px no-repeat,linear-gradient(var(--accent),var(--accent)) center/1.5px .8rem no-repeat;font-size:0;transition:background-color .3s var(--ease),border-color .3s var(--ease),transform .4s var(--ease)}
 .more[open] summary::after{transform:rotate(45deg);border-color:var(--accent)}
 
-/* sticky mobile CTA */
-.stick{display:none}
-@media(max-width:760px){
-.stick{display:flex;align-items:center;justify-content:center;position:fixed;left:1.25rem;right:1.25rem;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));z-index:19;min-height:52px;padding:.9rem 1.2rem;border-radius:999px;background:var(--ink);color:var(--bg);font:600 1rem/1 var(--f-body);letter-spacing:.01em;text-decoration:none;box-shadow:0 14px 28px -12px rgba(0,0,0,.55);translate:0 140%;opacity:0;visibility:hidden;transition:translate .45s var(--ease),opacity .3s var(--ease),visibility 0s .45s}
-body:has(.wa-fab:not([hidden])) .stick{right:5.25rem}
-.stick.on{translate:0 0;opacity:1;visibility:visible;transition:translate .45s var(--ease),opacity .3s var(--ease),visibility 0s}
-.stick:focus-visible{outline:3px solid color-mix(in srgb,var(--accent) 55%,transparent);outline-offset:3px}
-body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
-}
-@media(prefers-reduced-motion:reduce){.stick{transition:none}}
 
 /* brief: step-by-step form (only active when JS adds .js-steps) */
 .bsteps ol{list-style:none;margin:0 0 .9rem;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.5rem;font-size:.8125rem;font-weight:600;letter-spacing:.01em;color:var(--muted)}
@@ -610,18 +577,6 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 /* engagement: progress bar, mobile chips, swipe quotes, compare slider */
 #sprog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--accent);z-index:40;pointer-events:none}
 @media(max-width:600px){.qs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1rem;margin-inline:-1.25rem;padding:.25rem 1.25rem .75rem;scrollbar-width:none}.qs::-webkit-scrollbar{display:none}.qs figure,.qs figure.big{flex:0 0 86%;scroll-snap-align:center;grid-column:auto}.qs figure.big blockquote{font-size:clamp(1.2rem,1rem + .9vw,1.55rem)}}
-.cmp{position:relative;margin-top:2.25rem;aspect-ratio:1920/962;border-radius:4px;overflow:hidden;background:#000;box-shadow:0 24px 40px -24px rgba(0,0,0,.5);touch-action:pan-y}
-.cmp video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;aspect-ratio:auto;border-radius:0;box-shadow:none}
-.cmp #va{clip-path:inset(0 0 0 var(--p,50%))}
-.cmp .tag{position:absolute;top:.7rem;padding:.25rem .6rem;border-radius:99px;background:rgba(0,0,0,.55);color:#fff;font:600 .75rem/1 var(--f-body);pointer-events:none}
-.cmp .tl{left:.7rem}.cmp .tr{right:.7rem}
-.cmp .ln{position:absolute;top:0;bottom:0;left:var(--p,50%);width:2px;background:#fff;pointer-events:none}
-.cmp .ln::after{content:"↔";position:absolute;top:50%;left:50%;translate:-50% -50%;width:38px;height:38px;border-radius:50%;background:#fff;color:#111;display:grid;place-items:center;font-size:1rem}
-.cmp input[type=range]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
-.cmp .pp{position:absolute;left:.7rem;bottom:.7rem;z-index:2;border:0;border-radius:99px;padding:.5rem .9rem;background:rgba(255,255,255,.92);color:#111;font:600 .8125rem/1 var(--f-body);cursor:pointer}
-.cmp-cta{display:flex;justify-content:center;margin-top:1.25rem}
-.cmp .tag{max-width:46%;line-height:1.25}
-.cmp-cap{margin:.8rem 0 0;color:var(--muted);font-size:.9375rem;text-align:center}
 </style>
 <noscript><style>.rv{opacity:1!important;translate:none!important}</style></noscript></head>
 <body>
@@ -634,7 +589,7 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 <p class="eyebrow">Wedding post-production in Manila</p>
 <h1>You shoot it.<br><em>We finish it.</em></h1>
 <p class="who">Wedding video editing for videographers and studios.</p>
-<p class="lead">We shape your footage into a film your couples will replay for years. Wedding post-production, edited in Manila to match your style and your deadlines.</p>
+<p class="lead">We turn your footage into a film your couples will replay for years, edited in Manila to match your style and your deadlines.</p>
 <div class="cta"><a class="btn" href="#contact" data-ev="CTA Click" data-label="Hero: Start a project">Start a project</a><a class="btn ghost wa" href="#contact" target="_blank" rel="noopener" hidden data-ev="CTA Click" data-label="Hero: WhatsApp">WhatsApp us</a><a class="btn ghost" href="#work" data-ev="CTA Click" data-label="Hero: Watch the films">Watch the films</a></div>
 <ul class="promise"><li>No payment upfront</li><li>Unlimited revisions</li><li>Reply within a day</li></ul>
 <p class="proof">Four years editing weddings. Drafts reviewed on Frame.io, final files delivered by Dropbox.</p>
@@ -661,7 +616,7 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 <h2>Every love story has its own rhythm.</h2>
 <p class="abt-lead">Marcus Wedding Studio is a team of three in Manila that edits wedding films for videographers. We’ve edited almost 150 weddings, so we know how to turn your footage into a film your couples will keep.</p>
 <p>We edit in Adobe Premiere Pro. Send your footage and a brief, and we match your style, your music choices and your deadline.</p>
-<p class="abt-close">We don’t just edit videos; we partner with you to create films your clients will cherish for a lifetime. Whether you need us to match your signature style or bring a fresh perspective, we’re here to take your wedding films further.</p>
+<p class="abt-close">We don’t just edit videos. We partner with you to make films your clients will cherish for a lifetime, whether you need us to match your signature style or bring a fresh perspective.</p>
 <p class="abt-more"><a href="#workflow" data-ev="CTA Click" data-label="About: See how we work">See how we work</a></p>
 </div>
 <div class="abt-side">
@@ -672,8 +627,8 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 <section class="flow" id="workflow"><div class="wrap">
 <div class="rv"><h2>How we work with you</h2></div>
 <ol class="steps" aria-label="Our process" tabindex="0">
-<li><h3>Initial consultation</h3><p>Get in touch in the contact section below, by email, WhatsApp or the brief form. We’ll reply within a day to talk through your project, your editing style and the turnaround you need.</p></li>
-<li><h3>Fill out your creative brief</h3><p>Fill out our <a href="#qb" data-ev="CTA Click" data-label="Step 2: creative brief link">quick creative brief</a> so we capture your preferences, brand style and specific instructions from the start.</p></li>
+<li><h3>Initial consultation</h3><p>Get in touch by email, WhatsApp or the brief form in the contact section below. We’ll reply within a day to talk through your project, your editing style and the turnaround you need.</p></li>
+<li><h3>Complete your creative brief</h3><p>Complete our <a href="#qb" data-ev="CTA Click" data-label="Step 2: creative brief link">quick creative brief</a> so we capture your preferences, brand style and specific instructions from the start.</p></li>
 <li><h3>Editing and collaboration</h3><p>Our senior editor and project manager will carefully build your first draft around your specific preferences. When ready, we’ll upload it to Frame.io so you can add direct comments and annotations right on the timeline. From there, we’ll implement your feedback to polish every detail.</p></li>
 <li><h3>Finalization</h3><p>After incorporating your feedback, we’ll upload the polished cut to Frame.io for your final review. Once approved, we will lock the edit and bundle all project assets for export.</p></li>
 <li><h3>Project handover</h3><p>After your final sign-off, we’ll send a PayPal payment link. As soon as payment is complete, we’ll deliver your high-resolution exports along with all project files and assets directly via Dropbox.</p></li>
@@ -746,7 +701,7 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 <div class="next" id="next" hidden tabindex="-1"><h4>What happens next</h4><ol><li>We reply within a day to confirm timing and details.</li><li>Send us your footage link and any references, if you haven’t already.</li><li>We build your first draft and share it on Frame.io for your comments.</li></ol><div class="cta"><a class="btn" id="nxm" href="mailto:marcusweddingstudio@gmail.com" data-ev="CTA Click" data-label="Next steps: Email footage link">Email your footage link</a><a class="btn ghost wa" href="#contact" target="_blank" rel="noopener" hidden data-ev="CTA Click" data-label="Next steps: WhatsApp">Send it on WhatsApp</a></div></div>
 <div class="snav" id="snav" hidden><button class="btn ghost" type="button" id="sback" hidden>Back</button><button class="btn" type="button" id="snext">Continue</button></div>
 <p class="skip-s" id="sskip" hidden><button type="button" class="linkbtn" id="bskip">Skip the rest and send</button></p>
-<div class="row" id="srow"><button class="btn" type="submit" id="bsend">Email my brief</button><button class="btn ghost" type="button" id="bcp">Copy text</button></div>
+<div class="row" id="srow"><button class="btn" type="submit" id="bsend">Send my brief</button><button class="btn ghost" type="button" id="bcp">Copy text</button></div>
 <p class="fine">We only use your details to reply about your project. <button type="button" class="linkbtn pvopen">How we handle your data</button></p>
 </form>
 </div>
@@ -768,7 +723,7 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 <p>We keep this simple: we only collect what we need to answer you and do the work.</p>
 <h4>What we collect</h4><p>The details you enter in the brief form (name, email, dates, project details and footage link), or anything you send us by email or chat.</p>
 <h4>Why</h4><p>To reply to your inquiry and, if you hire us, to deliver your project. We don’t sell your details or use them for third-party marketing.</p>
-<h4>Who handles it</h4><p>Briefs reach us by email, either through your own email app or our form service. Emails are handled through Gmail. Footage you share is used only to edit your project.</p>
+<h4>Who handles it</h4><p>Briefs reach us by email, either through your own email app or through our form service (Formspree). Emails are handled through Gmail. Footage you share is used only to edit your project.</p>
 <div id="pv-an" hidden><h4>Analytics</h4><p>We use Plausible, a privacy-friendly analytics tool that doesn’t use cookies or collect personal data, to count visits and clicks.</p></div>
 <h4>On your device</h4><p>If you pick a light or dark theme, that choice is saved in your browser only. So is a half-finished brief, until you send it. Fonts come from Google Fonts, and film thumbnails and players come from YouTube. Both may receive your device information when they load or play.</p>
 <h4>Your choices</h4><p>Email <a href="mailto:marcusweddingstudio@gmail.com">marcusweddingstudio@gmail.com</a> any time to ask us to correct or delete your details.</p>
@@ -777,7 +732,6 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 </div></dialog>
 <dialog id="pl" aria-label="Film player"><iframe id="yt" title="Film player" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe><div class="dtxt"><h3 id="pt" aria-live="polite"></h3><div class="pnav"><button type="button" id="pp" aria-label="Previous film">‹</button><button type="button" id="pn" aria-label="Next film">›</button></div><button type="button" id="pr">Use as reference</button><a class="btn" id="ytl" target="_blank" rel="noopener">Watch on YouTube</a><button type="button" id="pc">Close</button></div></dialog>
 
-<a class="stick" id="stick" href="#contact" aria-hidden="true" tabindex="-1" data-ev="CTA Click" data-label="Sticky: Start a project">Start a project</a>
 <script>
 const $=id=>document.getElementById(id);
 const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
@@ -1016,8 +970,8 @@ const show=f=>{now=f;$("ytl").href="https://www.youtube.com/watch?v="+f.v;
  $("yt").src="https://www.youtube-nocookie.com/embed/"+f.v+"?autoplay=1&playsinline=1&rel=0"};
 /* step through what the visitor is currently filtering by; fall back to all films */
 const list=()=>{const v=[...$("grid").children].map((c,i)=>c.hidden?null:FILMS[i]).filter(Boolean);return v.includes(now)?v:FILMS};
-const step=d=>{const l=list(),f=l[(l.indexOf(now)+d+l.length)%l.length];show(f);track("Film Step",{label:f.title+" - "+f.type})};
-document.addEventListener("click",e=>{const b=e.target.closest(".film[data-v]");if(!b)return;const f=FILMS.find(x=>x.v===b.dataset.v);if(!f)return;track("Film Play",{label:f.title+" - "+f.type});show(f);$("pl").showModal()});
+const step=d=>{const l=list();let i=l.indexOf(now);if(i<0)i=d>0?-1:0;const f=l[(i+d+l.length)%l.length];show(f);track("Film Step",{label:f.title+" - "+f.type})};
+document.addEventListener("click",e=>{const b=e.target.closest(".film[data-v]");if(!b)return;const f=FILMS.find(x=>x.v===b.dataset.v)||(()=>{const c=b.querySelector(".cap");return c?{v:b.dataset.v,title:c.firstChild.textContent,type:(c.querySelector("small")||{}).textContent||"",meta:""}:null})();if(!f)return;track("Film Play",{label:f.title+" - "+f.type});show(f);$("pl").showModal()});
 $("pp").onclick=()=>step(-1);$("pn").onclick=()=>step(1);
 $("pr").onclick=()=>{if(!now)return;const br=$("br");br.value="https://www.youtube.com/watch?v="+now.v;br.dispatchEvent(new Event("input",{bubbles:true}));
  $("qb").go&&$("qb").go(3,true);$("bmsg").textContent="Added “"+now.title+" – "+now.type+"” as your reference film.";track("Film Reference",{label:now.title+" - "+now.type});
@@ -1044,21 +998,8 @@ const end=()=>{if(!down)return;down=false;ol.classList.remove("drag");go(cur)};
 addEventListener("pointerup",end);addEventListener("pointercancel",end);
 set(0)})();
 
-/* Before/after clips: only one plays at a time */
-
-
-
-/* Scroll progress, chip highlight, before/after compare */
-(()=>{const p=$("sprog"),d=document.documentElement;let t=0;const u=()=>{t=0;p.style.transform="scaleX("+Math.min(1,scrollY/Math.max(1,d.scrollHeight-innerHeight))+")"};addEventListener("scroll",()=>{t||(t=requestAnimationFrame(u))},{passive:!0});u();
-const vb=$("vb"),va=$("va"),ba=document.querySelector(".ba");if(!vb||!va||!ba)return;
-const c=document.createElement("div");c.className="cmp";c.style.setProperty("--p","35%");
-[vb,va].forEach(v=>{v.removeAttribute("controls");v.removeAttribute("preload");v.loop=!0;v.muted=!0;c.appendChild(v)});
-c.insertAdjacentHTML("beforeend",'<span class="tag tl">Before: sorting and clipping</span><span class="tag tr">After: edited and color graded</span><div class="ln"></div><button class="pp" type="button">▶ Play both</button><input type="range" min="0" max="100" value="35" aria-label="Compare before and after">');
-const b=c.querySelector(".pp"),r=c.querySelector("input");
-r.addEventListener("input",()=>c.style.setProperty("--p",r.value+"%"));
-b.addEventListener("click",()=>{if(vb.paused){va.currentTime=vb.currentTime;vb.play();va.play();b.textContent="❚❚ Pause";track("Clip Play",{label:"Compare"})}else{vb.pause();va.pause();b.textContent="▶ Play both"}});
-vb.addEventListener("timeupdate",()=>{if(Math.abs(vb.currentTime-va.currentTime)>.3)va.currentTime=vb.currentTime});
-ba.replaceWith(c);c.insertAdjacentHTML("afterend",'<p class="cmp-cap">Drag the slider to compare the raw footage with the finished edit.</p><div class="cmp-cta"><a class="btn" href="#qb" data-ev="CTA Click" data-label="Before/after: Start your brief">Want this for your footage? Start your brief</a></div>')})();
+/* Scroll progress */
+(()=>{const p=$("sprog"),d=document.documentElement;let t=0;const u=()=>{t=0;p.style.transform="scaleX("+Math.min(1,scrollY/Math.max(1,d.scrollHeight-innerHeight))+")"};addEventListener("scroll",()=>{t||(t=requestAnimationFrame(u))},{passive:!0});u();})();
 
 /* Theme toggle (remembers choice; follows system until one is picked) */
 (()=>{const r=document.documentElement,b=$("theme"),m=$("tc"),mq=matchMedia("(prefers-color-scheme:dark)");
@@ -1091,7 +1032,7 @@ draw();setInterval(()=>{if(!document.hidden)draw()},30000)})();
 /* Highlight the nav link for the section in view */
 (()=>{if(!("IntersectionObserver" in window))return;
 const links=[...document.querySelectorAll("#nav a[href^='#']")],map=new Map(links.map(a=>[a.getAttribute("href").slice(1),a]));
-const alias={behind:"work",words:"pricing"};
+const alias={words:"work"};
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;links.forEach(a=>a.removeAttribute("aria-current"));const a=map.get(alias[e.target.id]||e.target.id);if(a)a.setAttribute("aria-current","true")}),{rootMargin:"-45% 0px -50% 0px"});
 io.observe(document.querySelector(".hero"));[...map.keys(),...Object.keys(alias),"words"].forEach(id=>{const el=$(id);if(el)io.observe(el)})})();
 
@@ -1110,14 +1051,6 @@ if(!("IntersectionObserver" in window)||!document.documentElement.classList.cont
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add("in");io.unobserve(el);setTimeout(()=>el.style.removeProperty("--d"),1600)}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
 els.forEach(el=>io.observe(el))})();
 
-/* Sticky "Start a project" button (mobile): show after the hero, hide near the contact form */
-(()=>{const st=$("stick"),hero=document.querySelector(".hero"),ct=$("contact");if(!st||!hero||!ct||!("IntersectionObserver" in window))return;
-let pastHero=false,inContact=false;
-const sync=()=>{const on=pastHero&&!inContact&&!document.querySelector("dialog[open]");st.classList.toggle("on",on);st.setAttribute("aria-hidden",on?"false":"true");st.tabIndex=on?0:-1};
-new IntersectionObserver(e=>{pastHero=!e[0].isIntersecting&&e[0].boundingClientRect.top<0;sync()}).observe(hero);
-new IntersectionObserver(e=>{inContact=e[0].isIntersecting;sync()},{rootMargin:"0px 0px -25% 0px"}).observe(ct);
-document.addEventListener("close",sync,true);document.addEventListener("toggle",sync,true);
-})();
 </script>
 </body>
 </html>
