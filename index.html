@@ -886,7 +886,7 @@ p.innerHTML=`<header class="fe-hd"><h3>Edit films</h3><span class="fe-chip">Only
 <li>Paste it here. It is saved only in this browser, never on the site itself.</li></ol>
 <div class="fe-tk"><input id="fe-k" type="password" placeholder="GitHub token" autocomplete="off" aria-label="GitHub token"><button class="btn" type="button" id="fe-ks">Save token</button><button class="btn ghost" type="button" id="fe-kf">Forget token</button></div></details>`;
 $("grid").before(p);
-if(fresh||location.hash==="#fedit"){const go=()=>p.scrollIntoView({block:"start"});requestAnimationFrame(go);addEventListener("load",go,{once:true})}
+if(fresh||location.hash==="#fedit"){try{history.scrollRestoration="manual"}catch(e){}let u=false;["wheel","touchstart","keydown"].forEach(t=>addEventListener(t,()=>{u=true},{once:true,passive:true}));const go=()=>{if(!u)p.scrollIntoView({block:"start",behavior:"instant"})};go();requestAnimationFrame(go);addEventListener("load",go,{once:true});[300,900,1800].forEach(ms=>setTimeout(go,ms))}
 p.querySelector(".fe-x").addEventListener("click",e=>{e.preventDefault();try{localStorage.removeItem("ownerEdit")}catch(x){}location.hash="#work";location.reload()});
 const msg=t=>{$("fe-m").textContent=t},th=v=>`<img src="https://img.youtube.com/vi/${v}/default.jpg" alt="" width="64" height="48">`;
 const list=()=>{$("fe-c").textContent=FILMS.length;
@@ -1132,7 +1132,7 @@ tb.onclick=()=>scrollTo({top:0,behavior:reduce?"auto":"smooth"});tp();
 
 /* Owner button: asks for the private code, then opens the film editor */
 $("own").addEventListener("click",()=>{if(!CFG.editKey)return;const c=prompt("Owner code");if(c===null)return;
- if(c.trim()===CFG.editKey){try{localStorage.setItem("ownerEdit","1")}catch(e){}location.hash="#fedit";location.reload()}else alert("That code isn’t right.")});
+ if(c.trim()===CFG.editKey){try{localStorage.setItem("ownerEdit","1");history.scrollRestoration="manual"}catch(e){}location.hash="#fedit";location.reload()}else alert("That code isn’t right.")});
 /* Hero glow follows the pointer (desktop only) */
 (()=>{const h=document.querySelector(".hero");if(!h||reduce||!matchMedia("(hover:hover) and (pointer:fine)").matches)return;let r=0,x=0,y=0;
 h.addEventListener("pointermove",e=>{const b=h.getBoundingClientRect();x=e.clientX-b.left;y=e.clientY-b.top;if(!r)r=requestAnimationFrame(()=>{r=0;h.style.setProperty("--mx",x+"px");h.style.setProperty("--my",y+"px")})},{passive:true})})();
