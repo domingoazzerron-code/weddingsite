@@ -73,11 +73,11 @@ nav a:last-child{color:var(--ink);border:1px solid var(--line);padding:.45rem 1.
 .menu{display:none;place-items:center;width:44px;height:44px;padding:0;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease)}
 @media(hover:hover){.menu:hover{background:var(--card);border-color:var(--accent)}}
 .menu i{position:relative;display:block;width:18px;height:2px;border-radius:2px;background:currentColor;transition:background .2s}
-.menu i::before,.menu i::after{content:"";position:absolute;left:0;width:18px;height:2px;border-radius:2px;background:currentColor;transition:transform .35s var(--ease),top .35s var(--ease)}
-.menu i::before{top:-6px}.menu i::after{top:6px}
+.menu i::before,.menu i::after{content:"";position:absolute;left:0;top:0;width:18px;height:2px;border-radius:2px;background:currentColor;transition:transform .35s var(--ease)}
+.menu i::before{transform:translateY(-6px) rotate(0deg)}.menu i::after{transform:translateY(6px) rotate(0deg)}
 .menu[aria-expanded="true"] i{background:transparent}
-.menu[aria-expanded="true"] i::before{top:0;transform:rotate(45deg)}
-.menu[aria-expanded="true"] i::after{top:0;transform:rotate(-45deg)}
+.menu[aria-expanded="true"] i::before{transform:translateY(0) rotate(45deg)}
+.menu[aria-expanded="true"] i::after{transform:translateY(0) rotate(-45deg)}
 
 nav a[aria-current="true"]{color:var(--ink)}
 @media(min-width:901px){nav a[aria-current="true"]:not(:last-child){text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:1px;text-underline-offset:8px}}
@@ -97,11 +97,14 @@ nav a[aria-current="true"]{color:var(--ink)}
 .hero .cta{justify-content:center}
 .proof{margin:2rem 0 0;color:var(--muted);font-size:.9375rem;letter-spacing:.04em}
 @keyframes up{from{opacity:0;translate:0 18px}}
-.anim .hero>*{animation:up 1s var(--ease) both}
-.anim .hero>:nth-child(2){animation-delay:.08s}
-.anim .hero>:nth-child(3){animation-delay:.16s}
-.anim .hero>:nth-child(4){animation-delay:.24s}
-.anim .hero>:nth-child(5){animation-delay:.32s}
+.anim .hero-t>*{animation:up .8s var(--ease) both}
+.anim .hero-t>:nth-child(2){animation-delay:0.07s}
+.anim .hero-t>:nth-child(3){animation-delay:0.14s}
+.anim .hero-t>:nth-child(4){animation-delay:0.21s}
+.anim .hero-t>:nth-child(5){animation-delay:0.28s}
+.anim .hero-t>:nth-child(6){animation-delay:0.35s}
+.anim .hero-t>:nth-child(7){animation-delay:0.42s}
+.anim .hero-t>:nth-child(8){animation-delay:0.49s}
 
 /* scroll reveal (translate, not transform, so hover lifts still work) */
 .rv{transition:opacity .9s var(--ease),translate .9s var(--ease)}
@@ -186,10 +189,10 @@ nav a[aria-current="true"]{color:var(--ink)}
 /* workflow */
 .flow{padding:var(--sec) 0}
 .flow .wrap>.eyebrow,.flow h2{text-align:center}
-.steps{position:relative;list-style:none;margin:2.5rem 0 0;--cw:min(360px,82vw);padding:.75rem calc((100% - var(--cw))/2) 1.75rem;display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;counter-reset:s;scrollbar-width:none;cursor:grab}
+.steps{position:relative;list-style:none;margin:2.5rem 0 0;--cw:min(360px,82vw);padding:.75rem calc((100% - var(--cw))/2) 1.75rem;display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;counter-reset:s;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab}
 .steps::-webkit-scrollbar{display:none}
 .steps.drag{scroll-snap-type:none;scroll-behavior:auto;cursor:grabbing;user-select:none}
-.steps li{counter-increment:s;flex:0 0 var(--cw);scroll-snap-align:center;background:var(--card);border-radius:18px;border-top:3px solid var(--line);padding:1.75rem;transform:scale(.95);transition:transform .6s var(--ease),box-shadow .6s var(--ease),border-color .6s var(--ease)}
+.steps li{counter-increment:s;flex:0 0 var(--cw);scroll-snap-align:center;background:var(--card);border-radius:18px;border-top:3px solid var(--line);padding:1.75rem;transform:scale(.95);transition:transform .6s var(--ease),box-shadow .6s var(--ease),border-color .6s var(--ease),background-color .6s var(--ease),color .6s var(--ease)}
 .steps li.on{border-top-color:var(--accent);transform:none;box-shadow:0 18px 36px -18px rgba(0,0,0,.35)}
 .steps li::before{content:counter(s,decimal-leading-zero);font:300 2.25rem/1 var(--f-display);color:var(--accent);letter-spacing:-.02em}
 .steps h3{font-size:1.35rem;margin:.9rem 0 .6rem}
@@ -293,6 +296,8 @@ nav a[aria-current="true"]{color:var(--ink)}
 /* dialog */
 dialog{border:0;padding:0;border-radius:16px;max-width:min(900px,94vw);max-height:92vh;width:100%;background:var(--bg);color:var(--ink);overflow:hidden;box-shadow:0 40px 80px -20px rgba(0,0,0,.6)}
 dialog[open]{animation:pop .45s var(--ease)}
+@keyframes fade{from{opacity:0}}
+@media(prefers-reduced-motion:no-preference){dialog[open]::backdrop{animation:fade .35s var(--ease)}::view-transition-group(root){animation-duration:.45s}}
 dialog.doc{max-width:min(560px,94vw);overflow:auto}
 .doc-in{padding:1.75rem}
 .doc-in h3{font-size:1.6rem;margin-bottom:1rem}
@@ -386,6 +391,7 @@ dialog{max-height:92dvh;overflow:auto}
 .steps li.on{background:var(--ink);color:var(--bg);border-top-color:var(--brass)}
 .steps li.on p{color:color-mix(in srgb,var(--bg) 78%,transparent)}
 .steps li.on a{color:inherit}
+.steps p,.steps a{transition:color .6s var(--ease)}
 @media(max-width:860px){.film.mini{left:auto;right:1rem}}
 
 .rev{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(2rem,5vw,4rem);align-items:start}
@@ -608,6 +614,9 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 .trybox h3{margin:0 0 .4rem;font-size:1.4rem}
 .trybox p{margin:0;max-width:52ch;color:var(--muted);line-height:1.65}
 /* polish v3: smoothness */
+a,button,summary,label,.film{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+html{scrollbar-gutter:stable}
+html.hero-off .hero h1 em,html.hero-off .film.mini,html.hero-off .film.feature::before{animation-play-state:paused}
 @property --mx{syntax:"<length-percentage>";inherits:false;initial-value:72%}
 @property --my{syntax:"<length-percentage>";inherits:false;initial-value:28%}
 .hero{transition:--mx .7s var(--ease),--my .7s var(--ease)}
@@ -622,16 +631,12 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 @keyframes ring{from{transform:scale(.7);opacity:.9}to{transform:scale(1.55);opacity:0}}
 html.imgfade .film img{opacity:0;transition:opacity .7s var(--ease),transform .9s var(--ease)}
 html.imgfade .film img.ld{opacity:1}
-.bar{transition:padding .4s var(--ease)}
-.site.scrolled .bar{padding-block:.55rem}
-.logo{transition:width .4s var(--ease),height .4s var(--ease)}
-.site.scrolled .logo{width:2.05rem;height:2.05rem}
 @media(min-width:901px) and (hover:hover){
 nav a:not(:last-child){background:linear-gradient(var(--accent),var(--accent)) 0 100%/0 1px no-repeat;transition:color .3s var(--ease),background-size .45s var(--ease)}
 nav a:not(:last-child):hover{background-size:100% 1px}
 }
-.btn:active{transform:scale(.97)}
-.film:active{transform:scale(.985)}
+.btn:active{transform:scale(.97);transition-duration:.12s}
+.film:active{transform:scale(.985);transition-duration:.9s,.9s,.15s,.5s}
 @keyframes pop2{from{opacity:0;transform:translateY(10px) scale(.98)}}
 .next:not([hidden]){animation:pop2 .6s var(--ease)}
 @media(prefers-reduced-motion:no-preference){
@@ -854,7 +859,7 @@ const setHero=(k,[v,title,type])=>{const b=document.querySelector(".film."+k);if
  const im=b.querySelector("img");if(im&&im.src.indexOf("/vi/"+v+"/")<0)im.src="https://img.youtube.com/vi/"+v+"/hq720.jpg";
  const c=b.querySelector(".cap");if(c)c.innerHTML=esc(title)+"<small>"+esc(type)+"</small>"};
 setHero("feature",HERO.feature);setHero("mini",HERO.mini);
-let own=false;try{if(CFG.editKey&&new URLSearchParams(location.search).get("edit")===CFG.editKey){localStorage.setItem("ownerEdit","1");history.replaceState(null,"",location.pathname+location.hash)}own=!!CFG.editKey&&localStorage.getItem("ownerEdit")==="1"}catch(e){}
+let own=false,fresh=false;try{if(CFG.editKey&&new URLSearchParams(location.search).get("edit")===CFG.editKey){localStorage.setItem("ownerEdit","1");fresh=true;history.replaceState(null,"",location.pathname+"#fedit")}own=!!CFG.editKey&&localStorage.getItem("ownerEdit")==="1"}catch(e){}
 if(!own)return;
 const parse=u=>{u=u.trim();if(ID.test(u))return u;try{const x=new URL(u),h=x.hostname;
  if(/(^|\.)youtu\.be$/.test(h)){const i=x.pathname.slice(1).split("/")[0];return ID.test(i)?i:null}
@@ -881,6 +886,7 @@ p.innerHTML=`<header class="fe-hd"><h3>Edit films</h3><span class="fe-chip">Only
 <li>Paste it here. It is saved only in this browser, never on the site itself.</li></ol>
 <div class="fe-tk"><input id="fe-k" type="password" placeholder="GitHub token" autocomplete="off" aria-label="GitHub token"><button class="btn" type="button" id="fe-ks">Save token</button><button class="btn ghost" type="button" id="fe-kf">Forget token</button></div></details>`;
 $("grid").before(p);
+if(fresh||location.hash==="#fedit"){const go=()=>p.scrollIntoView({block:"start"});requestAnimationFrame(go);addEventListener("load",go,{once:true})}
 p.querySelector(".fe-x").addEventListener("click",e=>{e.preventDefault();try{localStorage.removeItem("ownerEdit")}catch(x){}location.hash="#work";location.reload()});
 const msg=t=>{$("fe-m").textContent=t},th=v=>`<img src="https://img.youtube.com/vi/${v}/default.jpg" alt="" width="64" height="48">`;
 const list=()=>{$("fe-c").textContent=FILMS.length;
@@ -894,7 +900,7 @@ const fill=(w,[v,t,y])=>{$("fe-w").value=w;$("fe-u").value="https://www.youtube.
  if(![...$("fe-y").options].some(o=>o.value===y))$("fe-y").add(new Option(y,y));$("fe-y").value=y;label();$("fe-f").scrollIntoView({block:"center"});$("fe-u").focus()};
 $("fe-l").addEventListener("click",e=>{const b=e.target.closest("button[data-e]");if(!b)return;const f=FILMS[+b.dataset.e];ed=+b.dataset.e;fill("grid",[f.v,f.title,f.type]);msg("Change what you need, then click “Save changes”.")});
 $("fe-h").addEventListener("click",e=>{const b=e.target.closest("button[data-h]");if(!b)return;ed=-1;fill(b.dataset.h,HERO[b.dataset.h]);msg("Change the link, names or type, then click “Replace card”.")});
-const commit=()=>{try{localStorage.setItem(KEY,JSON.stringify(FILMS.map(row)));localStorage.setItem(HK,JSON.stringify(HERO))}catch(e){msg("Couldn’t save the change in this browser.");return}location.hash="#work";location.reload()};
+const commit=()=>{try{localStorage.setItem(KEY,JSON.stringify(FILMS.map(row)));localStorage.setItem(HK,JSON.stringify(HERO))}catch(e){msg("Couldn’t save the change in this browser.");return}location.hash="#fedit";location.reload()};
 $("fe-f").addEventListener("submit",e=>{e.preventDefault();const v=parse($("fe-u").value),w=$("fe-w").value,t=$("fe-t").value.trim(),y=$("fe-y").value;
  if(!v){msg("That doesn’t look like a YouTube link. Paste the video’s address, e.g. https://www.youtube.com/watch?v=…");return}
  if(w=="grid"){if(FILMS.some((f,i)=>f.v===v&&i!==ed)){msg("That video is already in the grid.");return}
@@ -903,7 +909,7 @@ $("fe-f").addEventListener("submit",e=>{e.preventDefault();const v=parse($("fe-u
 $("fe-l").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(!b)return;const f=FILMS[+b.dataset.i];
  if(FILMS.length<2){msg("Keep at least one film in the grid.");return}
  if(!confirm("Remove “"+f.title+" – "+f.type+"” from the film grid?"))return;FILMS.splice(+b.dataset.i,1);commit()});
-$("fe-r").onclick=()=>{if(!confirm("Discard your unpublished changes and go back to the published list?"))return;try{localStorage.removeItem(KEY);localStorage.removeItem(HK)}catch(e){}location.hash="#work";location.reload()};
+$("fe-r").onclick=()=>{if(!confirm("Discard your unpublished changes and go back to the published list?"))return;try{localStorage.removeItem(KEY);localStorage.removeItem(HK)}catch(e){}location.hash="#fedit";location.reload()};
 const J=o=>JSON.stringify(o).replace(/</g,"\\u003c");
 const hb=(k,[v,t,y])=>{const f=k=="feature";return `<button class="film ${k}" type="button" data-v="${v}" aria-label="Watch ${esc(t)}, ${esc(y.toLowerCase())}, on YouTube"><img src="https://img.youtube.com/vi/${v}/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="${f?1280:640}" height="${f?720:360}"${f?' fetchpriority="high"':""}><span class="play"></span>${f?'<span class="tc" aria-hidden="true"><i id="tcv">00:00:00:00</i></span>':""}<span class="cap">${esc(t)}<small>${esc(y)}</small></span></button>`};
 const parts=()=>({films:"/*FILMS-"+"START*/const FILMS=["+FILMS.map(f=>J(row(f))).join(",")+"].map(([v,title,type,meta])=>({v,title,type,meta:meta||\"\"}));/*FILMS-"+"END*/",
@@ -1013,7 +1019,7 @@ const mt=$("mcp").textContent;$("mcp").addEventListener("click",async()=>{const 
  try{await navigator.clipboard.writeText("marcusweddingstudio@gmail.com");b.textContent="Copied ✓"}catch(e){b.textContent="Copy failed"}
  setTimeout(()=>{b.textContent=mt},1800)});
 
-{const el=$("tcv"),p=n=>String(n).padStart(2,"0"),t0=performance.now(),draw=()=>{const t=(performance.now()-t0)/1e3;el.textContent=[Math.floor(t/3600),Math.floor(t/60)%60,Math.floor(t)%60,Math.floor(t*25)%25].map(p).join(":")};draw();let vis=true;if("IntersectionObserver" in window)new IntersectionObserver(e=>{vis=e[0].isIntersecting}).observe(el.closest(".hero"));if(!reduce)setInterval(()=>{if(vis&&!document.hidden)draw()},40)}
+{const el=$("tcv"),p=n=>String(n).padStart(2,"0"),t0=performance.now(),draw=()=>{const t=(performance.now()-t0)/1e3;el.textContent=[Math.floor(t/3600),Math.floor(t/60)%60,Math.floor(t)%60,Math.floor(t*25)%25].map(p).join(":")};draw();let vis=true;if("IntersectionObserver" in window)new IntersectionObserver(e=>{vis=e[0].isIntersecting;document.documentElement.classList.toggle("hero-off",!vis)}).observe(el.closest(".hero"));if(!reduce){let last=-1;const tick=()=>{if(vis&&!document.hidden){const f=Math.floor((performance.now()-t0)/40);if(f!==last){last=f;draw()}}requestAnimationFrame(tick)};requestAnimationFrame(tick)}}
 /* Hero showreel: optional looping clip over the feature thumbnail. Add media/showreel.mp4 to turn it on;
    if the file is missing, unsupported, or the visitor prefers reduced motion / saves data, the thumbnail stays. */
 (()=>{const host=document.querySelector(".film.feature"),img=host&&host.querySelector("img");
@@ -1035,7 +1041,7 @@ const count=k=>k=="all"?FILMS.length:FILMS.filter(f=>kind(f)==k).length;
 const bar=$("filters"),cards=[...$("grid").children],more=$("mf");let k="all",open=false;
 bar.innerHTML=defs.filter(d=>count(d[0])>0).map(d=>`<button type="button" class="fbtn" data-k="${d[0]}" aria-pressed="${d[0]=="all"}">${d[1]}<span class="n">${count(d[0])}</span></button>`).join("");
 const render=()=>{const cap=k=="all"&&!open&&FILMS.length>LIM;
- cards.forEach((c,i)=>{c.hidden=!((k=="all"||kind(FILMS[i])==k)&&(!cap||i<LIM))});
+ let st=0;cards.forEach((c,i)=>{const was=c.hidden,h=!((k=="all"||kind(FILMS[i])==k)&&(!cap||i<LIM));c.hidden=h;if(was&&!h&&!reduce&&c.classList.contains("in")&&c.animate)c.animate([{opacity:0,translate:"0 14px"},{opacity:1,translate:"0 0"}],{duration:450,delay:(st++%6)*45,easing:"cubic-bezier(.22,.8,.24,1)",fill:"backwards"})});
  more.hidden=!cap;more.textContent="Show all "+FILMS.length+" films";
  const n=cap?LIM:count(k);$("fcount").textContent="Showing "+n+" "+(k=="all"?"films":k=="teaser"?"teasers":"highlight films")};
 render();
@@ -1085,7 +1091,7 @@ set(0)})();
 let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
 const apply=t=>{r.setAttribute("data-theme",t);m.content=t=="dark"?"#16141F":"#F7F3F0";b.setAttribute("aria-label",t=="dark"?"Switch to light mode":"Switch to dark mode")};
 apply(r.getAttribute("data-theme")=="dark"?"dark":"light");
-b.addEventListener("click",()=>{const t=r.getAttribute("data-theme")=="dark"?"light":"dark";r.classList.add("tt");setTimeout(()=>r.classList.remove("tt"),700);apply(t);saved=t;try{localStorage.setItem("theme",t)}catch(e){}});
+b.addEventListener("click",()=>{const t=r.getAttribute("data-theme")=="dark"?"light":"dark";const done=()=>{apply(t);saved=t;try{localStorage.setItem("theme",t)}catch(e){}};if(document.startViewTransition&&!reduce)document.startViewTransition(done);else{r.classList.add("tt");setTimeout(()=>r.classList.remove("tt"),700);done()}});
 mq.addEventListener("change",e=>{if(!saved)apply(e.matches?"dark":"light")})})();
 
 /* Mobile menu */
@@ -1126,7 +1132,7 @@ tb.onclick=()=>scrollTo({top:0,behavior:reduce?"auto":"smooth"});tp();
 
 /* Owner button: asks for the private code, then opens the film editor */
 $("own").addEventListener("click",()=>{if(!CFG.editKey)return;const c=prompt("Owner code");if(c===null)return;
- if(c.trim()===CFG.editKey){try{localStorage.setItem("ownerEdit","1")}catch(e){}location.hash="#work";location.reload()}else alert("That code isn’t right.")});
+ if(c.trim()===CFG.editKey){try{localStorage.setItem("ownerEdit","1")}catch(e){}location.hash="#fedit";location.reload()}else alert("That code isn’t right.")});
 /* Hero glow follows the pointer (desktop only) */
 (()=>{const h=document.querySelector(".hero");if(!h||reduce||!matchMedia("(hover:hover) and (pointer:fine)").matches)return;let r=0,x=0,y=0;
 h.addEventListener("pointermove",e=>{const b=h.getBoundingClientRect();x=e.clientX-b.left;y=e.clientY-b.top;if(!r)r=requestAnimationFrame(()=>{r=0;h.style.setProperty("--mx",x+"px");h.style.setProperty("--my",y+"px")})},{passive:true})})();
