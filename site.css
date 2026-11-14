@@ -838,3 +838,9 @@ nav#nav .snd-row[aria-pressed="false"] .off{display:block}
 .pkg .ck{flex:0 0 auto;width:1.15rem;height:1.15rem;margin-top:.02rem;padding:.22rem;box-sizing:border-box;border-radius:50%;background:color-mix(in srgb,var(--brass) 20%,transparent);fill:none;stroke:var(--brass);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .pkg .hl .ck{background:var(--accent);stroke:var(--bg)}
 @media(max-width:360px){.pkg-grid{grid-template-columns:1fr}.pkg{aspect-ratio:auto}}
+
+/* owner pencil: only added to the page for the owner, sits above the back-to-top button */
+.edit-fab{position:fixed;right:1.25rem;bottom:calc(9.25rem + env(safe-area-inset-bottom,0px));z-index:20;display:grid;place-items:center;width:52px;height:52px;padding:0;border-radius:50%;border:1.5px solid var(--brass);background:var(--bg);color:var(--brass);cursor:pointer;box-shadow:0 10px 24px -8px rgba(0,0,0,.4);transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease)}
+.edit-fab svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+@media(hover:hover){.edit-fab:hover{background:var(--brass);color:var(--bg)}}
+.edit-fab:active{transform:scale(.94)}
