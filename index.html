@@ -30,7 +30,7 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600&display=swap"></noscript>
 <script>if(!matchMedia("(prefers-reduced-motion:reduce)").matches){document.documentElement.classList.add("anim");setTimeout(function(){if(!window.__rv)document.documentElement.classList.remove("anim")},3000)}</script>
 <script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
-<link rel="stylesheet" href="site.css?v=20261115f">
+<link rel="stylesheet" href="site.css?v=20261115e">
 <noscript><style>.rv{opacity:1!important;translate:none!important}</style></noscript></head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -129,7 +129,8 @@
 </div></dialog>
 <dialog id="pl" aria-label="Film player"><iframe id="yt" title="Film player" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe><div class="dtxt"><h3 id="pt" aria-live="polite"></h3><div class="pnav"><button type="button" id="pp" aria-label="Previous film">‹</button><button type="button" id="pn" aria-label="Next film">›</button></div><button type="button" id="pr">Use as reference</button><a class="btn" id="ytl" target="_blank" rel="noopener">Watch on YouTube</a><button type="button" id="pc">Close</button></div></dialog>
 
-<script src="config.js?v=20261115f"></script>
+<script src="config.js?v=20261115e"></script>
+<script src="films.js"></script>
 <script>
 const $=id=>document.getElementById(id);
 const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
@@ -156,15 +157,17 @@ document.addEventListener("click",e=>{const a=e.target.closest("[data-ev]");if(a
 
 if(CFG.clients.length){$("cl").innerHTML=CFG.clients.map(c=>{const i=c.logo?`<img src="${esc(c.logo)}" alt="${esc(c.name)}" loading="lazy" decoding="async">`:esc(c.name);return `<li>${c.url?`<a href="${esc(c.url)}" target="_blank" rel="noopener">${i}</a>`:i}</li>`}).join("");$("clients").hidden=false}
 /* Films: [YouTube ID, title, type, optional details such as "4:12 · Cinematic"] */
-/*HERO-START*/const HERO={feature:["1u0ULhVUvvM","M & D","Wedding highlights"],mini:["1kHFaY5qJz0","G & A","Wedding teaser"]};/*HERO-END*/
-/*FILMS-START*/const FILMS=[["1kHFaY5qJz0","G & A","Wedding teaser"],["NN3BbEYAyjQ","M & D","Wedding teaser"],["1u0ULhVUvvM","M & D","Wedding highlights"],["TFfA5JCuM-0","M & S","Wedding highlights"],["wE38AcaPE00","G & A","Wedding highlights"],["qQe6p5eHqvs","S & G","Wedding highlights"],["SIyY_ykB4uE","A & J","Wedding highlights"],["-BiQK0gYHFM","B & I","Wedding teaser"],["vksNaP4HbGo","B & I","Wedding highlights"],["SUk7rLgGK6Y","G & D","Wedding highlights"],["lnMzKS5-YYM","A & Z","Wedding teaser"]].map(([v,title,type,meta])=>({v,title,type,meta:meta||""}));/*FILMS-END*/
-/* Owner edit mode: open the page with ?edit to add, replace or remove films (grid and the two large cards). Edits show in this browser until you publish the downloaded file. */
+const SIG=JSON.stringify([window.SITE_FILMS||[],window.SITE_HERO||{}]);
+const HERO=Object.assign({feature:["","",""],mini:["","",""]},JSON.parse(JSON.stringify(window.SITE_HERO||{})));
+const FILMS=(window.SITE_FILMS||[]).map(([v,title,type,meta])=>({v,title,type,meta:meta||""}));
+/* Owner edit mode: open the page with ?edit to add, replace or remove films (grid and the two large cards). Edits show in this browser until you publish them; Publish/Download saves them to films.js, so replacing index.html never undoes them. */
 (()=>{const KEY="filmsEdit",HK="heroEdit",row=f=>[f.v,f.title,f.type].concat(f.meta?[f.meta]:[]),ID=/^[\w-]{11}$/;
+try{const fb=localStorage.getItem("filmsBase");if(fb!==null&&fb!==SIG){localStorage.removeItem(KEY);localStorage.removeItem(HK);localStorage.removeItem("filmsBase")}}catch(e){}
 try{const s=JSON.parse(localStorage.getItem(KEY)||"null");
  if(Array.isArray(s)&&s.length)FILMS.splice(0,FILMS.length,...s.filter(r=>Array.isArray(r)&&ID.test(r[0])).map(([v,title,type,meta])=>({v,title:String(title||""),type:String(type||""),meta:meta||""})))}catch(e){}
 try{const h=JSON.parse(localStorage.getItem(HK)||"null");if(h)["feature","mini"].forEach(k=>{if(Array.isArray(h[k])&&ID.test(h[k][0]))HERO[k]=h[k].slice(0,3).map(String)})}catch(e){}
 /* large cards at the top of the page */
-const setHero=(k,[v,title,type])=>{const b=document.querySelector(".film."+k);if(!b)return;
+const setHero=(k,[v,title,type])=>{const b=document.querySelector(".film."+k);if(!b||!v)return;
  b.dataset.v=v;b.setAttribute("aria-label","Watch "+title+", "+type.toLowerCase()+", on YouTube");
  const im=b.querySelector("img");if(im&&im.src.indexOf("/vi/"+v+"/")<0)im.src="https://img.youtube.com/vi/"+v+"/hq720.jpg";
  const c=b.querySelector(".cap");if(c)c.innerHTML=esc(title)+"<small>"+esc(type)+"</small>"};
@@ -186,7 +189,7 @@ p.innerHTML=`<header class="fe-hd"><h3>Edit films</h3><span class="fe-chip">Only
 </div><button class="btn" type="submit" id="fe-s">Add video</button></form>
 <section class="fe-card"><p class="fe-s">Top of page</p><ul class="fe-ls" id="fe-h"></ul></section>
 <section class="fe-card"><p class="fe-s">Film grid <span id="fe-c"></span></p><ul class="fe-ls" id="fe-l"></ul></section>
-<div class="fe-a"><button class="btn" type="button" id="fe-p">Publish to website</button><button class="btn ghost" type="button" id="fe-d">Download file</button><button class="btn ghost" type="button" id="fe-r">Reset</button></div>
+<div class="fe-a"><button class="btn" type="button" id="fe-p">Publish to website</button><button class="btn ghost" type="button" id="fe-d">Download films.js</button><button class="btn ghost" type="button" id="fe-r">Reset</button></div>
 <p class="fe-m" id="fe-m" role="status"></p>
 <details class="fe-set" id="fe-set"><summary>One-time setup for Publish</summary>
 <ol><li>Open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">GitHub’s new token page</a> and sign in.</li>
@@ -210,7 +213,7 @@ const fill=(w,[v,t,y])=>{$("fe-w").value=w;$("fe-u").value="https://www.youtube.
  if(![...$("fe-y").options].some(o=>o.value===y))$("fe-y").add(new Option(y,y));$("fe-y").value=y;label();$("fe-f").scrollIntoView({block:"center"});$("fe-u").focus()};
 $("fe-l").addEventListener("click",e=>{const b=e.target.closest("button[data-e]");if(!b)return;const f=FILMS[+b.dataset.e];ed=+b.dataset.e;fill("grid",[f.v,f.title,f.type]);msg("Change what you need, then click “Save changes”.")});
 $("fe-h").addEventListener("click",e=>{const b=e.target.closest("button[data-h]");if(!b)return;ed=-1;fill(b.dataset.h,HERO[b.dataset.h]);msg("Change the link, names or type, then click “Replace card”.")});
-const commit=()=>{try{localStorage.setItem(KEY,JSON.stringify(FILMS.map(row)));localStorage.setItem(HK,JSON.stringify(HERO))}catch(e){msg("Couldn’t save the change in this browser.");return}location.hash="#fedit";location.reload()};
+const commit=()=>{try{localStorage.setItem(KEY,JSON.stringify(FILMS.map(row)));localStorage.setItem(HK,JSON.stringify(HERO));localStorage.setItem("filmsBase",SIG)}catch(e){msg("Couldn’t save the change in this browser.");return}location.hash="#fedit";location.reload()};
 $("fe-f").addEventListener("submit",e=>{e.preventDefault();const v=parse($("fe-u").value),w=$("fe-w").value,t=$("fe-t").value.trim(),y=$("fe-y").value;
  if(!v){msg("That doesn’t look like a YouTube link. Paste the video’s address, e.g. https://www.youtube.com/watch?v=…");return}
  if(w=="grid"){if(FILMS.some((f,i)=>f.v===v&&i!==ed)){msg("That video is already in the grid.");return}
@@ -219,23 +222,13 @@ $("fe-f").addEventListener("submit",e=>{e.preventDefault();const v=parse($("fe-u
 $("fe-l").addEventListener("click",e=>{const b=e.target.closest("button[data-i]");if(!b)return;const f=FILMS[+b.dataset.i];
  if(FILMS.length<2){msg("Keep at least one film in the grid.");return}
  if(!confirm("Remove “"+f.title+" – "+f.type+"” from the film grid?"))return;FILMS.splice(+b.dataset.i,1);commit()});
-$("fe-r").onclick=()=>{if(!confirm("Discard your unpublished changes and go back to the published list?"))return;try{localStorage.removeItem(KEY);localStorage.removeItem(HK)}catch(e){}location.hash="#fedit";location.reload()};
+$("fe-r").onclick=()=>{if(!confirm("Discard your unpublished changes and go back to the published list?"))return;try{localStorage.removeItem(KEY);localStorage.removeItem(HK);localStorage.removeItem("filmsBase")}catch(e){}location.hash="#fedit";location.reload()};
 const J=o=>JSON.stringify(o).replace(/</g,"\\u003c");
-const hb=(k,[v,t,y])=>{const f=k=="feature";return `<button class="film ${k}" type="button" data-v="${v}" aria-label="Watch ${esc(t)}, ${esc(y.toLowerCase())}, on YouTube"><img src="https://img.youtube.com/vi/${v}/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="${f?1280:640}" height="${f?720:360}"${f?' fetchpriority="high"':""}><span class="play"></span>${f?'<span class="tc" aria-hidden="true"><i id="tcv">00:00:00:00</i></span>':""}<span class="cap">${esc(t)}<small>${esc(y)}</small></span></button>`};
-const parts=()=>({films:"/*FILMS-"+"START*/const FILMS=["+FILMS.map(f=>J(row(f))).join(",")+"].map(([v,title,type,meta])=>({v,title,type,meta:meta||\"\"}));/*FILMS-"+"END*/",
-  hero:"/*HERO-"+"START*/const HERO="+J(HERO)+";/*HERO-"+"END*/",
-  mk:'<div class="hero-v">'+hb("feature",HERO.feature)+hb("mini",HERO.mini)+'</div>'});
-const build=src=>{const q=parts();
- for(const [re,t] of [[/\/\*FILMS-START\*\/[\s\S]*?\/\*FILMS-END\*\//,q.films],[/\/\*HERO-START\*\/[\s\S]*?\/\*HERO-END\*\//,q.hero],[/<div class="hero-v">[\s\S]*?<\/div>/,q.mk]]){if(!re.test(src))throw new Error("markers");src=src.replace(re,()=>t)}
- return src};
-$("fe-d").onclick=async()=>{
- try{const r=await fetch(location.href.split("#")[0].split("?")[0],{cache:"no-store"});if(!r.ok)throw 0;const s=build(await r.text());
-  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([s],{type:"text/html"}));a.download="index.html";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1e4);
-  msg("Downloaded. Upload it in place of your current index.html to publish these changes.")}
- catch(e){const q=parts();try{await navigator.clipboard.writeText(q.films+"\n"+q.hero);msg("Couldn’t build the file from here, so the new lists were copied instead. Send them to me and I’ll update the page.")}catch(e2){msg("Couldn’t download or copy the lists.")}}};
+const build=()=>"/* Film list. Edited by the owner editor (?edit). Replacing index.html does not change this file. */\nwindow.SITE_HERO="+J(HERO)+";\nwindow.SITE_FILMS=[\n"+FILMS.map(f=>J(row(f))).join(",\n")+"\n];\n";
+$("fe-d").onclick=()=>{try{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([build()],{type:"text/javascript"}));a.download="films.js";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1e4);msg("Downloaded films.js. Upload it to GitHub in place of the current films.js to publish these changes.")}catch(e){msg("Couldn’t download the file.")}};
 /* One-click publish: commits index.html to this site's GitHub repository (GitHub Pages then redeploys). The token lives only in this browser. */
 const TK="ghToken",tok=()=>{try{return localStorage.getItem(TK)||""}catch(e){return ""}};
-const owner=location.hostname.split(".")[0],repo=location.hostname.endsWith(".github.io")&&location.pathname.split("/")[1]||location.hostname,API="https://api.github.com/repos/"+owner+"/"+repo+"/contents/index.html";
+const owner=location.hostname.split(".")[0],repo=location.hostname.endsWith(".github.io")&&location.pathname.split("/")[1]||location.hostname,API="https://api.github.com/repos/"+owner+"/"+repo+"/contents/films.js";
 const b64d=b=>new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\s/g,"")),c=>c.charCodeAt(0)));
 const b64e=t=>{const u=new TextEncoder().encode(t);let x="";for(let i=0;i<u.length;i+=8192)x+=String.fromCharCode.apply(null,u.subarray(i,i+8192));return btoa(x)};
 $("fe-ks").onclick=()=>{const v=$("fe-k").value.trim();if(!v){msg("Paste your token first.");return}try{localStorage.setItem(TK,v)}catch(e){msg("Couldn’t save the token in this browser.");return}$("fe-k").value="";$("fe-set").open=false;msg("Token saved. You can now click “Publish to website”.")};
@@ -243,12 +236,12 @@ $("fe-kf").onclick=()=>{try{localStorage.removeItem(TK)}catch(e){}msg("Token rem
 $("fe-p").onclick=async()=>{const t=tok();if(!t){$("fe-set").open=true;msg("Publishing needs a one-time setup. Follow the steps below, then click Publish again.");return}
  const H={Authorization:"Bearer "+t,Accept:"application/vnd.github+json"},btn=$("fe-p");btn.disabled=true;msg("Publishing…");
  try{const g=await fetch(API,{headers:H,cache:"no-store"});
-  if(g.status==401||g.status==403){throw new Error("auth")}if(g.status==404)throw new Error("notfound");if(!g.ok)throw new Error("http "+g.status);
-  const cur=await g.json(),out=build(b64d(cur.content));
-  const w=await fetch(API,{method:"PUT",headers:Object.assign({"Content-Type":"application/json"},H),body:JSON.stringify({message:"Update films",content:b64e(out),sha:cur.sha})});
+  if(g.status==401||g.status==403){throw new Error("auth")}if(!g.ok&&g.status!=404)throw new Error("http "+g.status);
+  const cur=g.ok?await g.json():null,out=build();
+  const w=await fetch(API,{method:"PUT",headers:Object.assign({"Content-Type":"application/json"},H),body:JSON.stringify(Object.assign({message:"Update films",content:b64e(out)},cur?{sha:cur.sha}:{}))});
   if(w.status==401||w.status==403)throw new Error("auth");if(w.status==404)throw new Error("notfound");if(!w.ok)throw new Error("http "+w.status);
   msg("Published. Your site updates in about a minute; refresh the page to see it.")}
- catch(e){msg(e.message=="auth"?"GitHub refused the token. It may have expired or lack “Contents: Read and write” for this repository. Use “Forget token” and set up a new one.":e.message=="notfound"?"Couldn’t find index.html in the "+repo+" repository, or the token doesn’t have access to it.":e.message=="markers"?"The published page is an older version without the editor. Upload the latest index.html once, then try again.":"Couldn’t publish ("+e.message+"). Try “Download file instead”.")}
+ catch(e){msg(e.message=="auth"?"GitHub refused the token. It may have expired or lack “Contents: Read and write” for this repository. Use “Forget token” and set up a new one.":e.message=="notfound"?"Couldn’t update films.js in the "+repo+" repository, or the token doesn’t have access to it.":"Couldn’t publish ("+e.message+"). Try “Download file instead”.")}
  btn.disabled=false}})();
 
 /* Brief form -> form backend (falls back to the email app when no endpoint is set) */
@@ -420,14 +413,7 @@ if(th){const ic='<svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d=
  const r=nv?mk("snd-row",ic+'<span>Tap sounds</span><em class="st"></em>'):null;if(r)r.id="sndrow";
  const set=v=>{on=v;b.setAttribute("aria-pressed",v);b.setAttribute("aria-label",v?"Turn tap sounds off":"Turn tap sounds on");if(r){r.setAttribute("aria-pressed",v);r.querySelector(".st").textContent=v?"On":"Off"}try{localStorage.setItem("sound",v?"on":"off")}catch(e){}};
  set(on);th.parentNode.insertBefore(b,th);
- if(r){const last=nv.querySelector("a:last-child"),de=document.documentElement;
-  /* "Preferences" section in the menu: dark mode + tap sounds (the header buttons are hidden on small screens) */
-  const lb=document.createElement("span");lb.className="nl nl2 nl3";lb.setAttribute("aria-hidden","true");lb.textContent="Preferences";
-  const tr=mk("snd-row th-row",'<svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg><span>Dark mode</span><em class="st"></em>');tr.id="themerow";
-  const sync=()=>{const d=de.getAttribute("data-theme")==="dark";tr.setAttribute("aria-pressed",d);tr.querySelector(".st").textContent=d?"On":"Off"};
-  sync();new MutationObserver(sync).observe(de,{attributes:true,attributeFilter:["data-theme"]});
-  tr.addEventListener("click",()=>th.click());
-  nv.insertBefore(lb,last||null);nv.insertBefore(tr,last||null);nv.insertBefore(r,last||null);de.classList.add("menu-prefs")}
+ if(r){const last=nv.querySelector("a:last-child");nv.insertBefore(r,last||null)}
  [b,r].forEach(x=>x&&x.addEventListener("click",()=>set(!on)))}
 document.addEventListener("click",e=>{if(on)play(!!e.target.closest("a,button,summary,select,label,input,[role=button]"))},{passive:true})})();
 </script>
