@@ -882,3 +882,24 @@ nav#nav .prefs>button{border-radius:12px}
 nav#nav .prefs>button+button{border-top:1px solid var(--line);border-radius:0 0 12px 12px}
 nav#nav .prefs>button:first-child{border-radius:12px 12px 0 0}
 }
+
+/* ===== Pricing: one option at a time inside a rounded box, swipe or use the arrows ===== */
+.pbox{--bg:#2A2138;--ink:#F7F3F0;--muted:#CFC4CC;--accent:#EDA1A6;--card:#3D3250;--line:#4D4161;--brass:#D9A768;
+ margin:0 0 clamp(1.5rem,4vw,2rem);padding:clamp(1.1rem,4vw,2rem) clamp(.9rem,3vw,1.75rem) 1.25rem;border-radius:28px;color:var(--ink);overflow:hidden;
+ background:radial-gradient(120% 90% at 0% 0%,#3D3250 0%,#2A2138 55%,#1F1830 100%);box-shadow:0 28px 50px -30px rgba(31,24,48,.8)}
+.pbox .pcar{gap:0;margin:0;padding:0 0 1rem}
+.pbox .ps{flex:0 0 100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;padding:0 .2rem;text-align:center;scroll-snap-align:center;scroll-snap-stop:always}
+.pbox .ps .film,.pbox .ps .psph{width:100%;max-width:36rem;border-radius:22px}
+.pbox .ps h3{margin:1.25rem 0 .5rem;font-size:clamp(1.5rem,1.3rem + 1vw,1.9rem);color:var(--ink)}
+.pbox .ps p{margin:0 auto 1rem;max-width:40ch;color:var(--muted)}
+.pbox .ps .pr{margin:auto auto 0;justify-content:center;color:var(--ink);background:rgba(255,255,255,.06);border:1.5px solid rgba(247,243,240,.55);padding:.6rem 1.35rem}
+.pbox .ps .pr small{color:var(--muted);opacity:1}
+.pbox .ps.pk .pkg{max-width:36rem;text-align:left}
+.pbox .pkg{background:rgba(255,255,255,.05);border-color:rgba(247,243,240,.16)}
+.pbox .pkg-c{background:rgba(255,255,255,.04)}
+.pbox .ctl{justify-content:space-between;gap:.75rem;margin:.5rem 0 0}
+.pbox .ctl>button{flex:1 1 0;max-width:7.5rem;width:auto;height:48px;border-radius:999px;border:1.5px solid rgba(247,243,240,.28);color:var(--ink);font-size:1.5rem}
+@media(hover:hover){.pbox .ctl>button:hover:not(:disabled){background:rgba(255,255,255,.08);border-color:var(--brass)}}
+.pbox .dots2 button{background:rgba(247,243,240,.28)}
+.pbox .dots2 button[aria-current="true"]{background:#F7F3F0}
+.pbox .pcar{scroll-padding:0}
