@@ -27,7 +27,7 @@ document.addEventListener("click",e=>{const a=e.target.closest("[data-ev]");if(a
 let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
 const nv=$("nav"),row=document.createElement("button");row.type="button";row.className="theme-row";row.id="themerow";
 row.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><span>Dark mode</span><em class="st"></em>';
-if(nv){const last=nv.querySelector("a:last-child");nv.insertBefore(row,last||null);row.addEventListener("click",()=>b.click())}
+if(nv){const last=nv.querySelector("a:last-child"),h=document.createElement("span");h.className="sec";h.setAttribute("aria-hidden","true");h.textContent="Preferences";const box=document.createElement("div");box.className="prefs";box.id="prefs";box.setAttribute("role","group");box.setAttribute("aria-label","Preferences");box.appendChild(row);nv.insertBefore(h,last||null);nv.insertBefore(box,last||null);row.addEventListener("click",()=>b.click())}
 const apply=t=>{r.setAttribute("data-theme",t);m.content=t=="dark"?"#16141F":"#F7F3F0";b.setAttribute("aria-label",t=="dark"?"Switch to light mode":"Switch to dark mode");row.setAttribute("aria-pressed",t=="dark");row.querySelector(".st").textContent=t=="dark"?"On":"Off"};
 apply(r.getAttribute("data-theme")=="dark"?"dark":"light");
 b.addEventListener("click",()=>{const t=r.getAttribute("data-theme")=="dark"?"light":"dark";const done=()=>{apply(t);saved=t;try{localStorage.setItem("theme",t)}catch(e){}};if(document.startViewTransition&&!reduce){r.classList.add("vt-theme");document.startViewTransition(done).finished.finally(()=>r.classList.remove("vt-theme"))}else{r.classList.add("tt");setTimeout(()=>r.classList.remove("tt"),700);done()}});
@@ -70,6 +70,6 @@ if(th){const ic='<svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d=
  const r=nv?mk("snd-row",ic+'<span>Tap sounds</span><em class="st"></em>'):null;if(r)r.id="sndrow";
  const set=v=>{on=v;b.setAttribute("aria-pressed",v);b.setAttribute("aria-label",v?"Turn tap sounds off":"Turn tap sounds on");if(r){r.setAttribute("aria-pressed",v);r.querySelector(".st").textContent=v?"On":"Off"}try{localStorage.setItem("sound",v?"on":"off")}catch(e){}};
  set(on);th.parentNode.insertBefore(b,th);
- if(r){const last=nv.querySelector("a:last-child");nv.insertBefore(r,last||null)}
+ if(r){const pf=$("prefs");if(pf)pf.appendChild(r);else nv.insertBefore(r,nv.querySelector("a:last-child")||null)}
  [b,r].forEach(x=>x&&x.addEventListener("click",()=>set(!on)))}
 document.addEventListener("click",e=>{if(on)play(!!e.target.closest("a,button,summary,select,label,input,[role=button]"))},{passive:true})})();
