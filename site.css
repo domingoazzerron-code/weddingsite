@@ -797,3 +797,6 @@ dialog::backdrop{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 /* Floating buttons: same size so they line up; space under the Tools CTA */
 .top,.wa-fab{width:52px;height:52px;right:1.25rem}
 .gcta{margin-bottom:3.5rem}
+/* Tools page: icon beside each tool name, sized to the name's text */
+.gcard h3{display:flex;align-items:center;gap:.45em}
+.gcard h3 .ti{flex:none;width:1em;height:1em;color:var(--brass)}
