@@ -202,13 +202,13 @@ nav a[aria-current="true"]{color:var(--ink)}
 .brief .sub{color:var(--muted);font-size:.9375rem;margin:.4rem 0 0;line-height:1.55}
 .brief label,.brief legend{font-weight:500;font-size:.9375rem;letter-spacing:.01em}
 .brief label{display:grid;gap:.4rem}
-.brief input[type=text],.brief input[type=email],.brief input[type=date],.brief input[type=url],.brief select{font:400 1rem var(--f-body);padding:.75rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);width:100%;min-width:0;min-height:3rem;text-align:left;transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
+.brief textarea,.brief input[type=text],.brief input[type=email],.brief input[type=date],.brief input[type=url],.brief select{font:400 1rem var(--f-body);padding:.75rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);width:100%;min-width:0;min-height:3rem;text-align:left;transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
 .brief input,.brief select,.brief textarea{box-sizing:border-box;max-width:100%}
 .brief select{-webkit-appearance:none;appearance:none;padding-right:2.5rem;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 1.3rem) 50%,calc(100% - .95rem) 50%;background-size:.35rem .35rem;background-repeat:no-repeat}
 .brief ::placeholder{color:color-mix(in srgb,var(--muted) 70%,transparent);opacity:1}
 .brief input[type=date]{-webkit-appearance:none;appearance:none;display:block;height:3rem;max-width:100%;margin:0;line-height:1.2}
 .brief input[type=date]::-webkit-date-and-time-value{text-align:left}
-.brief input[type=text]:focus-visible,.brief input[type=email]:focus-visible,.brief input[type=date]:focus-visible,.brief input[type=url]:focus-visible,.brief select:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 28%,transparent)}
+.brief textarea:focus-visible,.brief input[type=text]:focus-visible,.brief input[type=email]:focus-visible,.brief input[type=date]:focus-visible,.brief input[type=url]:focus-visible,.brief select:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 28%,transparent)}
 .brief fieldset{border:0;padding:0;margin:0;display:grid;gap:.55rem}
 .brief legend{padding:0;margin-bottom:.4rem}
 .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
@@ -457,9 +457,9 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 .brief label,.brief legend{font-size:.875rem;font-weight:600;letter-spacing:.02em;color:var(--ink)}
 .brief label{gap:.45rem}
 .brief label small,.brief label .fine{font-weight:400;letter-spacing:0}
-.brief input[type=text],.brief input[type=email],.brief input[type=date],.brief input[type=url],.brief select{border-radius:14px;background:var(--bg);border-color:color-mix(in srgb,var(--line) 85%,var(--ink));box-shadow:0 1px 2px rgba(35,33,58,.04) inset;font-weight:400;color:var(--ink)}
+.brief textarea,.brief input[type=text],.brief input[type=email],.brief input[type=date],.brief input[type=url],.brief select{border-radius:14px;background:var(--bg);border-color:color-mix(in srgb,var(--line) 85%,var(--ink));box-shadow:0 1px 2px rgba(35,33,58,.04) inset;font-weight:400;color:var(--ink)}
 @media(hover:hover){.brief input[type=text]:hover,.brief input[type=email]:hover,.brief input[type=date]:hover,.brief input[type=url]:hover,.brief select:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}}
-.brief input[type=text]:focus-visible,.brief input[type=email]:focus-visible,.brief input[type=date]:focus-visible,.brief input[type=url]:focus-visible,.brief select:focus-visible{background:color-mix(in srgb,var(--accent) 3%,var(--bg))}
+.brief textarea:focus-visible,.brief input[type=text]:focus-visible,.brief input[type=email]:focus-visible,.brief input[type=date]:focus-visible,.brief input[type=url]:focus-visible,.brief select:focus-visible{background:color-mix(in srgb,var(--accent) 3%,var(--bg))}
 .brief input:-webkit-autofill{-webkit-box-shadow:0 0 0 40px var(--bg) inset;-webkit-text-fill-color:var(--ink)}
 :root[data-theme="dark"] .brief input[type=date]{color-scheme:dark}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .brief input[type=date]{color-scheme:dark}}
@@ -623,7 +623,7 @@ html.tt,html.tt *,html.tt *::before,html.tt *::after{transition:background-color
 .brief{background:color-mix(in srgb,var(--accent) 7%,var(--card));border:0;border-radius:28px;padding:clamp(1.4rem,5vw,2.5rem);box-shadow:none;gap:1.25rem}
 .brief::before{display:none}
 .brief .two{grid-template-columns:minmax(0,1fr)}
-.brief input[type=text],.brief input[type=email],.brief input[type=date],.brief input[type=url],.brief select{min-height:3.5rem;padding:.9rem 1.15rem;border-radius:16px}
+.brief textarea,.brief input[type=text],.brief input[type=email],.brief input[type=date],.brief input[type=url],.brief select{min-height:3.5rem;padding:.9rem 1.15rem;border-radius:16px}
 .brief select{padding-right:2.75rem}
 .brief label,.brief legend{font-size:.875rem;font-weight:500;color:var(--muted)}
 .brief .row{grid-template-columns:minmax(0,1fr)}
@@ -671,9 +671,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 .chead .manila{justify-content:flex-start}
 .brief{background:linear-gradient(180deg,color-mix(in srgb,var(--brass) 9%,var(--card)),var(--card) 55%);border:1px solid color-mix(in srgb,var(--brass) 28%,var(--line));border-radius:26px;padding:clamp(1.5rem,5vw,2.6rem);gap:1.1rem;box-shadow:0 30px 60px -36px color-mix(in srgb,var(--ink) 55%,transparent),0 1px 0 color-mix(in srgb,#fff 45%,transparent) inset}
 .brief::before{display:block;height:4px;background:linear-gradient(90deg,var(--brass),var(--accent))}
-.brief input[type=text],.brief input[type=email],.brief input[type=date],.brief input[type=url],.brief select{border-radius:16px;background:var(--bg);border:1px solid color-mix(in srgb,var(--brass) 22%,var(--line));box-shadow:0 1px 2px color-mix(in srgb,var(--ink) 8%,transparent);min-height:3.4rem;padding:.9rem 1.15rem}
+.brief textarea,.brief input[type=text],.brief input[type=email],.brief input[type=date],.brief input[type=url],.brief select{border-radius:16px;background:var(--bg);border:1px solid color-mix(in srgb,var(--brass) 22%,var(--line));box-shadow:0 1px 2px color-mix(in srgb,var(--ink) 8%,transparent);min-height:3.4rem;padding:.9rem 1.15rem}
 @media(hover:hover){.brief input[type=text]:hover,.brief input[type=email]:hover,.brief input[type=date]:hover,.brief input[type=url]:hover,.brief select:hover{border-color:color-mix(in srgb,var(--brass) 65%,var(--line))}}
-.brief input[type=text]:focus-visible,.brief input[type=email]:focus-visible,.brief input[type=date]:focus-visible,.brief input[type=url]:focus-visible,.brief select:focus-visible{background:var(--bg);border-color:var(--brass);box-shadow:0 0 0 4px color-mix(in srgb,var(--brass) 24%,transparent);outline:none}
+.brief textarea:focus-visible,.brief input[type=text]:focus-visible,.brief input[type=email]:focus-visible,.brief input[type=date]:focus-visible,.brief input[type=url]:focus-visible,.brief select:focus-visible{background:var(--bg);border-color:var(--brass);box-shadow:0 0 0 4px color-mix(in srgb,var(--brass) 24%,transparent);outline:none}
 .brief .row .btn:not(.ghost){background:var(--ink);box-shadow:0 16px 28px -16px color-mix(in srgb,var(--ink) 85%,transparent)}
 @media(hover:hover){.brief .row .btn:not(.ghost):hover{background:var(--brass);border-color:var(--brass);color:#fff}}
 .agree input{accent-color:var(--brass)}
@@ -788,3 +788,9 @@ dialog::backdrop{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 @media(hover:hover){.gcard:hover{transform:translateY(-3px)}}
 .pnote{transition:border-color .4s var(--ease),box-shadow .5s var(--ease)}
 @media(hover:hover){.pnote:hover{box-shadow:0 0 22px -8px color-mix(in srgb,var(--brass) 55%,transparent)}}
+
+.brief textarea{resize:vertical;min-height:6.5rem;line-height:1.5}
+.pg-c .wa-fab{display:none!important}
+.snd .off{display:none}
+.snd[aria-pressed="false"] .on{display:none}
+.snd[aria-pressed="false"] .off{display:block}

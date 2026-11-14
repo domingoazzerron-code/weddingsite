@@ -48,3 +48,21 @@ if(!("IntersectionObserver" in window)||!document.documentElement.classList.cont
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add("in");io.unobserve(el);setTimeout(()=>el.style.removeProperty("--d"),1600)}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
 els.forEach(el=>io.observe(el))})();
 
+
+/* ===== Tap sound: a soft click on every tap (synthesised, no audio file) ===== */
+(()=>{let ctx=null;
+const play=hi=>{try{const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ctx=ctx||new AC();if(ctx.state==="suspended")ctx.resume();
+ const t=ctx.currentTime,o=ctx.createOscillator(),g=ctx.createGain(),f=hi?880:560;
+ o.type="sine";o.frequency.setValueAtTime(f,t);o.frequency.exponentialRampToValueAtTime(f*.62,t+.07);
+ g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.09,t+.006);g.gain.exponentialRampToValueAtTime(.0001,t+.1);
+ o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+.11)}catch(e){}};
+/* click fires for taps and key presses, not for scroll gestures */
+let on=true;try{on=localStorage.getItem("sound")!=="off"}catch(e){}
+/* Sound on/off button, placed beside the dark-mode toggle on every page */
+const th=document.getElementById("theme");
+if(th){const b=document.createElement("button");b.type="button";b.className="theme snd";b.id="snd";
+ b.innerHTML='<svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h4l5 4v-13l-5 4z"/><path d="M16.5 9a4 4 0 0 1 0 6M18.8 6.7a7.3 7.3 0 0 1 0 10.6"/></svg><svg class="off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h4l5 4v-13l-5 4z"/><path d="M17 9.5l4.5 5M21.5 9.5l-4.5 5"/></svg>';
+ const set=v=>{on=v;b.setAttribute("aria-pressed",v);b.setAttribute("aria-label",v?"Turn tap sounds off":"Turn tap sounds on");try{localStorage.setItem("sound",v?"on":"off")}catch(e){}};
+ set(on);th.parentNode.insertBefore(b,th);
+ b.addEventListener("click",()=>set(!on))}
+document.addEventListener("click",e=>{if(on)play(!!e.target.closest("a,button,summary,select,label,input,[role=button]"))},{passive:true})})();

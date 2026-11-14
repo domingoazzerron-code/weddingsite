@@ -1,7 +1,10 @@
 (()=>{const f=$("qb"),msg=$("bmsg"),btn=$("bsend"),TO="marcusweddingstudio@gmail.com",SEND=CFG.formEndpoint?"Send my brief":"Email my brief";
 btn.textContent=SEND;
+document.documentElement.classList.add("pg-c");
+/* Terms dialog */
+{const tm=$("tm");document.querySelectorAll(".tmopen").forEach(b=>b.addEventListener("click",()=>tm.showModal()));$("tmc").onclick=()=>tm.close();tm.addEventListener("click",e=>{if(e.target===tm)tm.close()})}
 /* Remember a half-finished form in this browser until it is sent */
-const KEY="briefDraft",ids=["bn","bln","bco","bw","be","bh","br","brq"];
+const KEY="briefDraft",ids=["bn","bln","bco","bw","be","brq","bf","bd","br","bm","bh"];
 try{const o=JSON.parse(localStorage.getItem(KEY)||"null");if(o&&typeof o==="object")ids.forEach(i=>{if(typeof o[i]!=="string")return;const el=$(i);if(el.tagName==="SELECT"&&![...el.options].some(x=>x.value===o[i]))return;el.value=o[i]})}catch(e){}
 const save=()=>{try{const o={};ids.forEach(i=>{o[i]=$(i).value});localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
 f.addEventListener("input",save);f.addEventListener("change",save);
@@ -16,9 +19,9 @@ const ok=()=>{["bn","bln","be","bt2"].forEach(i=>$(i).removeAttribute("aria-inva
  const m=$("be");if(!m.value.trim()||!m.checkValidity())return bad(m,"Please add a valid email so we can reply.");
  if(!$("bt2").checked)return bad($("bt2"),"Please agree to the terms and conditions to continue.");
  msg.textContent="";return true};
-const build=()=>"Hi Marcus Wedding Studio,\n\nI'd like to book an edit.\n\n"+[["Name",name()],["Email",$("be").value.trim()],["Company",$("bco").value.trim()],["Website",site()],["Heard about us from",$("bh").value],["Request",$("brq").value],["Reference film",$("br").value.trim()]].filter(r=>r[1]).map(r=>r[0]+": "+r[1]).join("\n")+"\n\nThanks!";
+const build=()=>"Hi Marcus Wedding Studio,\n\nI'd like to book an edit.\n\n"+[["Name",name()],["Email",$("be").value.trim()],["Company",$("bco").value.trim()],["Website",site()],["Request",$("brq").value],["Footage link",$("bf").value.trim()],["Deadline",$("bd").value],["Reference film",$("br").value.trim()],["Message",$("bm").value.trim()],["Heard about us from",$("bh").value]].filter(r=>r[1]).map(r=>r[0]+": "+r[1]).join("\n")+"\n\nThanks!";
 const mailto=()=>"mailto:"+TO+"?subject="+encodeURIComponent("Editing inquiry from "+name())+"&body="+encodeURIComponent(build());
-const payload=()=>{const o={name:name(),first_name:$("bn").value.trim(),last_name:$("bln").value.trim(),email:$("be").value.trim(),company:$("bco").value.trim(),website:site(),heard_from:$("bh").value,request:$("brq").value,reference_link:$("br").value.trim(),_subject:"Editing inquiry from "+name()};
+const payload=()=>{const o={name:name(),first_name:$("bn").value.trim(),last_name:$("bln").value.trim(),email:$("be").value.trim(),company:$("bco").value.trim(),website:site(),heard_from:$("bh").value,request:$("brq").value,footage_link:$("bf").value.trim(),deadline:$("bd").value,reference_link:$("br").value.trim(),message:$("bm").value.trim(),_subject:"Editing inquiry from "+name()};
  if(CFG.formKey){o.access_key=CFG.formKey;o.subject=o._subject}
  return Object.fromEntries(Object.entries(o).filter(([,v])=>v))};
 f.addEventListener("submit",async e=>{e.preventDefault();$("next").hidden=true;if(!ok())return;
