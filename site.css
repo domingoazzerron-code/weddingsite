@@ -347,6 +347,11 @@ dialog{max-height:92dvh;overflow:auto}
 @media(min-width:861px){.film.feature span.cap{text-align:right}}
 .film .reel{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s var(--ease);pointer-events:none}
 .film .reel.on{opacity:1}
+.reel-snd{position:absolute;top:.75rem;right:.75rem;z-index:3;width:44px;height:44px;display:grid;place-items:center;padding:0;border:1px solid rgba(255,255,255,.55);border-radius:50%;background:rgba(20,18,30,.55);color:#fff;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .3s var(--ease),border-color .3s var(--ease)}
+.reel-snd[hidden]{display:none}
+@media(hover:hover){.reel-snd:hover{background:rgba(20,18,30,.8);border-color:#fff}}
+.reel-snd svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.reel-snd .vol{display:none}.reel-snd[aria-pressed="false"] .vol{display:block}.reel-snd[aria-pressed="false"] .mut{display:none}
 .film.mini span.cap{font-size:.9375rem;padding:2rem .7rem .6rem}
 .about{background:var(--card);color:var(--ink)}
 :root[data-theme="dark"] .about{--bg:#2A2138;--ink:#F7F3F0;--muted:#CFC4CC;--accent:#EDA1A6;--line:#4D4161;background:var(--bg)}
@@ -798,5 +803,5 @@ dialog::backdrop{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .top,.wa-fab{width:52px;height:52px;right:1.25rem}
 .gcta{margin-bottom:3.5rem}
 /* Tools page: icon beside each tool name, sized to the name's text */
-.gcard h3{display:flex;align-items:center;gap:.45em}
-.gcard h3 .ti{flex:none;width:1em;height:1em;color:var(--brass)}
+.gcard h3{display:flex;align-items:center;gap:.45em;line-height:1.2}
+.gcard h3 .ti{flex:none;width:1.2em;height:1.2em;color:var(--brass)}
