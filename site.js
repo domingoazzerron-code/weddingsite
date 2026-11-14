@@ -25,9 +25,12 @@ document.addEventListener("click",e=>{const a=e.target.closest("[data-ev]");if(a
 (()=>{const p=$("sprog"),d=document.documentElement;let t=0;const u=()=>{t=0;p.style.transform="scaleX("+Math.min(1,scrollY/Math.max(1,d.scrollHeight-innerHeight))+")"};addEventListener("scroll",()=>{t||(t=requestAnimationFrame(u))},{passive:!0});u();})();
 (()=>{const r=document.documentElement,b=$("theme"),m=$("tc"),mq=matchMedia("(prefers-color-scheme:dark)");
 let saved=null;try{saved=localStorage.getItem("theme")}catch(e){}
-const apply=t=>{r.setAttribute("data-theme",t);m.content=t=="dark"?"#16141F":"#F7F3F0";b.setAttribute("aria-label",t=="dark"?"Switch to light mode":"Switch to dark mode")};
+const nv=$("nav"),row=document.createElement("button");row.type="button";row.className="theme-row";row.id="themerow";
+row.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><span>Dark mode</span><em class="st"></em>';
+if(nv){const last=nv.querySelector("a:last-child");nv.insertBefore(row,last||null);row.addEventListener("click",()=>b.click())}
+const apply=t=>{r.setAttribute("data-theme",t);m.content=t=="dark"?"#16141F":"#F7F3F0";b.setAttribute("aria-label",t=="dark"?"Switch to light mode":"Switch to dark mode");row.setAttribute("aria-pressed",t=="dark");row.querySelector(".st").textContent=t=="dark"?"On":"Off"};
 apply(r.getAttribute("data-theme")=="dark"?"dark":"light");
-b.addEventListener("click",()=>{const t=r.getAttribute("data-theme")=="dark"?"light":"dark";const done=()=>{apply(t);saved=t;try{localStorage.setItem("theme",t)}catch(e){}};if(document.startViewTransition&&!reduce)document.startViewTransition(done);else{r.classList.add("tt");setTimeout(()=>r.classList.remove("tt"),700);done()}});
+b.addEventListener("click",()=>{const t=r.getAttribute("data-theme")=="dark"?"light":"dark";const done=()=>{apply(t);saved=t;try{localStorage.setItem("theme",t)}catch(e){}};if(document.startViewTransition&&!reduce){r.classList.add("vt-theme");document.startViewTransition(done).finished.finally(()=>r.classList.remove("vt-theme"))}else{r.classList.add("tt");setTimeout(()=>r.classList.remove("tt"),700);done()}});
 mq.addEventListener("change",e=>{if(!saved)apply(e.matches?"dark":"light")})})();
 (()=>{const b=$("menu"),n=$("nav");
 const set=o=>{n.classList.toggle("open",o);b.setAttribute("aria-expanded",o);b.setAttribute("aria-label",o?"Close menu":"Open menu")};
@@ -67,13 +70,6 @@ if(th){const ic='<svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d=
  const r=nv?mk("snd-row",ic+'<span>Tap sounds</span><em class="st"></em>'):null;if(r)r.id="sndrow";
  const set=v=>{on=v;b.setAttribute("aria-pressed",v);b.setAttribute("aria-label",v?"Turn tap sounds off":"Turn tap sounds on");if(r){r.setAttribute("aria-pressed",v);r.querySelector(".st").textContent=v?"On":"Off"}try{localStorage.setItem("sound",v?"on":"off")}catch(e){}};
  set(on);th.parentNode.insertBefore(b,th);
- if(r){const last=nv.querySelector("a:last-child"),de=document.documentElement;
-  /* "Preferences" section in the menu: dark mode + tap sounds (the header buttons are hidden on small screens) */
-  const lb=document.createElement("span");lb.className="nl nl2 nl3";lb.setAttribute("aria-hidden","true");lb.textContent="Preferences";
-  const tr=mk("snd-row th-row",'<svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg><span>Dark mode</span><em class="st"></em>');tr.id="themerow";
-  const sync=()=>{const d=de.getAttribute("data-theme")==="dark";tr.setAttribute("aria-pressed",d);tr.querySelector(".st").textContent=d?"On":"Off"};
-  sync();new MutationObserver(sync).observe(de,{attributes:true,attributeFilter:["data-theme"]});
-  tr.addEventListener("click",()=>th.click());
-  nv.insertBefore(lb,last||null);nv.insertBefore(tr,last||null);nv.insertBefore(r,last||null);de.classList.add("menu-prefs")}
+ if(r){const last=nv.querySelector("a:last-child");nv.insertBefore(r,last||null)}
  [b,r].forEach(x=>x&&x.addEventListener("click",()=>set(!on)))}
 document.addEventListener("click",e=>{if(on)play(!!e.target.closest("a,button,summary,select,label,input,[role=button]"))},{passive:true})})();
