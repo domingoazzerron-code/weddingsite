@@ -583,8 +583,6 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 .pcar:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
 .ps{flex:0 0 min(86%,36rem);scroll-snap-align:start}
 .ps .film{display:block;width:100%;aspect-ratio:16/9}
-.ps .pth{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:2px;background:var(--card)}
-.ps .pth img{display:block;width:100%;height:100%;object-fit:cover}
 .ps .cap{display:none}
 .ps h3{margin:1.1rem 0 .35rem;font-size:1.5rem;letter-spacing:-.015em}
 .ps p{margin:0;color:var(--muted);font-size:1rem;line-height:1.65;max-width:44ch}
@@ -688,6 +686,17 @@ html.tt,html.tt *,html.tt *::before,html.tt *::after{transition:background-color
 /* pricing placeholders */
 .psph{display:grid;place-items:center;width:100%;aspect-ratio:16/9;border:1.5px dashed color-mix(in srgb,var(--ink) 30%,var(--line));background:color-mix(in srgb,var(--accent) 5%,transparent);color:var(--muted);font:600 .875rem/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase}
 .ps .pr.soon{margin-top:.9rem;font:600 1rem/1.2 var(--f-body);letter-spacing:0;color:var(--muted)}
+/* polish pass */
+.film.mini .play{display:none}
+.rc{border-radius:999px}
+.ps h3{letter-spacing:-.02em}
+.ps .pr{color:var(--ink)}
+.btn{transition:transform .35s var(--ease),background .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease),box-shadow .35s var(--ease)}
+@media(hover:hover){.btn:not(.ghost):hover{background:var(--brass);border-color:var(--brass);color:#fff}.btn.ghost:hover{border-color:var(--brass);color:var(--ink)}}
+a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--brass) 55%,transparent);outline-offset:3px}
+.foot a{text-underline-offset:4px}
+/* rounded film cards */
+.film,.psph{border-radius:18px}
 /* contact: themed form with rounded corners */
 .chead{text-align:left}
 .chead h2{font-weight:300;font-size:clamp(2.2rem,1.4rem + 3vw,3.5rem);line-height:1.05;letter-spacing:-.025em}
@@ -752,9 +761,10 @@ html.tt,html.tt *,html.tt *::before,html.tt *::after{transition:background-color
 <div class="rv"><h2>Pricing</h2></div>
 <p class="pay">2–3 revision rounds included, and you pay only after you approve the final cut.</p>
 <div class="pcar rv" id="pcar" tabindex="0" role="region" aria-label="Teaser and highlight film pricing" style="--d:40ms">
-<div class="ps"><div class="pth"><img src="https://img.youtube.com/vi/1kHFaY5qJz0/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="G &amp; A, wedding teaser, thumbnail" width="1280" height="720" loading="lazy"></div><h3>Teaser</h3><p>A short cinematic cut of the best moments, ready for social media.</p><p class="pr"><small>From</small>$85</p><p class="tt">3–4 day turnaround</p></div>
-<div class="ps"><div class="pth"><img src="https://img.youtube.com/vi/1u0ULhVUvvM/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="M &amp; D, wedding highlights, thumbnail" width="1280" height="720" loading="lazy"></div><h3>Highlight film</h3><p>A cinematic film of the wedding day’s most memorable moments.</p><p class="pr"><small>From</small>$200</p><p class="tt">3–4 day turnaround</p></div>
-<div class="ps"><div class="psph" aria-hidden="true"><span>Coming soon</span></div><h3>Ceremony &amp; speeches</h3><p>Edits of the ceremony and speeches, added to your teaser or highlight film.</p><p class="pr soon">Price coming soon</p><p class="tt">4–5 day turnaround</p></div>
+<div class="ps"><button class="film" type="button" data-v="1kHFaY5qJz0" aria-label="Watch G & A, wedding teaser, on YouTube"><img src="https://img.youtube.com/vi/1kHFaY5qJz0/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="1280" height="720" loading="lazy"><span class="play"></span><span class="cap">G &amp; A<small>Wedding teaser</small></span></button><h3>Teaser</h3><p>A short cinematic cut of the best moments, ready for social media.</p><p class="pr"><small>From</small>$85</p><p class="tt">3–4 day turnaround</p></div>
+<div class="ps"><button class="film" type="button" data-v="1u0ULhVUvvM" aria-label="Watch M & D, wedding highlights, on YouTube"><img src="https://img.youtube.com/vi/1u0ULhVUvvM/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" width="1280" height="720" loading="lazy"><span class="play"></span><span class="cap">M &amp; D<small>Wedding highlights</small></span></button><h3>Highlight film</h3><p>A cinematic film of the wedding day’s most memorable moments.</p><p class="pr"><small>From</small>$200</p><p class="tt">3–4 day turnaround</p></div>
+<div class="ps"><div class="psph" aria-hidden="true"><span>Sample coming soon</span></div><h3>Ceremony film edit</h3><p>A complete edit of your ceremony, from the processional to the recessional.</p><p class="pr"><small>From</small>$180</p><p class="tt">4–5 day turnaround</p></div>
+<div class="ps"><div class="psph" aria-hidden="true"><span>Sample coming soon</span></div><h3>Speeches film edit</h3><p>A clean edit of the toasts and speeches, with the best audio and cutaways.</p><p class="pr"><small>From</small>$180</p><p class="tt">4–5 day turnaround</p></div>
 <div class="ps"><div class="psph" aria-hidden="true"><span>Coming soon</span></div><h3>Packages</h3><p>Bundles such as a teaser, highlight film and ceremony and speeches edit.</p><p class="pr soon">Price coming soon</p></div>
 </div>
 <div class="ctl"><button type="button" id="pprev" aria-label="Previous option">‹</button><div class="dots2" id="pdots"></div><button type="button" id="pnext" aria-label="Next option">›</button></div>
