@@ -59,10 +59,14 @@ const play=hi=>{try{const AC=window.AudioContext||window.webkitAudioContext;if(!
 /* click fires for taps and key presses, not for scroll gestures */
 let on=true;try{on=localStorage.getItem("sound")!=="off"}catch(e){}
 /* Sound on/off button, placed beside the dark-mode toggle on every page */
-const th=document.getElementById("theme");
-if(th){const b=document.createElement("button");b.type="button";b.className="theme snd";b.id="snd";
- b.innerHTML='<svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h4l5 4v-13l-5 4z"/><path d="M16.5 9a4 4 0 0 1 0 6M18.8 6.7a7.3 7.3 0 0 1 0 10.6"/></svg><svg class="off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h4l5 4v-13l-5 4z"/><path d="M17 9.5l4.5 5M21.5 9.5l-4.5 5"/></svg>';
- const set=v=>{on=v;b.setAttribute("aria-pressed",v);b.setAttribute("aria-label",v?"Turn tap sounds off":"Turn tap sounds on");try{localStorage.setItem("sound",v?"on":"off")}catch(e){}};
+const th=document.getElementById("theme"),nv=document.getElementById("nav");
+if(th){const ic='<svg class="on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h4l5 4v-13l-5 4z"/><path d="M16.5 9a4 4 0 0 1 0 6M18.8 6.7a7.3 7.3 0 0 1 0 10.6"/></svg><svg class="off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5v5h4l5 4v-13l-5 4z"/><path d="M17 9.5l4.5 5M21.5 9.5l-4.5 5"/></svg>';
+ const mk=(cls,html)=>{const x=document.createElement("button");x.type="button";x.className=cls;x.innerHTML=html;return x};
+ /* Wide screens: round button beside the dark-mode toggle. Phones and tablets: a row inside the menu. */
+ const b=mk("theme snd",ic);b.id="snd";
+ const r=nv?mk("snd-row",ic+'<span>Tap sounds</span><em class="st"></em>'):null;if(r)r.id="sndrow";
+ const set=v=>{on=v;b.setAttribute("aria-pressed",v);b.setAttribute("aria-label",v?"Turn tap sounds off":"Turn tap sounds on");if(r){r.setAttribute("aria-pressed",v);r.querySelector(".st").textContent=v?"On":"Off"}try{localStorage.setItem("sound",v?"on":"off")}catch(e){}};
  set(on);th.parentNode.insertBefore(b,th);
- b.addEventListener("click",()=>set(!on))}
+ if(r){const last=nv.querySelector("a:last-child");nv.insertBefore(r,last||null)}
+ [b,r].forEach(x=>x&&x.addEventListener("click",()=>set(!on)))}
 document.addEventListener("click",e=>{if(on)play(!!e.target.closest("a,button,summary,select,label,input,[role=button]"))},{passive:true})})();
