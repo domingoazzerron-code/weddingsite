@@ -1,0 +1,11 @@
+(()=>{const c=document.getElementById("pcar");if(!c)return;const s=[...c.children],d=document.getElementById("pdots"),pv=document.getElementById("pprev"),nx=document.getElementById("pnext"),L=s.length-1;
+const names=["Show teaser","Show highlight film","Show ceremony and speeches","Show packages"];
+s.forEach((_,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",names[i]||"Show option "+(i+1));b.addEventListener("click",()=>go(i));d.appendChild(b)});
+const off=i=>s[i].offsetLeft-s[0].offsetLeft;
+const idx=()=>{if(c.scrollLeft+c.clientWidth>=c.scrollWidth-4)return L;let b=0,m=1e9;s.forEach((_,i)=>{const x=Math.abs(off(i)-c.scrollLeft);if(x<m){m=x;b=i}});return b};
+const go=i=>c.scrollTo({left:off(Math.max(0,Math.min(L,i))),behavior:matchMedia("(prefers-reduced-motion:reduce)").matches?"auto":"smooth"});
+const upd=()=>{const i=idx();[...d.children].forEach((b,k)=>{if(k===i)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current")});pv.disabled=i===0;nx.disabled=i===L};
+let t=0;c.addEventListener("scroll",()=>{cancelAnimationFrame(t);t=requestAnimationFrame(upd)},{passive:true});addEventListener("resize",upd);
+pv.addEventListener("click",()=>go(idx()-1));nx.addEventListener("click",()=>go(idx()+1));
+c.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();go(idx()+1)}else if(e.key==="ArrowLeft"){e.preventDefault();go(idx()-1)}});
+upd()})();
