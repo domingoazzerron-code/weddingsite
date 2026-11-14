@@ -794,3 +794,6 @@ dialog::backdrop{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .snd .off{display:none}
 .snd[aria-pressed="false"] .on{display:none}
 .snd[aria-pressed="false"] .off{display:block}
+/* Floating buttons: same size so they line up; space under the Tools CTA */
+.top,.wa-fab{width:52px;height:52px;right:1.25rem}
+.gcta{margin-bottom:3.5rem}
