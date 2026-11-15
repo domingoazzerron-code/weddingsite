@@ -17,7 +17,7 @@ a{color:inherit}
 .skip:focus{top:1rem}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(1.25rem,env(safe-area-inset-left,0px));padding-right:max(1.25rem,env(safe-area-inset-right,0px))}
 .eyebrow{margin:0 0 1rem;font:500 .9375rem/1.3 var(--f-body);letter-spacing:.01em;color:var(--accent)}
-h2{font-size:clamp(2rem,1.4rem + 2.4vw,3rem)}
+h1,h2{font-size:clamp(2rem,1.4rem + 2.4vw,3rem)}
 
 /* header */
 .site{position:sticky;top:0;z-index:25;padding-top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .4s var(--ease)}
@@ -537,7 +537,7 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 #sprog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;background:var(--accent);z-index:40;pointer-events:none}
 @media(max-width:600px){.qs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1rem;margin-inline:-1.25rem;padding:.25rem 1.25rem .75rem;scrollbar-width:none}.qs::-webkit-scrollbar{display:none}.qs figure,.qs figure.big{flex:0 0 86%;scroll-snap-align:center;grid-column:auto}.qs figure.big blockquote{font-size:clamp(1.2rem,1rem + .9vw,1.55rem)}}
 /* pricing */
-.pricing h2{margin-bottom:1.1rem}
+
 .pricing>.wrap>.rv{margin-bottom:0}
 .pay{max-width:34ch;margin:0 0 2.25rem;padding:.15rem 0 .15rem 1.25rem;font:italic 300 clamp(1.35rem,1.1rem + 1vw,1.85rem)/1.35 var(--f-display);letter-spacing:-.012em;text-wrap:balance}
 .pay{margin-bottom:clamp(2rem,5vw,3rem)}
@@ -657,7 +657,7 @@ html.tt,html.tt *,html.tt *::before,html.tt *::after{transition:background-color
 @media(hover:hover){.btn:not(.ghost):hover{background:var(--brass);border-color:var(--brass);color:#fff}.btn.ghost:hover{border-color:var(--brass);color:var(--ink)}}
 a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid color-mix(in srgb,var(--brass) 55%,transparent);outline-offset:3px}
 .foot a{text-underline-offset:4px}
-.pricing h2{margin-bottom:1.75rem}
+.pricing h1,.pricing h2{margin-bottom:1.75rem}
 .ps .pr{display:inline-flex;align-items:baseline;gap:.4rem;font-size:1.25rem;color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,transparent);border:1.5px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:999px;padding:.5rem 1.05rem}
 .ps .pr small{font-size:.6875rem;color:var(--accent);opacity:.85}
 .ps .pr.soon{font-size:.9rem;padding:.55rem 1.05rem}
@@ -665,7 +665,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,select:focus-visible,
 .film,.psph{border-radius:18px}
 /* contact: themed form with rounded corners */
 .chead{text-align:left}
-.chead h2{font-weight:300;font-size:clamp(2.2rem,1.4rem + 3vw,3.5rem);line-height:1.05;letter-spacing:-.025em}
+.chead h1,.chead h2{font-weight:300;font-size:clamp(2.2rem,1.4rem + 3vw,3.5rem);line-height:1.05;letter-spacing:-.025em}
 .contact .chead .lead{margin:1rem 0 0;max-width:40ch}
 .chead .manila{justify-content:flex-start}
 .brief{background:linear-gradient(180deg,color-mix(in srgb,var(--brass) 9%,var(--card)),var(--card) 55%);border:1px solid color-mix(in srgb,var(--brass) 28%,var(--line));border-radius:26px;padding:clamp(1.5rem,5vw,2.6rem);gap:1.1rem;box-shadow:0 30px 60px -36px color-mix(in srgb,var(--ink) 55%,transparent),0 1px 0 color-mix(in srgb,#fff 45%,transparent) inset}

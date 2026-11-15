@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://domingoazzerron-code.github.io/weddingsite/sitemap.xml
+Sitemap: https://marcusweddingstudio.com/sitemap.xml
