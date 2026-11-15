@@ -11,8 +11,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600&display=swap">
 <script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
 <style>
-:root{color-scheme:light;--bg:#F7F3F0;--ink:#23213A;--muted:#5E5A74;--accent:#A9484F;--line:#D9CFCB;--brass:#B07A3A;--f-display:Newsreader,Georgia,serif;--f-body:"Hanken Grotesk",system-ui,sans-serif;box-sizing:border-box}
-:root[data-theme="dark"]{color-scheme:dark;--bg:#2A2138;--ink:#F7F3F0;--muted:#CFC4CC;--accent:#EDA1A6;--line:#4D4161;--brass:#D9A768}
+:root{color-scheme:light;--bg:#fff;--ink:#000;--muted:color-mix(in srgb,#000 62%,#fff);--card:color-mix(in srgb,#000 4%,#fff);--accent:#000;--line:color-mix(in srgb,#000 14%,#fff);--brass:color-mix(in srgb,var(--ink) 72%,var(--bg));--f-display:Newsreader,Georgia,serif;--f-body:"Hanken Grotesk",system-ui,sans-serif;box-sizing:border-box}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#000;--ink:#fff;--muted:color-mix(in srgb,#fff 66%,#000);--card:color-mix(in srgb,#fff 8%,#000);--accent:#fff;--line:color-mix(in srgb,#fff 20%,#000);--brass:color-mix(in srgb,var(--ink) 72%,var(--bg))}
 *,*::before,*::after{box-sizing:inherit}
 html,body{height:100%}
 body{margin:0;display:grid;place-items:center;padding:max(1.5rem,env(safe-area-inset-top,0px)) max(1.25rem,env(safe-area-inset-right,0px)) max(1.5rem,env(safe-area-inset-bottom,0px)) max(1.25rem,env(safe-area-inset-left,0px));background:var(--bg);color:var(--ink);font:400 1.0625rem/1.7 var(--f-body);-webkit-font-smoothing:antialiased;text-align:center}
