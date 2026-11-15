@@ -36,6 +36,6 @@ f.addEventListener("submit",async e=>{e.preventDefault();$("next").hidden=true;i
  try{const r=await fetch(CFG.formEndpoint,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload())});
   if(!r.ok)throw new Error(r.status);
   sent=true;
-  msg.textContent="Thank you! Your message is in.";track("Brief Submit",{method:"form"});$("nxm").href="mailto:"+TO+"?subject="+encodeURIComponent("Footage link from "+name())+"&body="+encodeURIComponent("Hi Marcus Wedding Studio,\n\nHere is the footage link and any references for my project:\n\n");f.reset();try{localStorage.removeItem(KEY)}catch(e){}const nx=$("next");nx.hidden=false;nx.scrollIntoView({block:"nearest",behavior:reduce?"auto":"smooth"});nx.focus({preventScroll:true})}
+  msg.textContent="Thank you! Your message is in.";track("Brief Submit",{method:"form"});f.reset();try{localStorage.removeItem(KEY)}catch(e){}const nx=$("next");nx.hidden=false;nx.scrollIntoView({block:"nearest",behavior:reduce?"auto":"smooth"});nx.focus({preventScroll:true})}
  catch(err){if(sent)return;track("Brief Error");msg.textContent="The form couldn’t send, so we’re opening your email app with your message ready. If nothing opens, email us at "+TO+".";location.href=mailto()}
  finally{btn.disabled=false;btn.textContent=SEND}})})();
