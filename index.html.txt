@@ -645,8 +645,6 @@ html.tt,html.tt *,html.tt *::before,html.tt *::after{transition:background-color
 @media(prefers-reduced-motion:reduce){.film.feature::before{display:none}}
 .f-l{display:flex;flex-direction:column;align-items:flex-start;gap:.1rem}
 .f-base{align-items:flex-start}
-#own{min-height:44px;padding:.55rem .25rem;margin:-.55rem -.25rem;opacity:.6}
-@media(hover:hover){#own:hover{opacity:1}}
 /* stats + desktop workflow */
 @media(min-width:901px){
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;scroll-snap-type:none;padding:.75rem 0 0;cursor:auto}
@@ -807,7 +805,7 @@ html.tt,html.tt *,html.tt *::before,html.tt *::after{transition:background-color
 <div class="f-brand"><a class="brand" href="#" aria-label="Marcus Wedding Studio, back to top"><svg class="logo" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M14 52V24l18 18 18-18v28" fill="none" stroke="currentColor" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 19v33" stroke="var(--brass)" stroke-width="2" stroke-linecap="round"/><path d="M27.5 9h9v5.5L32 19.5l-4.5-5z" fill="var(--brass)" stroke="var(--brass)" stroke-width="1.6" stroke-linejoin="round"/></svg><span class="bt"><b>Marcus</b><small>Wedding Studio</small></span></a><p>You shoot it. We finish it. Wedding post-production, edited in Manila.</p></div>
 <div class="f-col"><p class="f-h">Explore</p><ul class="f-links"><li><a href="#work">Films</a></li><li><a href="#words">Kind words</a></li><li><a href="#workflow">Workflow</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#about">About</a></li><li><a href="#faq">FAQ</a></li><li class="f-sep"><a href="how-to-outsource-wedding-video-editing.html">How to outsource your edits</a></li><li><a href="how-to-prep-wedding-footage-for-an-editor.html">How to prep your footage</a></li></ul></div>
 <div class="f-col"><p class="f-h">Contact</p><a href="mailto:marcusweddingstudio@gmail.com">marcusweddingstudio@gmail.com</a><span class="soc" id="soc"></span><p class="f-note">Manila, Philippines.</p></div>
-<div class="f-base"><div class="f-l"><span>© 2026 Marcus Wedding Studio</span><button type="button" class="linkbtn" id="own">Owner</button></div><button type="button" class="linkbtn pvopen">Privacy</button></div>
+<div class="f-base"><div class="f-l"><span>© 2026 Marcus Wedding Studio</span></div><button type="button" class="linkbtn pvopen">Privacy</button></div>
 </footer></div>
 
 <button type="button" class="top" id="top" aria-label="Back to top">↑</button>
@@ -1158,9 +1156,6 @@ const tb=$("top"),hd=$("site"),tp=()=>{tb.classList.toggle("show",scrollY>600);h
 addEventListener("scroll",tp,{passive:true});
 tb.onclick=()=>scrollTo({top:0,behavior:reduce?"auto":"smooth"});tp();
 
-/* Owner button: asks for the private code, then opens the film editor */
-$("own").addEventListener("click",()=>{if(!CFG.editKey)return;const c=prompt("Owner code");if(c===null)return;
- if(c.trim()===CFG.editKey){try{localStorage.setItem("ownerEdit","1");history.scrollRestoration="manual"}catch(e){}location.hash="#fedit";location.reload()}else alert("That code isn’t right.")});
 /* Hero glow follows the pointer (desktop only) */
 (()=>{const h=document.querySelector(".hero");if(!h||reduce||!matchMedia("(hover:hover) and (pointer:fine)").matches)return;let r=0,x=0,y=0;
 h.addEventListener("pointermove",e=>{const b=h.getBoundingClientRect();x=e.clientX-b.left;y=e.clientY-b.top;if(!r)r=requestAnimationFrame(()=>{r=0;h.style.setProperty("--mx",x+"px");h.style.setProperty("--my",y+"px")})},{passive:true})})();

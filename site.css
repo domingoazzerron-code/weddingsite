@@ -595,8 +595,6 @@ html.tt,html.tt *,html.tt *::before,html.tt *::after{transition:background-color
 @media(prefers-reduced-motion:reduce){.film.feature::before{display:none}}
 .f-l{display:flex;flex-direction:column;align-items:flex-start;gap:.1rem}
 .f-base{align-items:flex-start}
-#own{min-height:44px;padding:.55rem .25rem;margin:-.55rem -.25rem;opacity:.6}
-@media(hover:hover){#own:hover{opacity:1}}
 /* stats + desktop workflow */
 @media(min-width:901px){
 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;scroll-snap-type:none;padding:.75rem 0 0;cursor:auto}
@@ -762,7 +760,8 @@ nav#nav a::after{content:none!important}
 
 /* pricing notes */
 .pnotes{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));margin:0 0 clamp(1.5rem,4vw,2rem)}
-.pnote{padding:1.2rem 1.35rem;border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:12px;background:var(--card)}
+.pnote{position:relative;overflow:hidden;padding:1.2rem 1.35rem 1.2rem calc(1.35rem + 2px);border:1px solid var(--line);border-radius:12px;background:var(--card)}
+.pnote::before{content:"";position:absolute;top:0;bottom:0;left:0;width:3px;background:var(--brass)}
 .pnote h4{margin:0 0 .4rem;font:400 1.2rem/1.25 var(--f-display);letter-spacing:-.01em}
 .pnote p{margin:0;color:var(--muted);font-size:.9375rem;line-height:1.65}
 
