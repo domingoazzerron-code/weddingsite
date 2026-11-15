@@ -330,7 +330,7 @@ nav a:last-child{margin-top:1.1rem;padding:.9rem 1rem;text-align:center}
 .feat li{background:none;border:0;border-radius:0;padding:0}
 @media(hover:hover){.feat li:hover{transform:none;box-shadow:none}}
 .feat h3{font-size:1.2rem;margin-bottom:.4rem}
-.steps li::before{color:var(--brass);font-size:2.5rem}
+.steps li::before{color:var(--ink);font-size:2.5rem}
 .brief{border-radius:14px;box-shadow:none}
 .mail-arrow{display:none}
 dialog{max-height:92dvh;overflow:auto}
@@ -353,10 +353,8 @@ dialog{max-height:92dvh;overflow:auto}
 .abt>p.eyebrow{margin:0 0 1rem;color:var(--accent);line-height:1.2}
 .feat h3{border-top:2px solid var(--brass);padding-top:.9rem}
 .steps li{padding:2rem 1.75rem 2.25rem}
-.steps li::before{color:var(--brass);font-size:3.25rem}
-.steps li.on{background:var(--ink);color:var(--bg);border-top-color:var(--brass)}
-.steps li.on p{color:color-mix(in srgb,var(--bg) 78%,transparent)}
-.steps li.on a{color:inherit}
+.steps li::before{color:var(--ink);font-size:3.25rem}
+.steps li.on{border-top-color:var(--ink)}
 .steps p,.steps a{transition:color .6s var(--ease)}
 @media(max-width:860px){.film.mini{left:auto;right:1rem}}
 
@@ -882,24 +880,24 @@ nav#nav .prefs>button:first-child{border-radius:12px 12px 0 0}
 }
 
 /* ===== Pricing: one option at a time inside a rounded box, swipe or use the arrows ===== */
-.pbox{--bg:#000;--ink:#fff;--muted:color-mix(in srgb,#fff 66%,#000);--accent:#fff;--card:color-mix(in srgb,#fff 8%,#000);--line:color-mix(in srgb,#fff 20%,#000);--brass:color-mix(in srgb,#fff 72%,#000);border:1px solid rgba(255,255,255,.2);
+.pbox{border:1px solid var(--line);
  margin:0 0 clamp(1.5rem,4vw,2rem);padding:clamp(1.1rem,4vw,2rem) clamp(.9rem,3vw,1.75rem) 1.25rem;border-radius:28px;color:var(--ink);overflow:hidden;
- background:#000;box-shadow:0 28px 50px -30px rgba(0,0,0,.8)}
+ background:var(--card);box-shadow:0 28px 50px -30px rgba(0,0,0,.25)}
 .pbox .pcar{gap:0;margin:0;padding:0 0 1rem}
 .pbox .ps{flex:0 0 100%;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;padding:0 .2rem;text-align:center;scroll-snap-align:center;scroll-snap-stop:always}
 .pbox .ps .film,.pbox .ps .psph{width:100%;max-width:36rem;border-radius:22px}
 .pbox .ps h3{margin:1.25rem 0 .5rem;font-size:clamp(1.5rem,1.3rem + 1vw,1.9rem);color:var(--ink)}
 .pbox .ps p{margin:0 auto 1rem;max-width:40ch;color:var(--muted)}
-.pbox .ps .pr{margin:auto auto 0;justify-content:center;color:var(--ink);background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.55);padding:.6rem 1.35rem}
+.pbox .ps .pr{margin:auto auto 0;justify-content:center;color:var(--ink);background:color-mix(in srgb,var(--ink) 6%,transparent);border:1.5px solid color-mix(in srgb,var(--ink) 55%,transparent);padding:.6rem 1.35rem}
 .pbox .ps .pr small{color:var(--muted);opacity:1}
 .pbox .ps.pk .pkg{max-width:36rem;text-align:left}
-.pbox .pkg{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.16)}
-.pbox .pkg-c{background:rgba(255,255,255,.04)}
+.pbox .pkg{background:color-mix(in srgb,var(--ink) 5%,transparent);border-color:color-mix(in srgb,var(--ink) 16%,transparent)}
+.pbox .pkg-c{background:color-mix(in srgb,var(--ink) 4%,transparent)}
 .pbox .ctl{justify-content:space-between;gap:.75rem;margin:.5rem 0 0}
-.pbox .ctl>button{flex:1 1 0;max-width:7.5rem;width:auto;height:48px;border-radius:999px;border:1.5px solid rgba(255,255,255,.28);color:var(--ink);font-size:1.5rem}
-@media(hover:hover){.pbox .ctl>button:hover:not(:disabled){background:rgba(255,255,255,.08);border-color:var(--brass)}}
-.pbox .dots2 button{background:rgba(255,255,255,.28)}
-.pbox .dots2 button[aria-current="true"]{background:#fff}
+.pbox .ctl>button{flex:1 1 0;max-width:7.5rem;width:auto;height:48px;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--ink) 28%,transparent);color:var(--ink);font-size:1.5rem}
+@media(hover:hover){.pbox .ctl>button:hover:not(:disabled){background:color-mix(in srgb,var(--ink) 8%,transparent);border-color:var(--brass)}}
+.pbox .dots2 button{background:color-mix(in srgb,var(--ink) 28%,transparent)}
+.pbox .dots2 button[aria-current="true"]{background:var(--ink)}
 .pbox .pcar{scroll-padding:0}
 /* keep a gap between the dark price box and the notes under it (the generic .pricing>.wrap>.rv rule zeroes their margins) */
 .pricing>.wrap>.pbox{margin-bottom:clamp(1.25rem,4vw,1.75rem)}
