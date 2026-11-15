@@ -16,7 +16,7 @@ if(CFG.tawk){window.Tawk_API=window.Tawk_API||{};window.Tawk_LoadStart=new Date(
  (function(){var A=Tawk_API,root=document.documentElement,btn=null,open=false,unread=0,timer=0,ready=false,want=false;
   A.customStyle={visibility:{desktop:{position:"br",xOffset:20,yOffset:88},mobile:{position:"br",xOffset:10,yOffset:10}}};
   var badge=function(){if(!btn)return;var b=btn.querySelector(".tk-n");b.textContent=unread>9?"9+":unread;b.hidden=!unread};
-  var set=function(v){open=v;if(!btn)return;btn.setAttribute("aria-expanded",v?"true":"false");btn.setAttribute("aria-label",v?"Close live chat":"Open live chat");btn.classList.toggle("is-open",v);if(v){unread=0;badge()}};
+  var set=function(v){open=v;if(!btn)return;btn.setAttribute("aria-expanded",v?"true":"false");btn.setAttribute("aria-label",v?"Close live chat":"Open live chat");btn.classList.toggle("is-open",v);root.classList.toggle("tk-open",v);if(v){unread=0;badge()}};
   var show=function(){want=false;clearTimeout(timer);root.classList.remove("tk-out");try{A.showWidget();A.maximize()}catch(e){}set(true)};
   var hide=function(){want=false;root.classList.add("tk-out");set(false);clearTimeout(timer);timer=setTimeout(function(){try{A.minimize();A.hideWidget()}catch(e){}root.classList.remove("tk-out")},230)};
   var build=function(){if(btn)return;btn=document.createElement("button");btn.type="button";btn.className="tk-fab";btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-label","Open live chat");

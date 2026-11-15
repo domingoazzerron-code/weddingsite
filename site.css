@@ -928,7 +928,7 @@ html.tk-out #tawkchat-container{animation:tkOut .22s ease-in both}
 @media(prefers-reduced-motion:reduce){.tk-fab,#tawkchat-container,html.tk-out #tawkchat-container{animation:none}.tk-fab,.tk-fab svg{transition:none}}
 
 /* Floating buttons stay put when you change pages */
-#tawk-bubble-container,#tawkchat-minified-wrapper{display:none!important}
+html:not(.tk-open):not(.tk-out) [id^="tawk"],html:not(.tk-open):not(.tk-out) iframe[class*="tawk"],html:not(.tk-open):not(.tk-out) iframe[title*="chat widget" i]{display:none!important}
 .tk-fab.no-pop{animation:none}
 .tk-fab{view-transition-name:fab-chat}
 .wa-fab{view-transition-name:fab-wa}
