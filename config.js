@@ -28,6 +28,10 @@ if(CFG.tawk){window.Tawk_API=window.Tawk_API||{};window.Tawk_LoadStart=new Date(
   A.onChatMinimized=function(){if(open)hide()};
   A.onChatMessageAgent=function(){if(!open){unread++;badge()}};
   root.classList.add("has-chat");
+  /* Tag anything Tawk adds to the page the moment it appears, so its own button never flashes before ours is ready. */
+  var tag=function(n){if(n.nodeType!==1||n.classList.contains("tk-fab")||n.classList.contains("edit-fab"))return;var t=n.tagName;if(t==="IFRAME"||(t==="DIV"&&n.querySelector("iframe"))||/^tawk/i.test(n.id||""))n.setAttribute("data-tawk","1")};
+  try{var watch=function(){new MutationObserver(function(ms){ms.forEach(function(m){[].forEach.call(m.addedNodes,tag)})}).observe(document.body,{childList:true})};
+   if(document.body)watch();else document.addEventListener("DOMContentLoaded",watch)}catch(e){}
   if(document.body)build();else document.addEventListener("DOMContentLoaded",build);
   var s=document.createElement("script"),f=document.getElementsByTagName("script")[0];s.async=true;s.src="https://embed.tawk.to/"+CFG.tawk;s.charset="UTF-8";s.setAttribute("crossorigin","*");f.parentNode.insertBefore(s,f)})()}
 /* Show the WhatsApp button and set the button spacing right away, so nothing jumps when the page loads. */
