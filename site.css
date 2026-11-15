@@ -79,7 +79,7 @@ nav a[aria-current="true"]{color:var(--ink)}
 .anim .rv.in{opacity:1;translate:none;transition-delay:var(--d,0ms)}
 
 /* films */
-.work{padding:clamp(1rem,3vw,2rem) 0 var(--sec)}
+.work{padding:var(--sec) 0}
 .work h2{margin-bottom:1.25rem}
 .work .rev-s{margin:-.25rem 0 1.5rem}
 .more-films{margin-top:2rem;text-align:center}
@@ -1061,8 +1061,8 @@ html.has-chat:not(.has-wa) .edit-fab{bottom:calc(5.75rem + env(safe-area-inset-b
 .portfolio .pcta{margin-top:clamp(1.5rem,4vw,2.5rem)}
 
 /* Recent work slider: a little larger film */
-.wbox{margin-left:-.6rem;margin-right:-.6rem;padding:.4rem .4rem .85rem}
-.wcar .film{aspect-ratio:4/3}
+.wbox{margin-left:0;margin-right:0;padding:.4rem .4rem .85rem}
+.wcar .film{aspect-ratio:16/10}
 @media(min-width:700px){.wbox{max-width:72rem;margin-left:auto;margin-right:auto;padding:.6rem .6rem 1rem}.wcar .film{aspect-ratio:16/9}}
 
 /* ===== Smoother motion ===== */
