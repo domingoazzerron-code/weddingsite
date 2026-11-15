@@ -906,3 +906,23 @@ nav#nav .prefs>button:first-child{border-radius:12px 12px 0 0}
 /* keep a gap between the dark price box and the notes under it (the generic .pricing>.wrap>.rv rule zeroes their margins) */
 .pricing>.wrap>.pbox{margin-bottom:clamp(1.25rem,4vw,1.75rem)}
 .pricing>.wrap>.pnotes{margin-bottom:clamp(1.5rem,4vw,2rem)}
+
+/* Live chat launcher (Tawk.to): bottom-right corner, other floating buttons stack above it */
+.tk-fab{position:fixed;right:1.25rem;bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));z-index:2147483000;display:grid;place-items:center;width:52px;height:52px;padding:0;border:0;border-radius:50%;background:var(--accent);color:#fff;cursor:pointer;box-shadow:0 10px 24px -8px rgba(0,0,0,.45);animation:tkPop .5s var(--ease) both;transition:transform .3s var(--ease),background .3s}
+.tk-fab:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media(hover:hover){.tk-fab:hover{transform:translateY(-2px)}}
+.tk-fab svg{grid-area:1/1;width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s var(--ease),opacity .25s}
+.tk-fab .tk-x{opacity:0;transform:rotate(-90deg) scale(.6)}
+.tk-fab.is-open .tk-i{opacity:0;transform:rotate(90deg) scale(.6)}
+.tk-fab.is-open .tk-x{opacity:1;transform:none}
+.tk-n{position:absolute;top:-2px;right:-2px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--ink);color:var(--bg);font:600 .72rem/20px var(--f-body);text-align:center;box-sizing:border-box}
+.tk-n[hidden]{display:none}
+html.has-chat .wa-fab{bottom:calc(5.25rem + env(safe-area-inset-bottom,0px))}
+html.has-chat .top{bottom:calc(9.25rem + env(safe-area-inset-bottom,0px))}
+html.has-chat .edit-fab{bottom:calc(13.25rem + env(safe-area-inset-bottom,0px))}
+#tawkchat-container{transform-origin:100% 100%;animation:tkIn .3s var(--ease) both}
+html.tk-out #tawkchat-container{animation:tkOut .22s ease-in both}
+@keyframes tkIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes tkOut{from{opacity:1;transform:none}to{opacity:0;transform:translateY(14px) scale(.96)}}
+@keyframes tkPop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.tk-fab,#tawkchat-container,html.tk-out #tawkchat-container{animation:none}.tk-fab,.tk-fab svg{transition:none}}
