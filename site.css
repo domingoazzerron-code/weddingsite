@@ -917,9 +917,9 @@ nav#nav .prefs>button:first-child{border-radius:12px 12px 0 0}
 .tk-fab.is-open .tk-x{opacity:1;transform:none}
 .tk-n{position:absolute;top:-2px;right:-2px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:var(--ink);color:var(--bg);font:600 .72rem/20px var(--f-body);text-align:center;box-sizing:border-box}
 .tk-n[hidden]{display:none}
-html.has-chat .wa-fab{bottom:calc(5.25rem + env(safe-area-inset-bottom,0px))}
-html.has-chat .top{bottom:calc(9.25rem + env(safe-area-inset-bottom,0px))}
-html.has-chat .edit-fab{bottom:calc(13.25rem + env(safe-area-inset-bottom,0px))}
+html.has-chat .wa-fab{bottom:calc(5.75rem + env(safe-area-inset-bottom,0px))}
+html.has-chat .top{bottom:calc(9.75rem + env(safe-area-inset-bottom,0px))}
+html.has-chat .edit-fab{bottom:calc(13.75rem + env(safe-area-inset-bottom,0px))}
 #tawkchat-container{transform-origin:100% 100%;animation:tkIn .3s var(--ease) both}
 html.tk-out #tawkchat-container{animation:tkOut .22s ease-in both}
 @keyframes tkIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
@@ -928,11 +928,9 @@ html.tk-out #tawkchat-container{animation:tkOut .22s ease-in both}
 @media(prefers-reduced-motion:reduce){.tk-fab,#tawkchat-container,html.tk-out #tawkchat-container{animation:none}.tk-fab,.tk-fab svg{transition:none}}
 
 /* Floating buttons stay put when you change pages */
-html:not(.tk-open):not(.tk-out) [data-tawk],html:not(.tk-open):not(.tk-out) [id^="tawk"],html:not(.tk-open):not(.tk-out) iframe[class*="tawk"],html:not(.tk-open):not(.tk-out) iframe[title*="chat widget" i]{display:none!important}
 .tk-fab.no-pop{animation:none}
-.tk-fab{view-transition-name:fab-chat}
 .wa-fab{view-transition-name:fab-wa}
 .top{view-transition-name:fab-top}
-::view-transition-group(fab-chat),::view-transition-group(fab-wa),::view-transition-group(fab-top){animation-duration:0s}
-::view-transition-old(fab-chat),::view-transition-new(fab-chat),::view-transition-old(fab-wa),::view-transition-new(fab-wa),::view-transition-old(fab-top),::view-transition-new(fab-top){animation:none;mix-blend-mode:normal}
-::view-transition-old(fab-chat),::view-transition-old(fab-wa),::view-transition-old(fab-top){display:none}
+::view-transition-group(fab-wa),::view-transition-group(fab-top){animation-duration:0s}
+::view-transition-old(fab-wa),::view-transition-new(fab-wa),::view-transition-old(fab-top),::view-transition-new(fab-top){animation:none;mix-blend-mode:normal}
+::view-transition-old(fab-wa),::view-transition-old(fab-top){display:none}

@@ -11,30 +11,11 @@ const CFG={
  editKey:"editfilm", // Private code that unlocks the film editor: open the site once with ?edit=THIS_CODE. Without it, ?edit does nothing.
  booking:""          // Calendly / booking link, e.g. "https://calendly.com/yourname/intro". Shows "Book a call" buttons.
 };
-/* Tawk.to live chat with our own launcher button (bottom-right, opens and closes smoothly). */
+/* Tawk.to live chat: Tawk's own chat bubble, bottom-right. The other floating buttons stack above it. */
 if(CFG.tawk){window.Tawk_API=window.Tawk_API||{};window.Tawk_LoadStart=new Date();
- (function(){var A=Tawk_API,root=document.documentElement,btn=null,open=false,unread=0,timer=0,ready=false,want=false;
-  A.customStyle={visibility:{desktop:{position:"br",xOffset:20,yOffset:88},mobile:{position:"br",xOffset:10,yOffset:10}}};
-  var badge=function(){if(!btn)return;var b=btn.querySelector(".tk-n");b.textContent=unread>9?"9+":unread;b.hidden=!unread};
-  var set=function(v){open=v;if(!btn)return;btn.setAttribute("aria-expanded",v?"true":"false");btn.setAttribute("aria-label",v?"Close live chat":"Open live chat");btn.classList.toggle("is-open",v);root.classList.toggle("tk-open",v);if(v){unread=0;badge()}};
-  var show=function(){want=false;clearTimeout(timer);root.classList.remove("tk-out");try{A.showWidget();A.maximize()}catch(e){}set(true)};
-  var hide=function(){want=false;root.classList.add("tk-out");set(false);clearTimeout(timer);timer=setTimeout(function(){try{A.minimize();A.hideWidget()}catch(e){}root.classList.remove("tk-out")},230)};
-  var build=function(){if(btn)return;btn=document.createElement("button");btn.type="button";btn.className="tk-fab";btn.setAttribute("aria-expanded","false");btn.setAttribute("aria-label","Open live chat");
-   btn.innerHTML='<svg class="tk-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16a1.5 1.5 0 0 1 1.5 1.5v9a1.5 1.5 0 0 1-1.5 1.5H10l-4.5 3.5V17.5H4A1.5 1.5 0 0 1 2.5 16V7A1.5 1.5 0 0 1 4 5.5z"/></svg><svg class="tk-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="tk-n" hidden></span>';
-   var seen=false;try{seen=sessionStorage.getItem("tkSeen")==="1";sessionStorage.setItem("tkSeen","1")}catch(e){}if(seen)btn.classList.add("no-pop");
-   btn.addEventListener("click",function(){if(open){hide();return}if(!ready){want=true;set(true);return}show()});document.body.appendChild(btn)};
-  A.onLoad=function(){try{A.hideWidget()}catch(e){}build();ready=true;if(want)show()};
-  A.onChatMaximized=function(){if(!open){clearTimeout(timer);root.classList.remove("tk-out");set(true)}};
-  A.onChatMinimized=function(){if(open)hide()};
-  A.onChatMessageAgent=function(){if(!open){unread++;badge()}};
-  root.classList.add("has-chat");
-  /* Tag anything Tawk adds to the page the moment it appears (even an empty box it fills in later), so its own bubble never flashes. Only our own buttons are left alone. */
-  var tag=function(n){if(n.nodeType!==1||n===document.body||n===document.head)return;var t=n.tagName;if(/^(SCRIPT|STYLE|LINK|META|NOSCRIPT|HEAD|BODY)$/.test(t)||n.classList.contains("tk-fab")||n.classList.contains("edit-fab"))return;n.setAttribute("data-tawk","1")};
-  try{var mo=new MutationObserver(function(ms){ms.forEach(function(m){[].forEach.call(m.addedNodes,tag)})});
-   mo.observe(root,{childList:true});
-   var watch=function(){mo.observe(document.body,{childList:true})};
-   if(document.body)watch();else document.addEventListener("DOMContentLoaded",watch)}catch(e){}
-  if(document.body)build();else document.addEventListener("DOMContentLoaded",build);
+ (function(){var A=Tawk_API;
+  A.customStyle={visibility:{desktop:{position:"br",xOffset:20,yOffset:20},mobile:{position:"br",xOffset:20,yOffset:20}}};
+  document.documentElement.classList.add("has-chat");
   var s=document.createElement("script"),f=document.getElementsByTagName("script")[0];s.async=true;s.src="https://embed.tawk.to/"+CFG.tawk;s.charset="UTF-8";s.setAttribute("crossorigin","*");f.parentNode.insertBefore(s,f)})()}
 /* Show the WhatsApp button and set the button spacing right away, so nothing jumps when the page loads. */
 (function(){var r=document.documentElement;if(!CFG.whatsapp)return;r.classList.add("has-wa");
