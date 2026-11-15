@@ -71,11 +71,12 @@
 <h2>Get your footage ready</h2>
 <p>A tidy handoff means a better first draft. Organized folders, labeled audio, a timeline of the day and clear references save days of back and forth. We wrote a short guide on <a href="how-to-prep-wedding-footage-for-an-editor.html">how to prep wedding footage for an editor</a>.</p>
 
-<div class="cta"><h2>Want to try it on one wedding?</h2><p>Send a few minutes of footage and we’ll edit a 30–60 second test for a minimal charge, so you can judge our work on your own footage.</p><div class="row"><a class="btn" href="contact.html">Request a test edit</a></div></div>
+<div class="cta"><h2>Want to try it on one wedding?</h2><p>Send a few minutes of footage and we’ll edit a 30–60 second test for a minimal charge, so you can judge our work on your own footage.</p><div class="row"><a class="btn" href="contact.html" data-test>Request a test edit</a></div></div>
 
 <p class="more">Related: <a href="how-to-prep-wedding-footage-for-an-editor.html">How to prep wedding footage for an editor</a> · <a href="pricing.html">What shapes our pricing</a> · <a href="./#workflow">How we work with you</a></p>
 </article>
 </main>
 <footer><div class="wrap">© 2026 Marcus Wedding Studio · Wedding video editing for videographers, based in Manila</div></footer>
+<script>document.addEventListener("click",function(e){if(!e.target.closest("[data-test]"))return;try{var o=JSON.parse(localStorage.getItem("briefDraft")||"{}")||{};o.brq="Test edit (30-60 sec)";localStorage.setItem("briefDraft",JSON.stringify(o))}catch(x){}},true)</script>
 </body>
 </html>
