@@ -204,7 +204,7 @@ p.innerHTML=`<header class="fe-hd"><h3>Edit films</h3><span class="fe-chip">Only
 <li>Under <b>Permissions</b>, add <b>Contents</b> and set it to <b>Read and write</b>, then create the token and copy it.</li>
 <li>Paste it here. It is saved only in this browser, never on the site itself.</li></ol>
 <div class="fe-tk"><input id="fe-k" type="password" placeholder="GitHub token" autocomplete="off" aria-label="GitHub token"><button class="btn" type="button" id="fe-ks">Save token</button><button class="btn ghost" type="button" id="fe-kf">Forget token</button></div></details>`;
-$("grid").before(p);
+$("grid").closest(".wbox").before(p);
 if(fresh||location.hash==="#fedit"){try{history.scrollRestoration="manual"}catch(e){}let u=false;["wheel","touchstart","keydown"].forEach(t=>addEventListener(t,()=>{u=true},{once:true,passive:true}));const go=()=>{if(!u)p.scrollIntoView({block:"start",behavior:"instant"})};go();requestAnimationFrame(go);addEventListener("load",go,{once:true});[300,900,1800].forEach(ms=>setTimeout(go,ms))}
 p.querySelector(".fe-x").addEventListener("click",e=>{e.preventDefault();try{localStorage.removeItem("ownerEdit")}catch(x){}location.hash="#work";location.reload()});
 const msg=t=>{$("fe-m").textContent=t},th=v=>`<img src="https://img.youtube.com/vi/${v}/default.jpg" alt="" width="64" height="48">`;
@@ -276,12 +276,12 @@ if("IntersectionObserver" in window)new IntersectionObserver(e=>{vis=e[0].isInte
 document.addEventListener("visibilitychange",sync)})();
 /* Film grid + player */
 const SLIDES=6; /* how many recent films the home page slider shows */
-$("grid").innerHTML=FILMS.slice(0,SLIDES).map((f,i)=>`<button class="film" data-v="${f.v}" aria-label="Watch ${esc(f.title)}, ${esc(f.type)}, on YouTube"><img src="https://img.youtube.com/vi/${f.v}/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" loading="lazy" decoding="async" width="480" height="360"><span class="play"></span><span class="cap">${esc(f.title)}<small>${esc(f.type)}${f.meta?" · "+esc(f.meta):""}</small></span></button>`).join("");
+$("grid").innerHTML=FILMS.slice(0,SLIDES).map((f,i)=>`<button class="film" data-v="${f.v}" aria-label="Watch ${esc(f.title)}, ${esc(f.type)}, on YouTube"><img src="https://img.youtube.com/vi/${f.v}/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" ${i?'loading="lazy"':'fetchpriority="high"'} decoding="async" width="480" height="360"><span class="play"></span><span class="cap">${esc(f.title)}<small>${esc(f.type)}${f.meta?" · "+esc(f.meta):""}</small></span></button>`).join("");
 /* Recent work slider: swipe, arrows and dots. Cards are the slides. */
 (()=>{const car=$("grid"),cards=[...car.children].filter(c=>c.matches(".film")),dots=$("wdots"),pv=$("wprev"),nx=$("wnext");
 if(!cards.length){$("work").hidden=true;return}
 dots.innerHTML=cards.map((_,i)=>`<button type="button" aria-label="Film ${i+1}"></button>`).join("");const ds=[...dots.children];
-let cur=-1;const set=i=>{if(i===cur)return;cur=i;ds.forEach((d,j)=>d.setAttribute("aria-current",j==i));pv.disabled=i<=0;nx.disabled=i>=cards.length-1};
+let cur=-1;const set=i=>{if(i===cur)return;cur=i;ds.forEach((d,j)=>d.setAttribute("aria-current",j==i));cards.forEach((c,j)=>c.classList.toggle("is-on",j==i));pv.disabled=i<=0;nx.disabled=i>=cards.length-1};
 const go=i=>{i=Math.max(0,Math.min(cards.length-1,i));car.scrollTo({left:i*car.clientWidth,behavior:reduce?"auto":"smooth"})};
 let t=0;car.addEventListener("scroll",()=>{if(t)return;t=requestAnimationFrame(()=>{t=0;set(Math.round(car.scrollLeft/(car.clientWidth||1)))})},{passive:true});
 pv.onclick=()=>go(cur-1);nx.onclick=()=>go(cur+1);ds.forEach((d,i)=>d.onclick=()=>go(i));

@@ -17,13 +17,13 @@ FILMS.forEach(f=>{(groups.find(g=>g.re.test(f.type))||groups[groups.length-1]).f
 const shown=groups.filter(g=>g.films.length);
 const order=shown.flatMap(g=>g.films);
 
-host.innerHTML=shown.map(g=>`<section class="pf-sec rv" id="sec-${g.k}" aria-labelledby="pf-${g.k}"><div class="pf-t"><h2 id="pf-${g.k}">${g.h}</h2><span class="pf-n">${g.films.length} ${g.films.length==1?"film":"films"}</span></div><p>${g.d}</p><div class="pf-grid">${g.films.map(f=>`<button class="film" type="button" data-id="${esc(f.v)}" aria-label="Watch ${esc(f.title)}, ${esc(f.type)}, on YouTube"><img src="https://img.youtube.com/vi/${esc(f.v)}/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" loading="lazy" decoding="async" width="480" height="270"><span class="play"></span><span class="cap">${esc(f.title)}<small>${esc(f.type)}${f.meta?" · "+esc(f.meta):""}</small></span></button>`).join("")}</div></section>`).join("");
+host.innerHTML=shown.map(g=>`<section class="pf-sec rv" id="sec-${g.k}" aria-labelledby="pf-${g.k}"><div class="pf-t"><h2 id="pf-${g.k}">${g.h}</h2><span class="pf-n">${g.films.length} ${g.films.length==1?"film":"films"}</span></div><p>${g.d}</p><div class="pf-grid">${g.films.map((f,n)=>`<button class="film" style="--i:${n%6}" type="button" data-id="${esc(f.v)}" aria-label="Watch ${esc(f.title)}, ${esc(f.type)}, on YouTube"><img src="https://img.youtube.com/vi/${esc(f.v)}/hq720.jpg" onerror="this.onerror=null;this.src=this.src.replace('hq720','hqdefault')" alt="" ${n<2&&g===shown[0]?'fetchpriority="high"':'loading="lazy"'} decoding="async" width="480" height="270"><span class="play"></span><span class="cap">${esc(f.title)}<small>${esc(f.type)}${f.meta?" · "+esc(f.meta):""}</small></span></button>`).join("")}</div></section>`).join("");
 /* quick links to each section (only when there is more than one) */
 const jb=$("pfj");if(jb&&shown.length>1){jb.innerHTML=shown.map(g=>`<a href="#sec-${g.k}">${g.h}</a>`).join("");jb.hidden=false}
 /* make the new blocks fade in like the rest of the page */
 if(window.matchMedia&&!matchMedia("(prefers-reduced-motion:reduce)").matches&&"IntersectionObserver" in window){
- const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -8% 0px"});
- host.querySelectorAll(".rv").forEach(n=>io.observe(n))}else host.querySelectorAll(".rv").forEach(n=>n.classList.add("in"));
+ const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{rootMargin:"0px 0px -6% 0px"});
+ document.querySelectorAll(".rv:not(.in)").forEach(n=>io.observe(n))}else document.querySelectorAll(".rv").forEach(n=>n.classList.add("in"));
 
 /* Player */
 const dlg=$("pl");let now=null;

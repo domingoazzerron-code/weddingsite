@@ -1064,3 +1064,17 @@ html.has-chat:not(.has-wa) .edit-fab{bottom:calc(5.75rem + env(safe-area-inset-b
 .wbox{margin-left:-.6rem;margin-right:-.6rem;padding:.4rem .4rem .85rem}
 .wcar .film{aspect-ratio:4/3}
 @media(min-width:700px){.wbox{max-width:72rem;margin-left:auto;margin-right:auto;padding:.6rem .6rem 1rem}.wcar .film{aspect-ratio:16/9}}
+
+/* ===== Smoother motion ===== */
+.rv{transition:opacity .7s var(--ease),translate .7s var(--ease)}
+.anim .rv{translate:0 18px}
+/* portfolio: cards rise in one after another once their section appears */
+@keyframes pfCard{from{opacity:0;translate:0 16px;scale:.985}to{opacity:1;translate:0 0;scale:1}}
+.anim .pf-sec.in .film{animation:pfCard .8s var(--ease) both;animation-delay:calc(var(--i,0) * 70ms + 120ms)}
+/* home slider: the film in view is full size, the next one eases in */
+.wcar .film{opacity:.55;scale:.96;transition:opacity .6s var(--ease),scale .6s var(--ease),transform .5s var(--ease),box-shadow .5s var(--ease)}
+.wcar .film.is-on{opacity:1;scale:1}
+.wbox .ctl>button{transition:transform .25s var(--ease),border-color .3s var(--ease),background .3s var(--ease),opacity .3s}
+.wbox .dots2 button{transition:width .5s var(--ease),background .4s var(--ease)}
+.pf-jump a,.pf-grid .film{will-change:auto}
+@media(prefers-reduced-motion:reduce){.anim .pf-sec.in .film{animation:none}.wcar .film{transition:none;opacity:1;scale:1}}

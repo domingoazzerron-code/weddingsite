@@ -38,3 +38,7 @@ if(CFG.tawk){window.Tawk_API=window.Tawk_API||{};window.Tawk_LoadStart=new Date(
  var u="https://wa.me/"+CFG.whatsapp.replace(/\D/g,"")+"?text="+encodeURIComponent("Hi Marcus Wedding Studio, I\u2019d like to ask about an edit.");
  var go=function(){[].forEach.call(document.querySelectorAll(".wa"),function(a){a.href=u;a.hidden=false})};
  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go()})();
+
+/* Reveal what is already on screen right away, so the top of every page never waits for the rest of the page to finish loading. */
+(function(){var go=function(){var h=innerHeight;[].forEach.call(document.querySelectorAll(".rv"),function(n){var r=n.getBoundingClientRect();if(r.top<h*.95&&r.bottom>0)n.classList.add("in")})};
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",function(){requestAnimationFrame(go)});else requestAnimationFrame(go)})();
