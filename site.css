@@ -902,3 +902,6 @@ nav#nav .prefs>button:first-child{border-radius:12px 12px 0 0}
 .pbox .dots2 button{background:rgba(247,243,240,.28)}
 .pbox .dots2 button[aria-current="true"]{background:#F7F3F0}
 .pbox .pcar{scroll-padding:0}
+/* keep a gap between the dark price box and the notes under it (the generic .pricing>.wrap>.rv rule zeroes their margins) */
+.pricing>.wrap>.pbox{margin-bottom:clamp(1.25rem,4vw,1.75rem)}
+.pricing>.wrap>.pnotes{margin-bottom:clamp(1.5rem,4vw,2rem)}
