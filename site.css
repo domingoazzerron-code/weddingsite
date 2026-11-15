@@ -949,3 +949,57 @@ html:not(.fab-seen) .wa-fab:not([hidden]){animation:fabIn .6s var(--ease) .1s bo
 :root:not(.vt-theme)::view-transition-new(root){animation:vtIn .32s ease-in-out both}
 @media(prefers-reduced-motion:reduce){.wa-fab,.top{transition:none}html:not(.fab-seen) .wa-fab:not([hidden]),#tawk-bubble-container,#tawkchat-minified-wrapper{animation:none}}
 
+
+/* ===== Pricing polish: type scale, spacing, package card fix; back-to-top removed ===== */
+
+/* Back-to-top button removed (element stays in the HTML so the page scripts keep working) */
+.top{display:none!important}
+html.has-chat .edit-fab{bottom:calc(9.75rem + env(safe-area-inset-bottom,0px))}
+html.has-chat:not(.has-wa) .edit-fab{bottom:calc(5.75rem + env(safe-area-inset-bottom,0px))}
+
+/* Page rhythm: tighter top, even gaps between blocks */
+.back{margin-bottom:1rem}
+.pricing>.wrap{padding-top:clamp(1.75rem,4vw,2.75rem);padding-bottom:clamp(3rem,7vw,5rem)}
+.pricing h1{font-size:clamp(2.25rem,1.7rem + 2.4vw,3.25rem);font-weight:300;letter-spacing:-.03em;line-height:1.05;margin-bottom:1.5rem}
+.pricing>.wrap>.pbox{margin-bottom:1.25rem}
+.pricing>.wrap>.pnotes{margin-bottom:1.5rem}
+
+/* Slide type: one clear hierarchy (title > description > price) */
+.pbox .ps h3{margin:1.35rem 0 .6rem;font-size:clamp(1.65rem,1.4rem + 1.2vw,2.05rem);font-weight:400;line-height:1.1;letter-spacing:-.02em}
+.pbox .ps p{margin:0 auto 1.25rem;max-width:38ch;font-size:1.0625rem;line-height:1.7}
+.pbox .ps .pr{font-size:1.4rem;padding:.6rem 1.4rem;margin-top:auto}
+.pbox .ps .pr small{font-size:.6875rem;letter-spacing:.08em}
+.pbox .ps .pr.soon{font-size:1rem;font-weight:600;letter-spacing:.01em}
+.pbox .psph span{font-size:.8125rem;letter-spacing:.08em}
+
+/* Package card: let it grow with its content instead of cropping it */
+.pbox .ps.pk .pkg{aspect-ratio:auto;align-content:start;gap:1rem;padding:1.15rem}
+.pkg-h{font-size:clamp(1.5rem,1.25rem + 1vw,1.9rem);line-height:1.15}
+.pkg-grid{gap:.75rem}
+.pkg-c{padding:.8rem .9rem .5rem}
+.pkg-c header{margin-bottom:.45rem}
+.pkg-c header span{font-size:.6875rem;letter-spacing:.12em}
+.pkg-c header b{font-size:1.5rem}
+.pkg-c li{font-size:1rem;line-height:1.3;padding:.5rem 0}
+.pkg .ck{width:1.25rem;height:1.25rem;margin-top:.05rem}
+@media(max-width:420px){.pkg-grid{grid-template-columns:1fr}}
+
+/* Slide controls */
+.pbox .pcar{padding-bottom:1.25rem}
+.pbox .ctl{margin-top:.25rem}
+.pbox .ctl>button{height:50px;max-width:8rem}
+
+/* Notes */
+.pnotes{gap:.9rem}
+.pnote{padding:1.25rem 1.4rem 1.25rem calc(1.4rem + 2px)}
+.pnote h4{margin-bottom:.5rem;font-size:1.25rem;line-height:1.25}
+.pnote p{font-size:1rem;line-height:1.65}
+
+/* Call to action */
+.pcta{padding-top:1.5rem;gap:1rem 1.5rem}
+.pcta p{font-size:1rem;line-height:1.65;max-width:44ch}
+.pcta .btn{padding-top:.95rem;padding-bottom:.95rem}
+
+/* Short slides: price sits right under the text instead of floating far below it */
+.pbox .pcar{align-items:flex-start}
+.pbox .ps .pr,.pbox .ps .pr.soon{margin:.25rem auto 0}
