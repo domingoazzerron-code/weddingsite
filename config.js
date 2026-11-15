@@ -14,9 +14,11 @@ const CFG={
 /* Tawk.to live chat: Tawk's own chat bubble, bottom-right. The other floating buttons stack above it. */
 if(CFG.tawk){window.Tawk_API=window.Tawk_API||{};window.Tawk_LoadStart=new Date();
  (function(){var A=Tawk_API;
-  A.customStyle={visibility:{desktop:{position:"br",xOffset:20,yOffset:20},mobile:{position:"br",xOffset:20,yOffset:20}}};
+  A.customStyle={visibility:{desktop:{position:"br",xOffset:16,yOffset:16},mobile:{position:"br",xOffset:16,yOffset:16}}};
   document.documentElement.classList.add("has-chat");
   var s=document.createElement("script"),f=document.getElementsByTagName("script")[0];s.async=true;s.src="https://embed.tawk.to/"+CFG.tawk;s.charset="UTF-8";s.setAttribute("crossorigin","*");f.parentNode.insertBefore(s,f)})()}
+/* Buttons fade in once per visit, not on every page. */
+(function(){var r=document.documentElement;try{if(sessionStorage.getItem("fabSeen")==="1")r.classList.add("fab-seen");else sessionStorage.setItem("fabSeen","1")}catch(e){}})();
 /* Show the WhatsApp button and set the button spacing right away, so nothing jumps when the page loads. */
 (function(){var r=document.documentElement;if(!CFG.whatsapp)return;r.classList.add("has-wa");
  var u="https://wa.me/"+CFG.whatsapp.replace(/\D/g,"")+"?text="+encodeURIComponent("Hi Marcus Wedding Studio, I\u2019d like to ask about an edit.");
