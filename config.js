@@ -17,6 +17,9 @@ if(CFG.tawk){window.Tawk_API=window.Tawk_API||{};window.Tawk_LoadStart=new Date(
  (function(){var A=Tawk_API,b,ready=false,want=false,root=document.documentElement;
   A.customStyle={visibility:{desktop:{position:"br",xOffset:20,yOffset:84},mobile:{position:"br",xOffset:0,yOffset:0}}};
   root.classList.add("has-chat");
+  /* Hide Tawk's own bubble from the first frame so it never flashes before ours takes over. The chat window itself is not affected. */
+  var st=document.createElement("style");st.textContent="#tawk-bubble-container,#tawkchat-minified-wrapper{display:none!important}";document.head.appendChild(st);
+  A.onBeforeLoad=function(){try{A.hideWidget()}catch(e){}};
   var open=function(){try{A.showWidget();A.maximize()}catch(e){}};
   var mk=function(){b=document.createElement("button");b.type="button";b.className="tk-fab no-pop";b.setAttribute("aria-label","Live chat");
    b.innerHTML='<svg class="tk-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h16v10H12l-4.5 4v-4H4z"/><path d="M8.5 10.5h7"/></svg><svg class="tk-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="tk-n" hidden></span>';
