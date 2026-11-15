@@ -1036,3 +1036,26 @@ html.has-chat:not(.has-wa) .edit-fab{bottom:calc(5.75rem + env(safe-area-inset-b
 .wbox .ctl{justify-content:center;gap:1rem;margin:0}
 .wbox .ctl>button{flex:none;width:40px;height:40px;max-width:none;padding:0;font-size:1.15rem}
 @media(min-width:700px){.wcar .film{aspect-ratio:16/9}}
+
+/* No text or dark caption strip on any film thumbnail */
+.film .cap,.film span.cap{display:none!important}
+
+/* ===== Portfolio polish ===== */
+.pf-head{margin-bottom:clamp(2rem,5vw,3rem)}
+.pf-head .eyebrow{margin:0 0 .75rem;font-size:.8125rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.portfolio h1{margin-bottom:1rem}
+.portfolio .pf-head .rev-s{margin:0 0 1.5rem;max-width:36rem}
+.pf-jump{display:flex;flex-wrap:wrap;gap:.6rem}
+.pf-jump a{display:inline-block;padding:.55rem 1.1rem;border:1px solid var(--line);border-radius:999px;color:var(--ink);font-size:.9375rem;font-weight:500;text-decoration:none;transition:border-color .3s var(--ease),background .3s var(--ease)}
+@media(hover:hover){.pf-jump a:hover{border-color:var(--brass);background:var(--card)}}
+.pf-sec{padding-top:clamp(1.75rem,4vw,2.5rem);border-top:1px solid var(--line);margin-bottom:clamp(2.5rem,6vw,4rem);scroll-margin-top:6.5rem}
+.pf-sec:last-of-type{margin-bottom:clamp(1.5rem,4vw,2.5rem)}
+.pf-t{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.6rem}
+.pf-t h2{margin:0}
+.pf-n{flex:none;color:var(--muted);font:500 .875rem/1 var(--f-body);letter-spacing:.04em}
+.pf-sec>p{margin-bottom:1.75rem;max-width:42ch}
+.pf-grid{gap:1.1rem}
+@media(min-width:640px){.pf-grid{gap:1.5rem}}
+.pf-grid .film{border-radius:20px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 18px 34px -20px rgba(0,0,0,.45)}
+.pf-grid .film .play{transform:scale(.9)}
+.portfolio .pcta{margin-top:clamp(1.5rem,4vw,2.5rem)}
