@@ -926,3 +926,13 @@ html.tk-out #tawkchat-container{animation:tkOut .22s ease-in both}
 @keyframes tkOut{from{opacity:1;transform:none}to{opacity:0;transform:translateY(14px) scale(.96)}}
 @keyframes tkPop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.tk-fab,#tawkchat-container,html.tk-out #tawkchat-container{animation:none}.tk-fab,.tk-fab svg{transition:none}}
+
+/* Floating buttons stay put when you change pages */
+#tawk-bubble-container,#tawkchat-minified-wrapper{display:none!important}
+.tk-fab.no-pop{animation:none}
+.tk-fab{view-transition-name:fab-chat}
+.wa-fab{view-transition-name:fab-wa}
+.top{view-transition-name:fab-top}
+::view-transition-group(fab-chat),::view-transition-group(fab-wa),::view-transition-group(fab-top){animation-duration:0s}
+::view-transition-old(fab-chat),::view-transition-new(fab-chat),::view-transition-old(fab-wa),::view-transition-new(fab-wa),::view-transition-old(fab-top),::view-transition-new(fab-top){animation:none;mix-blend-mode:normal}
+::view-transition-old(fab-chat),::view-transition-old(fab-wa),::view-transition-old(fab-top){display:none}
