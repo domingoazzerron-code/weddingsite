@@ -45,6 +45,12 @@ if(jb&&shown.length){
       sec.hidden=!show;
     });
     order=shown.filter(g=>k==="all"||g.k===k).flatMap(g=>g.films);
+    /* Keep the sticky filter usable: bring first visible section into view under it */
+    const first=host.querySelector(".pf-sec:not([hidden])");
+    if(first){
+      const y=first.getBoundingClientRect().top+scrollY-(jb.offsetHeight+72);
+      if(Math.abs(scrollY-y)>40)scrollTo({top:Math.max(0,y),behavior:"smooth"});
+    }
     track("Portfolio Filter",{label:k});
   });
 }
