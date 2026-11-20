@@ -1120,3 +1120,49 @@ html.has-chat:not(.has-wa) .edit-fab{bottom:calc(5.75rem + env(safe-area-inset-b
 .psph{border-color:var(--taupe)}
 /* placeholders: full muted tone (6:1 on cream) so form hints stay legible */
 .brief ::placeholder,.fedit ::placeholder{color:var(--muted);opacity:.9}
+
+/* ===== Peek pricing cards ===== */
+.pricing .pin{max-width:42ch;margin:.35rem 0 0;color:var(--muted);font-size:1.05rem;line-height:1.55}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2.5rem 1.35rem;margin:0 0 clamp(1.75rem,4vw,2.5rem)}
+.peek{position:relative;height:360px;perspective:900px;cursor:pointer;-webkit-tap-highlight-color:transparent;outline:none}
+.peek:focus-visible{outline:3px solid var(--accent);outline-offset:4px;border-radius:18px}
+.peek-back{position:absolute;inset:0;background:var(--ink);color:var(--bg);border-radius:18px;padding:1.45rem 1.4rem 1.3rem;display:flex;flex-direction:column;justify-content:flex-end;transform:translateY(16px) scale(.96);transition:transform .45s var(--ease),box-shadow .45s var(--ease);box-shadow:0 8px 20px -10px rgba(0,0,0,.22);z-index:1;overflow:hidden}
+.peek-back::before{content:"";position:absolute;top:0;left:1.35rem;right:1.35rem;height:2px;background:var(--brass);opacity:.55;border-radius:2px}
+.peek.open .peek-back{transform:translateY(28px) scale(.98);box-shadow:0 16px 34px -12px rgba(0,0,0,.3)}
+.peek-front{position:absolute;inset:0;background:var(--card);border-radius:18px;padding:1.4rem 1.35rem 1.25rem;display:flex;flex-direction:column;z-index:2;transition:transform .5s var(--ease),box-shadow .5s var(--ease);box-shadow:0 4px 16px -8px rgba(58,48,41,.16);border:1px solid transparent;will-change:transform}
+@media(hover:hover){.peek:hover .peek-front{box-shadow:0 10px 26px -12px rgba(58,48,41,.2)}}
+.peek.open .peek-front{transform:translateY(-120px);box-shadow:0 22px 44px -14px rgba(58,48,41,.28)}
+.peek .duration{display:inline-block;font:500 .7rem/1 var(--f-body);letter-spacing:.05em;text-transform:uppercase;color:var(--accent);background:color-mix(in srgb,var(--accent) 14%,transparent);padding:.3rem .6rem;border-radius:6px;margin-bottom:.75rem;align-self:flex-start}
+.peek h3{font:400 1.4rem/1.15 var(--f-display);letter-spacing:-.02em;margin:0 0 .5rem}
+.peek-front p{color:var(--muted);font-size:.97rem;line-height:1.6;flex-grow:1;margin:0}
+.tap-hint{display:flex;align-items:center;gap:.4rem;margin-top:.95rem;font:500 .8rem var(--f-body);color:var(--accent);opacity:.9;transition:opacity .3s}
+.peek.open .tap-hint{opacity:0;pointer-events:none}
+.tap-hint .chev{width:15px;height:15px;transition:transform .4s var(--ease);flex-shrink:0}
+.peek.open .chev{transform:rotate(180deg)}
+.price-label{font:500 .68rem/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;opacity:.65;margin-bottom:.25rem}
+.price-value{font:400 2.05rem/1 var(--f-display);letter-spacing:-.03em;margin-bottom:.35rem}
+.price-note{font-size:.85rem;opacity:.78;line-height:1.4}
+.see-ex{display:inline-block;margin-top:.75rem;font:500 .86rem var(--f-body);color:inherit;text-decoration:none;border-bottom:1px solid color-mix(in srgb,currentColor 40%,transparent);opacity:.9;transition:opacity .2s}
+@media(hover:hover){.see-ex:hover{opacity:1}}
+.peek.pkg .peek-back{background:linear-gradient(165deg,var(--ink) 0%,color-mix(in srgb,var(--ink) 78%,var(--accent)) 100%)}
+.peek.pkg .peek-front{border-color:color-mix(in srgb,var(--accent) 28%,transparent)}
+.peek .badge{position:absolute;top:-10px;left:1.2rem;z-index:3;background:var(--ink);color:var(--bg);font:600 .65rem/1 var(--f-body);letter-spacing:.07em;text-transform:uppercase;padding:.3rem .65rem;border-radius:999px;box-shadow:0 4px 10px -4px rgba(0,0,0,.22)}
+:root[data-theme="dark"] .peek .badge{background:var(--accent);color:var(--bg)}
+/* Trust strip */
+.ptrust{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1rem 1.15rem;padding:1.35rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:0 0 clamp(1.35rem,3.5vw,1.85rem)}
+.ptrust>div{display:flex;gap:.6rem;align-items:flex-start}
+.ptrust svg{flex-shrink:0;width:19px;height:19px;color:var(--accent);margin-top:.1rem}
+.ptrust strong{display:block;font:600 .9rem var(--f-body);margin-bottom:.1rem}
+.ptrust span{font-size:.84rem;color:var(--muted);line-height:1.4}
+/* Keep existing notes + CTA rhythm */
+.pricing>.wrap>.pgrid{margin-bottom:clamp(1.5rem,4vw,2.25rem)}
+.pricing>.wrap>.ptrust{margin-bottom:clamp(1.25rem,3.5vw,1.75rem)}
+@media(max-width:520px){
+  .peek{height:340px}
+  .peek.open .peek-front{transform:translateY(-110px)}
+  .peek.open .peek-back{transform:translateY(24px) scale(.98)}
+  .pgrid{gap:2.15rem 1.15rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .peek-front,.peek-back,.tap-hint .chev{transition:none}
+}
