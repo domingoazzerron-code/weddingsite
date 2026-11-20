@@ -42,10 +42,9 @@ matchMedia("(min-width:901px)").addEventListener("change",e=>{if(e.matches)set(f
 (()=>{const q=[...document.querySelectorAll(".faq-list details")].map(d=>({"@type":"Question",name:d.querySelector("summary").textContent.trim(),acceptedAnswer:{"@type":"Answer",text:d.querySelector("p").textContent.trim()}}));
 if(!q.length)return;const sc=document.createElement("script");sc.type="application/ld+json";sc.textContent=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:q});document.head.appendChild(sc)})();
 
-/* Header shadow line + back to top */
-const tb=$("top"),hd=$("site"),tp=()=>{tb.classList.toggle("show",scrollY>600);hd.classList.toggle("scrolled",scrollY>8)};
-addEventListener("scroll",tp,{passive:true});
-tb.onclick=()=>scrollTo({top:0,behavior:reduce?"auto":"smooth"});tp();
+/* Header shadow line */
+const hd=$("site"),tp=()=>{if(hd)hd.classList.toggle("scrolled",scrollY>8)};
+addEventListener("scroll",tp,{passive:true});tp();
 (()=>{window.__rv=1;const els=[...document.querySelectorAll(".rv")];
 if(!("IntersectionObserver" in window)||!document.documentElement.classList.contains("anim")){els.forEach(el=>el.classList.add("in"));return}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;el.classList.add("in");io.unobserve(el);setTimeout(()=>el.style.removeProperty("--d"),1600)}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
