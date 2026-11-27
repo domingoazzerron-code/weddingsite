@@ -133,7 +133,7 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return
 io.observe($("hero"));[...map.keys(),...Object.keys(alias),"words"].forEach(id=>{const el=$(id);if(el)io.observe(el)})})();
 
 /* FAQ rich-result markup, built from the visible questions so it never goes out of date */
-(()=>{const q=[...document.querySelectorAll(".faq-list details")].map(d=>({"@type":"Question",name:d.querySelector("summary").textContent.trim(),acceptedAnswer:{"@type":"Answer",text:d.querySelector("p").textContent.trim()}}));
+(()=>{const q=[...document.querySelectorAll(".faq details")].map(d=>({"@type":"Question",name:d.querySelector("summary").textContent.trim(),acceptedAnswer:{"@type":"Answer",text:d.querySelector("p").textContent.trim()}}));
 if(!q.length)return;const sc=document.createElement("script");sc.type="application/ld+json";sc.textContent=JSON.stringify({"@context":"https://schema.org","@type":"FAQPage",mainEntity:q});document.head.appendChild(sc)})();
 
 /* Header shadow line + back to top */

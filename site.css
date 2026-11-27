@@ -201,16 +201,27 @@ nav a[aria-current="true"]{color:var(--ink)}
 .linkbtn{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 @media(hover:hover){.linkbtn:hover{color:var(--accent)}}
 
-/* faq */
+/* faq: project timeline (questions follow the order of a project) */
 .faq{padding:var(--sec) 0;border-top:1px solid var(--line)}
-.faq-list{max-width:46rem;margin-top:2rem;border-top:1px solid var(--line)}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 0;font:400 clamp(1.1rem,1.02rem + .35vw,1.3rem)/1.35 var(--f-display);letter-spacing:-.01em;transition:color .3s var(--ease)}
+.faq-lead{margin:1rem 0 1.4rem;max-width:30ch;color:var(--muted)}
+.faq-cta{display:inline-flex;gap:.5rem;font-weight:500;font-size:.95rem;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:.15rem;transition:color .3s var(--ease),gap .3s var(--ease)}
+@media(hover:hover){.faq-cta:hover{color:var(--accent);gap:.8rem}}
+.faq-flow{margin-top:2.5rem;display:grid;gap:2.75rem}
+.faq-stage-h{display:flex;align-items:baseline;gap:.9rem;margin-bottom:.4rem}
+.faq-stage-n{font:500 .8rem/1 var(--f-body);letter-spacing:.14em;color:var(--accent)}
+.faq-stage-h h3{font-size:clamp(1.35rem,1.15rem + .8vw,1.7rem);font-style:italic}
+.faq-qs{position:relative;margin-left:.45rem;padding-left:1.6rem;border-left:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line);position:relative}
+.faq details:last-child{border-bottom:0}
+.faq summary{list-style:none;cursor:pointer;display:block;position:relative;padding:1.05rem 2rem 1.05rem 0;font:400 clamp(1.08rem,1.02rem + .3vw,1.25rem)/1.35 var(--f-display);letter-spacing:-.01em;transition:color .3s var(--ease)}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";flex:none;font:300 1.7rem/1 var(--f-body);color:var(--accent);transition:transform .35s var(--ease)}
+.faq summary::after{content:"";position:absolute;right:.2rem;top:50%;width:.55rem;height:.55rem;margin-top:-.45rem;border:solid var(--accent);border-width:0 1.5px 1.5px 0;transform:rotate(45deg);transition:transform .35s var(--ease),margin .35s var(--ease)}
+.faq details[open] summary::after{transform:rotate(-135deg);margin-top:-.15rem}
 @media(hover:hover){.faq summary:hover{color:var(--accent)}}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{margin:0 0 1.35rem;max-width:60ch;color:var(--muted);line-height:1.75}
+.faq-dot{position:absolute;left:calc(-1.6rem - 4.5px);top:1.5rem;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--taupe);transition:background .3s var(--ease),border-color .3s var(--ease),transform .3s var(--ease)}
+.faq details[open] .faq-dot{background:var(--accent);border-color:var(--accent);transform:scale(1.35)}
+.faq details p{margin:0 0 1.3rem;max-width:60ch;color:var(--muted);line-height:1.75}
+.faq details p a{color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:3px}
 
 .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem 3rem;padding:3.5rem 0 calc(2.25rem + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);color:var(--muted);font-size:.9375rem;line-height:1.6}
 .foot>*{min-width:0}
@@ -404,7 +415,7 @@ body{padding-bottom:calc(5rem + env(safe-area-inset-bottom,0px))}
 .clients ul{list-style:none;margin:1rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:1rem 2.5rem;align-items:center}
 .clients li{font:400 1.25rem/1.2 var(--f-display);color:var(--muted)}
 .clients img{display:block;height:2rem;width:auto;max-width:9rem;object-fit:contain;opacity:.75}
-@media(min-width:861px){.faq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:clamp(2rem,6vw,5rem);align-items:start}.faq-list{max-width:none;margin-top:.4rem}.faq>.rv{position:sticky;top:6rem}}
+@media(min-width:861px){.faq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.8fr);gap:clamp(2rem,6vw,5rem);align-items:start}.faq-flow{margin-top:.4rem}.faq>.rv{position:sticky;top:6rem}}
 /* section dividers: same width as the content, not the padding */
 .pricing>.wrap{background:linear-gradient(var(--line),var(--line)) center top/calc(100% - 2.5rem) 1px no-repeat}
 /* pricing */
@@ -1452,7 +1463,7 @@ a,button,.btn,.film,.gcard,.pf-pill,.theme,.menu,.snd,
   transition:color .3s var(--ease);
 }
 .faq summary::after{
-  transition:transform .35s var(--ease);
+  transition:transform .35s var(--ease),margin .35s var(--ease);
 }
 
 /* ---------- Dialogs / player ---------- */
