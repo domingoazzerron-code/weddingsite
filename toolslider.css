@@ -1,0 +1,206 @@
+/* ============================================================
+   Tools slider (tools.html)
+   Uses only the site's color variables, so it follows every palette
+   (Classic, Sage, Cocoa, Graphite) in light and dark.
+   Upload to the site root next to site.css. Loaded by tools.html only.
+
+   ---- HOW TO CHANGE THE IMAGES ------------------------------
+   Each tool has a block below (.p0 to .p5). Right now they use logo
+   placeholders (the tool-*.webp files in the site root). To swap in a real screenshot:
+     1. point --img at your file, e.g.
+          .ts .p2{--img:url(tool-premiere-timeline.jpg);--deco:0;...}
+     2. delete the "LOGO PLACEHOLDER SETTINGS" block further down
+        (it only exists to position the logos; real pictures don't need it)
+   To go back to the plain gradient placeholder, use  --img:none;--deco:1
+
+   Order: p0 Dropbox, p1 Trello, p2 Premiere Pro, p3 Adobe Podcast,
+          p4 Musicbed, p5 Frame.io
+   Real screenshots: landscape, about 1600px wide (JPG or WebP, under ~250 KB).
+   Keep the important part of the picture in the top half: on desktop the
+   text panel covers the lower half of the open card.
+   ============================================================ */
+
+/* ---------- 1. images / placeholders ---------- */
+.ts .p0{--img:url(tool-dropbox.webp);--deco:0;
+  --ph:radial-gradient(70% 90% at 12% 18%,color-mix(in srgb,var(--sage) 85%,transparent),transparent 72%),
+       radial-gradient(60% 80% at 92% 92%,color-mix(in srgb,var(--blush) 80%,transparent),transparent 70%),
+       linear-gradient(135deg,var(--card),var(--bg))}
+.ts .p1{--img:url(tool-trello.webp);--deco:0;
+  --ph:radial-gradient(65% 85% at 88% 14%,color-mix(in srgb,var(--sand) 90%,transparent),transparent 70%),
+       radial-gradient(70% 90% at 8% 90%,color-mix(in srgb,var(--sage) 80%,transparent),transparent 72%),
+       linear-gradient(160deg,var(--card),var(--bg))}
+.ts .p2{--img:url(tool-premiere.webp);--deco:0;
+  --ph:radial-gradient(75% 90% at 18% 85%,color-mix(in srgb,var(--blush) 90%,transparent),transparent 70%),
+       radial-gradient(55% 75% at 90% 15%,color-mix(in srgb,var(--taupe) 60%,transparent),transparent 72%),
+       linear-gradient(120deg,var(--card),var(--bg))}
+.ts .p3{--img:url(tool-podcast.webp);--deco:0;
+  --ph:radial-gradient(70% 85% at 85% 80%,color-mix(in srgb,var(--sage) 85%,transparent),transparent 70%),
+       radial-gradient(60% 80% at 10% 12%,color-mix(in srgb,var(--sand) 85%,transparent),transparent 72%),
+       linear-gradient(200deg,var(--card),var(--bg))}
+.ts .p4{--img:url(tool-musicbed.webp);--deco:0;
+  --ph:radial-gradient(70% 90% at 10% 25%,color-mix(in srgb,var(--accent) 38%,transparent),transparent 72%),
+       radial-gradient(65% 85% at 90% 85%,color-mix(in srgb,var(--blush) 85%,transparent),transparent 70%),
+       linear-gradient(145deg,var(--card),var(--bg))}
+.ts .p5{--img:url(tool-frameio.webp);--deco:0;
+  --ph:radial-gradient(70% 85% at 90% 20%,color-mix(in srgb,var(--taupe) 55%,transparent),transparent 70%),
+       radial-gradient(65% 90% at 12% 88%,color-mix(in srgb,var(--sage) 85%,transparent),transparent 72%),
+       linear-gradient(170deg,var(--card),var(--bg))}
+
+/* ---- LOGO PLACEHOLDER SETTINGS (delete this block when you use real screenshots) ----
+   --bgc   : the logo picture's background colour; the closed strips use it as a plain
+             colour instead of showing a cropped piece of a logo
+   --pic-* : how the picture is framed in the banner of the open card on phones */
+.ts .p0{--bgc:#fff}
+.ts .p1{--bgc:#2266e1}
+.ts .p2{--bgc:#9b98ff}
+.ts .p3{--bgc:#fcfefd}
+.ts .p4{--bgc:#000}
+.ts .p5{--bgc:#fff}
+.ts .ts-item{--thumb:linear-gradient(var(--bgc),var(--bgc));--pic-size:200% auto;--pic-pos:50% 3%;--pic-ar:3.125}
+
+/* ---------- 2. stage ---------- */
+.ts{margin:1.75rem 0 0}
+.ts-stage{position:relative;isolation:isolate;container-type:inline-size;overflow:hidden;
+  border:1px solid var(--line);border-radius:20px;background:var(--card)}
+
+/* blurred full-stage backdrop that crossfades with the selection */
+.ts-bg{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.ts-bg::after{content:"";position:absolute;inset:0;background:color-mix(in srgb,var(--bg) 52%,transparent)}
+.ts-bgl{position:absolute;inset:-8%;opacity:0;
+  background-image:var(--img),var(--ph);background-size:cover;background-position:center;
+  filter:blur(28px) saturate(1.15);scale:1.06;
+  transition:opacity 1.1s var(--ease),scale 1.6s var(--ease)}
+.ts-bgl.is-on{opacity:1;scale:1}
+
+/* ---------- 3. cards (desktop: expanding row) ---------- */
+.ts-row{display:flex;gap:.75rem;padding:.75rem;height:clamp(30rem,64vh,35rem)}
+.ts-item{position:relative;flex:1 1 0;min-width:0;overflow:hidden;border-radius:14px;
+  border:1px solid color-mix(in srgb,var(--line) 75%,transparent);
+  transition:flex-grow .85s var(--ease),border-color .4s var(--ease),box-shadow .5s var(--ease)}
+.ts-item.is-on{flex-grow:5.2;border-color:color-mix(in srgb,var(--brass) 55%,var(--line))}
+
+/* the picture / placeholder of each card */
+.ts-item::before{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(color-mix(in srgb,var(--bg) 8%,transparent),color-mix(in srgb,var(--bg) 26%,transparent)),var(--img),var(--ph);
+  background-size:cover;background-position:center;
+  transition:scale 1.4s var(--ease),filter .6s var(--ease)}
+/* closed strips show --thumb when it is set (plain colour for the logo placeholders), otherwise a slice of the picture */
+.ts-item:not(.is-on)::before{filter:saturate(.8);
+  background-image:linear-gradient(color-mix(in srgb,var(--bg) 8%,transparent),color-mix(in srgb,var(--bg) 26%,transparent)),var(--thumb,var(--img)),var(--ph)}
+/* big faint number: only for placeholders (set --deco:0 when you add an image) */
+.ts-item::after{content:attr(data-n);position:absolute;right:1.4rem;top:.9rem;pointer-events:none;
+  font:italic 300 clamp(5rem,9vw,8rem)/1 var(--f-display);letter-spacing:-.04em;
+  color:color-mix(in srgb,var(--ink) 15%,transparent);opacity:var(--deco,1);
+  transition:opacity .4s var(--ease)}
+.ts-item:not(.is-on)::after{opacity:0}
+
+@media(hover:hover){
+  .ts-item:not(.is-on):hover{border-color:var(--brass);box-shadow:0 0 22px -6px color-mix(in srgb,var(--brass) 55%,transparent)}
+  .ts-item:not(.is-on):hover::before{scale:1.06;filter:saturate(1)}
+}
+
+/* ---------- 4. the clickable face of a closed card ---------- */
+.ts-hd{position:absolute;inset:0;z-index:2;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+  gap:1rem;padding:.95rem .35rem;border:0;border-radius:inherit;background:none;color:var(--ink);font:inherit;text-align:center;cursor:pointer;
+  transition:opacity .35s var(--ease)}
+.ts-hd:focus-visible{outline:none}
+.ts-item:has(.ts-hd:focus-visible){outline:3px solid var(--accent);outline-offset:3px}
+.ts-top{display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.ts-n{padding:.4rem .55rem;border-radius:999px;font:500 .75rem/1 var(--f-body);letter-spacing:.14em;color:var(--ink);
+  background:color-mix(in srgb,var(--bg) 78%,transparent);border:1px solid color-mix(in srgb,var(--line) 80%,transparent);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.ts-ic{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:50%;
+  background:color-mix(in srgb,var(--bg) 78%,transparent);border:1px solid color-mix(in srgb,var(--line) 80%,transparent);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.ts-ic svg{width:1.2rem;height:1.2rem;color:var(--brass)}
+.ts-nm{writing-mode:vertical-rl;rotate:180deg;padding:.7rem .4rem;border-radius:999px;white-space:nowrap;
+  font:400 1.1rem/1 var(--f-display);letter-spacing:.01em;
+  background:color-mix(in srgb,var(--bg) 78%,transparent);border:1px solid color-mix(in srgb,var(--line) 80%,transparent);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.ts-item.is-on .ts-hd{opacity:0;pointer-events:none}
+
+/* ---------- 5. the open card: glass text panel ---------- */
+.ts-panel{position:absolute;left:1rem;bottom:1rem;z-index:3;
+  width:min(28rem,calc(100% - 2rem));width:min(28rem,42cqw);max-width:calc(100% - 2rem);
+  opacity:0;visibility:hidden;translate:0 16px;
+  transition:opacity .35s var(--ease),translate .45s var(--ease),visibility 0s .35s}
+.ts-item.is-on .ts-panel{opacity:1;visibility:visible;translate:none;
+  transition:opacity .6s var(--ease) .32s,translate .8s var(--ease) .32s,visibility 0s 0s}
+.ts-pin{border-radius:12px;overflow:hidden;
+  background:color-mix(in srgb,var(--bg) 80%,transparent);
+  box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--line) 85%,transparent);
+  -webkit-backdrop-filter:blur(18px) saturate(1.2);backdrop-filter:blur(18px) saturate(1.2)}
+.ts-in{padding:1.35rem 1.5rem 1.5rem}
+.ts-pic{display:none}   /* picture banner: phones only, see section 6 */
+.ts-meta{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.ts-cnt{font:500 .75rem/1 var(--f-body);letter-spacing:.14em;color:var(--muted)}
+.ts-panel h3{margin:.85rem 0 .5rem;display:flex;align-items:center;gap:.45em;
+  font:400 clamp(1.5rem,1.15rem + .9vw,1.85rem)/1.15 var(--f-display);letter-spacing:-.01em}
+.ts-panel h3 .ti{flex:none;width:1.1em;height:1.1em;color:var(--brass)}
+.ts-panel p{margin:0 0 .95rem;color:var(--muted);line-height:1.6}
+.ts-panel ul{margin:0;padding:0;list-style:none;display:grid;gap:.5rem}
+.ts-panel li{position:relative;padding-left:1.1rem;font-size:.9375rem;line-height:1.5}
+.ts-panel li::before{content:"";position:absolute;left:0;top:.6em;width:5px;height:5px;border-radius:50%;background:var(--brass)}
+
+/* auto-advance progress line (desktop only, JS adds .ts-auto) */
+.ts-bar{display:none;position:absolute;left:0;right:0;bottom:0;height:3px;z-index:4;background:color-mix(in srgb,var(--ink) 10%,transparent)}
+.ts-bar i{display:block;height:100%;background:var(--accent);transform-origin:left;transform:scaleX(0)}
+.ts-auto .ts-item.is-on .ts-bar{display:block}
+.ts-auto .ts-item.is-on .ts-bar i{transform:scaleX(var(--p,0))}
+
+/* ---------- 6. phones and small tablets: tap-to-open stack ---------- */
+@media(max-width:959px){
+  .ts-stage{border-radius:16px}
+  .ts-row{flex-direction:column;height:auto;gap:.6rem;padding:.6rem}
+  .ts-item{flex:none;scroll-margin-top:6rem;transition:border-color .4s var(--ease),box-shadow .5s var(--ease)}
+  .ts-item.is-on{flex-grow:0}
+  .ts-item::after{display:none}
+  /* phones: the row behind the title is the plain thumbnail; the picture itself is a banner in the open card */
+  .ts-item.is-on::before{background-image:linear-gradient(color-mix(in srgb,var(--bg) 8%,transparent),color-mix(in srgb,var(--bg) 26%,transparent)),var(--thumb,var(--img)),var(--ph)}
+  .ts-pic{display:block;aspect-ratio:var(--pic-ar,16/9);background-color:var(--bgc,transparent);
+    background-image:var(--img),var(--ph);background-repeat:no-repeat;background-size:var(--pic-size,cover);background-position:var(--pic-pos,center)}
+  .ts-hd{position:relative;inset:auto;flex-direction:row;justify-content:flex-start;align-items:center;gap:.6rem;
+    min-height:4.25rem;padding:.7rem .85rem;text-align:left}
+  .ts-item.is-on .ts-hd{opacity:1;pointer-events:auto}
+  .ts-top{flex-direction:row;gap:.6rem;flex:none}
+  .ts-nm{writing-mode:horizontal-tb;rotate:none;min-width:0;overflow:hidden;text-overflow:ellipsis;padding:.5rem .8rem;font-size:1.1rem}
+  .ts-hd::after{content:"";margin-left:auto;flex:none;width:.55rem;height:.55rem;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);
+    rotate:45deg;translate:0 -2px;transition:rotate .5s var(--ease)}
+  .ts-item.is-on .ts-hd::after{rotate:-135deg;translate:0 2px}
+  .ts-panel{position:relative;left:auto;bottom:auto;width:auto;max-width:none;margin:0 .6rem;
+    display:grid;grid-template-rows:0fr;opacity:1;visibility:hidden;translate:none;
+    transition:grid-template-rows .65s var(--ease),margin .65s var(--ease),visibility 0s .65s}
+  .ts-item.is-on .ts-panel{grid-template-rows:1fr;margin-bottom:.6rem;visibility:visible;
+    transition:grid-template-rows .65s var(--ease),margin .65s var(--ease),visibility 0s 0s}
+  .ts-pin{min-height:0}
+  .ts-in{padding:1.15rem 1.25rem 1.3rem;opacity:0;transition:opacity .3s var(--ease)}
+  .ts-item.is-on .ts-in{opacity:1;transition:opacity .5s var(--ease) .25s}
+  .ts-cnt{display:none}
+}
+@media(max-width:380px){
+  .ts-hd{gap:.45rem;padding:.7rem .7rem}
+  .ts-top{gap:.45rem}
+  .ts-ic{width:2.1rem;height:2.1rem}
+  .ts-nm{padding:.5rem .65rem;font-size:1.05rem}
+}
+
+/* ---------- 7. without JavaScript: simple readable cards ---------- */
+.ts:not(.ts-js) .ts-row{display:grid;height:auto;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))}
+.ts:not(.ts-js) .ts-item{flex:none;border-color:var(--line)}
+.ts:not(.ts-js) .ts-item::after,.ts:not(.ts-js) .ts-hd,.ts:not(.ts-js) .ts-cnt{display:none}
+.ts:not(.ts-js) .ts-panel{position:relative;left:auto;bottom:auto;width:auto;max-width:none;margin:.75rem;
+  display:block;opacity:1;visibility:visible;translate:none}
+.ts:not(.ts-js) .ts-in{opacity:1}
+
+/* ---------- 8. dark mode: tone down bright (white) pictures ---------- */
+:root[data-theme="dark"] .ts-item::before{filter:brightness(.78) saturate(.95)}
+:root[data-theme="dark"] .ts-item:not(.is-on)::before{filter:brightness(.7) saturate(.85)}
+:root[data-theme="dark"] .ts-pic{filter:brightness(.8) saturate(.95)}
+:root[data-theme="dark"] .ts-bg::after{background:color-mix(in srgb,var(--bg) 66%,transparent)}
+@media(hover:hover){:root[data-theme="dark"] .ts-item:not(.is-on):hover::before{filter:brightness(.85) saturate(1)}}
+
+/* ---------- 9. reduced motion ---------- */
+@media(prefers-reduced-motion:reduce){
+  .ts *,.ts *::before,.ts *::after{transition-duration:.01s!important;transition-delay:0s!important}
+  .ts-bgl{scale:1}
+}
