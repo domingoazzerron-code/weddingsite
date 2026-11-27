@@ -1,0 +1,53 @@
+/* ============================================================
+   Page changes: "Fade through". All page transition styles live here.
+   The old page fades out, then the new one fades in with a small lift.
+   The sidebar, header and chat button stay still.
+   Browsers without this feature, and visitors who ask for reduced
+   motion, get a normal page load.
+   ============================================================ */
+@media (prefers-reduced-motion:no-preference){
+  @view-transition{navigation:auto}
+}
+:root{--page-out:.11s;--page-in:.24s;--page-lift:6px}
+
+/* pieces that never move */
+header.site{view-transition-name:site-header}
+.wa-fab{view-transition-name:fab-wa}
+button.top{view-transition-name:fab-top}
+::view-transition-group(site-header),
+::view-transition-group(fab-wa),
+::view-transition-group(fab-top){animation:none}
+::view-transition-old(site-header),
+::view-transition-old(fab-wa),
+::view-transition-old(fab-top){display:none}
+::view-transition-new(site-header),
+::view-transition-new(fab-wa),
+::view-transition-new(fab-top){animation:none;mix-blend-mode:normal}
+:root:not(.vt-theme)::view-transition-group(sidebar){animation:none}
+:root:not(.vt-theme)::view-transition-old(sidebar){display:none}
+:root:not(.vt-theme)::view-transition-new(sidebar){animation:none;mix-blend-mode:normal}
+
+/* the page itself: out first, then in, so two pages are never on top of each other */
+:root:not(.vt-theme)::view-transition{background:var(--bg)}
+:root:not(.vt-theme)::view-transition-group(root){animation:none}
+:root:not(.vt-theme)::view-transition-old(root){mix-blend-mode:normal;animation:page-out var(--page-out) cubic-bezier(.4,0,1,1) both}
+:root:not(.vt-theme)::view-transition-new(root){mix-blend-mode:normal;animation:page-in var(--page-in) cubic-bezier(.2,.8,.2,1) var(--page-out) both}
+
+/* a piece that exists on only one of the two pages fades with its page */
+:root:not(.vt-theme)::view-transition-old(site-header):only-child,
+:root:not(.vt-theme)::view-transition-old(sidebar):only-child,
+:root:not(.vt-theme)::view-transition-old(fab-wa):only-child{display:block;animation:page-out var(--page-out) ease-in both}
+:root:not(.vt-theme)::view-transition-new(site-header):only-child,
+:root:not(.vt-theme)::view-transition-new(sidebar):only-child,
+:root:not(.vt-theme)::view-transition-new(fab-wa):only-child{animation:page-in var(--page-in) ease-out var(--page-out) both}
+
+@keyframes page-out{to{opacity:0}}
+@keyframes page-in{from{opacity:0;transform:translateY(var(--page-lift,6px))}}
+
+/* light / dark and color theme changes: a soft crossfade */
+:root.vt-theme::view-transition-group(root){animation-duration:.45s}
+:root.vt-theme::view-transition-old(root),
+:root.vt-theme::view-transition-new(root){animation-duration:.4s;animation-timing-function:cubic-bezier(.16,1,.3,1)}
+
+/* while leaving a page, menus close at once instead of being caught half open */
+.vt-leaving .sb,.vt-leaving .sb-scrim{transition:none!important}

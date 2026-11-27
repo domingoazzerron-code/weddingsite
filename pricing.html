@@ -29,10 +29,12 @@
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Hanken+Grotesk:wght@400;500;600&display=swap"></noscript>
 <script>if(!matchMedia("(prefers-reduced-motion:reduce)").matches){document.documentElement.classList.add("anim");setTimeout(function(){if(!window.__rv)document.documentElement.classList.remove("anim")},1200)}</script>
 <script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)})()</script>
-<link rel="stylesheet" href="site.css?v=20261127g">
+<link rel="stylesheet" href="site.css?v=20261127i">
 <script type="speculationrules">{"prerender":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}</script>
 <link rel="stylesheet" href="sidebar.css?v=20261127g">
 <link rel="stylesheet" href="themes.css?v=20261127g"><script src="themes.js?v=20261127g"></script>
+<link rel="stylesheet" href="transitions.css?v=20261127i"><script src="transitions.js?v=20261127j"></script>
+<link rel="expect" href="#page-ready" blocking="render">
 <script>try{if(localStorage.getItem("sb")==="collapsed")document.documentElement.setAttribute("data-sb","collapsed")}catch(e){}</script>
 </head>
 <body>
@@ -106,11 +108,11 @@ const ORDER="thcs",PK=[{n:"Package 01",set:"thc",price:380},{n:"Package 02",set:
 const ins=[...root.querySelectorAll(".bp-in")],pres=[...root.querySelectorAll(".bp-pre")];
 const $=id=>document.getElementById(id),money=n=>"$"+n.toLocaleString("en-US");
 const sumOf=k=>[...k].reduce((a,x)=>a+F[x].p,0);
-let shown=0,raf=0,lastSave=0;
+let shown=0,raf=0,lastSave=0,ran=false;
 const count=to=>{const el=$("bpTot");cancelAnimationFrame(raf);
  if(reduce){el.textContent=money(to);shown=to;return}
- const from=shown,t0=performance.now(),d=450;
- const step=t=>{const k=Math.min(1,(t-t0)/d),e=1-Math.pow(1-k,3);shown=Math.round(from+(to-from)*e);el.textContent=money(shown);if(k<1)raf=requestAnimationFrame(step)};
+ const from=shown,t0=performance.now(),d=450,intro=!ran;ran=true;
+ const step=t=>{const k=intro&&document.documentElement.classList.contains("vt-arrive")?1:Math.min(1,(t-t0)/d),e=1-Math.pow(1-k,3);shown=Math.round(from+(to-from)*e);el.textContent=money(shown);if(k<1)raf=requestAnimationFrame(step)};
  raf=requestAnimationFrame(step)};
 const keys=()=>ORDER.split("").filter(k=>ins.find(i=>i.value===k).checked);
 const apply=set=>{ins.forEach(i=>i.checked=set.includes(i.value));render()};
@@ -141,6 +143,7 @@ $("bpGo").addEventListener("click",()=>{try{const v=$("bpGo").dataset.pick;if(v)
 apply("thc");
 })();
 </script>
-<script src="sidebar.js?v=20261127g"></script>
+<script src="sidebar.js?v=20261127i"></script>
+<div id="page-ready" hidden></div>
 </body>
 </html>

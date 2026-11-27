@@ -23,6 +23,8 @@
 <script>(function(){var t=null;try{t=localStorage.getItem("theme")}catch(e){}if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)})()</script>
 <link rel="stylesheet" href="guide.css?v=20261126b">
 <link rel="stylesheet" href="themes.css?v=20261127g"><script src="themes.js?v=20261127g"></script>
+<link rel="stylesheet" href="transitions.css?v=20261127i"><script src="transitions.js?v=20261127j"></script>
+<link rel="expect" href="#page-ready" blocking="render">
 <script defer src="https://cloud.umami.is/script.js" data-website-id="40613834-9b2e-46df-a7da-6314bd0a9638"></script>
 </head>
 <body>
@@ -80,5 +82,6 @@
 </main>
 <footer><div class="wrap">© 2026 Marcus Wedding Studio · Wedding video editing for videographers, based in Manila</div></footer>
 <script>document.addEventListener("click",function(e){if(!e.target.closest("[data-test]"))return;try{var o=JSON.parse(localStorage.getItem("briefDraft")||"{}")||{};o.brq="Test edit (30-60 sec)";localStorage.setItem("briefDraft",JSON.stringify(o))}catch(x){}},true)</script>
+<div id="page-ready" hidden></div>
 </body>
 </html>

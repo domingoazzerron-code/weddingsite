@@ -196,6 +196,7 @@ scrim.addEventListener("click",function(){closeDrawer(true)});
 aside.addEventListener("click",function(e){if(e.target.closest("a"))closeDrawer(false)});
 mobile.addEventListener("change",function(e){if(!e.matches)closeDrawer(false)});
 addEventListener("pageshow",function(){closeDrawer(false)});
+addEventListener("pageswap",function(){closeDrawer(false);closePal(false);if(typeof dlg!=="undefined"&&dlg.open)dlg.close()});
 addEventListener("keydown",function(e){
  if(!dOpen||(typeof dlg!=="undefined"&&dlg.open))return;
  if(e.key==="Escape"){e.preventDefault();closeDrawer(true)}
