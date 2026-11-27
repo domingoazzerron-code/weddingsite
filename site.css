@@ -101,42 +101,11 @@ nav a[aria-current="true"]{color:var(--ink)}
 @media(hover:hover){.film:hover .play{transform:scale(1.15)}}
 .film span.cap{position:absolute;inset:auto 0 0 0;padding:3rem 1.1rem 1rem;color:#FBF6F3;background:linear-gradient(transparent,rgba(58,48,41,.8));font:400 1.3rem/1.2 var(--f-display);letter-spacing:-.01em}
 .film small{display:block;margin-top:.3rem;font:500 .8125rem/1.2 var(--f-body);letter-spacing:.02em;opacity:.9}
-.fedit{margin:0 0 2.5rem;padding:clamp(1rem,3vw,1.75rem);border:1px solid var(--line);border-radius:14px;background:var(--card);font-family:var(--f-body);display:grid;gap:1rem}
-.fe-hd{display:flex;align-items:center;flex-wrap:wrap;gap:.5rem .75rem}
-.fe-hd h3{font-size:1.6rem}
-.fe-chip{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .7rem;border:1px solid var(--line);border-radius:999px;font:500 .75rem/1 var(--f-body);letter-spacing:.02em;color:var(--muted)}
-.fe-chip::before{content:"";width:.4rem;height:.4rem;border-radius:50%;background:var(--brass,var(--accent))}
-.fe-x{margin-left:auto;padding:.5rem .25rem;font:500 .9375rem/1 var(--f-body);color:var(--muted);text-decoration:none}.fe-x:hover{color:var(--ink)}
-.fe-card{display:grid;gap:.85rem;margin:0;padding:1.1rem;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
-.fe-s{margin:0;font:600 .75rem/1 var(--f-body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.fe-s span{margin-left:.35rem;padding:.15rem .5rem;border-radius:999px;background:var(--card);letter-spacing:0}
-.fe-g{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
-.fe-full{grid-column:1/-1}
-.fedit label{display:grid;gap:.4rem;min-width:0;font-weight:500;font-size:.9375rem;letter-spacing:.01em}
 .fedit input,.fedit select{box-sizing:border-box;width:100%;max-width:100%;min-width:0;min-height:3rem;padding:.75rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:400 1rem var(--f-body);transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
 .fedit input:focus-visible,.fedit select:focus-visible{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 28%,transparent)}
-.fe-card>.btn{justify-self:start}
-.fe-ls{list-style:none;margin:0;padding:0;display:grid}
 #fe-l{max-height:24rem;overflow:auto;overscroll-behavior:contain}
-.fe-ls li{display:grid;grid-template-columns:72px 1fr auto;align-items:center;gap:.25rem .9rem;padding:.7rem 0;border-top:1px solid var(--line)}
-.fe-ls li:first-child{border-top:0;padding-top:0}.fe-ls li:last-child{padding-bottom:0}
-.fe-ls img{width:72px;height:48px;object-fit:cover;border-radius:8px;background:var(--card)}
-.fe-t{min-width:0;font-weight:600;font-size:1rem;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.fe-t small{display:block;font-weight:400;font-size:.875rem;color:var(--muted);white-space:normal}
-.fe-ac{display:flex;gap:.4rem}
-.fe-b{min-height:2.25rem;padding:.4rem .9rem;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:500 .875rem/1 var(--f-body);cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease)}
-.fe-b:hover{background:var(--card);border-color:var(--accent)}
-.fe-del{color:var(--muted)}.fe-del:hover{color:var(--accent)}
 .fe-b:focus-visible,.fe-x:focus-visible,.fe-set summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.fe-a{display:flex;flex-wrap:wrap;gap:.6rem}.fe-a .btn{white-space:nowrap}
-.fe-m{margin:0;padding:.7rem .9rem;border-left:3px solid var(--accent);border-radius:2px 8px 8px 2px;background:var(--bg);color:var(--ink);font-size:.9375rem;line-height:1.5}.fe-m:empty{display:none}
-.fe-set{font-size:.9375rem}.fe-set summary{cursor:pointer;font-weight:500;color:var(--muted)}
-.fe-set ol{margin:.75rem 0;padding-left:1.25rem;display:grid;gap:.35rem;color:var(--muted)}.fe-set a{color:var(--accent)}
-.fe-tk{display:flex;flex-wrap:wrap;gap:.6rem}.fe-tk input{flex:1 1 14rem;width:auto}
 @media(max-width:560px){
-.fe-g{grid-template-columns:1fr}
-.fe-ls li{grid-template-columns:56px 1fr}.fe-ls img{width:56px;height:40px}
-.fe-ac{grid-column:2}
 .fe-card>.btn,.fe-a .btn{flex:1 1 100%;justify-self:stretch}.fe-a .btn.ghost{flex:1 1 calc(50% - .3rem);padding-left:.5rem;padding-right:.5rem}}
 
 /* about */
@@ -569,12 +538,9 @@ html.hero-off .hero h1 em,html.hero-off .film.mini,html.hero-off .film.feature::
 .hero{transition:--mx .7s var(--ease),--my .7s var(--ease)}
 .hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(380px circle at var(--mx) var(--my),color-mix(in srgb,var(--brass) 18%,transparent),transparent 70%)}
 @supports((-webkit-background-clip:text) or (background-clip:text)){
-.hero h1 em{padding-right:.06em;background:linear-gradient(100deg,var(--accent) 0%,var(--brass) 48%,var(--accent) 92%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:shine 7s ease-in-out infinite alternate}
 }
 @keyframes shine{to{background-position:100% 0}}
 @keyframes float{50%{translate:0 -8px}}
-.film.mini{animation:float 7s ease-in-out infinite}
-.film.feature::before{content:"";position:absolute;left:50%;top:50%;width:84px;height:84px;margin:-42px 0 0 -42px;border:1.5px solid rgba(251,246,243,.8);border-radius:50%;pointer-events:none;animation:ring 2.8s ease-out infinite}
 @keyframes ring{from{transform:scale(.7);opacity:.9}to{transform:scale(1.55);opacity:0}}
 html.imgfade .film img{opacity:0;transition:opacity .7s var(--ease),transform .9s var(--ease)}
 html.imgfade .film img.ld{opacity:1}
@@ -836,10 +802,6 @@ nav#nav .snd-row[aria-pressed="false"] .off{display:block}
 @media(max-width:360px){.pkg-grid{grid-template-columns:1fr}.pkg{aspect-ratio:auto}}
 
 /* owner pencil: only added to the page for the owner, sits above the back-to-top button */
-.edit-fab{position:fixed;right:1.25rem;bottom:calc(9.25rem + env(safe-area-inset-bottom,0px));z-index:20;display:grid;place-items:center;width:52px;height:52px;padding:0;border-radius:50%;border:1.5px solid var(--brass);background:var(--bg);color:var(--brass);cursor:pointer;box-shadow:0 10px 24px -8px rgba(58,48,41,.4);transition:transform .3s var(--ease),background .3s var(--ease),color .3s var(--ease)}
-.edit-fab svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-@media(hover:hover){.edit-fab:hover{background:var(--brass);color:var(--bg)}}
-.edit-fab:active{transform:scale(.94)}
 
 /* ===== Mobile menu: one dark-mode toggle (a row in the menu), header button hidden on phones/tablets ===== */
 .theme-row{display:none}
@@ -915,7 +877,6 @@ nav#nav .prefs>button:first-child{border-radius:12px 12px 0 0}
 .tk-n[hidden]{display:none}
 html.has-chat .wa-fab{bottom:calc(5.75rem + env(safe-area-inset-bottom,0px))}
 html.has-chat .top{bottom:calc(9.75rem + env(safe-area-inset-bottom,0px))}
-html.has-chat .edit-fab{bottom:calc(13.75rem + env(safe-area-inset-bottom,0px))}
 #tawkchat-container{transform-origin:100% 100%;animation:tkIn .3s var(--ease) both}
 html.tk-out #tawkchat-container{animation:tkOut .22s ease-in both}
 @keyframes tkIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
@@ -950,8 +911,6 @@ html:not(.fab-seen) .wa-fab:not([hidden]){animation:fabIn .6s var(--ease) .1s bo
 
 /* Back-to-top button removed (element stays in the HTML so the page scripts keep working) */
 .top{display:none!important}
-html.has-chat .edit-fab{bottom:calc(9.75rem + env(safe-area-inset-bottom,0px))}
-html.has-chat:not(.has-wa) .edit-fab{bottom:calc(5.75rem + env(safe-area-inset-bottom,0px))}
 
 /* Page rhythm: tighter top, even gaps between blocks */
 .back{margin-bottom:1rem}
@@ -1175,3 +1134,771 @@ html.has-chat:not(.has-wa) .edit-fab{bottom:calc(5.75rem + env(safe-area-inset-b
 @media(prefers-reduced-motion:reduce){
   .peek-front,.peek-back,.tap-hint .chev{transition:none}
 }
+
+/* =========================================================
+   POLISH PASS — page transitions, motion, responsiveness
+   ========================================================= */
+
+/* --- Unified page-to-page transitions (crossfade, header stays) --- */
+@keyframes pageOut{
+  to{opacity:0;filter:blur(2px)}
+}
+@keyframes pageIn{
+  from{opacity:0;filter:blur(2px)}
+  to{opacity:1;filter:blur(0)}
+}
+@media(prefers-reduced-motion:no-preference){
+  :root:not(.vt-theme)::view-transition-group(root){
+    animation-duration:.36s;
+    animation-timing-function:cubic-bezier(.22,.8,.24,1);
+  }
+  :root:not(.vt-theme)::view-transition-old(root){
+    animation:pageOut .22s cubic-bezier(.4,0,1,1) both;
+  }
+  :root:not(.vt-theme)::view-transition-new(root){
+    animation:pageIn .36s cubic-bezier(.16,1,.3,1) both;
+  }
+}
+/* Header + floating actions stay locked during page change */
+header.site{view-transition-name:site-header}
+::view-transition-group(site-header){animation-duration:0s;z-index:100}
+::view-transition-old(site-header),
+::view-transition-new(site-header){animation:none;mix-blend-mode:normal}
+
+/* --- Soften scroll reveals --- */
+.rv{transition:opacity .75s cubic-bezier(.22,.8,.24,1),translate .75s cubic-bezier(.22,.8,.24,1)}
+.anim .rv{opacity:0;translate:0 16px}
+.anim .rv.in{opacity:1;translate:none}
+@media(prefers-reduced-motion:reduce){
+  .rv,.anim .rv,.anim .rv.in{opacity:1;translate:none;transition:none}
+}
+
+/* --- Mobile nav: smoother open/close --- */
+@media(max-width:900px){
+  nav{
+    transition:opacity .28s cubic-bezier(.22,.8,.24,1),
+                translate .28s cubic-bezier(.22,.8,.24,1),
+                visibility .28s;
+  }
+  nav.open{
+    visibility:visible;
+    opacity:1;
+    translate:0 0;
+    pointer-events:auto;
+  }
+  /* Full-width tap targets in the menu */
+  nav a{
+    min-height:48px;
+    display:flex;
+    align-items:center;
+    padding:.85rem .9rem;
+    border-radius:12px;
+  }
+  nav a:last-child{
+    margin-top:1rem;
+    justify-content:center;
+  }
+}
+
+/* --- Touch-friendly controls --- */
+@media(max-width:900px){
+  .theme,.menu,.snd{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    min-height:44px;
+  }
+  .pf-pill{
+    min-height:2.6rem;
+    padding:.55rem 1.2rem;
+  }
+  .btn{
+    min-height:48px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+}
+
+/* --- Prevent horizontal overflow on small screens --- */
+html,body{overflow-x:clip}
+img,video,iframe,svg{max-width:100%;height:auto}
+.wrap,.brief,.cgrid,.pbox,.pf-grid{max-width:100%}
+.film img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* --- Sticky portfolio filter: better offset on mobile --- */
+@media(max-width:900px){
+  .pf-jump{
+    top:calc(3.4rem + env(safe-area-inset-top,0px));
+    padding:.55rem 0 .65rem;
+  }
+  .pf-sec{scroll-margin-top:7.5rem}
+}
+@media(min-width:901px){
+  .pf-jump{
+    top:calc(3.8rem + env(safe-area-inset-top,0px));
+  }
+  .pf-sec{scroll-margin-top:8rem}
+}
+
+/* --- Cards & films: calmer hover, stronger press feedback --- */
+@media(hover:hover){
+  .film:hover{transform:translateY(-4px)}
+  .gcard:hover{transform:translateY(-3px)}
+}
+.film:active,.btn:active,.pf-pill:active{
+  transform:scale(.985);
+  transition-duration:.12s;
+}
+
+/* --- Forms: better mobile keyboard / spacing --- */
+@media(max-width:520px){
+  .brief{
+    padding:1.15rem;
+    border-radius:16px;
+    gap:1rem;
+  }
+  .brief label{font-size:.9rem}
+  .brief input,
+  .brief select,
+  .brief textarea{
+    font-size:16px; /* prevents iOS zoom on focus */
+    min-height:3.1rem;
+  }
+  .two{grid-template-columns:1fr;gap:.85rem}
+  .hero{padding:clamp(2.5rem,8vw,4.5rem) 0 clamp(2.5rem,6vw,4rem)}
+  .hero h1{font-size:clamp(2.35rem,1.4rem + 5vw,3.5rem)}
+  .portfolio h1,.pricing h1{
+    font-size:clamp(2rem,1.5rem + 2.5vw,2.75rem);
+  }
+}
+
+/* --- Footer stacks cleanly --- */
+@media(max-width:760px){
+  .foot{
+    gap:1.75rem 1.5rem;
+    padding-top:2.5rem;
+  }
+  .f-links{columns:1}
+}
+
+/* --- Dialog / player polish --- */
+dialog[open]{
+  animation:pop .4s cubic-bezier(.22,.8,.24,1);
+}
+@media(max-width:520px){
+  dialog.film-player,
+  #pl{
+    width:calc(100% - 1.25rem);
+    max-width:100%;
+    margin:auto;
+    border-radius:16px;
+  }
+  #pl .dtxt{
+    flex-wrap:wrap;
+    gap:.5rem;
+  }
+}
+
+/* --- Reduced motion: kill decorative motion only --- */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .film,.btn,.gcard,.pf-pill{transition:none}
+  .film:hover,.gcard:hover,.btn:hover{transform:none}
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*){animation:none!important}
+}
+
+/* =========================================================
+   MOTION SYSTEM — unified, polished, smooth
+   One easing language. Softer distances. No competing rules.
+   ========================================================= */
+
+:root{
+  --ease:cubic-bezier(.22,.8,.24,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-in:cubic-bezier(.4,0,1,1);
+  --dur-fast:.2s;
+  --dur:.35s;
+  --dur-slow:.7s;
+  --dur-page:.38s;
+}
+
+/* ---------- Global transition defaults ---------- */
+a,button,.btn,.film,.gcard,.pf-pill,.theme,.menu,.snd,
+.mail-card,.peek,.chk label,.faq summary,.fbtn,
+.ctl>button,.pnav button,.wa-fab,.tk-fab,.edit-fab,
+.pf-jump,.top{
+  transition-timing-function:var(--ease);
+}
+
+/* ---------- Page transitions (crossfade, no blur jank) ---------- */
+@keyframes pageOut{
+  from{opacity:1}
+  to{opacity:0}
+}
+@keyframes pageIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+@media(prefers-reduced-motion:no-preference){
+  :root:not(.vt-theme)::view-transition-group(root){
+    animation-duration:var(--dur-page);
+    animation-timing-function:var(--ease-out);
+  }
+  :root:not(.vt-theme)::view-transition-old(root){
+    animation:pageOut .2s var(--ease-in) both;
+  }
+  :root:not(.vt-theme)::view-transition-new(root){
+    animation:pageIn var(--dur-page) var(--ease-out) both;
+  }
+}
+header.site{view-transition-name:site-header}
+::view-transition-group(site-header){animation-duration:0s;z-index:100}
+::view-transition-old(site-header),
+::view-transition-new(site-header){animation:none;mix-blend-mode:normal}
+.wa-fab{view-transition-name:fab-wa}
+.top{view-transition-name:fab-top}
+::view-transition-group(fab-wa),
+::view-transition-group(fab-top){animation-duration:0s}
+::view-transition-old(fab-wa),
+::view-transition-new(fab-wa),
+::view-transition-old(fab-top),
+::view-transition-new(fab-top){animation:none;mix-blend-mode:normal}
+
+/* ---------- Scroll reveals ---------- */
+@keyframes up{
+  from{opacity:0;translate:0 14px}
+  to{opacity:1;translate:0 0}
+}
+.rv{
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    translate var(--dur-slow) var(--ease-out);
+}
+.anim .rv{opacity:0;translate:0 14px}
+.anim .rv.in{opacity:1;translate:none}
+.anim .hero-t>*{
+  animation:up .75s var(--ease-out) both;
+}
+.anim .hero-t>:nth-child(1){animation-delay:0s}
+.anim .hero-t>:nth-child(2){animation-delay:.06s}
+.anim .hero-t>:nth-child(3){animation-delay:.12s}
+.anim .hero-t>:nth-child(4){animation-delay:.18s}
+.anim .hero-t>:nth-child(5){animation-delay:.24s}
+.anim .hero-t>:nth-child(6){animation-delay:.3s}
+.anim .hero-t>:nth-child(7){animation-delay:.36s}
+.anim .hero-t>:nth-child(8){animation-delay:.42s}
+
+/* Portfolio cards — gentle staggered rise */
+@keyframes pfCard{
+  from{opacity:0;translate:0 12px;scale:.99}
+  to{opacity:1;translate:0 0;scale:1}
+}
+.anim .pf-sec.in .film{
+  animation:pfCard .65s var(--ease-out) both;
+  animation-delay:calc(var(--i,0) * 55ms + 80ms);
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  transition:
+    transform var(--dur) var(--ease),
+    background var(--dur) var(--ease),
+    color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+}
+@media(hover:hover){
+  .btn:hover{
+    transform:translateY(-1px);
+  }
+}
+.btn:active{
+  transform:scale(.98);
+  transition-duration:.1s;
+}
+
+/* ---------- Film cards ---------- */
+.film{
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    translate var(--dur-slow) var(--ease-out),
+    transform .45s var(--ease),
+    box-shadow .45s var(--ease);
+}
+.film img{
+  transition:transform .7s var(--ease-out);
+}
+.film .play{
+  transition:transform .45s var(--ease);
+}
+@media(hover:hover){
+  .film:hover{transform:translateY(-3px)}
+  .film:hover img{transform:scale(1.04)}
+  .film:hover .play{transform:scale(1.08)}
+}
+.film:active{
+  transform:scale(.99);
+  transition-duration:.12s;
+}
+
+/* Home slider films */
+.wcar .film{
+  opacity:.55;
+  scale:.97;
+  transition:
+    opacity .55s var(--ease-out),
+    scale .55s var(--ease-out),
+    transform .45s var(--ease),
+    box-shadow .45s var(--ease);
+}
+.wcar .film.is-on{
+  opacity:1;
+  scale:1;
+}
+
+
+
+/* ---------- Cards / mail / gcard ---------- */
+.gcard,.mail-card{
+  transition:
+    transform .45s var(--ease),
+    border-color .35s var(--ease),
+    box-shadow .45s var(--ease),
+    opacity var(--dur-slow) var(--ease-out),
+    translate var(--dur-slow) var(--ease-out);
+}
+@media(hover:hover){
+  .gcard:hover{transform:translateY(-2px)}
+  .mail-card:hover{transform:translateY(-2px)}
+  .mail-card:hover .mail-arrow{translate:3px 0}
+}
+.mail-arrow{transition:translate .35s var(--ease)}
+
+/* ---------- Filter pills ---------- */
+.pf-pill{
+  transition:
+    background .3s var(--ease),
+    border-color .3s var(--ease),
+    color .3s var(--ease),
+    transform .25s var(--ease);
+}
+.pf-pill:active{transform:scale(.97)}
+.pf-jump{
+  transition:box-shadow .35s var(--ease),background .35s var(--ease);
+}
+
+/* ---------- Mobile menu ---------- */
+@media(max-width:900px){
+  nav{
+    transition:
+      opacity .3s var(--ease-out),
+      translate .3s var(--ease-out),
+      visibility .3s;
+  }
+  nav.open a{
+    animation:up .5s var(--ease-out) both;
+  }
+  nav.open a:nth-child(1){animation-delay:.02s}
+  nav.open a:nth-child(2){animation-delay:.04s}
+  nav.open a:nth-child(3){animation-delay:.06s}
+  nav.open a:nth-child(4){animation-delay:.08s}
+  nav.open a:nth-child(5){animation-delay:.1s}
+  nav.open a:nth-child(6){animation-delay:.12s}
+  nav.open a:nth-child(7){animation-delay:.14s}
+  nav.open a:nth-child(8){animation-delay:.16s}
+  nav.open a:nth-child(9){animation-delay:.18s}
+  nav.open a:nth-child(10){animation-delay:.2s}
+}
+.menu i,
+.menu i::before,
+.menu i::after{
+  transition:transform .3s var(--ease),background .2s var(--ease),opacity .2s;
+}
+
+/* ---------- Theme / sound toggles ---------- */
+.theme,.snd,.menu{
+  transition:
+    background .3s var(--ease),
+    border-color .3s var(--ease),
+    transform .25s var(--ease);
+}
+.theme:active,.snd:active,.menu:active{
+  transform:scale(.94);
+}
+
+/* ---------- FAQ ---------- */
+.faq summary{
+  transition:color .3s var(--ease);
+}
+.faq summary::after{
+  transition:transform .35s var(--ease);
+}
+
+/* ---------- Dialogs / player ---------- */
+@keyframes pop{
+  from{opacity:0;transform:translateY(10px) scale(.985)}
+  to{opacity:1;transform:none}
+}
+@keyframes fade{
+  from{opacity:0}
+  to{opacity:1}
+}
+dialog[open]{
+  animation:pop .4s var(--ease-out) both;
+}
+@media(prefers-reduced-motion:no-preference){
+  dialog[open]::backdrop{
+    animation:fade .3s var(--ease) both;
+  }
+}
+
+/* ---------- Pricing peek cards ---------- */
+.peek-front,.peek-back{
+  transition:
+    transform .55s var(--ease-out),
+    opacity .45s var(--ease);
+}
+.tap-hint .chev{
+  transition:transform .4s var(--ease);
+}
+.peek.open .chev{transform:rotate(180deg)}
+
+/* ---------- Floating FABs ---------- */
+@keyframes fabIn{
+  from{opacity:0;translate:0 10px}
+  to{opacity:1;translate:0 0}
+}
+.wa-fab,.tk-fab,.edit-fab{
+  transition:
+    transform .35s var(--ease),
+    background .3s var(--ease),
+    bottom .4s var(--ease),
+    opacity .4s var(--ease);
+}
+html:not(.fab-seen) .wa-fab:not([hidden]){
+  animation:fabIn .55s var(--ease-out) .08s both;
+}
+@media(hover:hover){
+  .wa-fab:hover,.tk-fab:hover{transform:translateY(-2px)}
+}
+.wa-fab:active,.tk-fab:active,.edit-fab:active{
+  transform:scale(.94);
+}
+
+/* Tawk icons swap */
+.tk-fab .tk-i,.tk-fab .tk-x{
+  transition:opacity .3s var(--ease),transform .35s var(--ease);
+}
+.tk-fab .tk-x{opacity:0;transform:rotate(-80deg) scale(.7)}
+.tk-fab.is-open .tk-i{opacity:0;transform:rotate(80deg) scale(.7)}
+.tk-fab.is-open .tk-x{opacity:1;transform:none}
+
+/* ---------- Header border on scroll ---------- */
+.site{
+  transition:border-color .4s var(--ease),background .35s var(--ease);
+}
+
+/* ---------- Form focus ---------- */
+input,select,textarea{
+  transition:
+    border-color .3s var(--ease),
+    box-shadow .35s var(--ease),
+    background-color .3s var(--ease);
+}
+
+/* ---------- Progress bar ---------- */
+#sprog{
+  transition:transform .1s linear;
+}
+
+
+/* ---------- Steps / workflow ---------- */
+@keyframes stepin{
+  from{opacity:0;translate:0 6px}
+  to{opacity:1;translate:0 0}
+}
+.js-steps .step.on{
+  animation:stepin .4s var(--ease-out) both;
+}
+.steps li{
+  transition:
+    transform .55s var(--ease),
+    box-shadow .55s var(--ease),
+    border-color .45s var(--ease),
+    background-color .45s var(--ease),
+    color .45s var(--ease);
+}
+
+/* ---------- Reduced motion: kill decorative motion ---------- */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv,.anim .rv,.anim .rv.in{
+    opacity:1!important;
+    translate:none!important;
+    transition:none!important;
+  }
+  .anim .hero-t>*,
+  .anim .pf-sec.in .film,
+  .film.mini,
+  .film.feature::after,
+  .hero h1 em,
+  nav.open a,
+  dialog[open],
+  dialog[open]::backdrop,
+  html:not(.fab-seen) .wa-fab:not([hidden]),
+  .js-steps .step.on{
+    animation:none!important;
+  }
+  .film,.btn,.gcard,.mail-card,.pf-pill,.wa-fab,.tk-fab,
+  .wcar .film,.peek-front,.peek-back{
+    transition:none!important;
+  }
+  .film:hover,.btn:hover,.gcard:hover,.mail-card:hover,
+  .wa-fab:hover,.tk-fab:hover{
+    transform:none!important;
+  }
+  .wcar .film{opacity:1;scale:1}
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*){
+    animation:none!important;
+  }
+}
+
+/* ===== Sticky filter fix: lives outside .pf-head, sticks under site header ===== */
+.portfolio > .wrap{
+  overflow: visible;
+}
+.pf-jump{
+  position: sticky;
+  top: calc(3.5rem + env(safe-area-inset-top, 0px));
+  z-index: 22;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin: 0 0 1.25rem;
+  padding: .7rem 0 .8rem;
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  backdrop-filter: saturate(1.4) blur(12px);
+  /* full-bleed bar edge to edge within wrap */
+  margin-left: -.25rem;
+  margin-right: -.25rem;
+  padding-left: .25rem;
+  padding-right: .25rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+}
+/* subtle separator once stuck (optional visual cue) */
+.pf-jump.is-stuck{
+  border-bottom-color: var(--line);
+  box-shadow: 0 8px 20px -16px rgba(58,48,41,.35);
+}
+@media(max-width:900px){
+  .pf-jump{
+    top: calc(3.25rem + env(safe-area-inset-top, 0px));
+    padding: .6rem 0 .7rem;
+  }
+}
+.pf-sec{
+  scroll-margin-top: 7.75rem;
+}
+
+
+/* ===== Content / SEO / UX polish ===== */
+.proof{
+  max-width:42rem;
+  margin:1.25rem auto 0;
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.55;
+  letter-spacing:.01em;
+}
+.promise{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:.45rem .75rem;
+  list-style:none;
+  margin:1.35rem 0 0;
+  padding:0;
+  max-width:40rem;
+  margin-left:auto;
+  margin-right:auto;
+}
+.promise li{
+  font:500 .8125rem/1.3 var(--f-body);
+  color:var(--muted);
+  padding:.35rem .7rem;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:color-mix(in srgb,var(--card) 70%,transparent);
+}
+.pf-cta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.65rem;
+  margin:0 0 1.5rem;
+  align-items:center;
+}
+.pf-cta-row .btn{
+  min-height:2.6rem;
+  padding:.55rem 1.2rem;
+  font-size:.9rem;
+}
+.form-note{
+  margin:.65rem 0 0;
+  color:var(--muted);
+  font-size:.875rem;
+  line-height:1.45;
+}
+/* Soft skeleton while YouTube thumbs load */
+.film{
+  background:
+    linear-gradient(110deg, var(--card) 30%, color-mix(in srgb,var(--card) 60%,var(--line)) 45%, var(--card) 60%);
+  background-size:200% 100%;
+}
+.film img{
+  background:var(--card);
+}
+@keyframes shimmer{
+  to{background-position:-200% 0}
+}
+@media(prefers-reduced-motion:no-preference){
+  .film:not(:has(img[complete])){
+    animation:shimmer 1.2s linear infinite;
+  }
+}
+
+/* ===== Filter bar offset follows the real header height (set by portfolio.js as --hh) ===== */
+.pf-jump{top:var(--hh,5rem)!important}
+.pf-sec{scroll-margin-top:calc(var(--hh,5rem) + 4.5rem)!important}
+
+/* ===== Faster first paint =====
+   1) Reveal-on-scroll content can never stay hidden: if JS is late or fails, it fades in after 1.2s anyway.
+   2) Hero entrance is shorter and tighter so text is readable almost immediately. */
+@keyframes rvshow{to{opacity:1;translate:none}}
+.anim .rv:not(.in){animation:rvshow .4s ease 1.2s forwards}
+.anim .hero-t>*{animation-duration:.55s}
+.anim .hero-t>:nth-child(n){animation-delay:0s}
+.anim .hero-t>:nth-child(2){animation-delay:.04s}
+.anim .hero-t>:nth-child(3){animation-delay:.08s}
+.anim .hero-t>:nth-child(4){animation-delay:.12s}
+.anim .hero-t>:nth-child(5){animation-delay:.16s}
+.anim .hero-t>:nth-child(6){animation-delay:.2s}
+.anim .hero-t>:nth-child(7){animation-delay:.24s}
+.anim .hero-t>:nth-child(8){animation-delay:.28s}
+.rv{transition-duration:.5s}
+
+
+/* ===== Pricing: build-your-package picker ===== */
+.bp{display:grid;gap:1.25rem;margin-top:1.75rem;align-items:start}
+@media(min-width:900px){.bp{grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:2rem}.bp-sum{position:sticky;top:calc(var(--hh,5rem) + 1rem)}}
+.bp-h{margin:0 0 .75rem;font:600 .8125rem/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+.bp-presets{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:1rem}
+.bp-pre{appearance:none;display:inline-flex;flex-direction:column;align-items:flex-start;gap:.2rem;padding:.65rem 1rem;border:1px solid var(--line);border-radius:14px;background:transparent;color:var(--ink);font:500 .8rem/1.1 var(--f-body);cursor:pointer;transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease),transform .25s var(--ease)}
+.bp-pre b{font:600 .9rem/1 var(--f-body)}
+.bp-pre span{color:var(--muted);font-size:.72rem}
+.bp-pre:active{transform:scale(.97)}
+.bp-pre[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.bp-pre[aria-pressed="true"] span{color:var(--bg);opacity:.75}
+.bp-clear{justify-content:center}
+@media(hover:hover){.bp-pre:hover{border-color:var(--brass)}}
+.bp-ul{list-style:none;margin:0;padding:0;display:grid;gap:.8rem}
+.bp-li{position:relative}
+.bp-opt{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.95rem;align-items:center;padding:1.05rem 1.1rem;border:1.5px solid var(--line);border-radius:20px;background:var(--card);cursor:pointer;transition:border-color .35s var(--ease),background .35s var(--ease),transform .3s var(--ease),box-shadow .35s var(--ease)}
+.bp-opt:active{transform:scale(.985)}
+@media(hover:hover){.bp-opt:hover{border-color:var(--brass);transform:translateY(-2px)}}
+.bp-in{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.bp-tick{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--taupe);color:transparent;transition:background .3s var(--ease),border-color .3s var(--ease),color .3s var(--ease),transform .4s var(--ease)}
+.bp-tick svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .4s var(--ease) .05s}
+.bp-main{display:grid;gap:.25rem;min-width:0}
+.bp-main strong{font:500 1.25rem/1.1 var(--f-display)}
+.bp-main em{font:600 .72rem/1.2 var(--f-body);letter-spacing:.06em;text-transform:uppercase;color:var(--brass);font-style:normal}
+.bp-main small{font:400 .88rem/1.45 var(--f-body);color:var(--muted)}
+.bp-price{display:grid;justify-items:end;font:500 1.55rem/1 var(--f-display);white-space:nowrap}
+.bp-price i{font:500 .68rem/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-style:normal;margin-bottom:.25rem}
+.bp-opt:has(.bp-in:checked){border-color:var(--ink);background:color-mix(in srgb,var(--blush) 38%,var(--card));box-shadow:0 14px 28px -20px rgba(58,48,41,.55)}
+.bp-opt:has(.bp-in:checked) .bp-tick{background:var(--ink);border-color:var(--ink);color:var(--bg);transform:scale(1.08)}
+.bp-opt:has(.bp-in:checked) .bp-tick svg{stroke-dashoffset:0}
+.bp-opt:has(.bp-in:focus-visible){outline:3px solid color-mix(in srgb,var(--brass) 55%,transparent);outline-offset:3px}
+.bp-ex{display:inline-block;margin:.45rem 0 0 3.4rem;font:500 .82rem/1 var(--f-body);color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 40%,transparent)}
+.bp-sum{padding:1.6rem 1.5rem 1.4rem;border-radius:24px;background:var(--ink);color:var(--bg);box-shadow:0 24px 44px -26px rgba(58,48,41,.7);overflow:hidden}
+.bp-sum .bp-h{color:var(--sand)}
+.bp-lab{margin:0;font:500 .85rem/1 var(--f-body);color:var(--sand)}
+.bp-tot{margin:.35rem 0 .2rem;font:400 clamp(3rem,10vw,4.2rem)/1 var(--f-display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.bp-deal{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem;margin:.2rem 0 .6rem;font:500 .9rem/1 var(--f-body)}
+.bp-deal s{color:var(--taupe)}
+.bp-deal span{padding:.35rem .7rem;border-radius:999px;background:var(--sage);color:#2B2421;font-weight:600;font-size:.8rem}
+.bp-deal.pop span{animation:bpPop .55s var(--ease)}
+@keyframes bpPop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.12);opacity:1}100%{transform:scale(1)}}
+.bp-pk{margin:0 0 .6rem;font:600 .72rem/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--blush)}
+.bp-chips{list-style:none;margin:.5rem 0 1rem;padding:0;display:flex;flex-wrap:wrap;gap:.4rem;min-height:1.9rem}
+.bp-chips li{padding:.35rem .7rem;border:1px solid color-mix(in srgb,var(--bg) 30%,transparent);border-radius:999px;font:500 .78rem/1 var(--f-body);animation:bpChip .35s var(--ease) both}
+@keyframes bpChip{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.bp-nudge{margin:0 0 1rem;padding:.85rem .95rem;border-radius:14px;background:color-mix(in srgb,var(--bg) 12%,transparent);border:1px dashed color-mix(in srgb,var(--bg) 40%,transparent)}
+.bp-nudge p{margin:0 0 .6rem;font:400 .85rem/1.45 var(--f-body)}
+.bp-nb{appearance:none;border:0;border-radius:999px;padding:.55rem 1rem;background:var(--blush);color:#2B2421;font:600 .82rem/1 var(--f-body);cursor:pointer;transition:transform .25s var(--ease)}
+.bp-nb:active{transform:scale(.96)}
+.bp-go{display:flex;justify-content:center;width:100%;background:var(--bg)!important;color:var(--ink)!important;border-color:var(--bg)!important;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.bp-go.is-idle{opacity:.55}
+.bp-fine{margin:.85rem 0 0;font:400 .78rem/1.5 var(--f-body);color:var(--sand)}
+@media(max-width:480px){.bp-opt{gap:.75rem;padding:.95rem .9rem}.bp-main strong{font-size:1.12rem}.bp-price{font-size:1.3rem}.bp-ex{margin-left:3.1rem}}
+@media(prefers-reduced-motion:reduce){.bp-opt,.bp-tick,.bp-tick svg,.bp-chips li,.bp-deal.pop span{transition:none!important;animation:none!important}}
+
+/* Phones: compact left-aligned promise pills (the 3–5 day pill repeats the line right below), and a smaller floating button tucked into the corner */
+@media(max-width:520px){
+.promise{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:.4rem .45rem;margin-left:0;margin-right:0;max-width:none}
+.promise li{font-size:.75rem;padding:.3rem .6rem}
+.promise li:nth-child(4){display:none}
+.promise li::before{display:none}
+.wa-fab,.top{width:44px;height:44px;right:.75rem}
+.wa-fab{bottom:calc(.9rem + env(safe-area-inset-bottom,0px))}
+.wa-fab svg{width:22px;height:22px}
+html.has-wa .top{bottom:calc(4.1rem + env(safe-area-inset-bottom,0px))}
+}
+
+/* Pricing page: hide the floating WhatsApp button (it covered the prices); the page has its own "Get my exact price" buttons. Same approach as the contact page. */
+html:has(#pg-pricing) .wa-fab{display:none!important}
+html:has(#pg-pricing).has-wa .top{bottom:calc(1.25rem + env(safe-area-inset-bottom,0px))}
+@media(max-width:520px){html:has(#pg-pricing).has-wa .top{bottom:calc(.9rem + env(safe-area-inset-bottom,0px))}}
+
+/* ===== Touch targets: bigger hit areas without changing how things look ===== */
+.dots2{gap:1.25rem}
+.dots2 button::before{inset:-18px -10px}
+.try-l a{padding:.7rem 0}
+@media (pointer:coarse){
+ .foot a,.foot .f-links a{padding:.65rem 0}
+ .foot .brand{padding:0}
+ .f-links .f-sep{margin-top:.4rem;padding-top:.4rem}
+}
+.hero .promise{justify-content:flex-start;margin-left:0;margin-right:0}
+
+/* ===== Simpler desktop menu: Films overlaps Portfolio, Tools lives in the footer. The phone menu keeps every link. ===== */
+@media(min-width:980px){
+ #nav>a[href$="#work"],#nav>a[href$="tools.html"]{display:none}
+}
+/* ===== Phones and tablets: show a film right after the buttons, so visitors see your work on the first screen ===== */
+@media(max-width:860px){
+ .hero{row-gap:0}
+ .hero-t{display:contents}
+ .hero-t>*{order:1}
+ .hero-t>.promise,.hero-t>.proof{order:3}
+ .hero-v{order:2;margin-top:1.75rem;padding-bottom:3rem}
+ .hero .promise{margin-top:0}
+}
+
+
+/* ===== Polish: comfortable tap targets (44px) without changing the layout ===== */
+.back{display:inline-flex;align-items:center;min-height:44px}
+.linkbtn{position:relative}
+.linkbtn::after{content:"";position:absolute;inset:-12px -6px}
+.bp-nb,.bp-pre{min-height:44px}
+.f-links a,.soc a{display:inline-flex;align-items:center;min-height:44px}
+/* anchored sections clear the sticky header on every screen size */
+html{scroll-padding-top:calc(5.25rem + env(safe-area-inset-top,0px))}
+/* keep the animated glow on screen only: pause it when the hero is off-screen (class set by hero3d.js) */
+html.stage-off .stage .btn:not(.ghost)::after{animation-play-state:paused}

@@ -1,0 +1,80 @@
+/* ===== 3D hero stage (index.html only) =====
+   Always dark, in both site themes. All classes are prefixed s- so nothing here can
+   collide with the shared site.css. Layout is mobile-first: rings above, copy below.
+   At 900px+ it becomes two columns: copy left, rings right. */
+.stage{
+  --st:#1B1513;--st-cream:#FBF6F3;--st-soft:#CDBFB3;--st-blush:#EFC7C2;
+  position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;
+  width:min(1400px,calc(100% - 1.2rem - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px)));
+  margin:.6rem auto 0;border-radius:clamp(20px,3vw,28px);
+  background:var(--st) radial-gradient(60% 40% at 50% 22%,rgba(239,199,194,.16),transparent 70%);
+  color:var(--st-cream);
+  min-height:clamp(41rem,calc(100svh - 6rem - env(safe-area-inset-top,0px)),64rem);
+  contain:layout paint}
+@supports not (height:1svh){.stage{min-height:clamp(41rem,calc(100vh - 6rem),64rem)}}
+@media(min-width:900px){
+  .stage{min-height:clamp(36rem,calc(100svh - 6rem - env(safe-area-inset-top,0px)),58rem);
+    background:var(--st) radial-gradient(38% 62% at 73% 50%,rgba(239,199,194,.17),transparent 72%)}}
+
+/* canvas + no-WebGL fallback */
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0;opacity:0;transition:opacity .9s ease;pointer-events:none}
+.stage.gl-on #gl{opacity:1}
+.s-fb{display:none;position:absolute;z-index:0;left:50%;top:1.5rem;width:min(18rem,70%);transform:translateX(-50%);pointer-events:none}
+@media(min-width:900px){.s-fb{left:auto;right:6%;top:50%;width:min(34rem,44%);transform:translateY(-50%)}}
+.s-fb circle{fill:none;stroke:var(--st-blush);stroke-width:3.2;opacity:.8}
+.no-gl .s-fb{display:block}
+.no-gl #gl{display:none}
+
+/* copy */
+.s-copy{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;
+  padding:2rem max(1.25rem,3vw) clamp(4rem,12vw,4.5rem)}
+.s-in{display:flex;flex-direction:column;align-items:center;width:100%;max-width:34rem}
+@media(min-width:900px){
+  .s-copy{justify-content:center;align-items:flex-start;text-align:left;width:min(42rem,56%);padding:3.5rem 0 3.5rem clamp(1.75rem,5vw,4.5rem)}
+  .s-in{align-items:flex-start;max-width:none}}
+.stage .eyebrow{margin:0 0 1rem;color:var(--st-blush);font-size:.9375rem}
+.stage h1{margin:0;font:300 clamp(2.6rem,1.2rem + 7.4vw,4.75rem)/.98 var(--f-display);letter-spacing:-.04em;color:var(--st-cream);text-shadow:0 2px 28px rgba(0,0,0,.35)}
+@media(min-width:900px){.stage h1{font-size:clamp(3.25rem,.5rem + 5.2vw,6.25rem)}}
+.s-ln{display:block;width:fit-content;white-space:nowrap;padding-inline:.06em}
+@media(max-width:899px){.s-ln{margin-inline:auto}}
+.s-ln+.s-ln{font-style:italic;color:var(--st-blush)}
+.s-lead{margin:1.25rem 0 0;max-width:40ch;color:var(--st-soft);font-size:clamp(1rem,.95rem + .3vw,1.1875rem);line-height:1.6}
+.s-btns{display:flex;flex-direction:column;align-items:stretch;gap:.6rem;width:100%;max-width:22rem;margin-top:1.75rem}
+@media(min-width:520px){.s-btns{flex-direction:row;width:auto;max-width:none}}
+
+/* buttons: blush pill with a soft pulsing glow, ghost outline */
+.stage .btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;min-height:3.1rem;padding:.8rem 1.8rem;
+  border-radius:999px;border:1px solid var(--st-blush);background:var(--st-blush);color:#3A3029;font:600 1rem/1 var(--f-body);letter-spacing:.01em;white-space:nowrap;text-decoration:none}
+.stage .btn.ghost{background:transparent;color:var(--st-cream);border-color:rgba(251,246,243,.34)}
+.stage .btn:not(.ghost)::after{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;pointer-events:none;
+  box-shadow:0 0 28px 3px rgba(239,199,194,.55);opacity:0;animation:glowpulse 3.6s ease-in-out infinite}
+@media(hover:hover){
+  .stage .btn:hover{background:#F6D6D2;border-color:#F6D6D2;color:#3A3029;transform:translateY(-2px);box-shadow:none}
+  .stage .btn.ghost:hover{background:rgba(251,246,243,.1);border-color:rgba(251,246,243,.6);color:var(--st-cream)}
+  .stage .btn:not(.ghost):hover::after{animation-play-state:paused;opacity:.9}}
+.stage .btn:active{transform:none}
+.stage :focus-visible{outline:3px solid var(--st-blush);outline-offset:3px}
+
+.s-promise{list-style:none;margin:1.4rem 0 0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:.35rem 1.25rem;font-size:.875rem;line-height:1.4;color:var(--st-soft)}
+@media(min-width:900px){.s-promise{justify-content:flex-start;gap:.35rem 1.4rem;font-size:.9rem}}
+.s-promise li{display:flex;align-items:center;gap:.4rem;margin:0;padding:0}
+.s-promise li::before{display:none}
+.s-promise svg{flex:none;width:15px;height:15px;fill:none;stroke:var(--st-blush);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s-test{margin:.9rem 0 0;font-size:.9375rem}
+.s-test a{color:var(--st-blush);text-underline-offset:.25em}
+.s-hint{display:none;position:absolute;z-index:2;right:5.5rem;bottom:1.9rem;margin:0;font-size:.8125rem;color:var(--st-soft);opacity:.8}
+@media(min-width:900px) and (hover:hover){.s-hint{display:block}}
+
+.proof-s{margin:1rem 0 0;text-align:center;font-size:.875rem;line-height:1.5;color:var(--muted)}
+.proof-s+.work{padding-top:calc(var(--sec) * .75)}
+
+/* entrance: text rises in right away (never waits for WebGL); rings animate on their own */
+@keyframes st-focus{from{opacity:0;filter:blur(14px);transform:scale(1.04)}to{opacity:1;filter:blur(0);transform:none}}
+@keyframes st-fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.anim .s-ln{animation:st-focus 1s var(--ease) .1s both}
+.anim .s-ln+.s-ln{animation-delay:.38s}
+.anim .s-fade{animation:st-fade .8s var(--ease) both;animation-delay:calc(.55s + var(--i,0) * .1s)}
+@media(prefers-reduced-motion:reduce){
+  .anim .s-ln,.anim .s-fade{animation:none}
+  #gl,.stage .btn{transition:none}
+  .stage .btn:not(.ghost)::after{animation:none}}

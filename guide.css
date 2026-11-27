@@ -40,3 +40,6 @@ article li::marker{color:var(--brass)}
 .more a{color:var(--ink);font-weight:600;text-underline-offset:4px}
 footer{padding:2rem 0 3rem;color:var(--muted);font-size:.875rem;border-top:1px solid var(--line)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* tap targets */
+.name{display:inline-flex;align-items:center;min-height:44px}

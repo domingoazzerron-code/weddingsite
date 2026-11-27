@@ -1,9 +1,9 @@
-# Marcus Wedding Studio website
+# Marcus Wedding Studio — Hostinger deployment
 
-Static site for marcusweddingstudio.com. No build step: edit the files and upload them.
+Upload the CONTENTS of this folder directly into your Hostinger `public_html` directory.
 
-- `index.html`, `pricing.html`, `tools.html`, `contact.html`: main pages
-- `how-to-*.html`: guide articles (styled by `guide.css`)
-- `site.css`, `site.js`, `config.js`, `films.js`, `pricing.js`, `contact.js`: styles, scripts and editable content
-- `favicon.svg`, `logo-512.png`, `apple-touch-icon.png`: cursive M icon
-- `og-image.png`: link-preview image
+Stylesheets are intentionally in the site root (not in a `css/` folder):
+- `site.css` is used by the main pages.
+- `guide.css` is used by pages inside `guides/`.
+
+Keep ``, `js/`, and `guides/` folders in their current locations.
