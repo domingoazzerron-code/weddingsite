@@ -48,7 +48,7 @@ const go=i=>{i=Math.max(0,Math.min(cards.length-1,i));car.scrollTo({left:i*car.c
 let t=0;car.addEventListener("scroll",()=>{if(t)return;t=requestAnimationFrame(()=>{t=0;set(Math.round(car.scrollLeft/(car.clientWidth||1)))})},{passive:true});
 pv.onclick=()=>go(cur-1);nx.onclick=()=>go(cur+1);ds.forEach((d,i)=>d.onclick=()=>go(i));
 car.addEventListener("keydown",e=>{if(e.target!==car)return;if(e.key==="ArrowLeft")go(cur-1);else if(e.key==="ArrowRight")go(cur+1)});
-addEventListener("resize",()=>go(Math.max(cur,0)));set(0)})();
+{let lw=innerWidth;addEventListener("resize",()=>{if(innerWidth===lw)return;lw=innerWidth;car.scrollTo({left:Math.max(cur,0)*car.clientWidth,behavior:"auto"})})}set(0)})();
 (()=>{let now=null;
 const show=f=>{now=f;$("ytl").href="https://www.youtube.com/watch?v="+f.v;
  $("pt").innerHTML=esc(f.title)+`<small>${esc(f.type)}${f.meta?" · "+esc(f.meta):""}</small>`;

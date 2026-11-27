@@ -35,7 +35,7 @@
     var THREE = window.THREE,
         R, scene, cam, rig, ra, rb, gem, gold, champ, sparks, sp, spN,
         base = { x: 0, y: 0 }, t0 = 0, spin = 0, tx = 0, ty = 0, cx = 0, cy = 0,
-        vis = true, raf = 0, last = 0, lw = 0, lh = 0, ld = 0, lay = 0,
+        vis = true, raf = 0, last = 0, lw = 0, lh = 0, ld = 0, lay = 0, sf = 0, sdt = .016, hover = false, skip = 0,
         small = innerWidth < 720,
         dprCap = small ? 1.75 : 2, acc = 0, frames = 0;
 
@@ -125,11 +125,12 @@
       if ("IntersectionObserver" in window) new IntersectionObserver(function (e) { vis = e[0].isIntersecting; if (vis) last = performance.now(); }).observe(stage);
       document.addEventListener("visibilitychange", function () { last = performance.now(); });
       stage.addEventListener("pointermove", function (e) {
+        hover = true;
         var r = stage.getBoundingClientRect();
         tx = ((e.clientX - r.left) / r.width - .5) * 2; ty = ((e.clientY - r.top) / r.height - .5) * 2;
       }, { passive: true });
-      stage.addEventListener("pointerleave", function () { tx = ty = 0; });
-      stage.addEventListener("pointercancel", function () { tx = ty = 0; });
+      stage.addEventListener("pointerleave", function () { hover = false; });
+      stage.addEventListener("pointercancel", function () { hover = false; });
       raf = requestAnimationFrame(loop);
     }
 
@@ -143,13 +144,16 @@
       cam.aspect = w / h; cam.updateProjectionMatrix();
       var vh = 2 * Math.tan(cam.fov * Math.PI / 360) * 12, vw = vh * cam.aspect;
       if (w < 900) {
-        /* stacked: rings fill the free space above the copy */
+        /* stacked: rings sit behind the headline; they are only nudged down so the diamond never touches the top edge */
         var top = copy ? copy.getBoundingClientRect().top - stage.getBoundingClientRect().top : h * .5,
             free = Math.max(top - 14, h * .24),
-            worldFree = free / h * vh;
+            s = Math.max(.4, Math.min(1, vw / 6.2, (free / h * vh) / 4.6)),
+            ppw = h / vh,                       /* pixels per world unit */
+            ext = 2.65 * s * ppw,               /* diamond height above the ring centre, with tilt */
+            centre = Math.max(free / 2, ext + 18);
         base.x = 0;
-        base.y = (h / 2 - free / 2) / h * vh;
-        rig.scale.setScalar(Math.max(.4, Math.min(1, vw / 6.2, worldFree / 4.6)));
+        base.y = (h / 2 - centre) / h * vh;
+        rig.scale.setScalar(s);
       } else {
         base.x = vw * .21; base.y = 0;
         rig.scale.setScalar(Math.min(1, vh / 6.6));
@@ -166,13 +170,19 @@
       gem.scale.set(pop, 1.3 * pop, pop); gem.rotation.y += dt * 1.2;
       cam.position.z = 12 + 5 * (1 - ease(cl(T / 2.4)));
       if (T > 1.7) spin += dt * .3;
-      cx += (tx - cx) * .06; cy += (ty - cy) * .06;
+      /* no pointer (phones, or mouse left): a slow idle drift keeps the rings alive; follow is frame-rate independent */
+      if (!hover) { tx = Math.sin(T * .35) * .35; ty = Math.cos(T * .28) * .22; }
+      var k = 1 - Math.exp(-dt * 4);
+      cx += (tx - cx) * k; cy += (ty - cy) * k;
       rig.rotation.y = -.6 + spin + cx * .5;
       rig.rotation.x = .4 + cy * .3 + Math.sin(T * .7) * .05;
       rig.position.set(base.x, base.y + Math.sin(T * .9) * .07, 0);
       sparks.material.opacity = .85 * cl((T - .4) / 1.2);
-      for (var n = 0; n < spN; n++) { var k = n * 3 + 1; sp[k] += dt * (.15 + (n % 5) * .03); if (sp[k] > 5.8) sp[k] = -5.8; }
-      sparks.geometry.attributes.position.needsUpdate = true;
+      skip += dt;
+      if (++sf % 2 === 0) {
+        for (var n = 0; n < spN; n++) { var q = n * 3 + 1; sp[q] += skip * (.15 + (n % 5) * .03); if (sp[q] > 5.8) sp[q] = -5.8; }
+        sparks.geometry.attributes.position.needsUpdate = true; skip = 0;
+      }
     }
 
     function draw() { R.render(scene, cam); }
@@ -181,7 +191,8 @@
       raf = requestAnimationFrame(loop);
       if (!vis || document.hidden) { last = now; return; }
       try {
-        var raw = now - last, dt = Math.min(.05, raw / 1000 || .016);
+        var raw = now - last, d0 = Math.min(.05, raw / 1000 || .016);
+        sdt += (d0 - sdt) * .25; var dt = sdt;
         last = now;
         update((now - t0) / 1000, dt);
         draw();

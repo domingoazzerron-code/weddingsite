@@ -1902,3 +1902,8 @@ html:has(#pg-pricing).has-wa .top{bottom:calc(1.25rem + env(safe-area-inset-bott
 html{scroll-padding-top:calc(5.25rem + env(safe-area-inset-top,0px))}
 /* keep the animated glow on screen only: pause it when the hero is off-screen (class set by hero3d.js) */
 html.stage-off .stage .btn:not(.ghost)::after{animation-play-state:paused}
+
+/* Smoother scrolling: the sticky header blurs whatever is behind it, which is costly over the 3D hero on phones */
+@media(max-width:900px){.site{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}}
+img,video,canvas{-webkit-user-drag:none}
+@media(hover:none){.btn:hover,.film:hover,.gcard:hover,.mail-card:hover{transform:none}}
