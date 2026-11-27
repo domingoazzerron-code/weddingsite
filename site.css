@@ -226,6 +226,9 @@ nav a[aria-current="true"]{color:var(--ink)}
 .ab-pt svg{position:absolute;left:50%;bottom:0;width:78%;transform:translateX(-50%);fill:color-mix(in srgb,var(--ink) 40%,transparent)}
 .ab-pt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .ab-pt img~svg{display:none}
+.ab-q{position:absolute;inset:0;display:grid;place-items:center;font:italic 400 7.5rem/1 var(--f-display);color:color-mix(in srgb,var(--ink) 38%,transparent);padding-top:1.2rem}
+.ab-pt img{-webkit-user-drag:none;pointer-events:none}
+.ab-pt img~i{top:0;padding:.9rem 0 2rem;background:linear-gradient(rgba(0,0,0,.5),transparent);color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}
 .ab-pt i{position:absolute;left:0;right:0;top:.9rem;text-align:center;font:500 .68rem/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:color-mix(in srgb,var(--ink) 70%,transparent)}
 .ab-who{min-height:5rem;margin-top:.4rem}
 .ab-who h3{font-size:1.5rem;font-style:italic}
