@@ -17,6 +17,7 @@ var ic={
  faq:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 1-1 1.7M12 17h.01"/>',
  guide:'<path d="M5 4.5h10l4 4v11H5z"/><path d="M14.5 4.5v4.5H19M8.5 13h7M8.5 16.5h5"/>',
  x:'<path d="M6 6l12 12M18 6L6 18"/>',
+ palette:'<path d="M12 3.5a8.5 8.5 0 1 0 0 17c1.4 0 1.9-1 1.4-2.1-.6-1.3.2-2.7 1.7-2.7h2.4a3 3 0 0 0 3-3c0-5.1-3.8-9.200-8.500-9.200z"/><circle cx="7.600" cy="11.500" r="1"/><circle cx="10.500" cy="7.800" r="1"/><circle cx="15.200" cy="8.200" r="1"/>',
  moon:'<path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/>',
  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>',
  on:'<path d="M4 9.5v5h4l5 4v-13l-5 4z"/><path d="M16.5 9a4 4 0 0 1 0 6M18.8 6.7a7.3 7.3 0 0 1 0 10.6"/>',
@@ -46,7 +47,8 @@ var extra=[
 var items=[].concat(
  pages.map(function(p){return {k:p.k,l:p.l,h:p.h,type:"Page",d:p.d,w:p.w}}),
  sections.map(function(s){return {k:s.k,l:s.l,h:sec(s.id),type:"Section",d:s.d,w:s.w}}),
- extra
+  extra,
+ (window.MWSTheme?window.MWSTheme.list:[]).map(function(t){return {k:"palette",l:"Theme: "+t.name,h:"#",pal:t.id,type:"Theme",d:"Switch the site colors",w:"theme themes color colors colour palette appearance style"}})
 );
 
 /* ---- build sidebar ---- */
@@ -77,8 +79,12 @@ aside.innerHTML=
  '</div>'+
  '<div class="sb-ft">'+
   '<button class="sb-btn sb-theme" id="sbTheme" type="button" aria-label="Switch to dark mode" data-tip="Toggle theme" data-tip-always>'+svg("moon","moon")+svg("sun","sun")+'</button>'+
+  (window.MWSTheme?'<button class="sb-btn sb-pal-btn" id="sbPalBtn" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="sbPal" aria-label="Color theme" data-tip="Color theme" data-tip-always>'+svg("palette")+'</button>':'')+
   '<button class="sb-btn sb-snd" id="sbSnd" type="button" aria-pressed="true" aria-label="Turn tap sounds off" data-tip="Tap sounds" data-tip-always>'+svg("on","on")+svg("off","off")+'</button>'+
- '</div>';
+ '</div>'+
+ (window.MWSTheme?'<div class="sb-pal" id="sbPal" role="dialog" aria-labelledby="sbPalTitle" hidden><p id="sbPalTitle">Color theme</p><div class="pal-grid" role="radiogroup" aria-labelledby="sbPalTitle">'+
+  window.MWSTheme.list.map(function(t){return '<button class="pal-card" type="button" role="radio" data-pal="'+t.id+'" aria-checked="false" tabindex="-1"><span class="pal-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>'+t.name.replace("&","&amp;")+'</span></button>'}).join("")+
+ '</div></div>':'');
 D.body.insertBefore(aside,D.body.firstChild);
 
 var tip=D.createElement("div");tip.className="sb-tip";tip.setAttribute("aria-hidden","true");D.body.appendChild(tip);
@@ -92,13 +98,40 @@ tg.addEventListener("click",function(){
  var c=!isCol();
  if(c)R.setAttribute("data-sb","collapsed");else R.removeAttribute("data-sb");
  try{localStorage.setItem("sb",c?"collapsed":"expanded")}catch(e){}
- paint();hideTip();
+ paint();hideTip();closePal(false);
 });
 requestAnimationFrame(function(){requestAnimationFrame(function(){R.classList.add("sb-ready")})});
+
+/* ---- color theme picker (colors: themes.css, switching: themes.js) ---- */
+var palBtn=D.getElementById("sbPalBtn"),pal=D.getElementById("sbPal"),
+    cards=pal?[].slice.call(pal.querySelectorAll(".pal-card")):[];
+var palOpen=function(){return !!pal&&!pal.hidden};
+var syncPal=function(){var id=window.MWSTheme.get();cards.forEach(function(c){var on=c.getAttribute("data-pal")===id;c.setAttribute("aria-checked",String(on));c.tabIndex=on?0:-1})};
+var closePal=function(back){if(!palOpen())return;pal.hidden=true;palBtn.setAttribute("aria-expanded","false");if(back)palBtn.focus()};
+if(pal){
+ syncPal();D.addEventListener("palettechange",syncPal);
+ palBtn.addEventListener("click",function(e){
+  e.stopPropagation();hideTip();
+  if(palOpen()){closePal(false);return}
+  pal.hidden=false;palBtn.setAttribute("aria-expanded","true");syncPal();
+  var on=pal.querySelector('[aria-checked="true"]');if(on)on.focus({preventScroll:true})});
+ pal.addEventListener("click",function(e){var c=e.target.closest(".pal-card");if(c)window.MWSTheme.set(c.getAttribute("data-pal"))});
+ pal.addEventListener("keydown",function(e){
+  var i=cards.indexOf(D.activeElement),step={ArrowRight:1,ArrowLeft:-1,ArrowDown:2,ArrowUp:-2}[e.key];
+  if(step&&i>=0){e.preventDefault();var n=cards[(i+step+cards.length)%cards.length];n.focus();window.MWSTheme.set(n.getAttribute("data-pal"));cards.forEach(function(c){c.tabIndex=c===n?0:-1})}
+  else if(e.key==="Escape"){e.preventDefault();e.stopPropagation();closePal(true)}
+  else if(e.key==="Tab"){e.preventDefault();e.stopPropagation();closePal(true)}
+ });
+ palBtn.addEventListener("keydown",function(e){if(e.key==="Escape"&&palOpen()){e.preventDefault();e.stopPropagation();closePal(true)}});
+ D.addEventListener("click",function(e){if(palOpen()&&!pal.contains(e.target)&&!palBtn.contains(e.target))closePal(false)},true);
+ addEventListener("resize",function(){closePal(false)});
+ addEventListener("pagehide",function(){closePal(false)});
+}
 
 /* ---- tooltips (collapsed state, and always for icon-only buttons) ---- */
 function showTip(el){
  if(!wide.matches)return;
+ if(el===palBtn&&palOpen())return;
  if(!isCol()&&!el.hasAttribute("data-tip-always")&&el!==tg)return;
  tip.textContent=el.getAttribute("data-tip");
  var r=el.getBoundingClientRect();
@@ -148,7 +181,7 @@ var openDrawer=function(){
  aside.setAttribute("role","dialog");aside.setAttribute("aria-modal","true");syncMenu();
  setTimeout(function(){var c=D.getElementById("sbClose");if(c&&dOpen)c.focus()},60)};
 var closeDrawer=function(back){
- if(!dOpen)return;dOpen=false;
+ if(!dOpen)return;dOpen=false;closePal(false);
  aside.classList.remove("drawer-open");scrim.classList.remove("on");R.classList.remove("sb-lock");
  aside.removeAttribute("role");aside.removeAttribute("aria-modal");syncMenu();
  if(back&&menuBtn)menuBtn.focus()};
@@ -195,7 +228,7 @@ var render=function(){
  var toks=q.value.toLowerCase().split(/\s+/).filter(Boolean);
  shown=toks.length?items.map(function(it){return {it:it,s:score(it,toks)}}).filter(function(x){return x.s>=0}).sort(function(a,b){return b.s-a.s}).map(function(x){return x.it}):items.slice();
  sel=0;
- list.innerHTML=shown.map(function(it,i){return '<li role="option" id="sbo'+i+'" aria-selected="'+(i===0)+'"><a href="'+it.h+'" tabindex="-1"><span class="ic">'+svg(it.k)+'</span><span class="t"><b>'+esc(it.l)+'</b><span>'+esc(it.d)+'</span></span><span class="k">'+it.type+'</span></a></li>'}).join("");
+ list.innerHTML=shown.map(function(it,i){return '<li role="option" id="sbo'+i+'" aria-selected="'+(i===0)+'"><a href="'+it.h+'" tabindex="-1"'+(it.pal?' data-pal="'+it.pal+'"':'')+'><span class="ic">'+svg(it.k)+'</span><span class="t"><b>'+esc(it.l)+'</b><span>'+esc(it.d)+'</span></span><span class="k">'+it.type+'</span></a></li>'}).join("");
  empty.hidden=shown.length>0;list.hidden=!shown.length;
  q.setAttribute("aria-activedescendant",shown.length?"sbo0":"");
 };
@@ -203,7 +236,7 @@ var pick=function(i){
  if(!shown.length)return;sel=(i+shown.length)%shown.length;
  [].forEach.call(list.children,function(li,n){li.setAttribute("aria-selected",n===sel)});
  var li=list.children[sel];q.setAttribute("aria-activedescendant",li.id);li.scrollIntoView({block:"nearest"})};
-var openS=function(){if(dlg.open)return;closeDrawer(false);q.value="";render();dlg.showModal();q.focus();hideTip()};
+var openS=function(){if(dlg.open)return;closePal(false);closeDrawer(false);q.value="";render();dlg.showModal();q.focus();hideTip()};
 var closeS=function(){if(dlg.open)dlg.close()};
 D.getElementById("sbOpen").addEventListener("click",openS);
 q.addEventListener("input",render);
@@ -213,7 +246,7 @@ q.addEventListener("keydown",function(e){
  else if(e.key==="Enter"){e.preventDefault();var a=list.children[sel]&&list.children[sel].querySelector("a");if(a)a.click()}
 });
 list.addEventListener("mousemove",function(e){var li=e.target.closest("li");if(li){var n=[].indexOf.call(list.children,li);if(n>=0&&n!==sel)pick(n)}});
-list.addEventListener("click",function(e){if(e.target.closest("a"))closeS()});
+list.addEventListener("click",function(e){var a=e.target.closest("a");if(!a)return;var id=a.getAttribute("data-pal");if(id){e.preventDefault();closeS();window.MWSTheme.set(id)}else closeS()});
 dlg.addEventListener("click",function(e){if(e.target===dlg)closeS()});
 addEventListener("keydown",function(e){
  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();dlg.open?closeS():openS()}

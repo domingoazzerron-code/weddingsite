@@ -7,3 +7,5 @@ Stylesheets are intentionally in the site root (not in a `css/` folder):
 - `guide.css` is used by pages inside `guides/`.
 
 Keep ``, `js/`, and `guides/` folders in their current locations.
+
+Color palettes: `themes.css` (all palette colors) and `themes.js` (applies and remembers the choice) must be uploaded to the site root too.

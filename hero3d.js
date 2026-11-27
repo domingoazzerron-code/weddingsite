@@ -39,6 +39,38 @@
         small = innerWidth < 720,
         dprCap = small ? 1.75 : 2, acc = 0, frames = 0;
 
+    /* ---- colors: Classic uses the values below; other palettes override them in themes.css ---- */
+    var CLASSIC = { "ring-a": "#e7b4a2", "ring-b": "#efd2b4", spark: "#f4cfc6",
+      "env-1": "#0d0908", "env-2": "#3d2b27", "env-3": "#a7766b", "env-4": "#f3d3c8",
+      "box-1": "#fff3e8", "box-2": "#ffd9cf", "box-3": "#ffffff", "box-4": "#ffe4d6" },
+        sparkRGB = "255,225,215", envRT = null;
+    function themed() { return root.hasAttribute("data-palette"); }
+    function pick(name) {
+      var v = themed() ? getComputedStyle(root).getPropertyValue("--" + name).trim() : "";
+      return v || CLASSIC[name];
+    }
+    /* palette ring colors are converted so the metal renders close to the swatch; Classic is left as it was */
+    function metal(name) { var c = new THREE.Color(pick(name)); if (themed()) c.convertSRGBToLinear(); return c; }
+    function sparkMap() {
+      var c = document.createElement("canvas"); c.width = c.height = 64;
+      var x = c.getContext("2d"), gr = x.createRadialGradient(32, 32, 0, 32, 32, 32),
+          rgb = themed() ? "255,255,255" : sparkRGB;
+      gr.addColorStop(0, "rgba(255,255,255,1)"); gr.addColorStop(.25, "rgba(" + rgb + ",.7)"); gr.addColorStop(1, "rgba(" + rgb + ",0)");
+      x.fillStyle = gr; x.fillRect(0, 0, 64, 64);
+      return new THREE.CanvasTexture(c);
+    }
+    function recolor() {
+      if (!scene) return;
+      try {
+        gold.color.copy(metal("ring-a")); champ.color.copy(metal("ring-b"));
+        sparks.material.color.set(pick("spark"));
+        if (sparks.material.map) sparks.material.map.dispose();
+        sparks.material.map = sparkMap();
+        buildEnv();
+        draw();
+      } catch (e) { console.warn("3D recolor failed:", e); }
+    }
+
     function ease(t) { return 1 - Math.pow(1 - t, 3); }
     function back(t) { var c = 1.70158; return 1 + (c + 1) * Math.pow(t - 1, 3) + c * Math.pow(t - 1, 2); }
     function cl(v) { return Math.max(0, Math.min(1, v)); }
@@ -46,9 +78,9 @@
     try { init(); } catch (e) { console.warn("3D disabled:", e); fallback(); return; }
 
     function buildEnv() {
-      /* a tiny warm "studio" (gradient dome + soft boxes) that the metal reflects */
+      /* a tiny "studio" (gradient dome + soft boxes) that the metal reflects */
       var env = new THREE.Scene(),
-          stops = [[0, "#0d0908"], [.45, "#3d2b27"], [.78, "#a7766b"], [1, "#f3d3c8"]].map(function (s) { return [s[0], new THREE.Color(s[1])]; });
+          stops = [[0, "env-1"], [.45, "env-2"], [.78, "env-3"], [1, "env-4"]].map(function (s) { return [s[0], new THREE.Color(pick(s[1]))]; });
       var dome = new THREE.SphereGeometry(20, 32, 16), pos = dome.attributes.position, cols = [];
       for (var i = 0; i < pos.count; i++) {
         var t = (pos.getY(i) / 20 + 1) / 2, c = stops[3][1];
@@ -63,12 +95,15 @@
         var m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ color: new THREE.Color(col).multiplyScalar(k), side: THREE.DoubleSide }));
         m.position.set(x, y, z); m.lookAt(0, 0, 0); env.add(m);
       }
-      box(10, 4, -8, 6, 6, "#fff3e8", 6); box(4, 10, 9, 0, 5, "#ffd9cf", 4); box(12, 2, 0, -8, 6, "#ffffff", 3); box(6, 6, 0, 9, -6, "#ffe4d6", 5);
+      box(10, 4, -8, 6, 6, pick("box-1"), 6); box(4, 10, 9, 0, 5, pick("box-2"), 4); box(12, 2, 0, -8, 6, pick("box-3"), 3); box(6, 6, 0, 9, -6, pick("box-4"), 5);
       var pm = new THREE.PMREMGenerator(R);
-      scene.environment = pm.fromScene(env, .02).texture;
+      var old = envRT;
+      envRT = pm.fromScene(env, .02);
+      scene.environment = envRT.texture;
+      if (old) old.dispose();
       pm.dispose();
-      /* the env scene is only needed once */
-      dome.dispose();
+      /* free the temporary studio meshes (this runs again on each palette change) */
+      env.traverse(function (o) { if (o.geometry) o.geometry.dispose(); if (o.material) o.material.dispose(); });
     }
 
     function init() {
@@ -83,8 +118,8 @@
       buildEnv();
 
       rig = new THREE.Group(); scene.add(rig);
-      gold = new THREE.MeshStandardMaterial({ color: 0xe7b4a2, metalness: 1, roughness: .22, envMapIntensity: 1.3 });
-      champ = new THREE.MeshStandardMaterial({ color: 0xefd2b4, metalness: 1, roughness: .2, envMapIntensity: 1.3 });
+      gold = new THREE.MeshStandardMaterial({ color: metal("ring-a"), metalness: 1, roughness: .22, envMapIntensity: 1.3 });
+      champ = new THREE.MeshStandardMaterial({ color: metal("ring-b"), metalness: 1, roughness: .2, envMapIntensity: 1.3 });
       var geo = small ? new THREE.TorusGeometry(1.5, .2, 32, 120) : new THREE.TorusGeometry(1.5, .2, 48, 180);
       ra = new THREE.Group(); ra.add(new THREE.Mesh(geo, gold));
       rb = new THREE.Group(); rb.add(new THREE.Mesh(geo, champ));
@@ -101,14 +136,11 @@
       for (var i = 0; i < spN; i++) { sp[i * 3] = (Math.random() - .5) * 18; sp[i * 3 + 1] = (Math.random() - .5) * 11.6; sp[i * 3 + 2] = -5 + Math.random() * 7; }
       var g = new THREE.BufferGeometry();
       g.setAttribute("position", new THREE.BufferAttribute(sp, 3));
-      var c = document.createElement("canvas"); c.width = c.height = 64;
-      var x = c.getContext("2d"), gr = x.createRadialGradient(32, 32, 0, 32, 32, 32);
-      gr.addColorStop(0, "rgba(255,255,255,1)"); gr.addColorStop(.25, "rgba(255,225,215,.7)"); gr.addColorStop(1, "rgba(255,225,215,0)");
-      x.fillStyle = gr; x.fillRect(0, 0, 64, 64);
-      sparks = new THREE.Points(g, new THREE.PointsMaterial({ size: .14, map: new THREE.CanvasTexture(c), transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, color: 0xf4cfc6 }));
+      sparks = new THREE.Points(g, new THREE.PointsMaterial({ size: .14, map: sparkMap(), transparent: true, opacity: 0, depthWrite: false, blending: THREE.AdditiveBlending, color: new THREE.Color(pick("spark")) }));
       scene.add(sparks);
 
       layout(); update(0, 0); R.render(scene, cam);   /* warm up shaders before the clock starts */
+      document.addEventListener("palettechange", recolor);
       stage.classList.add("gl-on");
       t0 = performance.now(); last = t0;
 

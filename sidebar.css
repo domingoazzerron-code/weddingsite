@@ -5,7 +5,7 @@
                  existing hamburger button in the top header
    ============================================================ */
 :root{--sb-w:264px;--sb-c:76px;--sb-gap:16px;--sb-cur:var(--sb-w);
---sb-bg:rgba(255,255,255,.66);--sb-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 24px 48px -24px rgba(58,48,41,.28),0 2px 8px -2px rgba(58,48,41,.08)}
+--sb-bg:rgba(255,255,255,.66);--sb-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 24px 48px -24px rgba(var(--shadow-rgb,58,48,41),.28),0 2px 8px -2px rgba(var(--shadow-rgb,58,48,41),.08)}
 :root[data-theme="dark"]{--sb-bg:color-mix(in srgb,var(--card) 82%,transparent);--sb-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 24px 48px -20px rgba(0,0,0,.55),0 2px 8px -2px rgba(0,0,0,.3)}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--sb-bg:color-mix(in srgb,var(--card) 82%,transparent);--sb-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 24px 48px -20px rgba(0,0,0,.55),0 2px 8px -2px rgba(0,0,0,.3)}}
 
@@ -63,6 +63,20 @@
 .sb-snd[aria-pressed="false"] .off{display:block}
 .sb :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
+/* ---------- color theme picker (all colors come from themes.css) ---------- */
+.sb-pal-btn[aria-expanded="true"]{background:var(--card);border-color:var(--accent)}
+.sb-pal{position:absolute;z-index:5;left:10px;right:10px;bottom:76px;padding:12px;border:1px solid var(--line);border-radius:20px;background:var(--bg);color:var(--ink);box-shadow:0 24px 48px -16px rgba(var(--shadow-rgb,58,48,41),.45)}
+.sb-pal[hidden]{display:none}
+.sb-pal p{margin:0 0 10px;padding:0 2px;font:600 .82rem/1.2 var(--f-body)}
+.pal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pal-card{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:9px;min-height:78px;padding:10px;border:1px solid var(--line);border-radius:14px;background:transparent;color:var(--ink);font:600 .75rem/1.25 var(--f-body);text-align:left;cursor:pointer;transition:background .25s var(--ease),border-color .25s var(--ease)}
+.pal-card:hover{background:var(--card)}
+.pal-card[aria-checked="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--card)}
+.pal-dots{display:flex;gap:4px}
+.pal-dots i{width:16px;height:16px;border-radius:50%;border:1px solid color-mix(in srgb,var(--ink) 35%,transparent);background:var(--d1)}
+.pal-dots i:nth-child(2){background:var(--d2)}
+.pal-dots i:nth-child(3){background:var(--d3)}
+
 /* ---------- wide screens: floating sidebar ---------- */
 @media(min-width:1024px){
 header.site{display:none}
@@ -91,6 +105,7 @@ html[data-sb="collapsed"] .sb-lbl{padding-left:0}
 html[data-sb="collapsed"] .sb-lbl span{max-width:0;opacity:0}
 html[data-sb="collapsed"] .sb-lbl::after{opacity:1}
 html[data-sb="collapsed"] .sb-ft{flex-direction:column}
+html[data-sb="collapsed"] .sb-pal{left:calc(100% + 14px);right:auto;bottom:0;width:248px}
 
 .sb-tip{position:fixed;z-index:60;display:block;padding:7px 11px;border-radius:10px;background:var(--ink);color:var(--bg);font:500 .8125rem/1 var(--f-body);white-space:nowrap;pointer-events:none;opacity:0;translate:-4px 0;transition:opacity .18s var(--ease),translate .18s var(--ease);box-shadow:0 8px 20px -8px rgba(0,0,0,.4)}
 .sb-tip.on{opacity:1;translate:0 0}
@@ -101,19 +116,19 @@ html[data-sb="collapsed"] .sb-ft{flex-direction:column}
 /* the hamburger (always visible here) opens the drawer; the old dropdown is retired */
 .menu{display:grid}
 #nav{display:none!important}
-.sb{top:max(10px,env(safe-area-inset-top,0px));bottom:max(10px,env(safe-area-inset-bottom,0px));left:10px;z-index:60;width:min(300px,84vw);background:var(--bg);box-shadow:0 30px 60px -20px rgba(58,48,41,.5);transform:translateX(calc(-100% - 24px));visibility:hidden;transition:transform .45s var(--ease),visibility 0s linear .45s}
+.sb{top:max(10px,env(safe-area-inset-top,0px));bottom:max(10px,env(safe-area-inset-bottom,0px));left:10px;z-index:60;width:min(300px,84vw);background:var(--bg);box-shadow:0 30px 60px -20px rgba(var(--shadow-rgb,58,48,41),.5);transform:translateX(calc(-100% - 24px));visibility:hidden;transition:transform .45s var(--ease),visibility 0s linear .45s}
 .sb.drawer-open{transform:none;visibility:visible;transition:transform .45s var(--ease),visibility 0s}
 .sb-toggle,.sb-search kbd{display:none}
 .sb-close{display:grid}
-.sb-scrim{display:block;position:fixed;inset:0;z-index:55;background:rgba(43,36,33,.45);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility 0s linear .35s}
+.sb-scrim{display:block;position:fixed;inset:0;z-index:55;background:rgba(var(--scrim-rgb,43,36,33),.45);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);opacity:0;visibility:hidden;transition:opacity .35s var(--ease),visibility 0s linear .35s}
 .sb-scrim.on{opacity:1;visibility:visible;transition:opacity .35s var(--ease),visibility 0s}
 html.sb-lock,html.sb-lock body{overflow:hidden}
 }
 
 /* ---------- quick-search dialog ---------- */
-dialog.sb-sr{position:fixed;inset:0;margin:12vh auto auto;width:min(620px,92vw);max-width:none;max-height:min(70vh,560px);padding:0;border:1px solid var(--line);border-radius:22px;background:var(--bg);color:var(--ink);overflow:hidden;box-shadow:0 40px 80px -24px rgba(58,48,41,.55)}
+dialog.sb-sr{position:fixed;inset:0;margin:12vh auto auto;width:min(620px,92vw);max-width:none;max-height:min(70vh,560px);padding:0;border:1px solid var(--line);border-radius:22px;background:var(--bg);color:var(--ink);overflow:hidden;box-shadow:0 40px 80px -24px rgba(var(--shadow-rgb,58,48,41),.55)}
 dialog.sb-sr[open]{display:flex;flex-direction:column;animation:sbpop .28s var(--ease)}
-dialog.sb-sr::backdrop{background:rgba(43,36,33,.55);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+dialog.sb-sr::backdrop{background:rgba(var(--scrim-rgb,43,36,33),.55);-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
 @keyframes sbpop{from{opacity:0;transform:translateY(-10px) scale(.98)}to{opacity:1;transform:none}}
 @media(max-width:600px){dialog.sb-sr{margin-top:7vh}}
 .sb-sr-in{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line)}

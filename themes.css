@@ -1,0 +1,123 @@
+/* ============================================================
+   Color palettes. Every new palette color lives in this file.
+   - Classic is the original look: no data-palette attribute, colors stay in site.css.
+   - The others are chosen with <html data-palette="..."> (set by themes.js)
+     and each has a light and a dark version.
+   Load this AFTER site.css / guide.css / sidebar.css.
+   ============================================================ */
+
+/* ---------- Sage & Tomato: light ---------- */
+:root[data-palette="sage"]{color-scheme:light;
+  --bg:#F7F5EF;--card:#EAEDE3;--line:#CCD5C1;
+  --ink:#243021;--muted:#515E49;--accent:#AA2A18;
+  --btn:#C2321F;--btn-text:#FFFFFF;--btn-edge:#C2321F;
+  --brass:color-mix(in srgb,var(--ink) 72%,var(--bg))}
+
+/* ---------- Sage & Tomato: dark ---------- */
+:root[data-palette="sage"][data-theme="dark"]{color-scheme:dark;
+  --bg:#1C2219;--card:#283023;--line:#414C39;
+  --ink:#F7F5EF;--muted:#BCC8B0;--accent:#FF907F;
+  --btn:#FF6D58;--btn-text:#1F0804;--btn-edge:#FF6D58;
+  --brass:color-mix(in srgb,var(--ink) 72%,var(--bg))}
+
+/* Sage & Tomato: shared by light and dark */
+:root[data-palette="sage"]{
+  /* decoration: tinted bands, highlights, shadows */
+  --sage:#9CAF88;--blush:#F6C0B7;--sand:#CBD6BF;--taupe:#9CAF88;
+  --shadow-rgb:36,48,33;--scrim-rgb:19,24,16;--glow-rgb:232,65,44;
+  /* home page 3D hero (dark in both modes) */
+  --stage:#131810;--stage-head:#F7F5EF;--stage-text:#BCC8B0;--stage-accent:#FF907F;--stage-accent-hover:#FFB0A3;--stage-btn-text:#131810;
+  /* 3D rings, sparkles and the studio light they reflect */
+  --ring-a:#E8654F;--ring-b:#B4C7A0;--spark:#FFB6AA;
+  --env-1:#080B07;--env-2:#2A3322;--env-3:#8C9C7A;--env-4:#EDF2E4;
+  --box-1:#FFF8F0;--box-2:#FFD8CF;--box-3:#FFFFFF;--box-4:#EEF5E4}
+
+/* ---------- Cocoa & Baby Blue: light ---------- */
+:root[data-palette="cocoa"]{color-scheme:light;
+  --bg:#F2E8DA;--card:#E9DCC8;--line:#D3C0A6;
+  --ink:#382418;--muted:#664E3E;--accent:#1C5587;
+  --btn:#8EC5FF;--btn-text:#382418;--btn-edge:#1C5587;
+  --brass:color-mix(in srgb,var(--ink) 72%,var(--bg))}
+
+/* ---------- Cocoa & Baby Blue: dark ---------- */
+:root[data-palette="cocoa"][data-theme="dark"]{color-scheme:dark;
+  --bg:#24170F;--card:#35241A;--line:#57402F;
+  --ink:#F2E8DA;--muted:#CBB8A3;--accent:#8EC5FF;
+  --btn:#8EC5FF;--btn-text:#24170F;--btn-edge:#8EC5FF;
+  --brass:color-mix(in srgb,var(--ink) 72%,var(--bg))}
+
+/* Cocoa & Baby Blue: shared by light and dark */
+:root[data-palette="cocoa"]{
+  /* decoration: tinted bands, highlights, shadows */
+  --sage:#8EC5FF;--blush:#BEDDFF;--sand:#D3C0A6;--taupe:#A98F78;
+  --shadow-rgb:56,36,24;--scrim-rgb:24,14,8;--glow-rgb:142,197,255;
+  /* home page 3D hero (dark in both modes) */
+  --stage:#180E08;--stage-head:#F2E8DA;--stage-text:#CBB8A3;--stage-accent:#8EC5FF;--stage-accent-hover:#B5D9FF;--stage-btn-text:#180E08;
+  /* 3D rings, sparkles and the studio light they reflect */
+  --ring-a:#C99673;--ring-b:#A6D1FF;--spark:#B9DBFF;
+  --env-1:#0C0805;--env-2:#38271B;--env-3:#8A8F9C;--env-4:#E4F0FF;
+  --box-1:#FFF3E4;--box-2:#CFE6FF;--box-3:#FFFFFF;--box-4:#FFE9D6}
+
+/* ---------- Graphite & Yellow: light ---------- */
+:root[data-palette="graphite"]{color-scheme:light;
+  --bg:#F4F4F5;--card:#E7E8EA;--line:#CDCFD3;
+  --ink:#2B2D31;--muted:#53565D;--accent:#735200;
+  --btn:#FFC93C;--btn-text:#2B2D31;--btn-edge:#735200;
+  --brass:color-mix(in srgb,var(--ink) 72%,var(--bg))}
+
+/* ---------- Graphite & Yellow: dark ---------- */
+:root[data-palette="graphite"][data-theme="dark"]{color-scheme:dark;
+  --bg:#2B2D31;--card:#36393E;--line:#50545B;
+  --ink:#F2F2F3;--muted:#C3C5CA;--accent:#FFC93C;
+  --btn:#FFC93C;--btn-text:#222327;--btn-edge:#FFC93C;
+  --brass:color-mix(in srgb,var(--ink) 72%,var(--bg))}
+
+/* Graphite & Yellow: shared by light and dark */
+:root[data-palette="graphite"]{
+  /* decoration: tinted bands, highlights, shadows */
+  --sage:#D9DADC;--blush:#FFE39A;--sand:#D9DADC;--taupe:#B4B6BB;
+  --shadow-rgb:43,45,49;--scrim-rgb:23,24,27;--glow-rgb:255,201,60;
+  /* home page 3D hero (dark in both modes) */
+  --stage:#17181B;--stage-head:#F2F2F3;--stage-text:#C3C5CA;--stage-accent:#FFC93C;--stage-accent-hover:#FFD76B;--stage-btn-text:#17181B;
+  /* 3D rings, sparkles and the studio light they reflect */
+  --ring-a:#FFC93C;--ring-b:#D9DADC;--spark:#FFE08A;
+  --env-1:#0A0A0B;--env-2:#2E3035;--env-3:#8E9198;--env-4:#F2F2F3;
+  --box-1:#FFFFFF;--box-2:#FFF0C4;--box-3:#FFFFFF;--box-4:#E9ECF2}
+
+/* ---------- components that need more than a color swap ---------- */
+/* primary buttons */
+:root[data-palette] .btn:not(.ghost),
+:root[data-palette] .brief .row .btn:not(.ghost),
+:root[data-palette] .pex,
+:root[data-palette] .sb .sb-cta{background:var(--btn);border-color:var(--btn-edge);color:var(--btn-text)}
+:root[data-palette] .sb .sb-cta{box-shadow:inset 0 0 0 1px var(--btn-edge)}
+@media(hover:hover){
+:root[data-palette] .btn:not(.ghost):hover,
+:root[data-palette] .brief .row .btn:not(.ghost):hover,
+:root[data-palette] .pex:hover,
+:root[data-palette] .sb .sb-cta:hover{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+}
+/* home hero buttons sit on the dark stage */
+:root[data-palette] .stage .btn:not(.ghost){background:var(--stage-accent);border-color:var(--stage-accent);color:var(--stage-btn-text)}
+@media(hover:hover){
+:root[data-palette] .stage .btn:not(.ghost):hover{background:var(--stage-accent-hover);border-color:var(--stage-accent-hover);color:var(--stage-btn-text)}
+}
+:root[data-palette] .s-fb circle:first-of-type{stroke:var(--ring-a)}
+:root[data-palette] .s-fb circle:last-of-type{stroke:var(--ring-b)}
+/* guide pages: the button inside the dark call-to-action box */
+:root[data-palette] article .cta .btn:not(.ghost){border-color:var(--btn)}
+@media(hover:hover){
+:root[data-palette] article .cta .btn:not(.ghost):hover{background:var(--bg);border-color:var(--bg);color:var(--ink)}
+}
+/* pricing summary card: small labels sit on the --ink background */
+:root[data-palette] .bp-sum :is(.bp-h,.bp-lab,.bp-fine,.bp-pk,.bp-deal s){color:color-mix(in srgb,var(--bg) 84%,var(--ink))}
+
+/* pricing builder: a softer tint behind selected options so their text stays readable */
+:root[data-palette] .bp-opt:has(.bp-in:checked){background:color-mix(in srgb,var(--blush) 24%,var(--card))}
+:root[data-palette][data-theme="dark"] .bp-opt:has(.bp-in:checked){background:color-mix(in srgb,var(--accent) 8%,var(--card))}
+
+/* ---------- swatch dots in the sidebar picker ---------- */
+.pal-card[data-pal="classic"]{--d1:#FBF6F3;--d2:#B7A495;--d3:#EFC7C2}
+.pal-card[data-pal="sage"]{--d1:#9CAF88;--d2:#F7F5EF;--d3:#E8412C}
+.pal-card[data-pal="cocoa"]{--d1:#382418;--d2:#F2E8DA;--d3:#8EC5FF}
+.pal-card[data-pal="graphite"]{--d1:#2B2D31;--d2:#D9DADC;--d3:#FFC93C}
