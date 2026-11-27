@@ -181,3 +181,23 @@ document.addEventListener("click",e=>{if(on)play(!!e.target.closest("a,button,su
 /* Pause the hero button glow while the hero is off-screen */
 (()=>{const s=document.getElementById("hero");if(!s||!("IntersectionObserver" in window))return;
 new IntersectionObserver(e=>document.documentElement.classList.toggle("stage-off",!e[0].isIntersecting)).observe(s)})();
+
+/* About: team carousel (3D). Autoplay only while visible, never with reduced motion. */
+(()=>{const box=document.getElementById("abTeam");if(!box)return;
+const pts=[...box.querySelectorAll(".ab-pt")],tabs=[...box.querySelectorAll(".ab-tabs button")],who=document.getElementById("abWho"),sg=document.getElementById("abStage"),n=pts.length;
+const RM=matchMedia("(prefers-reduced-motion:reduce)").matches;let cur=0,timer,seen=false;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function lay(dx){const g=Math.min(215,sg.clientWidth*.37);pts.forEach((p,i)=>{const o=(((i-cur+1)%n)+n)%n-1;p.style.transform="translateX("+(o*g+(dx||0))+"px) translateZ("+(o?-140:30)+"px) rotateY("+(-o*34)+"deg) scale("+(o?.9:1)+")";p.style.zIndex=o?1:3})}
+function show(i){cur=((i%n)+n)%n;lay(0);tabs.forEach((b,k)=>b.setAttribute("aria-pressed",k===cur));pts.forEach((p,k)=>p.classList.toggle("dim",k!==cur));
+ const p=pts[cur],nm=p.dataset.name;who.innerHTML="<h3>"+(nm?esc(nm)+" · ":"")+esc(p.dataset.role)+"</h3><p>"+esc(p.dataset.line)+"</p>";play()}
+function play(){clearInterval(timer);if(!RM&&seen&&!document.hidden)timer=setInterval(()=>show(cur+1),5200)}
+tabs.forEach(b=>b.addEventListener("click",()=>show(+b.dataset.i)));
+document.getElementById("abNx").addEventListener("click",()=>show(cur+1));document.getElementById("abPv").addEventListener("click",()=>show(cur-1));
+pts.forEach(p=>p.addEventListener("click",()=>show(+p.dataset.i)));
+let drag=false,sx=0,acc=0;
+sg.addEventListener("pointerdown",e=>{drag=true;sx=e.clientX;acc=0;sg.setPointerCapture(e.pointerId);clearInterval(timer)});
+sg.addEventListener("pointermove",e=>{if(!drag)return;acc=e.clientX-sx;pts.forEach(p=>p.style.transition="none");lay(acc*.5)});
+["pointerup","pointercancel"].forEach(t=>sg.addEventListener(t,()=>{if(!drag)return;drag=false;pts.forEach(p=>p.style.transition="");Math.abs(acc)>40?show(cur+(acc<0?1:-1)):show(cur)}));
+document.addEventListener("visibilitychange",play);addEventListener("resize",()=>lay(0));
+if("IntersectionObserver" in window)new IntersectionObserver(e=>{seen=e[0].isIntersecting;play()},{threshold:.3}).observe(box);
+show(0)})();

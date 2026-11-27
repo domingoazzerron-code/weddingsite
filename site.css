@@ -201,6 +201,43 @@ nav a[aria-current="true"]{color:var(--ink)}
 .linkbtn{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 @media(hover:hover){.linkbtn:hover{color:var(--accent)}}
 
+/* about: copy plus a small 3D team carousel */
+.ab-grid{display:grid;gap:3rem;align-items:start}
+@media(min-width:861px){.ab-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(2rem,6vw,5rem)}.ab-side{position:sticky;top:2rem}}
+.ab-copy h2{max-width:16ch}
+.ab-lead{margin:1.2rem 0 0;max-width:46ch;color:var(--ink);font-size:clamp(1.05rem,.98rem + .35vw,1.25rem);line-height:1.65}
+.ab-note{margin:1rem 0 0;max-width:46ch;color:var(--muted);line-height:1.75}
+.ab-pts{list-style:none;margin:1.6rem 0 0;padding:0;border-top:1px solid var(--line);max-width:34rem}
+.ab-pts li{padding:.9rem 0;border-bottom:1px solid var(--line)}
+.ab-pts h3{font-size:1.2rem}
+.ab-pts p{margin:.2rem 0 0;color:var(--muted);line-height:1.65}
+.ab-close{margin:1.6rem 0 1.2rem;max-width:44ch;color:var(--muted)}
+.ab-close a{color:var(--ink);text-decoration-color:var(--accent);text-underline-offset:3px}
+.ab-cta{display:inline-flex;gap:.5rem;font-weight:500;font-size:.95rem;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:.15rem;transition:color .3s var(--ease),gap .3s var(--ease)}
+@media(hover:hover){.ab-cta:hover{color:var(--accent);gap:.8rem}}
+.ab-stage{perspective:1100px;height:clamp(330px,44vw,420px);position:relative;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.ab-stage:active{cursor:grabbing}
+.ab-cyl{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
+.ab-pt{position:absolute;left:-95px;top:-135px;width:190px;height:270px;border-radius:14px;overflow:hidden;background:var(--bg);border:1px solid var(--line);transition:transform .9s var(--ease),opacity .6s var(--ease),filter .6s var(--ease)}
+.ab-pt.dim{opacity:.55;filter:saturate(.6)}
+.ab-ph{position:absolute;inset:0;background:linear-gradient(170deg,color-mix(in srgb,var(--blush) 70%,var(--card)),color-mix(in srgb,var(--sage) 70%,var(--card)))}
+.ab-pt:nth-child(2) .ab-ph{background:linear-gradient(170deg,color-mix(in srgb,var(--sand) 80%,var(--card)),color-mix(in srgb,var(--blush) 55%,var(--card)))}
+.ab-pt:nth-child(3) .ab-ph{background:linear-gradient(170deg,color-mix(in srgb,var(--sage) 80%,var(--card)),color-mix(in srgb,var(--sand) 60%,var(--card)))}
+.ab-pt svg{position:absolute;left:50%;bottom:0;width:78%;transform:translateX(-50%);fill:color-mix(in srgb,var(--ink) 40%,transparent)}
+.ab-pt img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ab-pt img~svg{display:none}
+.ab-pt i{position:absolute;left:0;right:0;top:.9rem;text-align:center;font:500 .68rem/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;font-style:normal;color:color-mix(in srgb,var(--ink) 70%,transparent)}
+.ab-who{min-height:5rem;margin-top:.4rem}
+.ab-who h3{font-size:1.5rem;font-style:italic}
+.ab-who p{margin:.3rem 0 0;color:var(--muted);max-width:46ch}
+.ab-ctl{display:flex;gap:.9rem;align-items:center;margin-top:.6rem}
+.ab-tabs{display:flex;flex-wrap:wrap;gap:.2rem 1.1rem}
+.ab-tabs button{font:500 .9rem/1 var(--f-body);color:var(--muted);background:none;border:0;border-bottom:1px solid transparent;padding:.45rem 0;cursor:pointer;transition:color .3s var(--ease),border-color .3s var(--ease)}
+.ab-tabs button[aria-pressed="true"]{color:var(--ink);border-color:var(--accent)}
+.ab-arrows{margin-left:auto;display:flex;gap:.5rem}
+.ab-arrows button{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;font-size:1.1rem;transition:background .3s var(--ease),border-color .3s var(--ease)}
+@media(hover:hover){.ab-arrows button:hover{background:var(--card);border-color:var(--accent)}}
+@media(prefers-reduced-motion:reduce){.ab-pt{transition:none}}
 /* faq: project timeline (questions follow the order of a project) */
 .faq{padding:var(--sec) 0;border-top:1px solid var(--line)}
 .faq-lead{margin:1rem 0 1.4rem;max-width:30ch;color:var(--muted)}
