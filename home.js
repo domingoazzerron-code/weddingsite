@@ -65,22 +65,20 @@ $("pc").onclick=()=>$("pl").close();
 $("pl").addEventListener("close",()=>$("yt").removeAttribute("src"));
 $("pl").addEventListener("click",e=>{if(e.target===$("pl"))$("pl").close()});
 
-/* Workflow carousel */
-(()=>{const ol=document.querySelector(".steps"),li=[...ol.children],dots=$("sd"),dm={matches:false,addEventListener(){}};let cur=0,down=false,sx=0,sl=0;
-const tabfix=()=>dm.matches?ol.removeAttribute("tabindex"):ol.setAttribute("tabindex","0");tabfix();dm.addEventListener("change",tabfix);
-dots.innerHTML=li.map((_,i)=>`<button aria-label="Step ${i+1}"></button>`).join("");const ds=[...dots.children];
-const set=i=>{cur=i;li.forEach((x,j)=>x.classList.toggle("on",j==i));ds.forEach((d,j)=>d.setAttribute("aria-current",j==i))};
-const go=i=>{i=Math.max(0,Math.min(li.length-1,i));ol.scrollTo({left:li[i].offsetLeft+li[i].offsetWidth/2-ol.clientWidth/2,behavior:reduce?"auto":"smooth"})};
-ds.forEach((d,i)=>d.onclick=()=>go(i));$("sp").onclick=()=>go(cur-1);$("sn").onclick=()=>go(cur+1);
-ol.addEventListener("keydown",e=>{if(e.key==="ArrowRight"){e.preventDefault();go(cur+1)}else if(e.key==="ArrowLeft"){e.preventDefault();go(cur-1)}});
-ol.addEventListener("scroll",()=>{let b=0,m=1e9;const c=ol.scrollLeft+ol.clientWidth/2;li.forEach((x,j)=>{const d=Math.abs(x.offsetLeft+x.offsetWidth/2-c);if(d<m){m=d;b=j}});if(b!=cur)set(b)},{passive:true});
-let moved=0;
-ol.addEventListener("pointerdown",e=>{if(e.pointerType!="mouse"||dm.matches)return;down=true;moved=0;sx=e.clientX;sl=ol.scrollLeft;ol.classList.add("drag")});
-addEventListener("pointermove",e=>{if(down){moved=Math.max(moved,Math.abs(e.clientX-sx));ol.scrollLeft=sl-(e.clientX-sx)}});
-ol.addEventListener("click",e=>{if(moved>5){e.preventDefault();e.stopPropagation()}moved=0},true);
-const end=()=>{if(!down)return;down=false;ol.classList.remove("drag");go(cur)};
-addEventListener("pointerup",end);addEventListener("pointercancel",end);
-set(0)})();
+/* How we work: swipe cards on phones (counter, progress and arrows) */
+(()=>{const ol=$("schList"),nav=$("schNav");if(!ol||!nav)return;
+const li=[...ol.children],n=li.length,prev=$("schPrev"),next=$("schNext"),count=$("schCount"),fill=$("schFill");let cur=-1,tick=0;
+const pos=i=>Math.min(li[i].offsetLeft-li[0].offsetLeft,ol.scrollWidth-ol.clientWidth);
+const update=()=>{tick=0;const x=ol.scrollLeft,max=ol.scrollWidth-ol.clientWidth;let i=0;
+ if(max>0&&x>=max-2)i=n-1;else li.forEach((_,k)=>{if(Math.abs(pos(k)-x)<Math.abs(pos(i)-x))i=k});
+ if(i===cur)return;cur=i;count.textContent=(i+1)+" / "+n;fill.style.width=(i+1)*100/n+"%";prev.disabled=i===0;next.disabled=i===n-1};
+const go=i=>ol.scrollTo({left:pos(Math.max(0,Math.min(n-1,i))),behavior:reduce?"auto":"smooth"});
+/* the list is keyboard-focusable only while it actually scrolls */
+const fit=()=>{if(ol.scrollWidth>ol.clientWidth+1)ol.tabIndex=0;else ol.removeAttribute("tabindex");cur=-1;update()};
+prev.onclick=()=>go(cur-1);next.onclick=()=>go(cur+1);
+ol.addEventListener("scroll",()=>{if(!tick)tick=requestAnimationFrame(update)},{passive:true});
+ol.addEventListener("keydown",e=>{if(e.target!==ol||(e.key!=="ArrowRight"&&e.key!=="ArrowLeft"))return;e.preventDefault();go(cur+(e.key==="ArrowRight"?1:-1))});
+nav.hidden=false;if(window.ResizeObserver)new ResizeObserver(fit).observe(ol);else addEventListener("resize",fit);fit()})();
 
 /* Film hover preview: cycles YouTube's own frames while the pointer is over a card (mouse devices only) */
 (()=>{if(reduce||!matchMedia("(hover:hover) and (pointer:fine)").matches)return;
