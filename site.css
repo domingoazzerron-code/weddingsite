@@ -1869,3 +1869,8 @@ img,video,canvas{-webkit-user-drag:none}
 /* ===== Touch targets: bigger tap area on small controls, same look ===== */
 .faq-cta,.s-test a{position:relative}
 .faq-cta::before,.s-test a::before{content:"";position:absolute;inset:-12px -6px}
+
+.f-legal{display:flex;gap:1.25rem;align-items:center}
+.f-legal .linkbtn{color:var(--ink);font-weight:500}
+.pnote ul{margin:.1rem 0 0;padding-left:1.1rem;color:var(--muted);font-size:.9375rem;line-height:1.65}
+.pnote li+li{margin-top:.2rem}

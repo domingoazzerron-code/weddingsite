@@ -1,8 +1,6 @@
 (()=>{const f=$("qb"),msg=$("bmsg"),btn=$("bsend"),TO="marcusweddingstudio@gmail.com",SEND=CFG.formEndpoint?"Send my brief":"Email my brief";
 btn.textContent=SEND;
 document.documentElement.classList.add("pg-c");
-/* Terms dialog */
-{const tm=$("tm");document.querySelectorAll(".tmopen").forEach(b=>b.addEventListener("click",()=>tm.showModal()));$("tmc").onclick=()=>tm.close();tm.addEventListener("click",e=>{if(e.target===tm)tm.close()})}
 /* Remember a half-finished form in this browser until it is sent */
 const KEY="briefDraft",ids=["bn","bln","bco","bw","be","bs","bm","bh"];
 try{const o=JSON.parse(localStorage.getItem(KEY)||"null");if(o&&typeof o==="object")ids.forEach(i=>{if(typeof o[i]!=="string")return;const el=$(i);if(el.tagName==="SELECT"&&![...el.options].some(x=>x.value===o[i]))return;el.value=o[i]})}catch(e){}
