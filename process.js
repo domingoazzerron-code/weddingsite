@@ -175,7 +175,16 @@
     laneW = lane.clientWidth;
   }
 
+  /* The pin decision is made once per width. Phone browsers (Messenger, Instagram, Safari) resize the
+     viewport height whenever their toolbar slides in or out while you scroll. Re-deciding on every
+     height change flipped the 390vh pinned scene on and off and threw the reader back to this section. */
+  var decided = false, lastW = window.innerWidth;
+  function onViewport() {
+    if (decided && window.innerWidth === lastW) { measure(); if (pinned) fromScroll(); return; }
+    lastW = window.innerWidth; free = false; mode();
+  }
   function mode() {
+    decided = true;
     var want = !reduceMQ.matches && !shortMQ.matches && !free;
     pinned = want;
     sec.classList.toggle("pp-pin", pinned);
@@ -295,9 +304,10 @@
   window.addEventListener("keydown", function (e) { if (!inside(e, "#ppWin")) stop(); }, { passive: true });
 
   if ("ResizeObserver" in window) new ResizeObserver(function () { measure(); if (pinned) fromScroll(); kick(); }).observe(lane);
-  window.addEventListener("resize", function () { free = false; mode(); kick(); });
-  [reduceMQ, shortMQ].forEach(function (m) { (m.addEventListener ? m.addEventListener("change", mode) : m.addListener(mode)); });
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { mode(); kick(); });
+  window.addEventListener("resize", function () { onViewport(); kick(); });
+  (reduceMQ.addEventListener ? reduceMQ.addEventListener("change", function () { free = false; mode(); }) : reduceMQ.addListener(function () { free = false; mode(); }));
+  (shortMQ.addEventListener ? shortMQ.addEventListener("change", onViewport) : shortMQ.addListener(onViewport));
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { if (!decided || window.pageYOffset < sceneTop() - window.innerHeight) { mode(); } kick(); });
 
   /* ---------- go ---------- */
   legacy.forEach(function (el) { if (el) el.setAttribute("inert", ""); });
