@@ -230,7 +230,7 @@
       for (var n = 0; n < w.length; n++) w[n].className = "pp-w" + (n < k - 1 ? " p" : n === k - 1 ? " c" : "");
       lastK = k;
     }
-    var h = cur <= .03, e = cur > .86;
+    var e = cur > .86, h = !e;
     if (h !== hintOn && hint) { hintOn = h; hint.style.opacity = h ? 1 : 0; }
     if (e !== endOn) {
       endOn = e; cta.classList.toggle("pp-end", e);

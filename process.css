@@ -150,7 +150,12 @@
 .pp.pp-pin .pp-cta .cta{opacity:0;translate:-50% -30%;pointer-events:none}
 .pp.pp-pin .pp-cta.pp-end .cta{opacity:1;translate:-50% -50%;pointer-events:auto}
 .pp.pp-on:not(.pp-pin) .pp-cta{justify-content:center;flex-wrap:wrap;margin-top:.4rem}
-.pp.pp-on:not(.pp-pin) .pp-cta .pp-hint{display:none}
+.pp.pp-on:not(.pp-pin) .pp-cta .pp-hint{flex:1 0 100%;justify-content:center;text-align:left}
+.pp-hint b{font-weight:600;color:var(--ink)}
+.pp .hw-free,.pp:not(.pp-pin) .hw-pin{display:none}
+.pp:not(.pp-pin) .hw-free{display:inline}
+.pp.pp-pin .pp-cta .pp-hint{max-width:calc(100% - 1rem);line-height:1.35}
+.pp.pp-pin .pp-cta.pp-end .pp-hint{pointer-events:none}
 .pp.pp-on:not(.pp-pin) .pp-cta .cta{position:static;translate:none;opacity:1;justify-content:center}
 
 /* ---- narrow screens ---- */
@@ -178,3 +183,4 @@
 
 /* ---- reduced motion ---- */
 @media(prefers-reduced-motion:reduce){.pp-tr,.pp-clip,.pp-w,.pp-cta .cta{transition:none}.pp-hint i::after{animation:none}}
+.pp:not(.pp-pin) .pp-hint i{display:none}
