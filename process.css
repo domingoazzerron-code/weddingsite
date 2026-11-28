@@ -166,9 +166,15 @@
   .pp-card{padding:6% 8%}
   .pp-ttl{font-size:clamp(1.05rem,.8rem + 1.6vw,1.5rem)}
   .pp.pp-pin .pp-cta .pp-hint{font-size:.8rem}
+  /* keep the buttons on one row inside the fixed-height bar (a wrapped second row ran off the screen and clipped its outline) */
+  .pp.pp-on .pp-cta .cta{flex-wrap:nowrap;gap:.5rem;width:100%}
+  .pp-cta .cta .btn{flex:1 1 auto;min-width:0;white-space:nowrap;padding-left:.7rem;padding-right:.7rem;font-size:.8125rem;text-align:center}
+  .pp-cta .cta .btn[hidden]{display:none}
+  /* the floating WhatsApp icon sat on top of the button's right edge; the bar already has a WhatsApp button, so tuck the icon away while the timeline is pinned */
+  html:has(.pp.pp-pin) .wa-fab{opacity:0!important;pointer-events:none!important}
 }
 @media(max-width:859px) and (max-height:760px){.pp-hd,.pp-lane{grid-template-rows:24px repeat(3,var(--rh))}.pp-hd .pp-th.au,.pp-lane .pp-row.au{display:none}}
-@media(max-width:480px){.pp-cn span{display:none}.pp-clip .pp-cn{justify-content:center;padding:0}.pp-cn b{font-size:.7rem}}
+@media(max-width:480px){.pp.pp-pin .pp-cta .cta .bk{display:none}.pp-cn span{display:none}.pp-clip .pp-cn{justify-content:center;padding:0}.pp-cn b{font-size:.7rem}}
 
 /* ---- reduced motion ---- */
 @media(prefers-reduced-motion:reduce){.pp-tr,.pp-clip,.pp-w,.pp-cta .cta{transition:none}.pp-hint i::after{animation:none}}
