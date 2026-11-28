@@ -1874,3 +1874,8 @@ img,video,canvas{-webkit-user-drag:none}
 :root[data-theme="dark"] .bp-opt:has(.bp-in:checked){background:color-mix(in srgb,var(--accent) 8%,var(--card))}
 :root[data-theme="dark"] .bp-sum :is(.bp-h,.bp-lab,.bp-fine,.bp-pk,.bp-deal s){color:color-mix(in srgb,var(--bg) 84%,var(--ink))}
 .bp-opt:has(.bp-in:checked) .bp-main em{color:var(--muted)}
+
+/* ===== Touch targets: bigger tap area on small controls, same look ===== */
+.ab-tabs button,.ab-cta,.faq-cta,.s-test a{position:relative}
+.ab-tabs button::before{content:"";position:absolute;inset:-8px -6px}
+.ab-cta::before,.faq-cta::before,.s-test a::before{content:"";position:absolute;inset:-12px -6px}

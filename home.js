@@ -56,7 +56,7 @@ const show=f=>{now=f;$("ytl").href="https://www.youtube.com/watch?v="+f.v;
 /* step through what the visitor is currently filtering by; fall back to all films */
 const list=()=>{const v=[...$("grid").children].map((c,i)=>c.hidden?null:FILMS[i]).filter(Boolean);return v.includes(now)?v:FILMS};
 const step=d=>{const l=list();let i=l.indexOf(now);if(i<0)i=d>0?-1:0;const f=l[(i+d+l.length)%l.length];show(f);track("Film Step",{label:f.title+" - "+f.type})};
-document.addEventListener("click",e=>{const b=e.target.closest(".film[data-v]");if(!b)return;const f=FILMS.find(x=>x.v===b.dataset.v)||(()=>{const c=b.querySelector(".cap");return c?{v:b.dataset.v,title:c.firstChild.textContent,type:(c.querySelector("small")||{}).textContent||"",meta:""}:null})();if(!f)return;track("Film Play",{label:f.title+" - "+f.type});show(f);$("pl").showModal()});
+document.addEventListener("click",e=>{const b=e.target.closest(".film[data-v]");if(!b)return;const f=FILMS.find(x=>x.v===b.dataset.v)||(()=>{const c=b.querySelector(".cap");return c?{v:b.dataset.v,title:c.firstChild.textContent,type:(c.querySelector("small")||{}).textContent||"",meta:""}:null})();if(!f)return;track("Film Play",{label:f.title+" - "+f.type});show(f);$("pl").showModal();$("pc").focus()});
 $("pp").onclick=()=>step(-1);$("pn").onclick=()=>step(1);
 $("pr").onclick=()=>{if(!now)return;try{const o=JSON.parse(localStorage.getItem("briefDraft")||"{}")||{};o.br="https://www.youtube.com/watch?v="+now.v;localStorage.setItem("briefDraft",JSON.stringify(o))}catch(e){}
  track("Film Reference",{label:now.title+" - "+now.type});location.href="contact.html"};

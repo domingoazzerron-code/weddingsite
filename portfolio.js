@@ -78,7 +78,7 @@ host.addEventListener("click",e=>{
   const b=e.target.closest(".film[data-id]");if(!b)return;
   const f=FILMS.find(x=>x.v===b.dataset.id);if(!f)return;
   track("Film Play",{label:f.label+" - "+f.type});
-  show(f);dlg.showModal();
+  show(f);dlg.showModal();$("pc").focus();
 });
 $("pp").onclick=()=>step(-1);
 $("pn").onclick=()=>step(1);
